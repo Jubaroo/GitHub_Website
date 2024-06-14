@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML/CSS Validator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #000000;
+            color: #FF0000;
+        }
+        header {
+            background-color: #8B0000;
+            padding: 1em;
+            color: #FFFFFF;
+        }
+        nav {
+            margin: 20px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        textarea {
+            width: 80%;
+            height: 150px;
+            margin: 10px auto; /* Center text area */
+            padding: 10px;
+            background-color: #333333;
+            color: #DDDDDD;
+            border: 1px solid #555555;
+            display: block;
+        }
+        pre {
+            background-color: #1E1E1E;
+            padding: 10px;
+            width: 80%;
+            height: auto;
+            overflow: auto;
+            white-space: pre-wrap;
+            text-align: left;
+            margin: 10px auto; /* Center result */
+            color: #FFFFFF;
+        }
+        button {
+            background-color: #8B0000;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 10px auto; /* Center button */
+            display: block;
+        }
+        button:hover {
+            background-color: #FF0000;
+        }
+        footer {
+            background-color: #8B0000;
+            padding: 1em;
+            color: #FFFFFF;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Validate Your HTML/CSS</h1>
+        <nav>
+            <a href="main.html">Home</a>
+            <a href="audio-converter.html">Audio Converter</a>
+            <a href="image-extraction.html">Image Extraction</a>
+            <a href="background-removal.html">Background Removal</a>
+            <a href="password-generator.html">Password Generator</a>
+            <a href="json-formatter.html">JSON Formatter</a>
+            <a href="html-validator.html">HTML/CSS Validator</a>
+            <a href="regex-tester.html">Regex Tester</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Validate Your HTML/CSS</h2>
+        <textarea id="html-input" placeholder="Paste your HTML/CSS here"></textarea>
+        <button onclick="validateHTML()">Validate</button>
+        <pre id="validation-results"></pre>
+    </div>
+    <footer>
+        <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+    </footer>
+    <script>
+        function validateHTML() {
+            const input = document.getElementById("html-input").value;
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+            const doc = iframe.contentDocument || iframe.contentWindow.document;
+            doc.open();
+            doc.write(input);
+            doc.close();
+            const errors = doc.querySelectorAll('parsererror');
+            document.getElementById("validation-results").innerText = errors.length ? errors[0].textContent : "No syntax errors found.";
+            document.body.removeChild(iframe);
+        }
+    </script>
+</body>
+</html>

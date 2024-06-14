@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Removal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #000000;
+            color: #FF0000;
+        }
+        header {
+            background-color: #8B0000;
+            padding: 1em;
+            color: #FFFFFF;
+        }
+        nav {
+            margin: 20px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #8B0000;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #FF0000;
+        }
+        footer {
+            background-color: #8B0000;
+            padding: 1em;
+            color: #FFFFFF;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        #message {
+            margin-top: 10px;
+            font-size: 1em;
+            color: #FF0000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Background Removal</h1>
+        <nav>
+            <a href="main.html">Home</a>
+            <a href="audio-converter.html">Audio Converter</a>
+            <a href="image-extraction.html">Image Extraction</a>
+            <a href="background-removal.html">Background Removal</a>
+            <a href="password-generator.html">Password Generator</a>
+            <a href="json-formatter.html">JSON Formatter</a>
+            <a href="html-validator.html">HTML/CSS Validator</a>
+            <a href="regex-tester.html">Regex Tester</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Remove Background from Image</h2>
+        <input type="file" id="image-upload" accept="image/*">
+        <button onclick="removeBackground()">Remove Background</button>
+        <div id="preview"></div>
+        <div id="message"></div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+    </footer>
+    <script>
+        async function removeBackground() {
+            const fileInput = document.getElementById('image-upload');
+            const preview = document.getElementById('preview');
+            const message = document.getElementById('message');
+            preview.innerHTML = '';
+            message.textContent = '';
+
+            if (fileInput.files.length === 0) {
+                alert('Please choose an image file.');
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('image_file', file);
+            formData.append('size', 'auto');
+
+            message.textContent = 'Removing background...';
+
+            try {
+                const response = await fetch('https://api.remove.bg/v1.0/removebg', {
+                    method: 'POST',
+                    headers: {
+                        'X-Api-Key': '<API_KEY>'
+                    },
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to remove background.');
+                }
+
+                const blob = await response.blob();
+                const url = URL.createObjectURL(blob);
+
+                const img = document.createElement('img');
+                img.src = url;
+                preview.appendChild(img);
+                message.textContent = 'Background removed successfully!';
+            } catch (error) {
+                message.textContent = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
