@@ -13,22 +13,66 @@
         text-align: center;
         background-color: #000000;
         color: #ff0000;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
       }
       header {
         background-color: #8b0000;
         padding: 1em;
         color: #ffffff;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 10;
       }
       nav {
-        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        flex-wrap: wrap;
       }
       nav a {
         margin: 0 15px;
         text-decoration: none;
         color: #ffffff;
         font-weight: bold;
+        white-space: nowrap;
+        transition: color 0.3s;
+      }
+      nav a:hover {
+        color: #ffcccb;
+      }
+      .dropdown {
+        position: relative;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #8b0000;
+        min-width: 160px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border: 1px solid #fff;
+        border-radius: 8px;
+      }
+      .dropdown-content a {
+        color: #fff;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        transition: background-color 0.3s;
+      }
+      .dropdown-content a:hover {
+        background-color: #ff0000;
+      }
+      .dropdown:hover .dropdown-content {
+        display: block;
       }
       .container {
+        flex: 1;
         max-width: 800px;
         margin: auto;
         padding: 20px;
@@ -37,9 +81,8 @@
         background-color: #8b0000;
         padding: 1em;
         color: #ffffff;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
+        text-align: center;
+        margin-top: auto;
       }
       input[type="file"],
       select,
@@ -64,13 +107,40 @@
       <h1>Audio Converter</h1>
       <nav>
         <a href="index.html">Home</a>
-        <a href="audio-converter.html">Audio Converter</a>
-        <a href="image-extraction.html">Image Extraction</a>
-        <a href="background-removal.html">Background Removal</a>
-        <a href="password-generator.html">Password Generator</a>
-        <a href="json-formatter.html">JSON Formatter</a>
-        <a href="html-validator.html">HTML/CSS Validator</a>
-        <a href="regex-tester.html">Regex Tester</a>
+        <div class="dropdown">
+          <a href="#">Audio Tools</a>
+          <div class="dropdown-content">
+            <a href="audio-converter.html">Audio Converter</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Video Tools</a>
+          <div class="dropdown-content">
+            <a href="video-converter.html">Video Converter</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Image Tools</a>
+          <div class="dropdown-content">
+            <a href="image-extraction.html">PDF Image Extraction</a>
+            <a href="background-removal.html">Background Removal</a>
+            <a href="image-converter.html">Image Converter</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Web Tools</a>
+          <div class="dropdown-content">
+            <a href="html-validator.html">HTML/CSS Validator</a>
+            <a href="json-formatter.html">JSON Formatter</a>
+            <a href="regex-tester.html">Regex Tester</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Other Tools</a>
+          <div class="dropdown-content">
+            <a href="password-generator.html">Password Generator</a>
+          </div>
+        </div>
       </nav>
     </header>
     <div class="container">
@@ -94,6 +164,22 @@
       <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
     </footer>
     <script>
+      document.querySelectorAll(".dropdown").forEach((dropdown) => {
+        const dropdownContent = dropdown.querySelector(".dropdown-content");
+        dropdown.addEventListener("mouseenter", () => {
+          dropdownContent.style.display = "block";
+        });
+        dropdown.addEventListener("mouseleave", () => {
+          dropdownContent.style.display = "none";
+        });
+        dropdown.querySelector("a").addEventListener("focus", () => {
+          dropdownContent.style.display = "block";
+        });
+        dropdown.querySelector("a").addEventListener("blur", () => {
+          dropdownContent.style.display = "none";
+        });
+      });
+
       async function convertAudio() {
         const fileInput = document.getElementById("audio-file");
         const format = document.getElementById("format").value;
@@ -139,10 +225,10 @@
             const a = document.createElement("a");
             a.href = url;
             a.download = `converted.${format}`;
-            document.body.appendChild(a); // Append the element to the DOM
-            a.click(); // Programmatically click to start download
-            document.body.removeChild(a); // Remove the element after the download starts
-            URL.revokeObjectURL(url); // Revoke the object URL to free memory
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
 
             message.innerHTML = "Download started automatically.";
           } catch (error) {
@@ -161,69 +247,3 @@
     </script>
   </body>
 </html>
-<script>
-  async function convertAudio() {
-    const fileInput = document.getElementById("audio-file");
-    const format = document.getElementById("format").value;
-    const message = document.getElementById("message");
-
-    if (fileInput.files.length === 0) {
-      alert("Please choose an audio file.");
-      return;
-    }
-
-    const file = fileInput.files[0];
-    const reader = new FileReader();
-
-    reader.onload = async function (e) {
-      const arrayBuffer = e.target.result;
-      const fileData = new Uint8Array(arrayBuffer);
-
-      const { createFFmpeg } = FFmpeg;
-      const ffmpeg = createFFmpeg({
-        corePath:
-          "https://cdn.jsdelivr.net/npm/ffmpeg.wasm@0.11.0/dist/ffmpeg-core.js",
-      });
-
-      try {
-        message.innerHTML = "Loading FFmpeg...";
-        await ffmpeg.load();
-        console.log("FFmpeg loaded successfully.");
-
-        message.innerHTML = "Writing file to filesystem...";
-        ffmpeg.FS("writeFile", "input", fileData);
-        console.log("File written to filesystem.");
-
-        message.innerHTML = "Converting...";
-        await ffmpeg.run("-i", "input", `output.${format}`);
-        console.log("Conversion command executed.");
-
-        const data = ffmpeg.FS("readFile", `output.${format}`);
-        console.log("File read from filesystem.");
-
-        const blob = new Blob([data.buffer], { type: `audio/${format}` });
-        const url = URL.createObjectURL(blob);
-
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = `converted.${format}`;
-        document.body.appendChild(a); // Append the element to the DOM
-        a.click(); // Programmatically click to start download
-        document.body.removeChild(a); // Remove the element after the download starts
-        URL.revokeObjectURL(url); // Revoke the object URL to free memory
-
-        message.innerHTML = "Download started automatically.";
-      } catch (error) {
-        console.error("Error during conversion:", error);
-        message.innerHTML = `Conversion failed. Please try again. Error: ${error.message}`;
-      }
-    };
-
-    reader.onerror = function (error) {
-      console.error("File reading error:", error);
-      message.innerHTML = "Failed to read file. Please try again.";
-    };
-
-    reader.readAsArrayBuffer(file);
-  }
-</script>

@@ -3,15 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jarrod's Website</title>
+    <title>Jarrod's Tool Hub</title>
     <style>
       html,
       body {
         margin: 0;
         padding: 0;
         height: 100%;
-        font-family: Arial, sans-serif;
-        background-color: #000000;
+        font-family: "Arial", sans-serif;
+        background: radial-gradient(
+            circle at center,
+            rgba(255, 0, 0, 0.8),
+            transparent 50%
+          ),
+          radial-gradient(circle at left, rgba(1, 1, 1, 0.47), transparent 50%),
+          radial-gradient(circle at right, rgba(1, 1, 1, 0.47), transparent 50%),
+          linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(43, 43, 43, 0.8));
         color: #ff0000;
       }
       body {
@@ -21,52 +28,113 @@
       header {
         background-color: #8b0000;
         padding: 1em;
-        color: #ffffff;
-        display: flex;
-        align-items: center;
-        justify-content: center; /* Center text horizontally */
-        flex-direction: column; /* Aligns nav vertically */
+        color: #fff;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 10;
       }
       nav {
-        margin-top: 10px; /* Adjust space between header text and nav */
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        flex-wrap: wrap;
       }
       nav a {
         margin: 0 15px;
         text-decoration: none;
-        color: #ffffff;
+        color: #fff;
         font-weight: bold;
+        white-space: nowrap;
+        transition: color 0.3s;
+      }
+      nav a:hover {
+        color: #ffcccb;
+      }
+      .dropdown {
+        position: relative;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #8b0000;
+        min-width: 160px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border: 1px solid #fff;
+        border-radius: 8px;
+      }
+      .dropdown-content a {
+        color: #fff;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        transition: background-color 0.3s;
+      }
+      .dropdown-content a:hover {
+        background-color: #ff0000;
       }
       .container {
         flex: 1;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: flex-start; /* Align content at the top */
+        justify-content: center;
         padding: 20px;
         text-align: center;
       }
-      ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0; /* Ensure no margin around list */
+      .container h2 {
+        color: #ffffff;
       }
-      ul li a {
-        color: #ff0000;
+      .container p {
+        color: #ffffff;
+      }
+      .card {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        margin: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        width: 200px;
+      }
+      .card img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+      }
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .card-link {
         text-decoration: none;
+        color: inherit;
+        display: inline-block;
       }
-      ul li a:hover {
-        text-decoration: underline;
+      .card-link .card {
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .card-link:hover .card {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
       }
       footer {
         background-color: #8b0000;
         padding: 1em;
-        color: #ffffff;
+        color: #fff;
         text-align: center;
       }
-      /* Responsive Styles */
       @media (max-width: 768px) {
         nav {
-          display: flex;
           flex-direction: column;
           align-items: center;
         }
@@ -76,9 +144,13 @@
         .container {
           padding: 10px;
         }
+        .card {
+          width: 90%;
+        }
       }
       @media (max-width: 480px) {
-        header {
+        header,
+        footer {
           padding: 0.5em;
         }
         nav a {
@@ -88,38 +160,121 @@
         .container {
           padding: 5px;
         }
-        footer {
-          padding: 5px;
-        }
       }
     </style>
   </head>
   <body>
     <header>
-      <h1>Jarrod's Website</h1>
+      <h1>Jarrod's Tool Hub</h1>
       <nav>
         <a href="index.html">Home</a>
-        <a href="audio-converter.html">Audio Converter</a>
-        <a href="image-extraction.html">Image Extraction</a>
-        <a href="background-removal.html">Background Removal</a>
-        <a href="password-generator.html">Password Generator</a>
-        <a href="json-formatter.html">JSON Formatter</a>
-        <a href="html-validator.html">HTML/CSS Validator</a>
-        <a href="regex-tester.html">Regex Tester</a>
-        <a href="image-converter.html">Image Converter</a>
+        <div class="dropdown">
+          <a href="#">Audio Tools</a>
+          <div class="dropdown-content">
+            <a href="audio-converter.html">Audio Converter</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Video Tools</a>
+          <div class="dropdown-content">
+            <a href="video-converter.html">Video Converter</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Image Tools</a>
+          <div class="dropdown-content">
+            <a href="image-extraction.html">PDF Image Extraction</a>
+            <a href="background-removal.html">Background Removal</a>
+            <a href="image-converter.html">Image Converter</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Web Tools</a>
+          <div class="dropdown-content">
+            <a href="html-validator.html">HTML/CSS Validator</a>
+            <a href="json-formatter.html">JSON Formatter</a>
+            <a href="regex-tester.html">Regex Tester</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Other Tools</a>
+          <div class="dropdown-content">
+            <a href="password-generator.html">Password Generator</a>
+          </div>
+        </div>
       </nav>
     </header>
-    <div class="container">
-      <h2>Welcome to Jarrod's Website</h2>
-      <p>Explore the tools available:</p>
-      <ul>
-        <li><a href="audio-converter.html">Audio Converter</a></li>
-        <li><a href="image-extraction.html">Image Extraction</a></li>
-        <li><a href="password-generator.html">Password Generator</a></li>
-      </ul>
-    </div>
+    <main class="container">
+      <h2 class="main-title">Welcome to Jarrod's Tool Hub</h2>
+      <p class="subtitle">Explore our most frequently used tools:</p>
+      <div class="card-container">
+        <a href="audio-converter.html" class="card-link">
+          <div class="card">
+            <img src="icons/audio-icon.png" alt="Audio Converter" />
+            <h3>Audio Converter</h3>
+            <p>Convert audio files</p>
+          </div>
+        </a>
+        <a href="image-extraction.html" class="card-link">
+          <div class="card">
+            <img src="icons/image-icon.png" alt="PDF Image Extractor" />
+            <h3>PDF Image Extractor</h3>
+            <p>Extract images from PDFs</p>
+          </div>
+        </a>
+        <a href="password-generator.html" class="card-link">
+          <div class="card">
+            <img src="icons/password-icon.png" alt="Password Generator" />
+            <h3>Password Generator</h3>
+            <p>Generate secure passwords</p>
+          </div>
+        </a>
+        <a href="video-tools.html" class="card-link">
+          <div class="card">
+            <img src="icons/video-icon.png" alt="Video Tools" />
+            <h3>Video Tools</h3>
+            <p>Access video tools</p>
+          </div>
+        </a>
+        <a href="json-formatter.html" class="card-link">
+          <div class="card">
+            <img src="icons/web-tools-icon.png" alt="JSON Formatter" />
+            <h3>JSON Formatter</h3>
+            <p>
+              Clean and format JSON data for better readability and debugging
+            </p>
+          </div>
+        </a>
+        <!-- Add more cards as needed -->
+      </div>
+    </main>
     <footer>
-      <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+      <p>&copy; 2024 Jarrod's Tool Hub. All rights reserved.</p>
     </footer>
+    <script>
+      document.querySelectorAll(".dropdown").forEach((dropdown) => {
+        const dropdownContent = dropdown.querySelector(".dropdown-content");
+        dropdown.addEventListener(
+          "mouseenter",
+          () => (dropdownContent.style.display = "block")
+        );
+        dropdown.addEventListener(
+          "mouseleave",
+          () => (dropdownContent.style.display = "none")
+        );
+        dropdown
+          .querySelector("a")
+          .addEventListener(
+            "focus",
+            () => (dropdownContent.style.display = "block")
+          );
+        dropdown
+          .querySelector("a")
+          .addEventListener(
+            "blur",
+            () => (dropdownContent.style.display = "none")
+          );
+      });
+    </script>
   </body>
 </html>
