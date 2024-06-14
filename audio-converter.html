@@ -1,158 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Audio Converter</title>
     <script src="https://cdn.jsdelivr.net/npm/ffmpeg.wasm@0.11.0/dist/ffmpeg.min.js"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            background-color: #000000;
-            color: #FF0000;
-        }
-        header {
-            background-color: #8B0000;
-            padding: 1em;
-            color: #FFFFFF;
-        }
-        nav {
-            margin: 20px 0;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #FFFFFF;
-            font-weight: bold;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-        }
-        footer {
-            background-color: #8B0000;
-            padding: 1em;
-            color: #FFFFFF;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        input[type="file"], select, button {
-            display: block;
-            margin: 10px auto;
-        }
-        button {
-            background-color: #8B0000;
-            color: #FFFFFF;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #FF0000;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        background-color: #000000;
+        color: #ff0000;
+      }
+      header {
+        background-color: #8b0000;
+        padding: 1em;
+        color: #ffffff;
+      }
+      nav {
+        margin: 20px 0;
+      }
+      nav a {
+        margin: 0 15px;
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: bold;
+      }
+      .container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+      }
+      footer {
+        background-color: #8b0000;
+        padding: 1em;
+        color: #ffffff;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+      input[type="file"],
+      select,
+      button {
+        display: block;
+        margin: 10px auto;
+      }
+      button {
+        background-color: #8b0000;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #ff0000;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Audio Converter</h1>
-        <nav>
-            <a href="main.html">Home</a>
-            <a href="audio-converter.html">Audio Converter</a>
-            <a href="image-extraction.html">Image Extraction</a>
-            <a href="background-removal.html">Background Removal</a>
-            <a href="password-generator.html">Password Generator</a>
-            <a href="json-formatter.html">JSON Formatter</a>
-            <a href="html-validator.html">HTML/CSS Validator</a>
-            <a href="regex-tester.html">Regex Tester</a>
-        </nav>
+      <h1>Audio Converter</h1>
+      <nav>
+        <a href="main.html">Home</a>
+        <a href="audio-converter.html">Audio Converter</a>
+        <a href="image-extraction.html">Image Extraction</a>
+        <a href="background-removal.html">Background Removal</a>
+        <a href="password-generator.html">Password Generator</a>
+        <a href="json-formatter.html">JSON Formatter</a>
+        <a href="html-validator.html">HTML/CSS Validator</a>
+        <a href="regex-tester.html">Regex Tester</a>
+      </nav>
     </header>
     <div class="container">
-        <h2>Convert Your Audio Files</h2>
-        <form id="upload-form">
-            <input type="file" id="audio-file" accept="audio/*">
-            <select id="format">
-                <option value="mp3">MP3</option>
-                <option value="wav">WAV</option>
-                <option value="ogg">OGG</option>
-                <option value="flac">FLAC</option>
-            </select>
-            <button type="button" onclick="convertAudio()">Convert</button>
-        </form>
-        <div id="log-container">
-            <h2>Log Messages</h2>
-            <div id="message"></div>
-        </div>
+      <h2>Convert Your Audio Files</h2>
+      <form id="upload-form">
+        <input type="file" id="audio-file" accept="audio/*" />
+        <select id="format">
+          <option value="mp3">MP3</option>
+          <option value="wav">WAV</option>
+          <option value="ogg">OGG</option>
+          <option value="flac">FLAC</option>
+        </select>
+        <button type="button" onclick="convertAudio()">Convert</button>
+      </form>
+      <div id="log-container">
+        <h2>Log Messages</h2>
+        <div id="message"></div>
+      </div>
     </div>
     <footer>
-        <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+      <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
     </footer>
     <script>
-        async function convertAudio() {
-            const fileInput = document.getElementById('audio-file');
-            const format = document.getElementById('format').value;
-            const message = document.getElementById('message');
+      async function convertAudio() {
+        const fileInput = document.getElementById("audio-file");
+        const format = document.getElementById("format").value;
+        const message = document.getElementById("message");
 
-            if (fileInput.files.length === 0) {
-                alert('Please choose an audio file.');
-                return;
-            }
-
-            const file = fileInput.files[0];
-            const reader = new FileReader();
-
-            reader.onload = async function (e) {
-                const arrayBuffer = e.target.result;
-                const fileData = new Uint8Array(arrayBuffer);
-
-                const { createFFmpeg } = FFmpeg;
-                const ffmpeg = createFFmpeg({ corePath: 'https://cdn.jsdelivr.net/npm/ffmpeg.wasm@0.11.0/dist/ffmpeg-core.js' });
-
-                try {
-                    message.innerHTML = 'Loading FFmpeg...';
-                    await ffmpeg.load();
-                    console.log('FFmpeg loaded successfully.');
-
-                    message.innerHTML = 'Writing file to filesystem...';
-                    ffmpeg.FS('writeFile', 'input', fileData);
-                    console.log('File written to filesystem.');
-
-                    message.innerHTML = 'Converting...';
-                    await ffmpeg.run('-i', 'input', `output.${format}`);
-                    console.log('Conversion command executed.');
-
-                    const data = ffmpeg.FS('readFile', `output.${format}`);
-                    console.log('File read from filesystem.');
-
-                    const blob = new Blob([data.buffer], { type: `audio/${format}` });
-                    const url = URL.createObjectURL(blob);
-
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = `converted.${format}`;
-                    document.body.appendChild(a); // Append the element to the DOM
-                    a.click(); // Programmatically click to start download
-                    document.body.removeChild(a); // Remove the element after the download starts
-                    URL.revokeObjectURL(url); // Revoke the object URL to free memory
-
-                    message.innerHTML = 'Download started automatically.';
-                } catch (error) {
-                    console.error('Error during conversion:', error);
-                    message.innerHTML = `Conversion failed. Please try again. Error: ${error.message}`;
-                }
-            };
-
-            reader.onerror = function (error) {
-                console.error('File reading error:', error);
-                message.innerHTML = 'Failed to read file. Please try again.';
-            };
-
-            reader.readAsArrayBuffer(file);
+        if (fileInput.files.length === 0) {
+          alert("Please choose an audio file.");
+          return;
         }
+
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+
+        reader.onload = async function (e) {
+          const arrayBuffer = e.target.result;
+          const fileData = new Uint8Array(arrayBuffer);
+
+          const { createFFmpeg } = FFmpeg;
+          const ffmpeg = createFFmpeg({
+            corePath:
+              "https://cdn.jsdelivr.net/npm/ffmpeg.wasm@0.11.0/dist/ffmpeg-core.js",
+          });
+
+          try {
+            message.innerHTML = "Loading FFmpeg...";
+            await ffmpeg.load();
+            console.log("FFmpeg loaded successfully.");
+
+            message.innerHTML = "Writing file to filesystem...";
+            ffmpeg.FS("writeFile", "input", fileData);
+            console.log("File written to filesystem.");
+
+            message.innerHTML = "Converting...";
+            await ffmpeg.run("-i", "input", `output.${format}`);
+            console.log("Conversion command executed.");
+
+            const data = ffmpeg.FS("readFile", `output.${format}`);
+            console.log("File read from filesystem.");
+
+            const blob = new Blob([data.buffer], { type: `audio/${format}` });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `converted.${format}`;
+            document.body.appendChild(a); // Append the element to the DOM
+            a.click(); // Programmatically click to start download
+            document.body.removeChild(a); // Remove the element after the download starts
+            URL.revokeObjectURL(url); // Revoke the object URL to free memory
+
+            message.innerHTML = "Download started automatically.";
+          } catch (error) {
+            console.error("Error during conversion:", error);
+            message.innerHTML = `Conversion failed. Please try again. Error: ${error.message}`;
+          }
+        };
+
+        reader.onerror = function (error) {
+          console.error("File reading error:", error);
+          message.innerHTML = "Failed to read file. Please try again.";
+        };
+
+        reader.readAsArrayBuffer(file);
+      }
     </script>
-</body>
+  </body>
 </html>
+<script>
+  async function convertAudio() {
+    const fileInput = document.getElementById("audio-file");
+    const format = document.getElementById("format").value;
+    const message = document.getElementById("message");
+
+    if (fileInput.files.length === 0) {
+      alert("Please choose an audio file.");
+      return;
+    }
+
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = async function (e) {
+      const arrayBuffer = e.target.result;
+      const fileData = new Uint8Array(arrayBuffer);
+
+      const { createFFmpeg } = FFmpeg;
+      const ffmpeg = createFFmpeg({
+        corePath:
+          "https://cdn.jsdelivr.net/npm/ffmpeg.wasm@0.11.0/dist/ffmpeg-core.js",
+      });
+
+      try {
+        message.innerHTML = "Loading FFmpeg...";
+        await ffmpeg.load();
+        console.log("FFmpeg loaded successfully.");
+
+        message.innerHTML = "Writing file to filesystem...";
+        ffmpeg.FS("writeFile", "input", fileData);
+        console.log("File written to filesystem.");
+
+        message.innerHTML = "Converting...";
+        await ffmpeg.run("-i", "input", `output.${format}`);
+        console.log("Conversion command executed.");
+
+        const data = ffmpeg.FS("readFile", `output.${format}`);
+        console.log("File read from filesystem.");
+
+        const blob = new Blob([data.buffer], { type: `audio/${format}` });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `converted.${format}`;
+        document.body.appendChild(a); // Append the element to the DOM
+        a.click(); // Programmatically click to start download
+        document.body.removeChild(a); // Remove the element after the download starts
+        URL.revokeObjectURL(url); // Revoke the object URL to free memory
+
+        message.innerHTML = "Download started automatically.";
+      } catch (error) {
+        console.error("Error during conversion:", error);
+        message.innerHTML = `Conversion failed. Please try again. Error: ${error.message}`;
+      }
+    };
+
+    reader.onerror = function (error) {
+      console.error("File reading error:", error);
+      message.innerHTML = "Failed to read file. Please try again.";
+    };
+
+    reader.readAsArrayBuffer(file);
+  }
+</script>
