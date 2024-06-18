@@ -20,6 +20,24 @@
       body {
         display: flex;
         flex-direction: column;
+        position: relative;
+        min-height: 100vh;
+      }
+
+      #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 0;
+      }
+
+      .flex-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
 
       header {
@@ -92,34 +110,6 @@
       .dropdown-content a:hover {
         background-color: #ff0000;
         color: #ffffff;
-      }
-
-      .parallax {
-        position: relative;
-        height: 100vh;
-        overflow: hidden;
-      }
-
-      .parallax__layer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-      }
-
-      .parallax__layer--back {
-        background-image: url("images/parallax-back.png");
-        background-size: cover;
-        background-position: center;
-      }
-
-      .parallax__layer--front {
-        background-image: url("images/parallax-front.png");
-        background-size: cover;
-        background-position: center;
-        opacity: 0.5;
       }
 
       .container {
@@ -293,9 +283,10 @@
         </div>
       </nav>
     </header>
-    <div class="parallax">
-      <div class="parallax__layer parallax__layer--back"></div>
-      <div class="parallax__layer parallax__layer--front"></div>
+
+    <!-- Particle.js Container -->
+    <div id="particles-js"></div>
+    <div class="flex-container">
       <main class="container">
         <h2 class="main-title">Welcome to Jarrod's Tool Hub</h2>
         <p class="subtitle">Explore my most frequently used tools:</p>
@@ -364,25 +355,118 @@
         </div>
       </main>
     </div>
+
     <footer>
       <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
     </footer>
+
+    <!-- Particle.js Script -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-      // Parallax effect
-      document.addEventListener("mousemove", (e) => {
-        const backLayer = document.querySelector(".parallax__layer--back");
-        const frontLayer = document.querySelector(".parallax__layer--front");
-
-        const speedBack = 0.04;
-        const speedFront = 1.0;
-
-        const xBack = (window.innerWidth - e.pageX * speedBack) / 50;
-        const yBack = (window.innerHeight - e.pageY * speedBack) / 50;
-        backLayer.style.transform = `translate(${xBack}px, ${yBack}px) scale(1.5)`;
-
-        const xFront = (window.innerWidth - e.pageX * speedFront) / 50;
-        const yFront = (window.innerHeight - e.pageY * speedFront) / 50;
-        frontLayer.style.transform = `translate(${xFront}px, ${yFront}px)`;
+      particlesJS("particles-js", {
+        particles: {
+          number: {
+            value: 80,
+            density: {
+              enable: true,
+              value_area: 800,
+            },
+          },
+          color: {
+            value: "#ffffff",
+          },
+          shape: {
+            type: "circle",
+            stroke: {
+              width: 0,
+              color: "#000000",
+            },
+            polygon: {
+              nb_sides: 5,
+            },
+          },
+          opacity: {
+            value: 0.5,
+            random: false,
+            anim: {
+              enable: false,
+              speed: 1,
+              opacity_min: 0.1,
+              sync: false,
+            },
+          },
+          size: {
+            value: 3,
+            random: true,
+            anim: {
+              enable: false,
+              speed: 40,
+              size_min: 0.1,
+              sync: false,
+            },
+          },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#ffffff",
+            opacity: 0.4,
+            width: 1,
+          },
+          move: {
+            enable: true,
+            speed: 6,
+            direction: "none",
+            random: false,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+            attract: {
+              enable: false,
+              rotateX: 600,
+              rotateY: 1200,
+            },
+          },
+        },
+        interactivity: {
+          detect_on: "window",
+          events: {
+            onhover: {
+              enable: true,
+              mode: "repulse",
+            },
+            onclick: {
+              enable: true,
+              mode: "push",
+            },
+            resize: true,
+          },
+          modes: {
+            grab: {
+              distance: 400,
+              line_linked: {
+                opacity: 1,
+              },
+            },
+            bubble: {
+              distance: 400,
+              size: 40,
+              duration: 2,
+              opacity: 8,
+              speed: 3,
+            },
+            repulse: {
+              distance: 200,
+              duration: 0.4,
+            },
+            push: {
+              particles_nb: 4,
+            },
+            remove: {
+              particles_nb: 2,
+            },
+          },
+        },
+        retina_detect: true,
       });
 
       // Text fade-in
