@@ -10,53 +10,54 @@
         margin: 0;
         padding: 0;
         height: 100%;
-        font-family: "Arial", sans-serif;
-        background: radial-gradient(
-            circle at center,
-            rgba(255, 0, 0, 0.8),
-            transparent 50%
-          ),
-          radial-gradient(circle at left, rgba(1, 1, 1, 0.47), transparent 50%),
-          radial-gradient(circle at right, rgba(1, 1, 1, 0.47), transparent 50%),
-          linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(43, 43, 43, 0.8));
-        color: #ffffff; /* Changed to white */
+        overflow-x: hidden;
+        font-family: Arial, sans-serif;
+        color: #ffffff;
+        background: black;
         scroll-behavior: smooth;
       }
+
       body {
         display: flex;
         flex-direction: column;
       }
+
       header {
         background-color: #8b0000;
         padding: 1em;
-        color: #ffffff; /* Changed to white */
+        color: #ffffff;
         text-align: center;
         position: sticky;
         top: 0;
         z-index: 10;
       }
+
       nav {
         display: flex;
         justify-content: center;
         margin-top: 10px;
         flex-wrap: wrap;
       }
+
       nav a {
         margin: 0 15px;
         text-decoration: none;
-        color: #ffffff; /* Changed to white */
+        color: #ffffff;
         font-weight: bold;
         white-space: nowrap;
         border-radius: 10px;
         transition: background-color 0.3s, color 0.3s;
       }
+
       nav a:hover {
         background-color: #ff0000;
         color: #ffcccb;
       }
+
       .dropdown {
         position: relative;
       }
+
       .dropdown-content {
         display: none;
         position: absolute;
@@ -71,50 +72,79 @@
         transition: opacity 0.3s;
         transform: translateY(-10px);
       }
+
       .dropdown:hover .dropdown-content,
       .dropdown:focus-within .dropdown-content {
         display: block;
         opacity: 1;
         transform: translateY(0);
       }
+
       .dropdown-content a {
-        color: #ffffff; /* Changed to white */
+        color: #ffffff;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
         transition: background-color 0.3s;
         border-radius: 10px;
       }
+
       .dropdown-content a:hover {
         background-color: #ff0000;
         color: #ffffff;
       }
+
+      .parallax {
+        position: relative;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .parallax__layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .parallax__layer--back {
+        background-image: url("images/parallax-back.png");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .parallax__layer--front {
+        background-image: url("images/parallax-front.png");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.5;
+      }
+
       .container {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        position: relative;
+        z-index: 2;
         padding: 20px;
         text-align: center;
-        opacity: 0;
         animation: fadeIn 1s ease-in-out forwards;
       }
+
       .main-title,
       .subtitle {
-        color: #ffffff; /* Ensure text in container is white */
-        opacity: 0;
+        color: #ffffff;
         animation: fadeInText 1s ease-in-out forwards;
       }
+
       .card {
         background-color: #333;
-        color: #ffffff; /* Ensure text in cards is white */
+        color: #ffffff;
         padding: 20px;
         margin: 15px;
         border-radius: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 210px; /* Fixed width */
-        height: 210px; /* Fixed height */
+        width: 210px;
+        height: 210px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -124,13 +154,31 @@
         opacity: 0;
         transform: translateY(20px);
         transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
       }
+
+      .card canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .card-content {
+        z-index: 2;
+      }
+
       .card img {
         width: 80px;
         height: 80px;
         margin-bottom: 10px;
         border-radius: 10px;
       }
+
       .card-container {
         display: flex;
         flex-wrap: wrap;
@@ -138,24 +186,20 @@
         max-width: 1200px;
         margin: 0 auto;
       }
+
       .card-link {
         text-decoration: none;
         color: inherit;
         display: inline-block;
       }
-      .card-link .card {
-        cursor: pointer;
-      }
-      .card-link:hover .card {
-        transform: translateY(-10px);
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-      }
+
       footer {
         background-color: #8b0000;
         padding: 1em;
-        color: #ffffff; /* Changed to white */
+        color: #ffffff;
         text-align: center;
       }
+
       @media (max-width: 768px) {
         nav {
           flex-direction: column;
@@ -172,6 +216,7 @@
           height: auto;
         }
       }
+
       @media (max-width: 480px) {
         header,
         footer {
@@ -185,6 +230,7 @@
           padding: 5px;
         }
       }
+
       @keyframes fadeIn {
         from {
           opacity: 0;
@@ -193,6 +239,7 @@
           opacity: 1;
         }
       }
+
       @keyframes fadeInText {
         from {
           opacity: 0;
@@ -246,61 +293,98 @@
         </div>
       </nav>
     </header>
-    <main class="container">
-      <h2 class="main-title">Welcome to Jarrod's Tool Hub</h2>
-      <p class="subtitle">Explore my most frequently used tools:</p>
-      <div class="card-container">
-        <a href="audio-converter.html" class="card-link">
-          <div class="card">
-            <img src="icons/audio-icon.png" alt="Audio Converter" />
-            <h3>Audio Converter</h3>
-            <p>Convert audio files</p>
-          </div>
-        </a>
-        <a href="image-extraction.html" class="card-link">
-          <div class="card">
-            <img src="icons/image-icon.png" alt="PDF Image Extractor" />
-            <h3>PDF Image Extractor</h3>
-            <p>Extract images from PDFs</p>
-          </div>
-        </a>
-        <a href="password-generator.html" class="card-link">
-          <div class="card">
-            <img src="icons/password-icon.png" alt="Password Generator" />
-            <h3>Password Generator</h3>
-            <p>Generate secure passwords</p>
-          </div>
-        </a>
-        <a href="video-tools.html" class="card-link">
-          <div class="card">
-            <img src="icons/video-icon.png" alt="Video Tools" />
-            <h3>Video Tools</h3>
-            <p>Access video tools</p>
-          </div>
-        </a>
-        <a href="json-formatter.html" class="card-link">
-          <div class="card">
-            <img src="icons/web-tools-icon.png" alt="JSON Formatter" />
-            <h3>JSON Formatter</h3>
-            <p>
-              Clean and format JSON data for better readability and debugging
-            </p>
-          </div>
-        </a>
-        <a href="llm.html" class="card-link">
-          <div class="card">
-            <img src="icons/llm-icon.png" alt="Web-Based LLM" />
-            <h3>Web-Based LLM</h3>
-            <p>Ask questions to the AI</p>
-          </div>
-        </a>
-        <!-- Add more cards as needed -->
-      </div>
-    </main>
+    <div class="parallax">
+      <div class="parallax__layer parallax__layer--back"></div>
+      <div class="parallax__layer parallax__layer--front"></div>
+      <main class="container">
+        <h2 class="main-title">Welcome to Jarrod's Tool Hub</h2>
+        <p class="subtitle">Explore my most frequently used tools:</p>
+        <div class="card-container">
+          <a href="audio-converter.html" class="card-link">
+            <div class="card">
+              <canvas></canvas>
+              <div class="card-content">
+                <img src="icons/audio-icon.png" alt="Audio Converter" />
+                <h3>Audio Converter</h3>
+                <p>Convert audio files</p>
+              </div>
+            </div>
+          </a>
+          <a href="image-extraction.html" class="card-link">
+            <div class="card">
+              <canvas></canvas>
+              <div class="card-content">
+                <img src="icons/image-icon.png" alt="PDF Image Extractor" />
+                <h3>PDF Image Extractor</h3>
+                <p>Extract images from PDFs</p>
+              </div>
+            </div>
+          </a>
+          <a href="password-generator.html" class="card-link">
+            <div class="card">
+              <canvas></canvas>
+              <div class="card-content">
+                <img src="icons/password-icon.png" alt="Password Generator" />
+                <h3>Password Generator</h3>
+                <p>Generate secure passwords</p>
+              </div>
+            </div>
+          </a>
+          <a href="video-tools.html" class="card-link">
+            <div class="card">
+              <canvas></canvas>
+              <div class="card-content">
+                <img src="icons/video-icon.png" alt="Video Tools" />
+                <h3>Video Tools</h3>
+                <p>Access video tools</p>
+              </div>
+            </div>
+          </a>
+          <a href="json-formatter.html" class="card-link">
+            <div class="card">
+              <canvas></canvas>
+              <div class="card-content">
+                <img src="icons/web-tools-icon.png" alt="JSON Formatter" />
+                <h3>JSON Formatter</h3>
+                <p>Clean and format JSON data</p>
+              </div>
+            </div>
+          </a>
+          <a href="llm.html" class="card-link">
+            <div class="card">
+              <canvas></canvas>
+              <div class="card-content">
+                <img src="icons/llm-icon.png" alt="Web-Based LLM" />
+                <h3>Web-Based LLM</h3>
+                <p>Ask questions to the AI</p>
+              </div>
+            </div>
+          </a>
+          <!-- Add more cards as needed -->
+        </div>
+      </main>
+    </div>
     <footer>
       <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
     </footer>
     <script>
+      // Parallax effect
+      document.addEventListener("mousemove", (e) => {
+        const backLayer = document.querySelector(".parallax__layer--back");
+        const frontLayer = document.querySelector(".parallax__layer--front");
+
+        const speedBack = 0.04;
+        const speedFront = 1.0;
+
+        const xBack = (window.innerWidth - e.pageX * speedBack) / 50;
+        const yBack = (window.innerHeight - e.pageY * speedBack) / 50;
+        backLayer.style.transform = `translate(${xBack}px, ${yBack}px) scale(1.5)`;
+
+        const xFront = (window.innerWidth - e.pageX * speedFront) / 50;
+        const yFront = (window.innerHeight - e.pageY * speedFront) / 50;
+        frontLayer.style.transform = `translate(${xFront}px, ${yFront}px)`;
+      });
+
       // Text fade-in
       document.addEventListener("DOMContentLoaded", () => {
         const mainTitle = document.querySelector(".main-title");
@@ -315,7 +399,103 @@
           setTimeout(() => {
             card.style.opacity = "1";
             card.style.transform = "translateY(0)";
-          }, 1500 + index * 250); // delay for each card
+          }, 1500 + index * 250);
+        });
+      });
+
+      // Hover effect for cards with particle effect
+      document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".card");
+
+        cards.forEach((card) => {
+          const canvas = card.querySelector("canvas");
+          const ctx = canvas.getContext("2d");
+          const particles = [];
+          let animationFrameId;
+
+          // Resize canvas to match card size
+          const resizeCanvas = () => {
+            canvas.width = card.offsetWidth;
+            canvas.height = card.offsetHeight;
+          };
+          resizeCanvas();
+          window.addEventListener("resize", resizeCanvas);
+
+          const centerX = canvas.width / 2;
+          const centerY = canvas.height / 2;
+          const maxDistance = Math.hypot(centerX, centerY); // Maximum possible distance from center
+
+          // Initialize particles
+          for (let i = 0; i < 100; i++) {
+            particles.push({
+              radius: Math.random() * 2 + 1, // Particle size
+              angle: Math.random() * 2 * Math.PI,
+              distance: 0, // Start from the center
+              speed: Math.random() * 0.5 + 0.5, // Radial speed
+            });
+          }
+
+          const updateParticles = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p) => {
+              p.angle += 0.05; // Angle increment for swirl
+              p.distance += p.speed; // Increase distance to spiral out
+
+              p.x = centerX + p.distance * Math.cos(p.angle);
+              p.y = centerY + p.distance * Math.sin(p.angle);
+
+              // Calculate fade factor based on distance
+              const fadeFactor = Math.min(p.distance / maxDistance, 1);
+              const red = Math.round(255 * (1 - fadeFactor));
+              const green = 0;
+              const blue = 0;
+              const alpha = 0.8; // Fixed alpha for visibility
+
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
+              ctx.fillStyle = `rgba(${red}, ${green}, ${blue}, ${alpha})`; // Fade to black
+              ctx.fill();
+
+              if (
+                p.x < 0 ||
+                p.x > canvas.width ||
+                p.y < 0 ||
+                p.y > canvas.height
+              ) {
+                p.distance = 0; // Reset distance when out of bounds
+                p.angle = Math.random() * 2 * Math.PI; // Randomize angle
+              }
+            });
+
+            animationFrameId = requestAnimationFrame(updateParticles);
+          };
+
+          const startAnimation = () => {
+            if (!animationFrameId) {
+              updateParticles();
+            }
+          };
+
+          const stopAnimation = () => {
+            if (animationFrameId) {
+              cancelAnimationFrame(animationFrameId);
+              animationFrameId = null;
+            }
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+          };
+
+          card.addEventListener("mouseover", () => {
+            card.style.transform = "translateY(-10px)";
+            card.style.boxShadow = "0 12px 24px rgba(0, 0, 0, 0.2)";
+            card.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
+            startAnimation();
+          });
+
+          card.addEventListener("mouseout", () => {
+            card.style.transform = "translateY(0)";
+            card.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
+            stopAnimation();
+          });
         });
       });
     </script>
