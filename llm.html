@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JSON Formatter</title>
+    <title>Web-Based BERT</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -79,25 +79,17 @@
         align-items: center;
         justify-content: center;
       }
-      textarea {
+      textarea,
+      button {
         width: 80%;
-        height: 150px;
         margin: 10px 0;
         padding: 10px;
-        resize: vertical;
-        background-color: #1e1e1e;
-        color: #ffffff;
-        border: 1px solid #8b0000;
       }
-      pre {
+      textarea {
+        width: 300%; /* Adjust width here */
+        height: 300px; /* Adjust height here */
+        resize: both; /* Allows users to resize the height only */
         background-color: #1e1e1e;
-        padding: 10px;
-        width: 80%;
-        max-height: 400px; /* Set a max-height */
-        overflow: auto;
-        white-space: pre-wrap;
-        text-align: left;
-        margin: 10px auto;
         color: #ffffff;
         border: 1px solid #8b0000;
       }
@@ -105,12 +97,22 @@
         background-color: #8b0000;
         color: #ffffff;
         border: none;
-        padding: 10px 20px;
         cursor: pointer;
-        margin: 10px;
       }
       button:hover {
         background-color: #ff0000;
+      }
+      pre {
+        background-color: #1e1e1e;
+        padding: 10px;
+        width: 80%;
+        max-height: 400px;
+        overflow: auto;
+        white-space: pre-wrap;
+        text-align: left;
+        margin: 10px auto;
+        color: #ffffff;
+        border: 1px solid #8b0000;
       }
       #copy-message {
         margin: 10px;
@@ -125,10 +127,12 @@
         margin-top: auto;
       }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/bert"></script>
   </head>
   <body>
     <header>
-      <h1>JSON Formatter</h1>
+      <h1>Web-Based BERT</h1>
       <nav>
         <a href="index.html">Home</a>
         <div class="dropdown">
@@ -169,10 +173,13 @@
       </nav>
     </header>
     <div class="container">
-      <h2>Format Your JSON</h2>
-      <textarea id="json-input" placeholder="Paste your JSON here"></textarea>
-      <button onclick="formatJSON()">Format JSON</button>
-      <pre id="formatted-json"></pre>
+      <h2>Ask a Question</h2>
+      <textarea
+        id="user-input"
+        placeholder="Type your question here"
+      ></textarea>
+      <button onclick="runModel()">Submit</button>
+      <pre id="response"></pre>
       <button onclick="copyToClipboard()">Copy to Clipboard</button>
       <div id="copy-message"></div>
     </div>
@@ -196,24 +203,33 @@
         });
       });
 
-      function formatJSON() {
-        const input = document.getElementById("json-input").value;
-        try {
-          const parsed = JSON.parse(input);
-          const formatted = JSON.stringify(parsed, null, 4);
-          document.getElementById("formatted-json").innerText = formatted;
-          document.getElementById("copy-message").innerText = ""; // Clear previous message
-        } catch (error) {
-          document.getElementById("formatted-json").innerText = "Invalid JSON";
-          document.getElementById("copy-message").innerText = ""; // Clear previous message
-        }
+      async function runModel() {
+        // Load the BERT model
+        const model = await bert.loadQnA();
+
+        // Get the user input
+        const inputText = document.getElementById("user-input").value;
+
+        // Example question and context
+        const question = inputText;
+        const context =
+          "Replace this with your context or use a predefined context for testing";
+
+        // Perform question answering
+        const answers = await model.findAnswers(question, context);
+
+        // Display the answers
+        document.getElementById("response").innerText = JSON.stringify(
+          answers,
+          null,
+          4
+        );
       }
 
       function copyToClipboard() {
-        const formattedJson =
-          document.getElementById("formatted-json").innerText;
+        const responseText = document.getElementById("response").innerText;
         navigator.clipboard
-          .writeText(formattedJson)
+          .writeText(responseText)
           .then(() => {
             document.getElementById("copy-message").innerText =
               "Copied to clipboard!";

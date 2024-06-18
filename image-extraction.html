@@ -1,242 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF Image Extraction</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #000;
-        color: #fff;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
-      header {
-        background-color: #8b0000;
-        padding: 1em;
-        color: #fff;
-        text-align: center;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-      }
-      nav {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-        flex-wrap: wrap;
-      }
-      nav a {
-        margin: 0 15px;
-        text-decoration: none;
-        color: #fff;
-        font-weight: bold;
-        white-space: nowrap;
-        transition: color 0.3s;
-      }
-      nav a:hover {
-        color: #ffcccb;
-      }
-      .dropdown {
-        position: relative;
-      }
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: #8b0000;
-        min-width: 160px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-        border: 1px solid #fff;
-        border-radius: 8px;
-      }
-      .dropdown-content a {
-        color: #fff;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        transition: background-color 0.3s;
-      }
-      .dropdown-content a:hover {
-        background-color: #ff0000;
-      }
-      .dropdown:hover .dropdown-content {
-        display: block;
-      }
-      .container {
-        flex: 1;
-        max-width: 800px;
-        margin: auto;
-        padding: 20px;
-      }
-      .controls,
-      .navigation,
-      .save-options {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        margin: 10px 0;
-        gap: 10px;
-      }
-      .controls label {
-        margin-right: 10px;
-      }
-      .controls input[type="file"] {
-        display: inline-block;
-      }
-      .navigation input[type="number"],
-      .navigation button,
-      .save-options select,
-      .save-options button {
-        margin: 5px;
-        padding: 10px;
-        background-color: #8b0000;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-      }
-      .navigation button:hover,
-      .save-options button:hover,
-      .save-options select:hover {
-        background-color: #ff0000;
-      }
-      .preview {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-        padding: 10px;
-        border: 1px solid #8b0000;
-        height: 60vh; /* Responsive height */
-        width: 100%;
-        overflow: hidden;
-      }
-      .preview canvas {
-        max-width: 100%;
-        max-height: 100%;
-        height: auto;
-        width: auto;
-      }
-      footer {
-        background-color: #8b0000;
-        padding: 1em;
-        color: #fff;
-        text-align: center;
-        margin-top: auto;
-      }
-      #message {
-        margin-top: 10px;
-        font-size: 1em;
-        color: #ff0000;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #8b0000;
+            padding: 1em;
+            color: #fff;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            width: 100%;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            white-space: nowrap;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffcccb;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #8b0000;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border: 1px solid #fff;
+            border-radius: 8px;
+        }
+
+        .dropdown-content a {
+            color: #fff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ff0000;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .container {
+            flex: 1;
+            max-width: 90%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .controls,
+        .navigation,
+        .save-options {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 10px 0;
+            gap: 10px;
+        }
+
+        .controls label {
+            margin-right: 10px;
+        }
+
+        .controls input[type="file"] {
+            display: inline-block;
+        }
+
+        .navigation input[type="number"],
+        .navigation button,
+        .save-options select,
+        .save-options button {
+            margin: 5px;
+            padding: 10px;
+            background-color: #8b0000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            flex: 1 1 auto; /* Make buttons flexible */
+            max-width: 120px; /* Constrain maximum width */
+        }
+
+        .navigation button:hover,
+        .save-options button:hover,
+        .save-options select:hover {
+            background-color: #ff0000;
+        }
+
+        .preview {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #8b0000;
+            height: 50vh; /* Responsive height */
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .preview canvas {
+            max-width: 100%;
+            max-height: 100%;
+            height: auto;
+            width: auto;
+        }
+
+        footer {
+            background-color: #8b0000;
+            padding: 1em;
+            color: #fff;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        #message {
+            margin-top: 10px;
+            font-size: 1em;
+            color: #ff0000;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 5px 0;
+            }
+
+            .controls, .navigation, .save-options {
+                flex-direction: column;
+            }
+
+            .navigation input[type="number"], .navigation button, .save-options select, .save-options button {
+                max-width: 100%; /* Full width for small screens */
+            }
+        }
     </style>
-  </head>
-  <body>
-    <header>
-      <h1>Extract Images from PDF</h1>
-      <nav>
+</head>
+<body>
+<header>
+    <h1>Extract Images from PDF</h1>
+    <nav>
         <a href="index.html">Home</a>
         <div class="dropdown">
-          <a href="#">Audio Tools</a>
-          <div class="dropdown-content">
-            <a href="audio-converter.html">Audio Converter</a>
-          </div>
+            <a href="#">Audio Tools</a>
+            <div class="dropdown-content">
+                <a href="audio-converter.html">Audio Converter</a>
+            </div>
         </div>
         <div class="dropdown">
-          <a href="#">Video Tools</a>
-          <div class="dropdown-content">
-            <a href="video-converter.html">Video Converter</a>
-          </div>
+            <a href="#">Video Tools</a>
+            <div class="dropdown-content">
+                <a href="video-converter.html">Video Converter</a>
+            </div>
         </div>
         <div class="dropdown">
-          <a href="#">Image Tools</a>
-          <div class="dropdown-content">
-            <a href="image-extraction.html">PDF Image Extraction</a>
-            <a href="background-removal.html">Background Removal</a>
-            <a href="image-converter.html">Image Converter</a>
-          </div>
+            <a href="#">Image Tools</a>
+            <div class="dropdown-content">
+                <a href="image-extraction.html">PDF Image Extraction</a>
+                <a href="background-removal.html">Background Removal</a>
+                <a href="image-converter.html">Image Converter</a>
+            </div>
         </div>
         <div class="dropdown">
-          <a href="#">Web Tools</a>
-          <div class="dropdown-content">
-            <a href="html-validator.html">HTML/CSS Validator</a>
-            <a href="json-formatter.html">JSON Formatter</a>
-            <a href="regex-tester.html">Regex Tester</a>
-          </div>
+            <a href="#">Web Tools</a>
+            <div class="dropdown-content">
+                <a href="html-validator.html">HTML/CSS Validator</a>
+                <a href="json-formatter.html">JSON Formatter</a>
+                <a href="regex-tester.html">Regex Tester</a>
+            </div>
         </div>
         <div class="dropdown">
-          <a href="#">Other Tools</a>
-          <div class="dropdown-content">
-            <a href="password-generator.html">Password Generator</a>
-          </div>
+            <a href="#">Other Tools</a>
+            <div class="dropdown-content">
+                <a href="password-generator.html">Password Generator</a>
+                <a href="finance-tracker.html">Finance Tracker</a>
+            </div>
         </div>
-      </nav>
-    </header>
-    <div class="container">
-      <h2>Extract Images from PDF</h2>
-      <div class="controls">
+    </nav>
+</header>
+<div class="container">
+    <h2>Extract Images from PDF</h2>
+    <div class="controls">
         <form id="pdf-form">
-          <label for="pdf-file">Choose a PDF file:</label>
-          <input type="file" id="pdf-file" accept=".pdf" onchange="loadPDF()" />
+            <label for="pdf-file">Choose a PDF file:</label>
+            <input type="file" id="pdf-file" accept=".pdf" onchange="loadPDF()"/>
         </form>
-      </div>
-      <div class="navigation">
+    </div>
+    <div class="navigation">
         <button type="button" onclick="prevPage()"><< Prev</button>
-        <input
-          type="number"
-          id="page-number"
-          min="1"
-          placeholder="Page"
-          onchange="goToPage()"
-        />
+        <input type="number" id="page-number" min="1" placeholder="Page" onchange="goToPage()"/>
         <button type="button" onclick="nextPage()">Next >></button>
         <span id="page-info">Page: 0 / 0</span>
-      </div>
-      <div class="save-options">
+    </div>
+    <div class="save-options">
         <label for="format">Save as:</label>
         <select id="format">
-          <option value="">Select format</option>
-          <option value="png">PNG</option>
-          <option value="jpeg">JPEG</option>
+            <option value="">Select format</option>
+            <option value="png">PNG</option>
+            <option value="jpeg">JPEG</option>
+            <option value="bmp">BMP</option>
+            <option value="gif">GIF</option>
+            <option value="tiff">TIFF</option>
+            <option value="webp">WebP</option>
+            <option value="svg">SVG</option>
         </select>
         <button type="button" onclick="saveCurrentPage()">Save Image</button>
-      </div>
-      <div class="preview" id="preview"></div>
-      <div id="message"></div>
     </div>
-    <footer>
-      <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
-    </footer>
-    <script>
-      let pdfDoc = null;
-      let currentPage = 1;
-      let totalPages = 0;
+    <div class="preview" id="preview"></div>
+    <div id="message"></div>
+</div>
+<footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
+<script>
+    let pdfDoc = null;
+    let currentPage = 1;
+    let totalPages = 0;
 
-      document.querySelectorAll(".dropdown").forEach((dropdown) => {
+    document.querySelectorAll(".dropdown").forEach((dropdown) => {
         const dropdownContent = dropdown.querySelector(".dropdown-content");
         dropdown.addEventListener("mouseenter", () => {
-          dropdownContent.style.display = "block";
+            dropdownContent.style.display = "block";
         });
         dropdown.addEventListener("mouseleave", () => {
-          dropdownContent.style.display = "none";
+            dropdownContent.style.display = "none";
         });
         dropdown.querySelector("a").addEventListener("focus", () => {
-          dropdownContent.style.display = "block";
+            dropdownContent.style.display = "block";
         });
         dropdown.querySelector("a").addEventListener("blur", () => {
-          dropdownContent.style.display = "none";
+            dropdownContent.style.display = "none";
         });
-      });
+    });
 
-      async function loadPDF() {
+    async function loadPDF() {
         const fileInput = document.getElementById("pdf-file");
         const previewContainer = document.getElementById("preview");
         const messageElement = document.getElementById("message");
@@ -244,30 +285,28 @@
         messageElement.textContent = ""; // Clear message
 
         if (fileInput.files.length === 0) {
-          alert("Please select a PDF file.");
-          return;
+            alert("Please select a PDF file.");
+            return;
         }
 
         const file = fileInput.files[0];
         const pdfData = new Uint8Array(await file.arrayBuffer());
 
         pdfjsLib
-          .getDocument({ data: pdfData })
-          .promise.then(async (pdf) => {
-            pdfDoc = pdf;
-            totalPages = pdf.numPages;
-            currentPage = 1;
-            document.getElementById(
-              "page-info"
-            ).textContent = `Page: ${currentPage} / ${totalPages}`;
-            showPage(currentPage);
-          })
-          .catch((err) => {
-            alert("Error loading PDF: " + err.message);
-          });
-      }
+            .getDocument({ data: pdfData })
+            .promise.then(async (pdf) => {
+                pdfDoc = pdf;
+                totalPages = pdf.numPages;
+                currentPage = 1;
+                document.getElementById("page-info").textContent = `Page: ${currentPage} / ${totalPages}`;
+                showPage(currentPage);
+            })
+            .catch((err) => {
+                alert("Error loading PDF: " + err.message);
+            });
+    }
 
-      async function showPage(pageNum) {
+    async function showPage(pageNum) {
         const previewContainer = document.getElementById("preview");
         previewContainer.innerHTML = ""; // Clear previous preview
 
@@ -277,10 +316,7 @@
         // Calculate the scale factor to fit the preview container while maintaining aspect ratio
         const containerWidth = previewContainer.clientWidth;
         const containerHeight = previewContainer.clientHeight;
-        const scale = Math.min(
-          containerWidth / viewport.width,
-          containerHeight / viewport.height
-        );
+        const scale = Math.min(containerWidth / viewport.width, containerHeight / viewport.height);
 
         const canvas = document.createElement("canvas");
         const context = canvas.getContext("2d");
@@ -288,51 +324,49 @@
         canvas.width = viewport.width * scale;
 
         const renderContext = {
-          canvasContext: context,
-          viewport: page.getViewport({ scale: scale }),
+            canvasContext: context,
+            viewport: page.getViewport({ scale: scale }),
         };
 
         await page.render(renderContext).promise;
 
         previewContainer.appendChild(canvas);
-        document.getElementById(
-          "page-info"
-        ).textContent = `Page: ${currentPage} / ${totalPages}`;
-      }
+        document.getElementById("page-info").textContent = `Page: ${currentPage} / ${totalPages}`;
+    }
 
-      function nextPage() {
+    function nextPage() {
         if (currentPage >= totalPages) return;
         currentPage++;
         showPage(currentPage);
-      }
+    }
 
-      function prevPage() {
+    function prevPage() {
         if (currentPage <= 1) return;
         currentPage--;
         showPage(currentPage);
-      }
+    }
 
-      function goToPage() {
+    function goToPage() {
         const pageNum = parseInt(document.getElementById("page-number").value);
         if (pageNum >= 1 && pageNum <= totalPages) {
-          currentPage = pageNum;
-          showPage(currentPage);
+            currentPage = pageNum;
+            showPage(currentPage);
         } else {
-          alert("Invalid page number.");
+            alert("Invalid page number.");
         }
-      }
+    }
 
-      function saveCurrentPage() {
+    function saveCurrentPage() {
         const format = document.getElementById("format").value;
         const messageElement = document.getElementById("message");
         if (!format) {
-          messageElement.textContent = "Please select a format before saving.";
-          return;
+            messageElement.textContent = "Please select a format before saving.";
+            return;
         }
         savePage(currentPage, format);
-      }
+    }
 
-      async function savePage(pageNum, format) {
+    async function savePage(pageNum, format) {
         const page = await pdfDoc.getPage(pageNum);
         const viewport = page.getViewport({ scale: 1 });
         const canvas = document.createElement("canvas");
@@ -340,26 +374,40 @@
         canvas.height = viewport.height;
         canvas.width = viewport.width;
 
-        await page.render({ canvasContext: context, viewport: viewport })
-          .promise;
+        await page.render({ canvasContext: context, viewport: viewport }).promise;
 
-        const imgData = canvas.toDataURL(`image/${format}`);
+        let imgData;
+        if (format === "svg") {
+            imgData = canvasToSVG(canvas);
+        } else {
+            imgData = canvas.toDataURL(`image/${format}`);
+        }
+
         const link = document.createElement("a");
         link.href = imgData;
         link.download = `page_${pageNum}.${format}`;
         link.click();
-      }
+    }
 
-      document.addEventListener("DOMContentLoaded", () => {
+    // Function to convert canvas to SVG
+    function canvasToSVG(canvas) {
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${canvas.width}" height="${canvas.height}">
+            <foreignObject width="100%" height="100%">
+                <canvas xmlns="http://www.w3.org/1999/xhtml" width="${canvas.width}" height="${canvas.height}"></canvas>
+            </foreignObject>
+        </svg>`;
+        const blob = new Blob([svg], { type: "image/svg+xml" });
+        return URL.createObjectURL(blob);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
         const script = document.createElement("script");
-        script.src =
-          "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js";
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js";
         script.onload = () => {
-          pdfjsLib.GlobalWorkerOptions.workerSrc =
-            "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js";
+            pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js";
         };
         document.head.appendChild(script);
-      });
-    </script>
-  </body>
+    });
+</script>
+</body>
 </html>

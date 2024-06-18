@@ -123,7 +123,7 @@
         overflow: hidden;
         opacity: 0;
         transform: translateY(20px);
-        transition: transform 0.3s, opacity 0.3s;
+        transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
       }
       .card img {
         width: 80px;
@@ -145,11 +145,10 @@
       }
       .card-link .card {
         cursor: pointer;
-        transition: transform 0.3s, box-shadow 0.3s;
       }
       .card-link:hover .card {
         transform: translateY(-10px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
       }
       footer {
         background-color: #8b0000;
@@ -241,6 +240,8 @@
           <a href="#">Other Tools</a>
           <div class="dropdown-content">
             <a href="password-generator.html">Password Generator</a>
+            <a href="finance-tracker.html">Finance Tracker</a>
+            <a href="llm.html">Web-Based LLM</a>
           </div>
         </div>
       </nav>
@@ -286,18 +287,25 @@
             </p>
           </div>
         </a>
+        <a href="llm.html" class="card-link">
+          <div class="card">
+            <img src="icons/llm-icon.png" alt="Web-Based LLM" />
+            <h3>Web-Based LLM</h3>
+            <p>Ask questions to the AI</p>
+          </div>
+        </a>
         <!-- Add more cards as needed -->
       </div>
     </main>
     <footer>
-      <p>&copy; 2024 Jarrod's Tool Hub. All rights reserved.</p>
+      <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
     </footer>
     <script>
       // Text fade-in
       document.addEventListener("DOMContentLoaded", () => {
         const mainTitle = document.querySelector(".main-title");
         const subtitle = document.querySelector(".subtitle");
-        
+
         mainTitle.style.animationDelay = "0.5s";
         subtitle.style.animationDelay = "1s";
 
@@ -307,7 +315,7 @@
           setTimeout(() => {
             card.style.opacity = "1";
             card.style.transform = "translateY(0)";
-          }, 1500 + index * 350); // delay for each card
+          }, 1500 + index * 250); // delay for each card
         });
       });
     </script>
