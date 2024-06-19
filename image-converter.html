@@ -185,15 +185,34 @@
         <option value="jpeg">JPEG</option>
         <option value="png">PNG</option>
         <option value="webp">WebP</option>
+        <option value="bmp">BMP</option>
+        <option value="gif">GIF</option>
+        <option value="tiff">TIFF</option>
+        <option value="ico">ICO</option>
+        <option value="pdf">PDF</option>
+        <option value="svg">SVG</option>
       </select>
       <button onclick="convertImage()">Convert Image</button>
-      <div id="preview"></div>
       <div id="message"></div>
+      <button
+        id="download-button"
+        style="display: none"
+        onclick="downloadImage()"
+      >
+        Download Image
+      </button>
+      <div id="preview"></div>
     </div>
     <footer>
       <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvg"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@iconify/ico"></script>
     <script>
+      let convertedUrl = "";
+      let downloadFilename = "";
+
       document.querySelectorAll(".dropdown").forEach((dropdown) => {
         const dropdownContent = dropdown.querySelector(".dropdown-content");
         dropdown.addEventListener("mouseenter", () => {
@@ -215,12 +234,14 @@
         const formatSelect = document.getElementById("format");
         const preview = document.getElementById("preview");
         const message = document.getElementById("message");
+        const downloadButton = document.getElementById("download-button");
         preview.innerHTML = "";
         message.textContent = "";
+        downloadButton.style.display = "none";
 
         if (fileInput.files.length === 0) {
-          alert("Please choose an image file.");
-          return;
+            alert("Please choose an image file.");
+            return;
         }
 
         const file = fileInput.files[0];
@@ -228,40 +249,94 @@
         const reader = new FileReader();
 
         reader.onload = function (e) {
-          const img = new Image();
-          img.onload = function () {
-            const canvas = document.createElement("canvas");
-            canvas.width = img.width;
-            canvas.height = img.height;
+            const img = new Image();
+            img.onload = async function () {
+                const canvas = document.createElement("canvas");
+                canvas.width = img.width;
+                canvas.height = img.height;
 
-            const ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0);
+                const ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0);
 
-            const convertedUrl = canvas.toDataURL(`image/${format}`);
-            const convertedImg = document.createElement("img");
-            convertedImg.src = convertedUrl;
-            preview.appendChild(convertedImg);
+                try {
+                    if (format === 'ico') {
+                        const blob = await canvasToBlob(canvas, 'image/png');
+                        const icoArrayBuffer = await convertToIco(blob);
+                        convertedUrl = URL.createObjectURL(new Blob([icoArrayBuffer], { type: 'image/x-icon' }));
+                    } else if (format === 'pdf') {
+                        convertedUrl = canvasToPdf(canvas);
+                    } else if (format === 'svg') {
+                        convertedUrl = canvasToSvg(canvas);
+                    } else {
+                        convertedUrl = canvas.toDataURL(`image/${format}`);
+                    }
 
-            const link = document.createElement("a");
-            link.href = convertedUrl;
-            link.download = `converted.${format}`;
-            link.textContent = `Download ${format.toUpperCase()} Image`;
-            link.style.display = "block";
-            link.style.marginTop = "10px";
-            preview.appendChild(link);
+                    const convertedImg = document.createElement("img");
+                    convertedImg.src = convertedUrl;
+                    preview.appendChild(convertedImg);
 
-            message.textContent = "Image converted successfully!";
-          };
-          img.src = e.target.result;
+                    downloadFilename = `converted.${format}`;
+                    downloadButton.style.display = "block";
+                    message.textContent = "Image converted successfully!";
+                } catch (error) {
+                    console.error("Conversion error:", error);
+                    message.textContent = "Failed to convert image. Please try again.";
+                }
+            };
+            img.src = e.target.result;
         };
 
         reader.onerror = function (error) {
-          console.error("Error reading file:", error);
-          message.textContent = "Failed to read file. Please try again.";
+            console.error("Error reading file:", error);
+            message.textContent = "Failed to read file. Please try again.";
         };
 
         reader.readAsDataURL(file);
-      }
+    }
+
+    async function convertToIco(blob) {
+        const arrayBuffer = await blob.arrayBuffer();
+        const pngBuffer = new Uint8Array(arrayBuffer);
+        const iconDir = new Uint8Array(6 + 16); // 6 bytes for header + 16 bytes for the image entry
+        iconDir.set([0, 0, 1, 0, 1, 0], 0); // ICO header
+        iconDir.set([16, 16, 0, 0, 1, 0, 32, 0, ...new Uint32Array([pngBuffer.length]), 22], 6); // Image entry
+
+        const iconData = new Uint8Array(iconDir.length + pngBuffer.length);
+        iconData.set(iconDir, 0);
+        iconData.set(pngBuffer, iconDir.length);
+
+        return iconData.buffer;
+    }
+
+    function canvasToBlob(canvas, type) {
+        return new Promise(resolve => {
+            canvas.toBlob(blob => {
+                resolve(blob);
+            }, type);
+        });
+    }
+
+    function canvasToPdf(canvas) {
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF();
+        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, canvas.width, canvas.height);
+        return pdf.output('dataurlstring');
+    }
+
+    function canvasToSvg(canvas) {
+        const svgCanvas = document.createElement('canvas');
+        const svgCtx = svgCanvas.getContext('2d');
+        svgCanvas.width = canvas.width;
+        svgCanvas.height = canvas.height;
+        svgCtx.drawImage(canvas, 0, 0);
+
+        const svg = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="${canvas.width}" height="${canvas.height}">
+                <image href="${canvas.toDataURL('image/png')}" width="${canvas.width}" height="${canvas.height}"/>
+            </svg>`;
+        const svgBlob = new Blob([svg], { type: 'image/svg+xml' });
+        return URL.createObjectURL(svgBlob);
+    }
     </script>
   </body>
 </html>

@@ -127,7 +127,7 @@
       }
 
       .card {
-        background-color: #333;
+        background-color: rgba(51, 51, 51, 0.8); /* 80% opacity */
         color: #ffffff;
         padding: 20px;
         margin: 15px;
@@ -471,117 +471,39 @@
 
       // Text fade-in
       document.addEventListener("DOMContentLoaded", () => {
-        const mainTitle = document.querySelector(".main-title");
-        const subtitle = document.querySelector(".subtitle");
+    const mainTitle = document.querySelector(".main-title");
+    const subtitle = document.querySelector(".subtitle");
 
-        mainTitle.style.animationDelay = "0.5s";
-        subtitle.style.animationDelay = "1s";
+    mainTitle.style.animationDelay = "0.5s";
+    subtitle.style.animationDelay = "1s";
 
-        // Cards fade-in
-        const cards = document.querySelectorAll(".card");
-        cards.forEach((card, index) => {
-          setTimeout(() => {
-            card.style.opacity = "1";
-            card.style.transform = "translateY(0)";
-          }, 1500 + index * 250);
-        });
+    // Cards fade-in
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card, index) => {
+      setTimeout(() => {
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0)";
+      }, 1500 + index * 250);
+    });
+  });
+
+  // Remove the hover effect for cards
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach((card) => {
+      card.addEventListener("mouseover", () => {
+        card.style.transform = "translateY(-10px)";
+        card.style.boxShadow = "0 12px 24px rgba(0, 0, 0, 0.2)";
+        card.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
       });
 
-      // Hover effect for cards with particle effect
-      document.addEventListener("DOMContentLoaded", () => {
-        const cards = document.querySelectorAll(".card");
-
-        cards.forEach((card) => {
-          const canvas = card.querySelector("canvas");
-          const ctx = canvas.getContext("2d");
-          const particles = [];
-          let animationFrameId;
-
-          // Resize canvas to match card size
-          const resizeCanvas = () => {
-            canvas.width = card.offsetWidth;
-            canvas.height = card.offsetHeight;
-          };
-          resizeCanvas();
-          window.addEventListener("resize", resizeCanvas);
-
-          const centerX = canvas.width / 2;
-          const centerY = canvas.height / 2;
-          const maxDistance = Math.hypot(centerX, centerY); // Maximum possible distance from center
-
-          // Initialize particles
-          for (let i = 0; i < 100; i++) {
-            particles.push({
-              radius: Math.random() * 2 + 1, // Particle size
-              angle: Math.random() * 2 * Math.PI,
-              distance: 0, // Start from the center
-              speed: Math.random() * 0.5 + 0.5, // Radial speed
-            });
-          }
-
-          const updateParticles = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach((p) => {
-              p.angle += 0.05; // Angle increment for swirl
-              p.distance += p.speed; // Increase distance to spiral out
-
-              p.x = centerX + p.distance * Math.cos(p.angle);
-              p.y = centerY + p.distance * Math.sin(p.angle);
-
-              // Calculate fade factor based on distance
-              const fadeFactor = Math.min(p.distance / maxDistance, 1);
-              const red = Math.round(255 * (1 - fadeFactor));
-              const green = 0;
-              const blue = 0;
-              const alpha = 0.8; // Fixed alpha for visibility
-
-              ctx.beginPath();
-              ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
-              ctx.fillStyle = `rgba(${red}, ${green}, ${blue}, ${alpha})`; // Fade to black
-              ctx.fill();
-
-              if (
-                p.x < 0 ||
-                p.x > canvas.width ||
-                p.y < 0 ||
-                p.y > canvas.height
-              ) {
-                p.distance = 0; // Reset distance when out of bounds
-                p.angle = Math.random() * 2 * Math.PI; // Randomize angle
-              }
-            });
-
-            animationFrameId = requestAnimationFrame(updateParticles);
-          };
-
-          const startAnimation = () => {
-            if (!animationFrameId) {
-              updateParticles();
-            }
-          };
-
-          const stopAnimation = () => {
-            if (animationFrameId) {
-              cancelAnimationFrame(animationFrameId);
-              animationFrameId = null;
-            }
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-          };
-
-          card.addEventListener("mouseover", () => {
-            card.style.transform = "translateY(-10px)";
-            card.style.boxShadow = "0 12px 24px rgba(0, 0, 0, 0.2)";
-            card.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
-            startAnimation();
-          });
-
-          card.addEventListener("mouseout", () => {
-            card.style.transform = "translateY(0)";
-            card.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
-            stopAnimation();
-          });
-        });
+      card.addEventListener("mouseout", () => {
+        card.style.transform = "translateY(0)";
+        card.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
       });
+    });
+  });
     </script>
   </body>
 </html>
