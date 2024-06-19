@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON to XML Converter</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        background-color: #000000;
+        color: #ff0000;
+      }
+      header {
+        background-color: #8b0000;
+        padding: 1em;
+        color: #ffffff;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      nav {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        flex-wrap: wrap;
+      }
+      nav a {
+        margin: 0 15px;
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: bold;
+        white-space: nowrap;
+        transition: color 0.3s;
+      }
+      nav a:hover {
+        color: #ffcccb;
+      }
+      .dropdown {
+        position: relative;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #8b0000;
+        min-width: 160px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border: 1px solid #fff;
+        border-radius: 8px;
+      }
+      .dropdown-content a {
+        color: #fff;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        transition: background-color 0.3s;
+      }
+      .dropdown-content a:hover {
+        background-color: #ff0000;
+      }
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      .container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+      }
+      textarea,
+      button {
+        width: 80%;
+        margin: 10px 0;
+        padding: 10px;
+      }
+      textarea {
+        height: 150px;
+      }
+      pre {
+        background-color: #1e1e1e;
+        padding: 10px;
+        width: 80%;
+        max-height: 400px;
+        overflow: auto;
+        white-space: pre-wrap;
+        text-align: left;
+        margin: 10px auto;
+        color: #ffffff;
+        border: 1px solid #8b0000;
+      }
+      button {
+        background-color: #8b0000;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #ff0000;
+      }
+      footer {
+        background-color: #8b0000;
+        padding: 1em;
+        color: #ffffff;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Jarrod's Tool Hub</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <div class="dropdown">
+          <a href="#">Audio Tools</a>
+          <div class="dropdown-content">
+            <a href="audio-converter.html">Audio Converter</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Video Tools</a>
+          <div class="dropdown-content">
+            <a href="video-converter.html">Video Converter</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Image Tools</a>
+          <div class="dropdown-content">
+            <a href="image-extraction.html">PDF Image Extraction</a>
+            <a href="background-removal.html">Background Removal</a>
+            <a href="image-converter.html">Image Converter</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Web Tools</a>
+          <div class="dropdown-content">
+            <a href="html-validator.html">HTML/CSS Validator</a>
+            <a href="json-formatter.html">JSON Formatter</a>
+            <a href="regex-tester.html">Regex Tester</a>
+            <a href="json-xml-converter.html">JSON-XML Converter</a>
+            <a href="code-beautifier.html">Code Beautifier</a>
+            <a href="markdown-previewer.html">Markdown Previewer</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Other Tools</a>
+          <div class="dropdown-content">
+            <a href="password-generator.html">Password Generator</a>
+            <a href="finance-tracker.html">Finance Tracker</a>
+            <a href="llm.html">Web-Based LLM</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="container">
+      <h2>Convert JSON to XML</h2>
+      <textarea id="json-input" placeholder="Paste your JSON here"></textarea>
+      <button onclick="convertJSONtoXML()">Convert to XML</button>
+      <pre id="xml-output"></pre>
+    </div>
+    <footer>
+      <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+    </footer>
+    <script>
+      function convertJSONtoXML() {
+        const jsonInput = document.getElementById("json-input").value;
+        try {
+          const jsonObj = JSON.parse(jsonInput);
+          const xmlOutput = jsonToXml(jsonObj);
+          document.getElementById("xml-output").textContent = xmlOutput;
+        } catch (error) {
+          document.getElementById("xml-output").textContent =
+            "Invalid JSON input.";
+        }
+      }
+
+      function jsonToXml(obj, rootElement = "root") {
+        let xml = `<${rootElement}>`;
+        for (const key in obj) {
+          if (Array.isArray(obj[key])) {
+            for (const item of obj[key]) {
+              xml += jsonToXml(item, key);
+            }
+          } else if (typeof obj[key] === "object") {
+            xml += jsonToXml(obj[key], key);
+          } else {
+            xml += `<${key}>${obj[key]}</${key}>`;
+          }
+        }
+        xml += `</${rootElement}>`;
+        return xml;
+      }
+    </script>
+  </body>
+</html>
