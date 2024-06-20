@@ -109,6 +109,44 @@
         button:hover {
             background-color: #ff0000;
         }
+        /* Modal styles */
+        .modal {
+            display: flex;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.75);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border: 1px solid #8b0000;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+        .modal-content h2 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .close {
+            color: #f00;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover, .close:focus {
+            color: #ff0000;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -166,6 +204,17 @@
     <footer>
         <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
     </footer>
+
+    <!-- Modal Structure -->
+<div id="constructionModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Under Construction</h2>
+        <p>This tool is currently under construction. Please check back later.</p>
+        <button class="back-button" onclick="goBack()">Back</button>
+    </div>
+</div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify-css.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify-html.min.js"></script>
@@ -191,8 +240,8 @@
 
             // Then beautify style tags
             code = code.replace(/<style\b[^>]*>([\s\S]*?)<\/style>/gi, function(_, content) {
-    return `<style>${css_beautify(content, { indent_size: 2 })}</style>`;
-});
+                return `<style>${css_beautify(content, { indent_size: 2 })}</style>`;
+            });
 
             // Finally, beautify the entire HTML
             return html_beautify(code, { indent_size: 2 });
@@ -219,6 +268,28 @@
 
             document.getElementById('beautified-code').textContent = beautified;
         }
+
+        // Modal functions
+        function showModal() {
+            document.getElementById('constructionModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('constructionModal').style.display = 'none';
+        }
+
+        // Show the modal immediately on page load
+        window.onload = function() {
+            showModal();
+        };
+
+        // Close the modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('constructionModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        };
     </script>
 </body>
 </html>
