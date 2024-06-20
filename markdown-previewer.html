@@ -10,12 +10,14 @@
         margin: 0;
         padding: 0;
         background-color: #000000;
-        color: #ff0000;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
       }
       header {
         background-color: #8b0000;
         padding: 1em;
-        color: #ffffff;
         text-align: center;
         position: sticky;
         top: 0;
@@ -30,12 +32,13 @@
       nav a {
         margin: 0 15px;
         text-decoration: none;
-        color: #ffffff;
+        color: inherit;
         font-weight: bold;
-        white-space: nowrap;
-        transition: color 0.3s;
+        border-radius: 10px;
+        transition: background-color 0.3s, color 0.3s;
       }
       nav a:hover {
+        background-color: #ff0000;
         color: #ffcccb;
       }
       .dropdown {
@@ -52,67 +55,125 @@
         z-index: 1;
         border: 1px solid #fff;
         border-radius: 8px;
+        transition: opacity 0.3s, transform 0.3s;
+        transform: translateY(-10px);
+      }
+      .dropdown:hover .dropdown-content,
+      .dropdown:focus-within .dropdown-content {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
       }
       .dropdown-content a {
-        color: #fff;
+        color: #ffffff;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
         transition: background-color 0.3s;
+        border-radius: 10px;
       }
       .dropdown-content a:hover {
         background-color: #ff0000;
       }
-      .dropdown:hover .dropdown-content {
-        display: block;
-      }
       .container {
+        flex: 1;
         max-width: 800px;
         margin: auto;
         padding: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
       }
-      textarea,
-      button,
-      iframe {
-        width: 80%;
-        margin: 10px 0;
-        padding: 10px;
+      .main-title {
+        text-align: center;
       }
-      textarea {
-        height: 150px;
-        background-color: #1e1e1e;
-        color: #ffffff;
-        border: 1px solid #8b0000;
+      .markdown-controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
       }
-      iframe {
-        height: 300px;
-        border: 1px solid #8b0000;
-        background-color: #ffffff;
-        color: #000000;
+      .markdown-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80vw; /* 80% of the viewport width */
+        max-width: 800px; /* Max width constraint */
       }
-      button {
+      .sample-button {
         background-color: #8b0000;
         color: #ffffff;
         border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
         cursor: pointer;
+        transition: background-color 0.3s;
+        margin: 10px 0;
       }
-      button:hover {
+      .sample-button:hover {
         background-color: #ff0000;
       }
-      footer {
-        background-color: #8b0000;
-        padding: 1em;
+      textarea,
+      #preview {
+        width: 100%;
+        height: 40vh; /* 40% of the viewport height */
+        margin: 10px 0;
+        padding: 10px;
+        background-color: #1e1e1e;
         color: #ffffff;
+        border: 1px solid #8b0000;
+        font-family: inherit;
+        box-sizing: border-box; /* Ensure padding is included in width and height */
+      }
+      #preview {
+        min-height: 200px; /* Ensure preview is not too small */
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+        justify-content: center;
+        align-items: center;
+      }
+      .modal-content {
+        background-color: #1e1e1e;
+        color: #ffffff;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #8b0000;
+        width: 80%;
+        max-width: 500px;
         text-align: center;
+        border-radius: 10px;
+      }
+      .modal-button {
+        background-color: #8b0000;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        margin: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .modal-button:hover {
+        background-color: #ff0000;
+      }
+      .modal.show {
+        display: flex;
       }
     </style>
   </head>
   <body>
     <header>
-      <h1>Jarrod's Tool Hub</h1>
+      <h1>Markdown Viewer</h1>
       <nav>
         <a href="index.html">Home</a>
         <div class="dropdown">
@@ -156,32 +217,182 @@
         </div>
       </nav>
     </header>
+
     <div class="container">
-      <h2>Markdown Input</h2>
-      <textarea
-        id="markdown-input"
-        placeholder="Enter Markdown here..."
-      ></textarea>
-      <button onclick="updatePreview()">Preview Markdown</button>
-      <iframe id="markdown-preview"></iframe>
+      <h2 class="main-title">Write and Preview Markdown:</h2>
+      <div id="markdown-previewer"></div>
     </div>
-    <footer>
-      <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
-    </footer>
-    <script>
-      function updatePreview() {
-        const markdownInput = document.getElementById("markdown-input").value;
-        const previewFrame = document.getElementById("markdown-preview");
-        previewFrame.srcdoc = marked(markdownInput);
+
+    <!-- React and ReactDOM -->
+    <script src="https://unpkg.com/react/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
+
+    <!-- Babel for JSX support -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Marked for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- DOMPurify for sanitizing -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+
+    <script type="text/babel">
+      const { useState } = React;
+
+      function Modal({ showModal, handleClose, handleConfirm }) {
+        return (
+          <div className={`modal ${showModal ? "show" : ""}`}>
+            <div className="modal-content">
+              <p>There is already text in the input field. Do you want to overwrite it?</p>
+              <button className="modal-button" onClick={handleConfirm}>Yes</button>
+              <button className="modal-button" onClick={handleClose}>No</button>
+            </div>
+          </div>
+        );
       }
 
-      // Load the marked library
-      const script = document.createElement("script");
-      script.src = "https://cdn.jsdelivr.net/npm/marked/marked.min.js";
-      script.onload = () => {
-        console.log("Marked library loaded.");
-      };
-      document.head.appendChild(script);
+      function MarkdownPreviewer() {
+        const [markdown, setMarkdown] = useState("");
+        const [showModal, setShowModal] = useState(false);
+        const [pendingSampleText, setPendingSampleText] = useState("");
+
+        const handleMarkdownChange = (e) => setMarkdown(e.target.value);
+
+        const getMarkdownText = () => ({
+          __html: DOMPurify.sanitize(marked.parse(markdown)),
+        });
+
+        const loadSampleMarkdown = () => {
+          const sampleText = `
+# Test Page
+
+## Headers
+
+### This is a header
+
+## Text Formatting
+
+This is **bold** text.  
+This is *italic* text.  
+This is ~~strikethrough~~ text.
+
+## Lists
+
+### Unordered List
+
+- Item 1
+- Item 2
+  - Subitem 1
+  - Subitem 2
+- Item 3
+
+### Ordered List
+
+1. First item
+2. Second item
+   1. Subitem 1
+   2. Subitem 2
+3. Third item
+
+## Links
+
+[This is a link](https://example.com)
+
+## Images
+
+![Sample Image](https://www.w3schools.com/w3images/lights.jpg)
+
+## Code
+
+### Inline Code
+
+This is \`inline code\`.
+
+### Code Block
+
+\`\`\`javascript
+function helloWorld() {
+  console.log('Hello, world!');
+}
+\`\`\`
+
+## Blockquotes
+
+> This is a blockquote.  
+> Blockquotes are great for highlighting quotes or special text.
+
+## Tables
+
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Row 1    | Data 1   | Data 2   |
+| Row 2    | Data 3   | Data 4   |
+| Row 3    | Data 5   | Data 6   |
+
+## Footnotes
+
+This is a sentence with a footnote.[^1]
+
+[^1]: This is the footnote content.
+
+## Horizontal Rule
+
+---
+
+## Task List
+
+- [x] Completed item
+- [ ] Incomplete item
+
+## HTML
+
+You can also include HTML elements in Markdown:
+
+<div style="color: red;">This is a red div.</div>
+  `;
+          if (markdown.trim()) {
+            setPendingSampleText(sampleText);
+            setShowModal(true);
+          } else {
+            setMarkdown(sampleText);
+          }
+        };
+
+        const handleConfirm = () => {
+          setMarkdown(pendingSampleText);
+          setPendingSampleText("");
+          setShowModal(false);
+        };
+
+        const handleClose = () => {
+          setPendingSampleText("");
+          setShowModal(false);
+        };
+
+        return (
+          <React.Fragment>
+            <div className="markdown-controls">
+              <button className="sample-button" onClick={loadSampleMarkdown}>Load Sample Markdown</button>
+              <div className="markdown-area">
+                <textarea
+                  id="markdown-input"
+                  value={markdown}
+                  onChange={handleMarkdownChange}
+                  placeholder="Type your Markdown here..."
+                />
+                <div id="preview" dangerouslySetInnerHTML={getMarkdownText()} />
+              </div>
+            </div>
+            <Modal
+              showModal={showModal}
+              handleClose={handleClose}
+              handleConfirm={handleConfirm}
+            />
+          </React.Fragment>
+        );
+      }
+
+      ReactDOM.render(<MarkdownPreviewer />, document.getElementById("markdown-previewer"));
     </script>
   </body>
 </html>
