@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jarrod's Tool Hub</title>
     <style>
+      /* Existing styles */
       html,
       body {
         margin: 0;
@@ -233,6 +234,22 @@
           opacity: 1;
         }
       }
+
+      /* Hint styles */
+      #hint {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #000;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 14px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        transition: opacity 0.5s;
+        z-index: 100;
+      }
     </style>
   </head>
   <body>
@@ -356,7 +373,41 @@
       <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
     </footer>
 
+    <!-- Hint message -->
+    <div id="hint">Click around to create new particles!</div>
+
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="scripts/particles-config.js"></script>
+
+    <!-- JavaScript for inactivity hint -->
+    <script>
+      let lastInteractionTime = Date.now();
+      const hintTimeout = 5000; // Time in milliseconds (e.g., 5000ms = 5 seconds)
+
+      function showHint() {
+        const hintElement = document.getElementById('hint');
+        hintElement.style.opacity = '1';
+      }
+
+      function hideHint() {
+        const hintElement = document.getElementById('hint');
+        hintElement.style.opacity = '0';
+      }
+
+      function updateInteractionTime() {
+        lastInteractionTime = Date.now();
+        hideHint();
+      }
+
+      document.addEventListener('click', updateInteractionTime);
+      document.addEventListener('mousemove', updateInteractionTime);
+      document.addEventListener('keypress', updateInteractionTime);
+
+      setInterval(() => {
+        if (Date.now() - lastInteractionTime > hintTimeout) {
+          showHint();
+        }
+      }, 1000); // Check every second
+    </script>
   </body>
 </html>
