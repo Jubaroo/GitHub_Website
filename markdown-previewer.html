@@ -1,269 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Markdown Previewer</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #000000;
-        color: #ffffff;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
-      header {
-        background-color: #8b0000;
-        padding: 1em;
-        text-align: center;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-      }
-      nav {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-        flex-wrap: wrap;
-      }
-      nav a {
-        margin: 0 15px;
-        text-decoration: none;
-        color: inherit;
-        font-weight: bold;
-        border-radius: 10px;
-        transition: background-color 0.3s, color 0.3s;
-      }
-      nav a:hover {
-        background-color: #ff0000;
-        color: #ffcccb;
-      }
-      .dropdown {
-        position: relative;
-      }
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: #8b0000;
-        min-width: 160px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-        border: 1px solid #fff;
-        border-radius: 8px;
-        transition: opacity 0.3s, transform 0.3s;
-        transform: translateY(-10px);
-      }
-      .dropdown:hover .dropdown-content,
-      .dropdown:focus-within .dropdown-content {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .dropdown-content a {
-        color: #ffffff;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        transition: background-color 0.3s;
-        border-radius: 10px;
-      }
-      .dropdown-content a:hover {
-        background-color: #ff0000;
-      }
-      .container {
-        flex: 1;
-        max-width: 800px;
-        margin: auto;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-      .main-title {
-        text-align: center;
-      }
-      .markdown-controls {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-      }
-      .markdown-area {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 80vw; /* 80% of the viewport width */
-        max-width: 800px; /* Max width constraint */
-      }
-      .sample-button {
-        background-color: #8b0000;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        margin: 10px 0;
-      }
-      .sample-button:hover {
-        background-color: #ff0000;
-      }
-      textarea,
-      #preview {
-        width: 100%;
-        height: 40vh; /* 40% of the viewport height */
-        margin: 10px 0;
-        padding: 10px;
-        background-color: #1e1e1e;
-        color: #ffffff;
-        border: 1px solid #8b0000;
-        font-family: inherit;
-        box-sizing: border-box; /* Ensure padding is included in width and height */
-      }
-      #preview {
-        min-height: 200px; /* Ensure preview is not too small */
-      }
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.4);
-        justify-content: center;
-        align-items: center;
-      }
-      .modal-content {
-        background-color: #1e1e1e;
-        color: #ffffff;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #8b0000;
-        width: 80%;
-        max-width: 500px;
-        text-align: center;
-        border-radius: 10px;
-      }
-      .modal-button {
-        background-color: #8b0000;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-        margin: 10px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-      .modal-button:hover {
-        background-color: #ff0000;
-      }
-      .modal.show {
-        display: flex;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>Markdown Viewer</h1>
-      <nav>
-        <a href="index.html">Home</a>
-        <div class="dropdown">
-          <a href="#">Audio Tools</a>
-          <div class="dropdown-content">
-            <a href="audio-converter.html">Audio Converter</a>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Previewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000000;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background-color: #8b0000;
+      padding: 1em;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: inherit;
+      font-weight: bold;
+      border-radius: 10px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover {
+      background-color: #ff0000;
+      color: #ffcccb;
+    }
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #8b0000;
+      min-width: 160px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border: 1px solid #fff;
+      border-radius: 8px;
+      transition: opacity 0.3s, transform 0.3s;
+      transform: translateY(-10px);
+    }
+    .dropdown:hover .dropdown-content,
+    .dropdown:focus-within .dropdown-content {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .dropdown-content a {
+      color: #ffffff;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: background-color 0.3s;
+      border-radius: 10px;
+    }
+    .dropdown-content a:hover {
+      background-color: #ff0000;
+    }
+    .container {
+      flex: 1;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .main-title {
+      text-align: center;
+    }
+    .markdown-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .markdown-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 80vw; /* 80% of the viewport width */
+      max-width: 800px; /* Max width constraint */
+    }
+    .sample-button {
+      background-color: #8b0000;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin: 10px 0;
+    }
+    .sample-button:hover {
+      background-color: #ff0000;
+    }
+    textarea,
+    #preview {
+      width: 100%;
+      height: 40vh; /* 40% of the viewport height */
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #1e1e1e;
+      color: #ffffff;
+      border: 1px solid #8b0000;
+      font-family: inherit;
+      box-sizing: border-box; /* Ensure padding is included in width and height */
+    }
+    #preview {
+      min-height: 200px; /* Ensure preview is not too small */
+      padding-bottom: 20px; /* Padding below the preview */
+      overflow: auto; /* Ensure content inside can scroll if needed */
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: #1e1e1e;
+      color: #ffffff;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #8b0000;
+      width: 80%;
+      max-width: 500px;
+      text-align: center;
+      border-radius: 10px;
+    }
+    .modal-button {
+      background-color: #8b0000;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .modal-button:hover {
+      background-color: #ff0000;
+    }
+    .modal.show {
+      display: flex;
+    }
+    footer {
+      background-color: #8b0000;
+      padding: 1em;
+      color: #ffffff;
+      text-align: center;
+      margin-top: auto; /* Push footer to the bottom */
+      width: 100%;
+      box-sizing: border-box; /* Ensure padding is included in width */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Markdown Viewer</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <div class="dropdown">
+        <a href="#">Audio Tools</a>
+        <div class="dropdown-content">
+          <a href="audio-converter.html">Audio Converter</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="#">Video Tools</a>
+        <div class="dropdown-content">
+          <a href="video-converter.html">Video Converter</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="#">Image Tools</a>
+        <div class="dropdown-content">
+          <a href="image-extraction.html">PDF Image Extraction</a>
+          <a href="background-removal.html">Background Removal</a>
+          <a href="image-converter.html">Image Converter</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="#">Web Tools</a>
+        <div class="dropdown-content">
+          <a href="html-validator.html">HTML/CSS Validator</a>
+          <a href="json-formatter.html">JSON Formatter</a>
+          <a href="regex-tester.html">Regex Tester</a>
+          <a href="json-xml-converter.html">JSON-XML Converter</a>
+          <a href="code-beautifier.html">Code Beautifier</a>
+          <a href="markdown-previewer.html">Markdown Previewer</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="#">Other Tools</a>
+        <div class="dropdown-content">
+          <a href="password-generator.html">Password Generator</a>
+          <a href="finance-tracker.html">Finance Tracker</a>
+          <a href="llm.html">Web-Based LLM</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2 class="main-title">Write and Preview Markdown:</h2>
+    <div id="markdown-previewer"></div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+  </footer>
+
+  <!-- React and ReactDOM -->
+  <script src="https://unpkg.com/react/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
+
+  <!-- Babel for JSX support -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Marked for Markdown parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- DOMPurify for sanitizing -->
+  <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function Modal({ showModal, handleClose, handleConfirm }) {
+      return (
+        <div className={`modal ${showModal ? "show" : ""}`}>
+          <div className="modal-content">
+            <p>There is already text in the input field. Do you want to overwrite it?</p>
+            <button className="modal-button" onClick={handleConfirm}>Yes</button>
+            <button className="modal-button" onClick={handleClose}>No</button>
           </div>
         </div>
-        <div class="dropdown">
-          <a href="#">Video Tools</a>
-          <div class="dropdown-content">
-            <a href="video-converter.html">Video Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Image Tools</a>
-          <div class="dropdown-content">
-            <a href="image-extraction.html">PDF Image Extraction</a>
-            <a href="background-removal.html">Background Removal</a>
-            <a href="image-converter.html">Image Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Web Tools</a>
-          <div class="dropdown-content">
-            <a href="html-validator.html">HTML/CSS Validator</a>
-            <a href="json-formatter.html">JSON Formatter</a>
-            <a href="regex-tester.html">Regex Tester</a>
-            <a href="json-xml-converter.html">JSON-XML Converter</a>
-            <a href="code-beautifier.html">Code Beautifier</a>
-            <a href="markdown-previewer.html">Markdown Previewer</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Other Tools</a>
-          <div class="dropdown-content">
-            <a href="password-generator.html">Password Generator</a>
-            <a href="finance-tracker.html">Finance Tracker</a>
-            <a href="llm.html">Web-Based LLM</a>
-          </div>
-        </div>
-      </nav>
-    </header>
+      );
+    }
 
-    <div class="container">
-      <h2 class="main-title">Write and Preview Markdown:</h2>
-      <div id="markdown-previewer"></div>
-    </div>
+    function MarkdownPreviewer() {
+      const [markdown, setMarkdown] = useState("");
+      const [showModal, setShowModal] = useState(false);
+      const [pendingSampleText, setPendingSampleText] = useState("");
 
-    <!-- React and ReactDOM -->
-    <script src="https://unpkg.com/react/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
+      const handleMarkdownChange = (e) => setMarkdown(e.target.value);
 
-    <!-- Babel for JSX support -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+      const getMarkdownText = () => ({
+        __html: DOMPurify.sanitize(marked.parse(markdown)),
+      });
 
-    <!-- Marked for Markdown parsing -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
-    <!-- DOMPurify for sanitizing -->
-    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
-
-    <script type="text/babel">
-      const { useState } = React;
-
-      function Modal({ showModal, handleClose, handleConfirm }) {
-        return (
-          <div className={`modal ${showModal ? "show" : ""}`}>
-            <div className="modal-content">
-              <p>There is already text in the input field. Do you want to overwrite it?</p>
-              <button className="modal-button" onClick={handleConfirm}>Yes</button>
-              <button className="modal-button" onClick={handleClose}>No</button>
-            </div>
-          </div>
-        );
-      }
-
-      function MarkdownPreviewer() {
-        const [markdown, setMarkdown] = useState("");
-        const [showModal, setShowModal] = useState(false);
-        const [pendingSampleText, setPendingSampleText] = useState("");
-
-        const handleMarkdownChange = (e) => setMarkdown(e.target.value);
-
-        const getMarkdownText = () => ({
-          __html: DOMPurify.sanitize(marked.parse(markdown)),
-        });
-
-        const loadSampleMarkdown = () => {
-          const sampleText = `
+      const loadSampleMarkdown = () => {
+        const sampleText = `
 # Test Page
 
 ## Headers
@@ -350,49 +365,49 @@ You can also include HTML elements in Markdown:
 
 <div style="color: red;">This is a red div.</div>
   `;
-          if (markdown.trim()) {
-            setPendingSampleText(sampleText);
-            setShowModal(true);
-          } else {
-            setMarkdown(sampleText);
-          }
-        };
+        if (markdown.trim()) {
+          setPendingSampleText(sampleText);
+          setShowModal(true);
+        } else {
+          setMarkdown(sampleText);
+        }
+      };
 
-        const handleConfirm = () => {
-          setMarkdown(pendingSampleText);
-          setPendingSampleText("");
-          setShowModal(false);
-        };
+      const handleConfirm = () => {
+        setMarkdown(pendingSampleText);
+        setPendingSampleText("");
+        setShowModal(false);
+      };
 
-        const handleClose = () => {
-          setPendingSampleText("");
-          setShowModal(false);
-        };
+      const handleClose = () => {
+        setPendingSampleText("");
+        setShowModal(false);
+      };
 
-        return (
-          <React.Fragment>
-            <div className="markdown-controls">
-              <button className="sample-button" onClick={loadSampleMarkdown}>Load Sample Markdown</button>
-              <div className="markdown-area">
-                <textarea
-                  id="markdown-input"
-                  value={markdown}
-                  onChange={handleMarkdownChange}
-                  placeholder="Type your Markdown here..."
-                />
-                <div id="preview" dangerouslySetInnerHTML={getMarkdownText()} />
-              </div>
+      return (
+        <React.Fragment>
+          <div className="markdown-controls">
+            <button className="sample-button" onClick={loadSampleMarkdown}>Load Sample Markdown</button>
+            <div className="markdown-area">
+              <textarea
+                id="markdown-input"
+                value={markdown}
+                onChange={handleMarkdownChange}
+                placeholder="Type your Markdown here..."
+              />
+              <div id="preview" dangerouslySetInnerHTML={getMarkdownText()} />
             </div>
-            <Modal
-              showModal={showModal}
-              handleClose={handleClose}
-              handleConfirm={handleConfirm}
-            />
-          </React.Fragment>
-        );
-      }
+          </div>
+          <Modal
+            showModal={showModal}
+            handleClose={handleClose}
+            handleConfirm={handleConfirm}
+          />
+        </React.Fragment>
+      );
+    }
 
-      ReactDOM.render(<MarkdownPreviewer />, document.getElementById("markdown-previewer"));
-    </script>
-  </body>
+    ReactDOM.render(<MarkdownPreviewer />, document.getElementById("markdown-previewer"));
+  </script>
+</body>
 </html>
