@@ -15,7 +15,7 @@
   </head>
   <body>
     <header>
-      <h1>Jarrod's Tool Hub</h1>
+      <h1>JSON to XML Converter</h1>
       <nav>
         <a href="index.html">Home</a>
         <div class="dropdown">
@@ -80,17 +80,29 @@
       <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
     </footer>
     <script>
+      // Define a variable to store the timeout ID
+      let copyMessageTimeout;
+
       function convertJSONtoXML() {
-        const jsonInput = document.getElementById("json-input").value;
+        const jsonInput = document.getElementById("json-input").value.trim();
+        const notification = document.getElementById("copy-message");
+
+        if (!jsonInput) {
+          document.getElementById("xml-output").textContent =
+            "No JSON input provided.";
+          notification.textContent = "";
+          return;
+        }
+
         try {
           const jsonObj = JSON.parse(jsonInput);
           const xmlOutput = jsonToXml(jsonObj);
           document.getElementById("xml-output").textContent = xmlOutput;
-          document.getElementById("copy-message").innerText = ""; // Clear previous message
+          notification.textContent = ""; // Clear previous message
         } catch (error) {
           document.getElementById("xml-output").textContent =
             "Invalid JSON input.";
-          document.getElementById("copy-message").innerText = ""; // Clear previous message
+          notification.textContent = ""; // Clear previous message
         }
       }
 
@@ -113,16 +125,37 @@
 
       function copyToClipboard() {
         const xmlOutput = document.getElementById("xml-output").textContent;
-        navigator.clipboard
-          .writeText(xmlOutput)
-          .then(() => {
-            document.getElementById("copy-message").innerText =
-              "Copied to clipboard!";
-          })
-          .catch((err) => {
-            document.getElementById("copy-message").innerText =
-              "Failed to copy.";
-          });
+        const notification = document.getElementById("copy-message");
+
+        if (
+          xmlOutput.trim() === "" ||
+          xmlOutput === "Invalid JSON input." ||
+          xmlOutput === "No JSON input provided."
+        ) {
+          // Show an error message if there's nothing to copy or the JSON is invalid
+          notification.textContent = "Nothing to copy!";
+          notification.style.color = "red";
+        } else {
+          // Proceed with copying
+          navigator.clipboard
+            .writeText(xmlOutput)
+            .then(() => {
+              // Show success message
+              notification.textContent = "Copied to clipboard!";
+              notification.style.color = "green";
+            })
+            .catch((err) => {
+              // Show failure message
+              notification.textContent = "Failed to copy.";
+              notification.style.color = "red";
+            });
+        }
+
+        // Clear the previous timeout and set a new one
+        clearTimeout(copyMessageTimeout);
+        copyMessageTimeout = setTimeout(() => {
+          notification.textContent = "";
+        }, 3000);
       }
     </script>
   </body>

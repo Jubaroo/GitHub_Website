@@ -129,6 +129,7 @@
       <input type="text" id="regex-pattern" placeholder="Enter regex pattern" />
       <textarea id="text-input" placeholder="Enter text here"></textarea>
       <button onclick="testRegex()">Test Regex</button>
+      <button onclick="generateSample()">Generate Sample Regex</button>
       <pre id="regex-results"></pre>
     </div>
     <footer>
@@ -154,6 +155,19 @@
       function testRegex() {
         const pattern = document.getElementById("regex-pattern").value;
         const text = document.getElementById("text-input").value;
+
+        if (!pattern) {
+          document.getElementById("regex-results").innerText =
+            "Please enter a regex pattern.";
+          return;
+        }
+
+        if (!text) {
+          document.getElementById("regex-results").innerText =
+            "Please enter text to search.";
+          return;
+        }
+
         try {
           const regex = new RegExp(pattern, "g");
           const matches = text.match(regex);
@@ -164,6 +178,39 @@
           document.getElementById("regex-results").innerText =
             "Invalid regex pattern.";
         }
+      }
+      function generateSample() {
+        const samples = [
+          {
+            pattern: "\\b\\d{4}\\b",
+            text: "Years: 2023, 2024, 1999. Random numbers: 123, 5678, 9012.",
+          },
+          {
+            pattern: "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b",
+            text: "Emails: test@example.com, user@domain.org, admin@site.co.uk.",
+          },
+          {
+            pattern: "\\b\\d{2}/\\d{2}/\\d{4}\\b",
+            text: "Dates: 01/01/2024, 31/12/2023, 15/07/2025.",
+          },
+          {
+            pattern:
+              "https?:\\/\\/(www\\.)?[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}(\\/\\S*)?",
+            text: "URLs: https://example.com, http://site.org, https://www.website.co.uk/page.",
+          },
+          {
+            pattern: "#[A-Fa-f0-9]{6}\\b",
+            text: "Colors: #FF5733, #4A7DAB, #1A2B3C.",
+          },
+          {
+            pattern: "\\(\\d{3}\\)\\s\\d{3}-\\d{4}",
+            text: "Phone numbers: (123) 456-7890, (987) 654-3210, (555) 123-4567.",
+          },
+        ];
+        const randomSample =
+          samples[Math.floor(Math.random() * samples.length)];
+        document.getElementById("regex-pattern").value = randomSample.pattern;
+        document.getElementById("text-input").value = randomSample.text;
       }
     </script>
   </body>

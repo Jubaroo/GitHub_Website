@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSS Minifier</title>
     <link rel="stylesheet" href="styles/web-styles.css" />
+    <style>
+      #copy-notification {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -67,30 +73,71 @@
         <button id="copy-button" onclick="copyToClipboard()">Copy</button>
       </div>
       <pre id="minified-css"></pre>
+      <p id="copy-notification"></p>
+      <!-- New element for copy notification -->
     </div>
     <footer>
       <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
     </footer>
     <script>
+      // Define a variable to store the timeout ID
+      let notificationTimeout;
+
       function minifyCSS() {
-        const cssInput = document.getElementById("css-input").value;
-        const minified = cssInput
-          .replace(/\/\*[\s\S]*?\*\//g, "") // Remove comments
-          .replace(/\s+/g, " ") // Collapse whitespace
-          .replace(/\s*({|}|;|:|,)\s*/g, "$1") // Remove space around { } ; : ,
-          .replace(/;}/g, "}"); // Remove last semicolon in block
-        document.getElementById("minified-css").textContent = minified;
+        const cssInput = document.getElementById("css-input").value.trim();
+        const notification = document.getElementById("copy-notification");
+
+        if (cssInput === "") {
+          // Show an error message if there's nothing to minify
+          notification.textContent = "Nothing to minify!";
+          notification.style.color = "red";
+        } else {
+          const minified = cssInput
+            .replace(/\/\*[\s\S]*?\*\//g, "") // Remove comments
+            .replace(/\s+/g, " ") // Collapse whitespace
+            .replace(/\s*({|}|;|:|,)\s*/g, "$1") // Remove space around { } ; : ,
+            .replace(/;}/g, "}"); // Remove last semicolon in block
+          document.getElementById("minified-css").textContent = minified;
+
+          // Show success message
+          notification.textContent = "CSS minified successfully!";
+          notification.style.color = "green";
+        }
+
+        // Clear the previous timeout and set a new one
+        clearTimeout(notificationTimeout);
+        notificationTimeout = setTimeout(() => {
+          notification.textContent = "";
+        }, 3000);
       }
 
       function copyToClipboard() {
         const minifiedCss = document.getElementById("minified-css").textContent;
-        const textarea = document.createElement("textarea");
-        textarea.value = minifiedCss;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand("copy");
-        document.body.removeChild(textarea);
-        alert("Minified CSS copied to clipboard!");
+        const notification = document.getElementById("copy-notification");
+
+        if (minifiedCss.trim() === "") {
+          // If minified CSS is blank, show an error message
+          notification.textContent = "Nothing to copy!";
+          notification.style.color = "red";
+        } else {
+          // Otherwise, proceed with copying
+          const textarea = document.createElement("textarea");
+          textarea.value = minifiedCss;
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textarea);
+
+          // Show success message
+          notification.textContent = "Minified CSS copied to clipboard!";
+          notification.style.color = "green";
+        }
+
+        // Clear the previous timeout and set a new one
+        clearTimeout(notificationTimeout);
+        notificationTimeout = setTimeout(() => {
+          notification.textContent = "";
+        }, 3000);
       }
     </script>
   </body>

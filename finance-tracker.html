@@ -13,6 +13,7 @@
     />
     <title>Finance Tracker</title>
     <link rel="stylesheet" href="styles/navbar.css" />
+    <link rel="stylesheet" href="styles/file_ops.css" />
     <style>
       :root {
         --main-bg-color: #000000;
@@ -55,34 +56,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-      }
-
-      .file-operations {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 20px;
-        background-color: #333;
-        border-radius: 8px;
-      }
-
-      .file-operations button {
-        background-color: var(--button-bg);
-        color: var(--header-footer-text);
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-        border-radius: 10px;
-        transition: background-color 0.3s;
-      }
-
-      .file-operations button:hover {
-        background-color: var(--button-bg-hover);
-      }
-
-      .file-operations input[type="file"] {
-        display: none;
       }
 
       .summary-charts-container {

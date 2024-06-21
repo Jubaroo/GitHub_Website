@@ -5,13 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JSON Formatter</title>
     <link rel="stylesheet" href="styles/web-styles.css" />
-    <style>
-      .description {
-        color: #ffffff;
-        font-size: 1.2em;
-        margin-bottom: 20px;
-      }
-    </style>
   </head>
   <body>
     <header>
@@ -95,22 +88,29 @@
         });
       });
 
+      // Define a variable to store the timeout ID
+      let copyMessageTimeout;
+
       function formatJSON() {
         const input = document.getElementById("json-input").value.trim();
+        const notification = document.getElementById("copy-message");
+
         if (!input) {
           document.getElementById("formatted-json").innerText =
             "No JSON input provided.";
+          notification.textContent = "";
           return;
         }
+
         try {
           const fixedInput = fixJSON(input);
           const parsed = JSON.parse(fixedInput);
           const formatted = JSON.stringify(parsed, null, 4);
           document.getElementById("formatted-json").innerText = formatted;
-          document.getElementById("copy-message").innerText = ""; // Clear previous message
+          notification.textContent = ""; // Clear previous message
         } catch (error) {
           document.getElementById("formatted-json").innerText = "Invalid JSON";
-          document.getElementById("copy-message").innerText = ""; // Clear previous message
+          notification.textContent = ""; // Clear previous message
         }
       }
 
@@ -148,16 +148,37 @@
       function copyToClipboard() {
         const formattedJson =
           document.getElementById("formatted-json").innerText;
-        navigator.clipboard
-          .writeText(formattedJson)
-          .then(() => {
-            document.getElementById("copy-message").innerText =
-              "Copied to clipboard!";
-          })
-          .catch((err) => {
-            document.getElementById("copy-message").innerText =
-              "Failed to copy.";
-          });
+        const notification = document.getElementById("copy-message");
+
+        if (
+          formattedJson.trim() === "" ||
+          formattedJson === "Invalid JSON" ||
+          formattedJson === "No JSON input provided."
+        ) {
+          // Show an error message if there's nothing to copy or the JSON is invalid
+          notification.textContent = "Nothing to copy!";
+          notification.style.color = "red";
+        } else {
+          // Proceed with copying
+          navigator.clipboard
+            .writeText(formattedJson)
+            .then(() => {
+              // Show success message
+              notification.textContent = "Copied to clipboard!";
+              notification.style.color = "green";
+            })
+            .catch((err) => {
+              // Show failure message
+              notification.textContent = "Failed to copy.";
+              notification.style.color = "red";
+            });
+        }
+
+        // Clear the previous timeout and set a new one
+        clearTimeout(copyMessageTimeout);
+        copyMessageTimeout = setTimeout(() => {
+          notification.textContent = "";
+        }, 3000);
       }
     </script>
   </body>
