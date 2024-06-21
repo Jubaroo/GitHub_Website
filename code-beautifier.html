@@ -4,112 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multi-Language Code Beautifier</title>
+    <link rel="stylesheet" href="styles/web-styles.css" />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            background-color: #000;
-            color: #f00;
-        }
-        header, footer {
-            background-color: #8b0000;
-            color: #fff;
-            padding: 1em;
-            text-align: center;
-        }
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-            flex-wrap: wrap;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            white-space: nowrap;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #ffcccb;
-        }
-        .dropdown {
-            position: relative;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #8b0000;
-            min-width: 160px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            border: 1px solid #fff;
-            border-radius: 8px;
-        }
-        .dropdown-content a {
-            color: #fff;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            transition: background-color 0.3s;
-        }
-        .dropdown-content a:hover {
-            background-color: #ff0000;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        textarea, button {
-            width: 80%;
-            margin: 10px 0;
-            padding: 10px;
-        }
-        textarea {
-            height: 150px;
-            background-color: #1e1e1e;
-            color: #fff;
-            border: 1px solid #8b0000;
-        }
-        pre {
-            background-color: #1e1e1e;
-            padding: 10px;
-            width: 80%;
-            max-height: 400px;
-            overflow: auto;
-            white-space: pre-wrap;
-            text-align: left;
-            margin: 10px auto;
-            color: #fff;
-            border: 1px solid #8b0000;
-        }
-        button {
-            background-color: #8b0000;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #ff0000;
-        }
-        /* Modal styles */
         .modal {
             display: flex;
             position: fixed;
@@ -155,46 +51,47 @@
         <nav>
             <a href="index.html">Home</a>
             <div class="dropdown">
-                <a href="#">Audio Tools</a>
-                <div class="dropdown-content">
-                    <a href="audio-converter.html">Audio Converter</a>
-                </div>
+              <a href="#">Audio Tools</a>
+              <div class="dropdown-content">
+                <a href="audio-converter.html">Audio Converter</a>
+              </div>
             </div>
             <div class="dropdown">
-                <a href="#">Video Tools</a>
-                <div class="dropdown-content">
-                    <a href="video-converter.html">Video Converter</a>
-                </div>
+              <a href="#">Video Tools</a>
+              <div class="dropdown-content">
+                <a href="video-converter.html">Video Converter</a>
+              </div>
             </div>
             <div class="dropdown">
-                <a href="#">Image Tools</a>
-                <div class="dropdown-content">
-                    <a href="image-extraction.html">PDF Image Extraction</a>
-                    <a href="background-removal.html">Background Removal</a>
-                    <a href="image-converter.html">Image Converter</a>
-                </div>
+              <a href="#">Image Tools</a>
+              <div class="dropdown-content">
+                <a href="image-extraction.html">PDF Image Extraction</a>
+                <a href="background-removal.html">Background Removal</a>
+                <a href="image-converter.html">Image Converter</a>
+              </div>
             </div>
             <div class="dropdown">
-                <a href="#">Web Tools</a>
-                <div class="dropdown-content">
-                    <a href="html-validator.html">HTML/CSS Validator</a>
-                    <a href="json-formatter.html">JSON Formatter</a>
-                    <a href="regex-tester.html">Regex Tester</a>
-                    <a href="json-xml-converter.html">JSON-XML Converter</a>
-                    <a href="code-beautifier.html">Code Beautifier</a>
-                    <a href="markdown-previewer.html">Markdown Previewer</a>
-                </div>
+              <a href="#">Web Tools</a>
+              <div class="dropdown-content">
+                <a href="html-validator.html">HTML/CSS Validator</a>
+                <a href="json-formatter.html">JSON Formatter</a>
+                <a href="regex-tester.html">Regex Tester</a>
+                <a href="json-xml-converter.html">JSON-XML Converter</a>
+                <a href="code-beautifier.html">Code Beautifier</a>
+                <a href="markdown-previewer.html">Markdown Previewer</a>
+                <a href="css-minifier.html">CSS Minifier</a>
+              </div>
             </div>
             <div class="dropdown">
-                <a href="#">Other Tools</a>
-                <div class="dropdown-content">
-                    <a href="password-generator.html">Password Generator</a>
-                    <a href="finance-tracker.html">Finance Tracker</a>
-                    <a href="llm.html">Web-Based LLM</a>
-                </div>
+              <a href="#">Other Tools</a>
+              <div class="dropdown-content">
+                <a href="password-generator.html">Password Generator</a>
+                <a href="finance-tracker.html">Finance Tracker</a>
+                <a href="llm.html">Web-Based LLM</a>
+              </div>
             </div>
-        </nav>
-    </header>
+          </nav>
+        </header>
     <div class="container">
         <h2>Beautify Your Code</h2>
         <textarea id="code-input" placeholder="Paste your code here..."></textarea>
@@ -285,9 +182,8 @@
 
         // Close the modal when clicking outside of it
         window.onclick = function(event) {
-            const modal = document.getElementById('constructionModal');
             if (event.target == modal) {
-                modal.style.display = 'none';
+                closeModal();
             }
         };
     </script>

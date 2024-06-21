@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Background Removal</title>
+    <link rel="stylesheet" href="styles/navbar.css" />
     <style>
       html,
       body {
@@ -16,7 +17,6 @@
         display: flex;
         flex-direction: column;
       }
-      header,
       footer {
         background-color: #8b0000;
         color: #fff;
@@ -25,51 +25,6 @@
         position: sticky;
         top: 0;
         z-index: 10;
-      }
-      nav {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-        flex-wrap: wrap;
-      }
-      nav a {
-        margin: 0 15px;
-        text-decoration: none;
-        color: #fff;
-        font-weight: bold;
-        white-space: nowrap;
-        transition: color 0.3s;
-      }
-      nav a:hover {
-        color: #ffcccb;
-      }
-      .dropdown {
-        position: relative;
-      }
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: #8b0000;
-        min-width: 160px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-        border: 1px solid #fff;
-        border-radius: 8px;
-      }
-      .dropdown-content a {
-        color: #fff;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        transition: background-color 0.3s;
-      }
-      .dropdown-content a:hover {
-        background-color: #ff0000;
-      }
-      .dropdown:hover .dropdown-content {
-        display: block;
       }
       .container {
         flex: 1;
@@ -249,6 +204,10 @@
             <a href="html-validator.html">HTML/CSS Validator</a>
             <a href="json-formatter.html">JSON Formatter</a>
             <a href="regex-tester.html">Regex Tester</a>
+            <a href="json-xml-converter.html">JSON-XML Converter</a>
+            <a href="code-beautifier.html">Code Beautifier</a>
+            <a href="markdown-previewer.html">Markdown Previewer</a>
+            <a href="css-minifier.html">CSS Minifier</a>
           </div>
         </div>
         <div class="dropdown">
@@ -256,12 +215,25 @@
           <div class="dropdown-content">
             <a href="password-generator.html">Password Generator</a>
             <a href="finance-tracker.html">Finance Tracker</a>
+            <a href="llm.html">Web-Based LLM</a>
           </div>
         </div>
       </nav>
     </header>
     <div class="container">
       <h2>Remove Background from Image</h2>
+      <p class="description">
+        Use this tool to remove the background from any image seamlessly. Upload
+        your image, choose the desired settings, and watch as the background is
+        automatically removed. Use the slider to compare the original image with
+        the processed one for a clear before-and-after view.
+      </p>
+      <div id="message"></div>
+      <p class="warning">
+        Note: This tool relies on an external API for background removal, which
+        has limited daily uses. If you encounter issues, try again later or
+        check your API usage limits.
+      </p>
       <input type="file" id="image-upload" accept="image/*" />
       <div class="form-group">
         <label for="resolution">Resolution:</label>
@@ -386,7 +358,9 @@
         const message = document.getElementById("message");
         const resolution = document.getElementById("resolution").value;
         const cutout = document.getElementById("cutout").value;
-        const shadow = document.getElementById("shadow").checked ? "true" : "false";
+        const shadow = document.getElementById("shadow").checked
+          ? "true"
+          : "false";
         const crop = document.getElementById("crop").checked ? "true" : "false";
         const scale = document.getElementById("scale").value;
 

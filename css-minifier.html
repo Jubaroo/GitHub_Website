@@ -4,117 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSS Minifier</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-        background-color: #000000;
-        color: #ff0000;
-      }
-      header {
-        background-color: #8b0000;
-        padding: 1em;
-        color: #ffffff;
-        text-align: center;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-      }
-      nav {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-        flex-wrap: wrap;
-      }
-      nav a {
-        margin: 0 15px;
-        text-decoration: none;
-        color: #ffffff;
-        font-weight: bold;
-        white-space: nowrap;
-        transition: color 0.3s;
-      }
-      nav a:hover {
-        color: #ffcccb;
-      }
-      .dropdown {
-        position: relative;
-      }
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: #8b0000;
-        min-width: 160px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-        border: 1px solid #fff;
-        border-radius: 8px;
-      }
-      .dropdown-content a {
-        color: #fff;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        transition: background-color 0.3s;
-      }
-      .dropdown-content a:hover {
-        background-color: #ff0000;
-      }
-      .dropdown:hover .dropdown-content {
-        display: block;
-      }
-      .container {
-        max-width: 800px;
-        margin: auto;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      textarea,
-      button {
-        width: 80%;
-        margin: 10px 0;
-        padding: 10px;
-      }
-      textarea {
-        height: 150px;
-        background-color: #1e1e1e;
-        color: #ffffff;
-        border: 1px solid #8b0000;
-      }
-      pre {
-        background-color: #1e1e1e;
-        padding: 10px;
-        width: 80%;
-        max-height: 400px;
-        overflow: auto;
-        white-space: pre-wrap;
-        text-align: left;
-        margin: 10px auto;
-        color: #ffffff;
-        border: 1px solid #8b0000;
-      }
-      button {
-        background-color: #8b0000;
-        color: #ffffff;
-        border: none;
-        cursor: pointer;
-      }
-      button:hover {
-        background-color: #ff0000;
-      }
-      footer {
-        background-color: #8b0000;
-        padding: 1em;
-        color: #ffffff;
-        text-align: center;
-      }
-    </style>
+    <link rel="stylesheet" href="styles/web-styles.css" />
   </head>
   <body>
     <header>
@@ -150,6 +40,7 @@
             <a href="json-xml-converter.html">JSON-XML Converter</a>
             <a href="code-beautifier.html">Code Beautifier</a>
             <a href="markdown-previewer.html">Markdown Previewer</a>
+            <a href="css-minifier.html">CSS Minifier</a>
           </div>
         </div>
         <div class="dropdown">
@@ -164,8 +55,17 @@
     </header>
     <div class="container">
       <h2>Minify Your CSS</h2>
+      <p class="description">
+        Optimize your CSS by removing unnecessary spaces, comments, and
+        formatting with this CSS Minifier tool. Paste your CSS code into the
+        input box and click "Minify CSS" to get a compact and efficient version
+        of your stylesheet.
+      </p>
       <textarea id="css-input" placeholder="Paste your CSS here"></textarea>
-      <button onclick="minifyCSS()">Minify CSS</button>
+      <div class="button-group">
+        <button onclick="minifyCSS()">Minify CSS</button>
+        <button id="copy-button" onclick="copyToClipboard()">Copy</button>
+      </div>
       <pre id="minified-css"></pre>
     </div>
     <footer>
@@ -180,6 +80,17 @@
           .replace(/\s*({|}|;|:|,)\s*/g, "$1") // Remove space around { } ; : ,
           .replace(/;}/g, "}"); // Remove last semicolon in block
         document.getElementById("minified-css").textContent = minified;
+      }
+
+      function copyToClipboard() {
+        const minifiedCss = document.getElementById("minified-css").textContent;
+        const textarea = document.createElement("textarea");
+        textarea.value = minifiedCss;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+        alert("Minified CSS copied to clipboard!");
       }
     </script>
   </body>

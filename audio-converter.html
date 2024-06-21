@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Audio Converter</title>
-    <script src="https://cdn.jsdelivr.net/npm/ffmpeg.wasm@0.11.0/dist/ffmpeg.min.js"></script>
+    <link rel="stylesheet" href="styles/navbar.css" />
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -16,60 +16,6 @@
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-      }
-      header {
-        background-color: #8b0000;
-        padding: 1em;
-        color: #ffffff;
-        text-align: center;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-      }
-      nav {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-        flex-wrap: wrap;
-      }
-      nav a {
-        margin: 0 15px;
-        text-decoration: none;
-        color: #ffffff;
-        font-weight: bold;
-        white-space: nowrap;
-        transition: color 0.3s;
-      }
-      nav a:hover {
-        color: #ffcccb;
-      }
-      .dropdown {
-        position: relative;
-      }
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: #8b0000;
-        min-width: 160px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-        border: 1px solid #fff;
-        border-radius: 8px;
-      }
-      .dropdown-content a {
-        color: #fff;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        transition: background-color 0.3s;
-      }
-      .dropdown-content a:hover {
-        background-color: #ff0000;
-      }
-      .dropdown:hover .dropdown-content {
-        display: block;
       }
       .container {
         flex: 1;
@@ -133,6 +79,10 @@
             <a href="html-validator.html">HTML/CSS Validator</a>
             <a href="json-formatter.html">JSON Formatter</a>
             <a href="regex-tester.html">Regex Tester</a>
+            <a href="json-xml-converter.html">JSON-XML Converter</a>
+            <a href="code-beautifier.html">Code Beautifier</a>
+            <a href="markdown-previewer.html">Markdown Previewer</a>
+            <a href="css-minifier.html">CSS Minifier</a>
           </div>
         </div>
         <div class="dropdown">
@@ -140,12 +90,19 @@
           <div class="dropdown-content">
             <a href="password-generator.html">Password Generator</a>
             <a href="finance-tracker.html">Finance Tracker</a>
+            <a href="llm.html">Web-Based LLM</a>
           </div>
         </div>
       </nav>
     </header>
     <div class="container">
       <h2>Convert Your Audio Files</h2>
+      <p class="description">
+        Convert your audio files to different formats quickly and easily. Simply
+        upload your audio file, select the desired output format, and click
+        "Convert". The tool will handle the conversion and provide a download
+        link for the new file.
+      </p>
       <form id="upload-form">
         <input type="file" id="audio-file" accept="audio/*" />
         <select id="format">
@@ -164,6 +121,7 @@
     <footer>
       <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/ffmpeg.wasm@0.11.0/dist/ffmpeg.min.js"></script>
     <script>
       document.querySelectorAll(".dropdown").forEach((dropdown) => {
         const dropdownContent = dropdown.querySelector(".dropdown-content");

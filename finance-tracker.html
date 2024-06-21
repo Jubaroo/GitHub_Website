@@ -12,6 +12,7 @@
       content="finance, tracker, bills, income, management"
     />
     <title>Finance Tracker</title>
+    <link rel="stylesheet" href="styles/navbar.css" />
     <style>
       :root {
         --main-bg-color: #000000;
@@ -39,66 +40,11 @@
         min-height: 100vh;
       }
 
-      header,
       footer {
         background-color: var(--header-footer-bg);
         color: var(--header-footer-text);
         text-align: center;
         padding: 1em 0;
-      }
-
-      nav {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-        flex-wrap: wrap;
-      }
-
-      nav a {
-        margin: 0 15px;
-        text-decoration: none;
-        color: var(--header-footer-text);
-        font-weight: bold;
-        transition: color 0.3s;
-      }
-
-      nav a:hover {
-        color: #ffcccb;
-      }
-
-      .dropdown {
-        position: relative;
-      }
-
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: var(--dropdown-bg);
-        min-width: 160px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-        border-radius: 8px;
-        transition: opacity 0.3s;
-      }
-
-      .dropdown:hover .dropdown-content,
-      .dropdown a:focus + .dropdown-content,
-      .dropdown .dropdown-content a:focus {
-        display: block;
-      }
-
-      .dropdown-content a {
-        color: var(--header-footer-text);
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        transition: background-color 0.3s;
-      }
-
-      .dropdown-content a:hover {
-        background-color: var(--dropdown-hover-bg);
       }
 
       .container {
@@ -356,6 +302,10 @@
             <a href="html-validator.html">HTML/CSS Validator</a>
             <a href="json-formatter.html">JSON Formatter</a>
             <a href="regex-tester.html">Regex Tester</a>
+            <a href="json-xml-converter.html">JSON-XML Converter</a>
+            <a href="code-beautifier.html">Code Beautifier</a>
+            <a href="markdown-previewer.html">Markdown Previewer</a>
+            <a href="css-minifier.html">CSS Minifier</a>
           </div>
         </div>
         <div class="dropdown">
