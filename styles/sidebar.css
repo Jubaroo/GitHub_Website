@@ -1,0 +1,113 @@
+.sidebar {
+  width: 250px;
+  background-color: #1c1c1c;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  transition: width 0.3s;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #ff0000;
+}
+
+.sidebar input,
+.sidebar select,
+.sidebar textarea,
+.sidebar button {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #2e2e2e;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.sidebar label {
+  margin-bottom: 5px;
+}
+
+.sidebar textarea {
+  height: 100px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: #555;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 100;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sidebar.collapsed {
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.toggle-button {
+  background-color: #1c1c1c;
+  color: white;
+  border: none;
+  position: absolute;
+  left: 281px; /* Position next to the expanded sidebar */
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  padding: 10px;
+  transition: left 0.3s, background-color 0.3s;
+  z-index: 10;
+  border-radius: 0 5px 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar.collapsed + .toggle-button {
+  left: -10px; /* Position when sidebar is collapsed */
+}
+
+.toggle-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.toggle-button:hover {
+  background-color: red;
+}
+
+.remove-bg-btn {
+    background-color: #8b0000 !important;
+    color: #fff !important;
+    font-weight: bold !important;
+    border: 1px solid #000000 !important;
+    border-radius: 15px !important;
+    padding: 15px 20px !important;
+    cursor: pointer !important;
+    margin: 10px !important;
+    transition: background-color 0.3s ease, border-color 0.3s ease !important;
+}
+
+.remove-bg-btn:hover {
+    background-color: #ff0000 !important;
+    border-color: #8b0000 !important;
+}

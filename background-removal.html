@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Background Removal</title>
     <link rel="stylesheet" href="styles/navbar.css" />
+    <link rel="stylesheet" href="styles/sidebar.css" />
     <style>
       html,
       body {
@@ -13,7 +14,7 @@
         height: 100%;
         font-family: Arial, sans-serif;
         background-color: #000;
-        color: #ff0000;
+        color: red;
         display: flex;
         flex-direction: column;
       }
@@ -23,15 +24,20 @@
         text-align: center;
         padding: 1em;
         position: sticky;
-        top: 0;
+        bottom: 0;
         z-index: 10;
       }
       .container {
         flex: 1;
         display: flex;
+        position: relative;
+      }
+      .main-content {
+        flex: 1;
+        padding: 20px;
+        display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 20px;
         text-align: center;
       }
       .comparison-container {
@@ -89,6 +95,29 @@
         position: absolute;
         z-index: 12;
       }
+      .toggle-button {
+        background-color: #1c1c1c;
+        color: #fff;
+        border: 1px solid red;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        padding: 10px;
+        transition: left 0.3s, background-color 0.3s;
+        z-index: 10;
+        border-radius: 0 5px 5px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .toggle-button svg {
+        width: 20px;
+        height: 20px;
+      }
+      .toggle-button:hover {
+        background-color: red;
+      }
       button {
         background-color: #8b0000;
         color: #fff;
@@ -100,50 +129,7 @@
         transition: background-color 0.3s ease;
       }
       button:hover {
-        background-color: #ff0000;
-      }
-      select,
-      input[type="checkbox"] {
-        padding: 10px;
-        margin: 10px;
-        border-radius: 10px;
-        cursor: pointer;
-      }
-      .tooltip {
-        position: relative;
-        display: inline-block;
-      }
-      .tooltip .tooltiptext {
-        visibility: hidden;
-        width: 200px;
-        background-color: #555;
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px;
-        position: absolute;
-        z-index: 1;
-        bottom: 125%;
-        left: 50%;
-        transform: translateX(-50%);
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-      .tooltip:hover .tooltiptext {
-        visibility: visible;
-        opacity: 1;
-      }
-      .form-group {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 20px 0;
-      }
-      .form-group label {
-        margin-bottom: 5px;
-      }
-      .form-group input[type="checkbox"] {
-        margin-right: 10px;
+        background-color: red;
       }
     </style>
   </head>
@@ -195,104 +181,240 @@
       </nav>
     </header>
     <div class="container">
-      <h2>Remove Background from Image</h2>
-      <p class="description">
-        Use this tool to remove the background from any image seamlessly. Upload
-        your image, choose the desired settings, and watch as the background is
-        automatically removed. Use the slider to compare the original image with
-        the processed one for a clear before-and-after view.
-      </p>
-      <div id="message"></div>
-      <p class="warning">
-        Note: This tool relies on an external API for background removal, which
-        has limited daily uses. If you encounter issues, try again later or
-        check your API usage limits.
-      </p>
-      <input type="file" id="image-upload" accept="image/*" />
-      <div class="form-group">
-        <label for="resolution">Resolution:</label>
-        <div class="tooltip">
-          <select id="resolution">
+      <button id="toggle-sidebar" class="toggle-button">
+        <svg viewBox="0 0 100 80" width="30" height="30">
+          <rect width="100" height="20"></rect>
+          <rect y="30" width="100" height="20"></rect>
+          <rect y="60" width="100" height="20"></rect>
+        </svg>
+      </button>
+      <div class="sidebar">
+        <div class="form-group tooltip">
+          <label for="source">Image Source:</label>
+          <select id="source">
+            <option value="image_file">File Upload</option>
+            <option value="image_url">Image URL</option>
+            <option value="image_file_b64">Base64 String</option>
+          </select>
+          <span class="tooltiptext">Choose the image source method.</span>
+        </div>
+        <input
+          type="file"
+          id="image-upload"
+          accept=".jpg, .jpeg, .png"
+          style="display: block"
+        />
+        <div class="form-group tooltip" id="url-group" style="display: none">
+          <label for="image-url">Image URL:</label>
+          <input type="text" id="image-url" placeholder="Enter Image URL" />
+          <span class="tooltiptext">Enter the URL of the image.</span>
+        </div>
+        <div class="form-group tooltip" id="b64-group" style="display: none">
+          <label for="image-b64">Image Base64:</label>
+          <textarea id="image-b64" placeholder="Enter Base64 String"></textarea>
+          <span class="tooltiptext"
+            >Enter the base64-encoded string of the image.</span
+          >
+        </div>
+        <div class="form-group tooltip">
+          <label for="size">Resolution:</label>
+          <select id="size">
             <option value="auto">Auto</option>
+            <option value="preview">Preview</option>
+            <option value="full">Full</option>
+            <option value="50MP">50MP</option>
             <option value="medium">Medium</option>
             <option value="hd">HD</option>
-            <option value="full">Full</option>
           </select>
-          <span class="tooltiptext">Choose the resolution quality.</span>
+          <span class="tooltiptext">Select the desired image resolution.</span>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="cutout">Cutout Mode:</label>
-        <div class="tooltip">
-          <select id="cutout">
+        <div class="form-group tooltip">
+          <label for="type">Foreground Type:</label>
+          <select id="type">
             <option value="auto">Auto</option>
-            <option value="profile">Profile</option>
+            <option value="person">Person</option>
             <option value="product">Product</option>
-            <option value="combined">Combined</option>
+            <option value="animal">Animal</option>
+            <option value="car">Car</option>
+            <option value="graphic">Graphic</option>
+            <option value="transportation">Transportation</option>
           </select>
-          <span class="tooltiptext">
-            <strong>Auto:</strong> Automatically select the best mode.<br />
-            <strong>Profile:</strong> Best for portraits.<br />
-            <strong>Product:</strong> Ideal for product images.<br />
-            <strong>Combined:</strong> Best for varied backgrounds.
-          </span>
+          <span class="tooltiptext"
+            >Specify the type of foreground to detect.</span
+          >
         </div>
-      </div>
-      <div class="form-group">
-        <label for="shadow">Add Shadow:</label>
-        <div class="tooltip">
-          <input type="checkbox" id="shadow" />
-          <span class="tooltiptext">
-            Add a shadow to make the object stand out.
-          </span>
+        <div class="form-group tooltip">
+          <label for="type-level">Type Level:</label>
+          <select id="type-level">
+            <option value="none">None</option>
+            <option value="1">1 (Coarse)</option>
+            <option value="2">2 (Detailed)</option>
+            <option value="latest">Latest</option>
+          </select>
+          <span class="tooltiptext"
+            >Set the classification level for the foreground.</span
+          >
         </div>
-      </div>
-      <div class="form-group">
-        <label for="crop">Crop Image:</label>
-        <div class="tooltip">
+        <div class="form-group tooltip">
+          <label for="format">Image Format:</label>
+          <select id="format">
+            <option value="auto">Auto</option>
+            <option value="png">PNG</option>
+            <option value="jpg">JPG</option>
+            <option value="zip">ZIP</option>
+          </select>
+          <span class="tooltiptext"
+            >Choose the output format for the image.</span
+          >
+        </div>
+        <div class="form-group tooltip">
+          <label for="roi">Region of Interest:</label>
+          <input type="text" id="roi" placeholder="e.g., 0% 0% 100% 100%" />
+          <span class="tooltiptext"
+            >Define the region of interest (ROI) in the image.</span
+          >
+        </div>
+        <div class="form-group tooltip">
+          <label for="crop">Crop Image:</label>
           <input type="checkbox" id="crop" />
-          <span class="tooltiptext">
-            Crop the image to fit the object more tightly.
-          </span>
+          <span class="tooltiptext">Enable cropping of the image.</span>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="scale">Scale:</label>
-        <div class="tooltip">
+        <div
+          class="form-group tooltip"
+          id="crop-margin-group"
+          style="display: none"
+        >
+          <label for="crop-margin">Crop Margin:</label>
+          <input type="text" id="crop-margin" placeholder="e.g., 30px, 10%" />
+          <span class="tooltiptext"
+            >Set the margin around the cropped subject.</span
+          >
+        </div>
+        <div class="form-group tooltip">
+          <label for="scale">Scale:</label>
           <select id="scale">
             <option value="original">Original</option>
             <option value="fit">Fit</option>
             <option value="fill">Fill</option>
           </select>
-          <span class="tooltiptext">
-            <strong>Original:</strong> Keep the original size.<br />
-            <strong>Fit:</strong> Resize to fit within a specified area.<br />
-            <strong>Fill:</strong> Resize to fill the specified area.
-          </span>
+          <span class="tooltiptext"
+            >Adjust the scale of the image subject.</span
+          >
         </div>
+        <div class="form-group tooltip">
+          <label for="position">Position:</label>
+          <input type="text" id="position" placeholder="e.g., 50% 50%" />
+          <span class="tooltiptext"
+            >Set the position of the subject within the image.</span
+          >
+        </div>
+        <div class="form-group tooltip">
+          <label for="channels">Channels:</label>
+          <select id="channels">
+            <option value="rgba">RGBA</option>
+            <option value="alpha">Alpha</option>
+          </select>
+          <span class="tooltiptext">Select the image channels to process.</span>
+        </div>
+        <div class="form-group tooltip">
+          <label for="shadow-type">Shadow Type:</label>
+          <select id="shadow-type">
+            <option value="none">None</option>
+            <option value="auto">Auto</option>
+            <option value="car">Car</option>
+            <option value="3D">3D</option>
+            <option value="drop">Drop</option>
+          </select>
+          <span class="tooltiptext"
+            >Choose the type of shadow for the subject.</span
+          >
+        </div>
+        <div class="form-group tooltip">
+          <label for="shadow-opacity">Shadow Opacity:</label>
+          <input
+            type="number"
+            id="shadow-opacity"
+            min="0"
+            max="100"
+            placeholder="0-100"
+          />
+          <span class="tooltiptext">Set the opacity of the shadow.</span>
+        </div>
+        <div class="form-group tooltip">
+          <label for="semitransparency">Semi-transparency:</label>
+          <input type="checkbox" id="semitransparency" />
+          <span class="tooltiptext"
+            >Enable semi-transparent regions in the image.</span
+          >
+        </div>
+        <div class="form-group tooltip">
+          <label for="bg-color">Background Color:</label>
+          <input type="color" id="bg-color" title="Choose a color" />
+          <input
+            type="text"
+            id="bg-color-hex"
+            readonly
+            style="width: 100px; margin-left: 10px; text-align: center"
+          />
+          <div
+            id="color-preview"
+            style="
+              width: 30px;
+              height: 30px;
+              border: 1px solid #000;
+              display: inline-block;
+              vertical-align: middle;
+              margin-left: 10px;
+            "
+          ></div>
+          <span class="tooltiptext">Set a solid color background.</span>
+        </div>
+        <div class="form-group tooltip">
+          <label for="bg-image-url">Background Image URL:</label>
+          <input type="text" id="bg-image-url" placeholder="Enter URL" />
+          <span class="tooltiptext"
+            >Provide a URL for the background image.</span
+          >
+        </div>
+        <button class="remove-bg-btn" onclick="removeBackground()">
+          Remove Background
+        </button>
       </div>
-      <button onclick="removeBackground()">Remove Background</button>
-      <div
-        class="comparison-container"
-        id="comparison-container"
-        style="display: none"
-      >
-        <div class="image-wrapper">
-          <img id="original-image" alt="Original Image" />
+      <div class="main-content">
+        <h2>Remove Background from Image</h2>
+        <p class="description">
+          Use this tool to remove the background from any image seamlessly.
+          Upload your image, choose the desired settings, and watch as the
+          background is automatically removed. Use the slider to compare the
+          original image with the processed one for a clear before-and-after
+          view.
+        </p>
+        <div id="message"></div>
+        <p class="warning">
+          Note: This tool relies on an external API for background removal,
+          which has 50 uses monthly. If you encounter issues, try again later.
+        </p>
+        <div
+          class="comparison-container"
+          id="comparison-container"
+          style="display: none"
+        >
+          <div class="image-wrapper">
+            <img id="original-image" alt="Original Image" />
+          </div>
+          <div class="converted-wrapper">
+            <img id="converted-image" alt="Converted Image" />
+          </div>
+          <div class="slider" id="slider"></div>
         </div>
-        <div class="converted-wrapper">
-          <img id="converted-image" alt="Converted Image" />
-        </div>
-        <div class="slider" id="slider"></div>
+        <button
+          id="download-button"
+          style="display: none"
+          onclick="downloadImage()"
+        >
+          Download Image
+        </button>
       </div>
-      <button
-        id="download-button"
-        style="display: none"
-        onclick="downloadImage()"
-      >
-        Download Image
-      </button>
-      <div id="message"></div>
     </div>
     <footer>
       <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
@@ -305,24 +427,49 @@
       ];
       let downloadUrl;
 
-      document.querySelectorAll(".dropdown").forEach((dropdown) => {
-        const dropdownContent = dropdown.querySelector(".dropdown-content");
-        dropdown.addEventListener("mouseenter", () => {
-          dropdownContent.style.display = "block";
-        });
-        dropdown.addEventListener("mouseleave", () => {
-          dropdownContent.style.display = "none";
-        });
-        dropdown.querySelector("a").addEventListener("focus", () => {
-          dropdownContent.style.display = "block";
-        });
-        dropdown.querySelector("a").addEventListener("blur", () => {
-          dropdownContent.style.display = "none";
-        });
+      document.getElementById("source").addEventListener("change", function () {
+        const selectedSource = this.value;
+        document.getElementById("image-upload").style.display =
+          selectedSource === "image_file" ? "block" : "none";
+        document.getElementById("url-group").style.display =
+          selectedSource === "image_url" ? "block" : "none";
+        document.getElementById("b64-group").style.display =
+          selectedSource === "image_file_b64" ? "block" : "none";
       });
+
+      document.getElementById("crop").addEventListener("change", function () {
+        document.getElementById("crop-margin-group").style.display = this
+          .checked
+          ? "block"
+          : "none";
+      });
+
+      document
+        .getElementById("toggle-sidebar")
+        .addEventListener("click", function () {
+          const sidebar = document.querySelector(".sidebar");
+          const toggleButton = document.getElementById("toggle-sidebar");
+          sidebar.classList.toggle("collapsed");
+          if (sidebar.classList.contains("collapsed")) {
+            toggleButton.style.left = "-10px"; // Position when collapsed
+          } else {
+            toggleButton.style.left = "281px"; // Position when expanded
+          }
+        });
+
+      document
+        .getElementById("bg-color")
+        .addEventListener("input", function () {
+          const colorValue = this.value;
+          document.getElementById("color-preview").style.backgroundColor =
+            colorValue;
+          document.getElementById("bg-color-hex").value = colorValue; // Update hex value
+        });
 
       async function removeBackground() {
         const fileInput = document.getElementById("image-upload");
+        const imageUrlInput = document.getElementById("image-url");
+        const imageB64Input = document.getElementById("image-b64");
         const comparisonContainer = document.getElementById(
           "comparison-container"
         );
@@ -330,31 +477,62 @@
         const convertedImage = document.getElementById("converted-image");
         const downloadButton = document.getElementById("download-button");
         const message = document.getElementById("message");
-        const resolution = document.getElementById("resolution").value;
-        const cutout = document.getElementById("cutout").value;
-        const shadow = document.getElementById("shadow").checked
+        const source = document.getElementById("source").value;
+        const size = document.getElementById("size").value;
+        const type = document.getElementById("type").value;
+        const typeLevel = document.getElementById("type-level").value;
+        const format = document.getElementById("format").value;
+        const roi = document.getElementById("roi").value;
+        const crop = document.getElementById("crop").checked ? "true" : "false";
+        const cropMargin = document.getElementById("crop-margin").value;
+        const scale = document.getElementById("scale").value;
+        const position = document.getElementById("position").value;
+        const channels = document.getElementById("channels").value;
+        const shadowType = document.getElementById("shadow-type").value;
+        const shadowOpacity = document.getElementById("shadow-opacity").value;
+        const semitransparency = document.getElementById("semitransparency")
+          .checked
           ? "true"
           : "false";
-        const crop = document.getElementById("crop").checked ? "true" : "false";
-        const scale = document.getElementById("scale").value;
+        const bgColor = document.getElementById("bg-color").value;
+        const bgImageUrl = document.getElementById("bg-image-url").value;
 
         message.textContent = "";
         downloadButton.style.display = "none";
         comparisonContainer.style.display = "none";
 
-        if (fileInput.files.length === 0) {
-          alert("Please choose an image file.");
+        let formData = new FormData();
+
+        if (source === "image_file" && fileInput.files.length > 0) {
+          formData.append("image_file", fileInput.files[0]);
+        } else if (source === "image_url") {
+          formData.append("image_url", imageUrlInput.value);
+        } else if (source === "image_file_b64") {
+          formData.append("image_file_b64", imageB64Input.value);
+        } else {
+          message.textContent = "Please provide a valid image source.";
+          message.style.color = "yellow";
+          message.style.fontWeight = "bold";
           return;
         }
 
-        const file = fileInput.files[0];
-        const formData = new FormData();
-        formData.append("image_file", file);
-        formData.append("size", resolution);
-        formData.append("type", cutout);
-        formData.append("add_shadow", shadow);
+        formData.append("size", size);
+        formData.append("type", type);
+        formData.append("type_level", typeLevel);
+        formData.append("format", format);
+        formData.append("roi", roi);
         formData.append("crop", crop);
+        formData.append("crop_margin", cropMargin);
         formData.append("scale", scale);
+        formData.append("position", position);
+        formData.append("channels", channels);
+        formData.append("shadow_type", shadowType);
+        formData.append("shadow_opacity", shadowOpacity);
+        formData.append("semitransparency", semitransparency);
+        formData.append("bg_color", bgColor);
+        formData.append("bg_image_url", bgImageUrl);
+
+        console.log(...formData.entries());
 
         message.textContent = "Removing background...";
 
@@ -371,7 +549,7 @@
 
             if (response.ok) {
               const blob = await response.blob();
-              downloadUrl = URL.createObjectURL(blob);
+              const downloadUrl = URL.createObjectURL(blob);
 
               originalImage.onload = () => {
                 comparisonContainer.style.width = originalImage.width + "px";
@@ -385,11 +563,23 @@
                 initComparisons();
               };
 
-              originalImage.src = URL.createObjectURL(file);
+              originalImage.src = URL.createObjectURL(fileInput.files[0]);
               convertedImage.src = downloadUrl;
               return;
+            } else if (response.status === 400) {
+              message.textContent =
+                "Error: Invalid parameters or input file unprocessable.";
+              break;
             } else if (response.status === 402) {
               message.textContent = `API key ${key} limit exceeded, trying next key...`;
+            } else if (response.status === 403) {
+              message.textContent =
+                "Error: Authentication failed. Please check your API key.";
+              break;
+            } else if (response.status === 429) {
+              message.textContent =
+                "Error: Rate limit exceeded. Please try again later.";
+              break;
             } else {
               const errorText = await response.text();
               throw new Error(errorText);
