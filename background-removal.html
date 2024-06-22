@@ -111,13 +111,6 @@
         align-items: center;
         justify-content: center;
       }
-      .toggle-button svg {
-        width: 20px;
-        height: 20px;
-      }
-      .toggle-button:hover {
-        background-color: red;
-      }
       button {
         background-color: #8b0000;
         color: #fff;
@@ -182,11 +175,14 @@
     </header>
     <div class="container">
       <button id="toggle-sidebar" class="toggle-button">
-        <svg viewBox="0 0 100 80" width="30" height="30">
-          <rect width="100" height="20"></rect>
-          <rect y="30" width="100" height="20"></rect>
-          <rect y="60" width="100" height="20"></rect>
-        </svg>
+        <div class="tooltip tooltip-right">
+          <svg viewBox="0 0 100 80" width="30" height="30">
+            <rect width="100" height="20"></rect>
+            <rect y="30" width="100" height="20"></rect>
+            <rect y="60" width="100" height="20"></rect>
+          </svg>
+          <span class="tooltiptext">Click to collapse the sidebar</span>
+        </div>
       </button>
       <div class="sidebar">
         <div class="form-group tooltip">
@@ -444,18 +440,98 @@
           : "none";
       });
 
-      document
-        .getElementById("toggle-sidebar")
-        .addEventListener("click", function () {
-          const sidebar = document.querySelector(".sidebar");
-          const toggleButton = document.getElementById("toggle-sidebar");
+      document.addEventListener("DOMContentLoaded", () => {
+        const sidebar = document.querySelector(".sidebar");
+        const toggleButton = document.getElementById("toggle-sidebar");
+        const tooltipDiv = toggleButton.querySelector(".tooltip");
+        const tooltipText = toggleButton.querySelector(".tooltiptext");
+        const sidebarContents = sidebar.querySelectorAll(
+          ".form-group, .remove-bg-btn, #image-upload"
+        );
+        const imageSource = document.getElementById("source");
+        const urlGroup = document.getElementById("url-group");
+        const b64Group = document.getElementById("b64-group");
+        const fileInput = document.getElementById("image-upload");
+        const cropCheckbox = document.getElementById("crop");
+        const cropMarginGroup = document.getElementById("crop-margin-group");
+
+        let selectedSource = imageSource.value; // Track selected input type
+        let isCropChecked = cropCheckbox.checked; // Track crop checkbox state
+
+        // Function to center the button vertically
+        function centerToggleButton() {
+          const windowHeight = window.innerHeight;
+          const buttonHeight = toggleButton.offsetHeight;
+          toggleButton.style.top = `${(windowHeight - buttonHeight) / 2 - 83}px`;
+        }
+
+        // Function to hide sidebar contents immediately
+        function hideSidebarContents() {
+          sidebarContents.forEach((el) => {
+            el.classList.remove("visible"); // Remove visibility for fade-in
+            el.classList.remove("fade-in"); // Remove fade-in class
+            el.style.display = "none"; // Hide immediately
+          });
+        }
+
+        // Function to show sidebar contents with fade-in effect
+        function showSidebarContents() {
+          sidebarContents.forEach((el) => {
+            if (
+              (el === urlGroup && selectedSource === "image_url") ||
+              (el === b64Group && selectedSource === "image_file_b64") ||
+              (el !== urlGroup && el !== b64Group)
+            ) {
+              el.style.display = "block"; // Make visible relevant elements
+              el.classList.add("fade-in");
+              setTimeout(() => el.classList.add("visible"), 10); // Apply fade-in after setting display
+            }
+          });
+          cropMarginGroup.style.display = isCropChecked ? "block" : "none"; // Show or hide crop margin
+        }
+
+        // Center the button on load and when resized
+        centerToggleButton();
+        window.addEventListener("resize", centerToggleButton);
+
+        toggleButton.addEventListener("click", () => {
           sidebar.classList.toggle("collapsed");
+
           if (sidebar.classList.contains("collapsed")) {
             toggleButton.style.left = "-10px"; // Position when collapsed
+            tooltipText.textContent = "Click to expand the sidebar";
+            tooltipDiv.classList.add("right"); // Add class to move tooltip to the right
+            selectedSource = imageSource.value; // Save the current selected source
+            isCropChecked = cropCheckbox.checked; // Save the crop checkbox state
+            hideSidebarContents(); // Hide sidebar contents
           } else {
             toggleButton.style.left = "281px"; // Position when expanded
+            tooltipText.textContent = "Click to collapse the sidebar";
+            tooltipDiv.classList.remove("right"); // Remove class to reset tooltip position
+            setTimeout(showSidebarContents, 300); // Show contents after sidebar transition
           }
+
+          // Center the button after toggling
+          centerToggleButton();
         });
+
+        // Handle changes in the source select element
+        imageSource.addEventListener("change", () => {
+          selectedSource = imageSource.value; // Update the selected source
+          fileInput.style.display =
+            selectedSource === "image_file" ? "block" : "none";
+          urlGroup.style.display =
+            selectedSource === "image_url" ? "block" : "none";
+          b64Group.style.display =
+            selectedSource === "image_file_b64" ? "block" : "none";
+        });
+
+        // Handle changes in the crop checkbox
+        cropCheckbox.addEventListener("change", () => {
+          isCropChecked = cropCheckbox.checked; // Update the crop checkbox state
+          cropMarginGroup.style.display = isCropChecked ? "block" : "none"; // Show or hide crop margin
+        });
+      });
 
       document
         .getElementById("bg-color")
