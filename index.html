@@ -1,314 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Jarrod's Tool Hub</title>
-    <link rel="stylesheet" href="styles/navbar.css" />
+    <link rel="stylesheet" href="styles/navbar.css"/>
     <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        overflow-x: hidden;
-        font-family: Arial, sans-serif;
-        color: #ffffff;
-        background: black;
-        scroll-behavior: smooth;
-      }
-
-      body {
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        min-height: 100vh;
-      }
-
-      #particles-js {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: 0;
-      }
-
-      .flex-container {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-
-      .container {
-        position: relative;
-        z-index: 2;
-        padding: 20px;
-        text-align: center;
-        animation: fadeIn 1s ease-in-out forwards;
-      }
-
-      .main-title,
-      .subtitle {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: transform 0.3s ease, opacity 0.3s ease;
-      }
-
-      .card {
-        background-color: rgba(51, 51, 51, 0.8);
-        padding: 20px;
-        margin: 15px;
-        border-radius: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 210px;
-        height: 210px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        text-align: center;
-        overflow: hidden;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
-        position: relative;
-      }
-
-      .card canvas {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 20px;
-        pointer-events: none;
-        z-index: 1;
-      }
-
-      .card-content {
-        z-index: 2;
-      }
-
-      .card img {
-        width: 80px;
-        height: 80px;
-        margin-bottom: 10px;
-        border-radius: 10px;
-      }
-
-      .card-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .card-link {
-        text-decoration: none;
-        color: inherit;
-        display: inline-block;
-      }
-
-      footer {
-        background-color: #8b0000;
-        padding: 1em;
-        text-align: center;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            color: white;
+            background: black;
+            scroll-behavior: smooth;
         }
-        to {
-          opacity: 1;
-        }
-      }
 
-      @keyframes fadeInText {
-        from {
-          opacity: 0;
+        body {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            min-height: 100vh;
         }
-        to {
-          opacity: 1;
-        }
-      }
 
-      /* Hint styles */
-      #hint {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background-color: rgba(255, 255, 255, 0.8);
-        color: #000;
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-size: 14px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        opacity: 0;
-        transition: opacity 0.5s;
-        z-index: 100;
-      }
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .flex-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        .main-title,
+        .subtitle {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .card {
+            background-color: rgba(51, 51, 51, 0.8);
+            padding: 20px;
+            margin: 15px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 210px;
+            height: 210px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .card canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .card-content {
+            z-index: 2;
+        }
+
+        .card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+            display: inline-block;
+        }
+
+        footer {
+            background-color: #8b0000;
+            padding: 1em;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Hint styles */
+        #hint {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: 100;
+        }
     </style>
-  </head>
-  <body>
-    <header>
-      <h1>Jarrod's Tool Hub</h1>
-      <nav>
+</head>
+<body>
+<header>
+    <h1>Jarrod's Tool Hub</h1>
+    <nav>
         <a href="index.html">Home</a>
         <div class="dropdown">
-          <a href="#">Audio Tools</a>
-          <div class="dropdown-content">
-            <a href="audio-converter.html">Audio Converter</a>
-          </div>
+            <a href="#">Audio Tools</a>
+            <div class="dropdown-content">
+                <a href="audio-converter.html">Audio Converter</a>
+            </div>
         </div>
         <div class="dropdown">
-          <a href="#">Video Tools</a>
-          <div class="dropdown-content">
-            <a href="video-converter.html">Video Converter</a>
-          </div>
+            <a href="#">Video Tools</a>
+            <div class="dropdown-content">
+                <a href="video-converter.html">Video Converter</a>
+            </div>
         </div>
         <div class="dropdown">
-          <a href="#">Image Tools</a>
-          <div class="dropdown-content">
-            <a href="image-extraction.html">PDF Image Extraction</a>
-            <a href="background-removal.html">Background Removal</a>
-            <a href="image-converter.html">Image Converter</a>
-          </div>
+            <a href="#">Image Tools</a>
+            <div class="dropdown-content">
+                <a href="image-extraction.html">PDF Image Extraction</a>
+                <a href="background-removal.html">Background Removal</a>
+                <a href="image-converter.html">Image Converter</a>
+            </div>
         </div>
         <div class="dropdown">
-          <a href="#">Web Tools</a>
-          <div class="dropdown-content">
-            <a href="html-validator.html">HTML/CSS Validator</a>
-            <a href="json-formatter.html">JSON Formatter</a>
-            <a href="regex-tester.html">Regex Tester</a>
-            <a href="json-xml-converter.html">JSON-XML Converter</a>
-            <a href="code-beautifier.html">Code Beautifier</a>
-            <a href="markdown-previewer.html">Markdown Previewer</a>
-            <a href="css-minifier.html">CSS Minifier</a>
-          </div>
+            <a href="#">Web Tools</a>
+            <div class="dropdown-content">
+                <a href="html-validator.html">HTML/CSS Validator</a>
+                <a href="json-formatter.html">JSON Formatter</a>
+                <a href="regex-tester.html">Regex Tester</a>
+                <a href="json-xml-converter.html">JSON-XML Converter</a>
+                <a href="code-beautifier.html">Code Beautifier</a>
+                <a href="markdown-previewer.html">Markdown Previewer</a>
+                <a href="css-minifier.html">CSS Minifier</a>
+            </div>
         </div>
         <div class="dropdown">
-          <a href="#">Other Tools</a>
-          <div class="dropdown-content">
-            <a href="password-generator.html">Password Generator</a>
-            <a href="finance-tracker.html">Finance Tracker</a>
-            <a href="llm.html">Web-Based LLM</a>
-          </div>
+            <a href="#">Other Tools</a>
+            <div class="dropdown-content">
+                <a href="password-generator.html">Password Generator</a>
+                <a href="finance-tracker.html">Finance Tracker</a>
+                <a href="llm.html">Web-Based LLM</a>
+            </div>
         </div>
-      </nav>
-    </header>
+    </nav>
+</header>
 
-    <div id="particles-js"></div>
-    <div class="flex-container">
-      <main class="container">
+<div id="particles-js"></div>
+<div class="flex-container">
+    <main class="container">
         <h2 class="main-title">Welcome to Jarrod's Tool Hub</h2>
         <p class="subtitle">Explore my most frequently used tools:</p>
         <div class="card-container">
-          <a href="audio-converter.html" class="card-link">
-            <div class="card">
-              <canvas></canvas>
-              <div class="card-content">
-                <img src="icons/image-icon.png" alt="Image Converter" />
-                <h3>Image Converter</h3>
-                <p>Convert image files</p>
-              </div>
-            </div>
-          </a>
-          <a href="image-extraction.html" class="card-link">
-            <div class="card">
-              <canvas></canvas>
-              <div class="card-content">
-                <img src="icons/image-icon.png" alt="PDF Image Extractor" />
-                <h3>PDF Image Extractor</h3>
-                <p>Extract images from PDFs</p>
-              </div>
-            </div>
-          </a>
-          <a href="password-generator.html" class="card-link">
-            <div class="card">
-              <canvas></canvas>
-              <div class="card-content">
-                <img src="icons/password-icon.png" alt="Password Generator" />
-                <h3>Password Generator</h3>
-                <p>Generate secure passwords</p>
-              </div>
-            </div>
-          </a>
-          <a href="video-tools.html" class="card-link">
-            <div class="card">
-              <canvas></canvas>
-              <div class="card-content">
-                <img src="icons/video-icon.png" alt="Video Tools" />
-                <h3>Video Tools</h3>
-                <p>Access video tools</p>
-              </div>
-            </div>
-          </a>
-          <a href="json-formatter.html" class="card-link">
-            <div class="card">
-              <canvas></canvas>
-              <div class="card-content">
-                <img src="icons/web-tools-icon.png" alt="JSON Formatter" />
-                <h3>JSON Formatter</h3>
-                <p>Clean and format JSON data</p>
-              </div>
-            </div>
-          </a>
-          <a href="llm.html" class="card-link">
-            <div class="card">
-              <canvas></canvas>
-              <div class="card-content">
-                <img src="icons/llm-icon.png" alt="Web-Based LLM" />
-                <h3>Web-Based LLM</h3>
-                <p>Ask questions to the AI</p>
-              </div>
-            </div>
-          </a>
+            <a href="audio-converter.html" class="card-link">
+                <div class="card">
+                    <canvas></canvas>
+                    <div class="card-content">
+                        <img src="icons/image-icon.png" alt="Image Converter"/>
+                        <h3>Image Converter</h3>
+                        <p>Convert image files</p>
+                    </div>
+                </div>
+            </a>
+            <a href="image-extraction.html" class="card-link">
+                <div class="card">
+                    <canvas></canvas>
+                    <div class="card-content">
+                        <img src="icons/image-icon.png" alt="PDF Image Extractor"/>
+                        <h3>PDF Image Extractor</h3>
+                        <p>Extract images from PDFs</p>
+                    </div>
+                </div>
+            </a>
+            <a href="password-generator.html" class="card-link">
+                <div class="card">
+                    <canvas></canvas>
+                    <div class="card-content">
+                        <img src="icons/password-icon.png" alt="Password Generator"/>
+                        <h3>Password Generator</h3>
+                        <p>Generate secure passwords</p>
+                    </div>
+                </div>
+            </a>
+            <a href="video-tools.html" class="card-link">
+                <div class="card">
+                    <canvas></canvas>
+                    <div class="card-content">
+                        <img src="icons/video-icon.png" alt="Video Tools"/>
+                        <h3>Video Tools</h3>
+                        <p>Access video tools</p>
+                    </div>
+                </div>
+            </a>
+            <a href="json-formatter.html" class="card-link">
+                <div class="card">
+                    <canvas></canvas>
+                    <div class="card-content">
+                        <img src="icons/web-tools-icon.png" alt="JSON Formatter"/>
+                        <h3>JSON Formatter</h3>
+                        <p>Clean and format JSON data</p>
+                    </div>
+                </div>
+            </a>
+            <a href="llm.html" class="card-link">
+                <div class="card">
+                    <canvas></canvas>
+                    <div class="card-content">
+                        <img src="icons/llm-icon.png" alt="Web-Based LLM"/>
+                        <h3>Web-Based LLM</h3>
+                        <p>Ask questions to the AI</p>
+                    </div>
+                </div>
+            </a>
         </div>
-      </main>
-    </div>
+    </main>
+</div>
 
-    <footer>
-      <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
-    </footer>
+<footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
 
-    <div id="hint">Click around to create new particles!</div>
+<div id="hint">Click around to create new particles!</div>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="scripts/particles-config.js"></script>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="scripts/particles-config.js"></script>
 
-    <!-- JavaScript for inactivity hint -->
-    <script>
-      let lastInteractionTime = Date.now();
-      const hintTimeout = 5000; // Time in milliseconds (e.g., 5000ms = 5 seconds)
+<!-- JavaScript for inactivity hint -->
+<script>
+    let lastInteractionTime = Date.now();
+    const hintTimeout = 5000; // Time in milliseconds (e.g., 5000ms = 5 seconds)
 
-      function showHint() {
+    function showHint() {
         const hintElement = document.getElementById("hint");
         hintElement.style.opacity = "1";
-      }
+    }
 
-      function hideHint() {
+    function hideHint() {
         const hintElement = document.getElementById("hint");
         hintElement.style.opacity = "0";
-      }
+    }
 
-      function updateInteractionTime() {
+    function updateInteractionTime() {
         lastInteractionTime = Date.now();
         hideHint();
-      }
+    }
 
-      document.addEventListener("click", updateInteractionTime);
-      document.addEventListener("mousemove", updateInteractionTime);
-      document.addEventListener("keypress", updateInteractionTime);
+    document.addEventListener("click", updateInteractionTime);
+    document.addEventListener("mousemove", updateInteractionTime);
+    document.addEventListener("keypress", updateInteractionTime);
 
-      setInterval(() => {
+    setInterval(() => {
         if (Date.now() - lastInteractionTime > hintTimeout) {
-          showHint();
+            showHint();
         }
-      }, 1000); // Check every second
-    </script>
-  </body>
+    }, 1000); // Check every second
+</script>
+</body>
 </html>

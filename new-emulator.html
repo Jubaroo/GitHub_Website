@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced NES Emulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+        }
+
+        #screen-container {
+            position: relative;
+            max-width: 100%;
+            aspect-ratio: 256 / 240;
+            overflow: hidden;
+        }
+
+        #screen {
+            width: 100%;
+            height: 100%;
+        }
+
+        #controls {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            width: 200px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        label {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        label:hover {
+            background-color: #555;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #touch-controls {
+            position: absolute;
+            bottom: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .touch-button {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5em;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+        }
+
+        .touch-button:active {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+<h1>Enhanced NES Emulator</h1>
+<div id="screen-container">
+    <canvas id="screen" width="256" height="240"></canvas>
+    <div id="touch-controls" class="hidden">
+        <button class="touch-button" id="up">↑</button>
+        <button class="touch-button" id="down">↓</button>
+        <button class="touch-button" id="left">←</button>
+        <button class="touch-button" id="right">→</button>
+        <button class="touch-button" id="a">A</button>
+        <button class="touch-button" id="b">B</button>
+        <button class="touch-button" id="start">Start</button>
+        <button class="touch-button" id="select">Select</button>
+    </div>
+</div>
+<div id="controls">
+    <label for="rom">Choose ROM</label>
+    <input type="file" id="rom" accept=".nes">
+    <button onclick="toggleFullScreen()">Toggle Fullscreen</button>
+    <button onclick="saveState()">Save State</button>
+    <button onclick="loadState()">Load State</button>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jsnes@0.9.0/dist/jsnes.min.js"></script>
+<script>
+    const nes = new jsnes.NES({
+        onFrame: function (frameBuffer) {
+            let canvas = document.getElementById('screen');
+            let ctx = canvas.getContext('2d');
+            let imageData = ctx.createImageData(256, 240);
+            for (let i = 0; i < frameBuffer.length; i++) {
+                imageData.data[i * 4] = frameBuffer[i] & 0xFF;
+                imageData.data[i * 4 + 1] = (frameBuffer[i] >> 8) & 0xFF;
+                imageData.data[i * 4 + 2] = (frameBuffer[i] >> 16) & 0xFF;
+                imageData.data[i * 4 + 3] = 0xFF;
+            }
+            ctx.putImageData(imageData, 0, 0);
+        }
+    });
+
+    function loadROM() {
+        let fileInput = document.getElementById('rom');
+        let file = fileInput.files[0];
+        if (file) {
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                nes.loadROM(e.target.result);
+                nes.start();
+            };
+            reader.readAsBinaryString(file);
+        }
+    }
+
+    function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+        }
+    }
+
+    const keyMap = {
+        38: jsnes.Controller.BUTTON_UP,
+        40: jsnes.Controller.BUTTON_DOWN,
+        37: jsnes.Controller.BUTTON_LEFT,
+        39: jsnes.Controller.BUTTON_RIGHT,
+        90: jsnes.Controller.BUTTON_A,
+        88: jsnes.Controller.BUTTON_B,
+        13: jsnes.Controller.BUTTON_START,
+        32: jsnes.Controller.BUTTON_SELECT
+    };
+
+    document.addEventListener('keydown', (event) => {
+        const key = event.keyCode;
+        if (key in keyMap) {
+            nes.buttonDown(1, keyMap[key]);
+        }
+    });
+
+    document.addEventListener('keyup', (event) => {
+        const key = event.keyCode;
+        if (key in keyMap) {
+            nes.buttonUp(1, keyMap[key]);
+        }
+    });
+
+    const touchControls = {
+        'up': jsnes.Controller.BUTTON_UP,
+        'down': jsnes.Controller.BUTTON_DOWN,
+        'left': jsnes.Controller.BUTTON_LEFT,
+        'right': jsnes.Controller.BUTTON_RIGHT,
+        'a': jsnes.Controller.BUTTON_A,
+        'b': jsnes.Controller.BUTTON_B,
+        'start': jsnes.Controller.BUTTON_START,
+        'select': jsnes.Controller.BUTTON_SELECT
+    };
+
+    Object.keys(touchControls).forEach(id => {
+        const button = document.getElementById(id);
+        button.addEventListener('touchstart', () => nes.buttonDown(1, touchControls[id]));
+        button.addEventListener('touchend', () => nes.buttonUp(1, touchControls[id]));
+    });
+
+    function saveState() {
+        try {
+            const state = nes.toJSON();
+            localStorage.setItem('nesSaveState', JSON.stringify(state));
+            alert('State saved!');
+        } catch (error) {
+            alert('Failed to save state: ' + error.message);
+        }
+    }
+
+    function loadState() {
+        try {
+            const state = JSON.parse(localStorage.getItem('nesSaveState'));
+            if (state) {
+                nes.fromJSON(state);
+                nes.start();
+                alert('State loaded!');
+            } else {
+                alert('No saved state found.');
+            }
+        } catch (error) {
+            alert('Failed to load state: ' + error.message);
+        }
+    }
+
+    window.addEventListener('resize', adjustCanvasSize);
+
+    function adjustCanvasSize() {
+        const screenContainer = document.getElementById('screen-container');
+        const canvas = document.getElementById('screen');
+        canvas.width = screenContainer.clientWidth;
+        canvas.height = screenContainer.clientHeight;
+    }
+
+    function detectMobile() {
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 768;
+        if (isMobile) {
+            document.getElementById('touch-controls').classList.remove('hidden');
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        detectMobile();
+        adjustCanvasSize();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metadata Editor</title>
+    <link rel="stylesheet" href="styles/navbar.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, textarea, select, button {
+            background-color: #b1b1b1;
+            width: 98%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #8b0000;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff0000;
+        }
+        pre {
+            min-height: 100px;
+            text-align: left;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            background: #b1b1b1;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Metadata Editor</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <div class="dropdown">
+            <a href="#">Audio Tools</a>
+            <div class="dropdown-content">
+                <a href="audio-converter.html">Audio Converter</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#">Video Tools</a>
+            <div class="dropdown-content">
+                <a href="video-converter.html">Video Converter</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#">Image Tools</a>
+            <div class="dropdown-content">
+                <a href="image-extraction.html">PDF Image Extraction</a>
+                <a href="background-removal.html">Background Removal</a>
+                <a href="image-converter.html">Image Converter</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#">Web Tools</a>
+            <div class="dropdown-content">
+                <a href="html-validator.html">HTML/CSS Validator</a>
+                <a href="json-formatter.html">JSON Formatter</a>
+                <a href="regex-tester.html">Regex Tester</a>
+                <a href="json-xml-converter.html">JSON-XML Converter</a>
+                <a href="code-beautifier.html">Code Beautifier</a>
+                <a href="markdown-previewer.html">Markdown Previewer</a>
+                <a href="css-minifier.html">CSS Minifier</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#">Other Tools</a>
+            <div class="dropdown-content">
+                <a href="password-generator.html">Password Generator</a>
+                <a href="finance-tracker.html">Finance Tracker</a>
+                <a href="llm.html">Web-Based LLM</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <h1>Edit Metadata</h1>
+    <form id="media-form">
+        <input type="file" id="file-input" accept="audio/*,video/*,image/*">
+        <select id="metadata-type">
+            <option value="auto">Detect Type Automatically</option>
+            <option value="image">Image</option>
+            <option value="audio">Audio</option>
+            <option value="video">Video</option>
+        </select>
+        <input type="text" id="title" placeholder="Title">
+        <input type="text" id="author" placeholder="Author">
+        <input type="text" id="description" placeholder="Description">
+        <textarea id="comments" placeholder="Comments"></textarea>
+        <button type="button" onclick="editMetadata()">Save Metadata</button>
+    </form>
+    <h2>Metadata Output</h2>
+    <pre id="output"></pre>
+    <div id="download-link"></div>
+</div>
+
+<!-- Include Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.7/jsmediatags.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg"></script>
+
+<script>
+    let originalFile = null;
+    document.getElementById('file-input').addEventListener('change', handleFile);
+
+    function handleFile(event) {
+        const file = event.target.files[0];
+        originalFile = file;
+        if (!file) return;
+
+        const type = document.getElementById('metadata-type').value;
+        const output = document.getElementById('output');
+        output.textContent = '';
+
+        if (type === 'auto' || type === 'audio') {
+            readAudioMetadata(file);
+        }
+        if (type === 'auto' || type === 'image') {
+            readImageMetadata(file);
+        }
+        if (type === 'auto' || type === 'video') {
+            readVideoMetadata(file);
+        }
+    }
+
+    function readAudioMetadata(file) {
+        jsmediatags.read(file, {
+            onSuccess: function(tag) {
+                const metadata = tag.tags;
+                document.getElementById('title').value = metadata.title || '';
+                document.getElementById('author').value = metadata.artist || '';
+                document.getElementById('description').value = metadata.album || '';
+                document.getElementById('comments').value = metadata.comment || '';
+                document.getElementById('output').textContent = JSON.stringify(metadata, null, 2);
+            },
+            onError: function(error) {
+                console.error('Error reading audio metadata:', error);
+                document.getElementById('output').textContent = 'Error reading audio metadata: ' + error;
+            }
+        });
+    }
+
+    function readImageMetadata(file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const dataURL = event.target.result;
+            const img = new Image();
+            img.src = dataURL;
+            img.onload = function() {
+                EXIF.getData(img, function() {
+                    const metadata = EXIF.getAllTags(this);
+                    document.getElementById('title').value = metadata.ImageDescription || '';
+                    document.getElementById('author').value = metadata.Artist || '';
+                    document.getElementById('description').value = metadata.Make || '';
+                    document.getElementById('comments').value = metadata.UserComment || '';
+                    document.getElementById('output').textContent = JSON.stringify(metadata, null, 2);
+                });
+            };
+        };
+        reader.readAsDataURL(file);
+    }
+
+    async function readVideoMetadata(file) {
+        const { createFFmpeg, fetchFile } = FFmpeg;
+        const ffmpeg = createFFmpeg({ log: true });
+        const output = document.getElementById('output');
+
+        await ffmpeg.load();
+        await ffmpeg.FS('writeFile', file.name, await fetchFile(file));
+
+        await ffmpeg.run('-i', file.name, 'metadata.txt');
+        const metadata = ffmpeg.FS('readFile', 'metadata.txt');
+
+        const text = new TextDecoder('utf-8').decode(metadata);
+        output.textContent = text;
+
+        // Extracting simple metadata for demonstration
+        const title = text.match(/title\s*:\s*(.+)/i);
+        const author = text.match(/artist\s*:\s*(.+)/i);
+        const description = text.match(/comment\s*:\s*(.+)/i);
+
+        document.getElementById('title').value = title ? title[1] : '';
+        document.getElementById('author').value = author ? author[1] : '';
+        document.getElementById('description').value = description ? description[1] : '';
+    }
+
+    function editMetadata() {
+        const metadata = {
+            title: document.getElementById('title').value,
+            author: document.getElementById('author').value,
+            description: document.getElementById('description').value,
+            comments: document.getElementById('comments').value,
+        };
+
+        const type = document.getElementById('metadata-type').value;
+        if (type === 'audio') {
+            editAudioMetadata(originalFile, metadata);
+        } else if (type === 'image') {
+            editImageMetadata(originalFile, metadata);
+        } else if (type === 'video') {
+            editVideoMetadata(originalFile, metadata);
+        }
+    }
+
+    function editAudioMetadata(file, metadata) {
+        jsmediatags.read(file, {
+            onSuccess: function(tag) {
+                const writer = new jsmediatags.Reader(file).setTagsToWrite({
+                    title: metadata.title,
+                    artist: metadata.author,
+                    album: metadata.description,
+                    comment: metadata.comments,
+                });
+                writer.write();
+                createDownloadLink(file, 'audio');
+            },
+            onError: function(error) {
+                console.error('Error editing audio metadata:', error);
+            }
+        });
+    }
+
+    function editImageMetadata(file, metadata) {
+        // Update metadata directly is complex, typically requires server-side handling
+        console.log('Editing image metadata is not directly supported in browsers.');
+        createDownloadLink(file, 'image');
+    }
+
+    async function editVideoMetadata(file, metadata) {
+        const { createFFmpeg, fetchFile } = FFmpeg;
+        const ffmpeg = createFFmpeg({ log: true });
+
+        await ffmpeg.load();
+        await ffmpeg.FS('writeFile', file.name, await fetchFile(file));
+
+        // Using FFmpeg to update metadata
+        await ffmpeg.run('-i', file.name, '-metadata', `title=${metadata.title}`, '-metadata', `artist=${metadata.author}`, '-metadata', `comment=${metadata.description}`, 'output.mp4');
+
+        const data = ffmpeg.FS('readFile', 'output.mp4');
+        const blob = new Blob([data.buffer], { type: 'video/mp4' });
+        createDownloadLink(blob, 'video', 'output.mp4');
+    }
+
+    function createDownloadLink(file, type, filename = null) {
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(file instanceof Blob ? file : new Blob([file]));
+        link.download = filename || `edited-${type}.${file.name.split('.').pop()}`;
+        link.textContent = `Download edited ${type}`;
+        link.style.display = 'block';
+        const downloadDiv = document.getElementById('download-link');
+        downloadDiv.innerHTML = '';
+        downloadDiv.appendChild(link);
+    }
+</script>
+</body>
+</html>

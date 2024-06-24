@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Sheet Music Viewer and Creator</title>
+    <link rel="stylesheet" href="styles/navbar.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            color: #ff0000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #8b0000;
+            padding: 1em;
+            color: #ffffff;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffcccb;
+        }
+
+        .container {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #music-container, #creation-container {
+            border: 1px solid #8b0000;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #8b0000;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        button:hover {
+            background-color: #ff0000;
+        }
+
+        input[type="text"] {
+            width: 200px;
+            padding: 5px;
+            margin: 5px;
+            border: 1px solid #8b0000;
+            border-radius: 4px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        footer {
+            background-color: #8b0000;
+            padding: 1em;
+            color: #ffffff;
+            text-align: center;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vexflow/1.2.93/vexflow-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.25/Tone.min.js"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+<header>
+    <h1>Interactive Sheet Music Viewer and Creator</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="music-viewer.html">Music Viewer</a>
+        <!-- Add other links as needed -->
+    </nav>
+</header>
+<div class="container">
+    <h2>Upload and Play Sheet Music</h2>
+    <input type="file" id="file-input" accept=".musicxml,.mxl,.xml,.midi">
+    <div id="music-container"></div>
+    <div class="controls">
+        <button id="play-btn"><i class="ph-play-fill"></i> Play</button>
+        <button id="pause-btn" style="display:none;"><i class="ph-pause-fill"></i> Pause</button>
+        <label for="tempo">Tempo:</label>
+        <input type="range" id="tempo" min="30" max="200" value="120">
+        <span id="tempo-value">120</span> BPM
+    </div>
+    <div id="metronome">
+        <label for="metronome-switch">Metronome:</label>
+        <input type="checkbox" id="metronome-switch">
+    </div>
+</div>
+
+<div class="container">
+    <h2>Create Your Own Sheet Music</h2>
+    <div id="creation-container"></div>
+    <div class="controls">
+        <input type="text" id="note-input" placeholder="Enter notes (e.g., C4/q, D4, E4, F4)">
+        <button id="add-notes-btn"><i class="ph-plus-fill"></i> Add Notes</button>
+        <button id="play-creation-btn"><i class="ph-play-fill"></i> Play</button>
+        <button id="clear-sheet-btn"><i class="ph-trash-fill"></i> Clear Sheet</button>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Your Website. All rights reserved.</p>
+</footer>
+<script>
+    document.getElementById('file-input').addEventListener('change', handleFileUpload);
+    document.getElementById('play-btn').addEventListener('click', playMusic);
+    document.getElementById('pause-btn').addEventListener('click', pauseMusic);
+    document.getElementById('tempo').addEventListener('input', updateTempo);
+    document.getElementById('metronome-switch').addEventListener('change', toggleMetronome);
+    document.getElementById('add-notes-btn').addEventListener('click', addNotes);
+    document.getElementById('play-creation-btn').addEventListener('click', playCreatedMusic);
+    document.getElementById('clear-sheet-btn').addEventListener('click', clearSheet);
+
+    let vfViewer = null;
+    let vfCreator = null;
+    let viewerContext = null;
+    let creatorContext = null;
+    let player = new Tone.Player().toDestination();
+    let tempo = 120;
+    let metronome = new Tone.MembraneSynth().toDestination();
+    let isPlaying = false;
+
+    function handleFileUpload(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const xml = e.target.result;
+                renderSheetMusic(xml);
+            };
+            reader.readAsText(file);
+        }
+    }
+
+    function renderSheetMusic(xml) {
+        document.getElementById('music-container').innerHTML = ''; // Clear previous rendering
+        vfViewer = new Vex.Flow.Factory({ renderer: { elementId: 'music-container', width: 800, height: 400 } });
+        viewerContext = vfViewer.getContext();
+        const score = vfViewer.EasyScore();
+        const system = vfViewer.System();
+
+        // Example notes; in a real application, parse MusicXML or MIDI to get notes
+        system.addStave({
+            voices: [
+                score.voice(score.notes("C4/q, D4, E4, F4", { stem: "up" }))
+            ]
+        }).addClef('treble').addTimeSignature('4/4');
+
+        vfViewer.draw();
+    }
+
+    function playMusic() {
+        player.start();
+        document.getElementById('play-btn').style.display = 'none';
+        document.getElementById('pause-btn').style.display = 'inline';
+        isPlaying = true;
+    }
+
+    function pauseMusic() {
+        player.stop();
+        document.getElementById('play-btn').style.display = 'inline';
+        document.getElementById('pause-btn').style.display = 'none';
+        isPlaying = false;
+    }
+
+    function updateTempo(event) {
+        tempo = event.target.value;
+        document.getElementById('tempo-value').textContent = tempo;
+        Tone.Transport.bpm.value = tempo;
+    }
+
+    function toggleMetronome(event) {
+        if (event.target.checked) {
+            Tone.Transport.scheduleRepeat(time => {
+                metronome.triggerAttackRelease('C2', '8n', time);
+            }, '4n');
+        } else {
+            Tone.Transport.cancel();
+        }
+    }
+
+    function addNotes() {
+        const noteInput = document.getElementById('note-input').value;
+        if (!noteInput) {
+            alert("Please enter some notes.");
+            return;
+        }
+
+        if (!vfCreator) {
+            vfCreator = new Vex.Flow.Factory({ renderer: { elementId: 'creation-container', width: 800, height: 400 } });
+            creatorContext = vfCreator.getContext();
+        }
+
+        const score = vfCreator.EasyScore();
+        const system = vfCreator.System();
+        system.addStave({
+            voices: [score.voice(score.notes(noteInput))]
+        }).addClef('treble').addTimeSignature('4/4');
+        vfCreator.draw();
+    }
+
+    function playCreatedMusic() {
+        if (!vfCreator) {
+            alert("Please add notes first.");
+            return;
+        }
+
+        const notes = document.querySelector('#creation-container .vf-voice .vf-note');
+        if (notes.length === 0) {
+            alert("No notes to play.");
+            return;
+        }
+
+        // Convert VexFlow notation to a format that Tone.js can play (pseudo code)
+        // const midiData = convertVexFlowToMIDI(vfCreator);
+        // player.load(midiData).then(() => {
+        //     player.start();
+        // });
+
+        alert("Playback for created music is not yet implemented.");
+    }
+
+    function clearSheet() {
+        document.getElementById('creation-container').innerHTML = '';
+        vfCreator = null;
+        creatorContext = null;
+    }
+</script>
+</body>
+
+</html>
