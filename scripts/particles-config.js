@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       color: { value: "#ffffff" },
       shape: {
         type: "circle",
-        stroke: { width: 0, color: "#000000" },
+        stroke: { width: 0, color: "black" },
         polygon: { nb_sides: 5 },
       },
       opacity: {

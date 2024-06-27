@@ -5,27 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Sheet Music Viewer and Creator</title>
-    <link rel="stylesheet" href="styles/navbar.css" />
+    <link rel="stylesheet" href="../../styles/navbar.css" />
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #000000;
+            background-color: black;
             color: #ff0000;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-        }
-
-        header {
-            background-color: #8b0000;
-            padding: 1em;
-            color: #ffffff;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 10;
         }
 
         nav a {
@@ -103,9 +93,47 @@
 <header>
     <h1>Interactive Sheet Music Viewer and Creator</h1>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="music-viewer.html">Music Viewer</a>
-        <!-- Add other links as needed -->
+        <a href="../../index.html">Home</a>
+        <div class="dropdown">
+            <a href="#">Audio Tools</a>
+            <div class="dropdown-content">
+                <a href="audio-converter.html">Audio Converter</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#">Video Tools</a>
+            <div class="dropdown-content">
+                <a href="../video/video-converter.html">Video Converter</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#">Image Tools</a>
+            <div class="dropdown-content">
+                <a href="../images/image-extraction.html">PDF Image Extraction</a>
+                <a href="../images/background-removal.html">Background Removal</a>
+                <a href="../images/image-converter.html">Image Converter</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#">Web Tools</a>
+            <div class="dropdown-content">
+                <a href="../coding/html-validator.html">HTML/CSS Validator</a>
+                <a href="../coding/json-formatter.html">JSON Formatter</a>
+                <a href="../coding/regex-tester.html">Regex Tester</a>
+                <a href="../coding/json-xml-converter.html">JSON-XML Converter</a>
+                <a href="../coding/code-beautifier.html">Code Beautifier</a>
+                <a href="../coding/markdown-previewer.html">Markdown Previewer</a>
+                <a href="../coding/css-minifier.html">CSS Minifier</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#">Other Tools</a>
+            <div class="dropdown-content">
+                <a href="../misc/password-generator.html">Password Generator</a>
+                <a href="../misc/finance-tracker.html">Finance Tracker</a>
+                <a href="../misc/llm.html">Web-Based LLM</a>
+            </div>
+        </div>
     </nav>
 </header>
 <div class="container">
