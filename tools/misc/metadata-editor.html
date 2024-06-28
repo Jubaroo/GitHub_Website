@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Metadata Editor</title>
-    <link rel="stylesheet" href="../../styles/navbar.css" />
+    <link href="../../styles/navbar.css" rel="stylesheet"/>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,14 +13,16 @@
             text-align: center;
             padding: 20px;
         }
+
         .container {
             max-width: 800px;
-            margin: auto;
+            margin: 10px 10px 10px 33.33%;
             background: #1e1e1e;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         input, textarea, select, button {
             background-color: #b1b1b1;
             width: 98%;
@@ -29,6 +31,15 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
+
+        .file-input {
+            width: 95%; /* Adjust the width of the file input here */
+        }
+
+        textarea {
+            height: 150px; /* Default height for the comments box */
+        }
+
         button {
             background-color: #8b0000;
             color: white;
@@ -36,9 +47,11 @@
             border: none;
             cursor: pointer;
         }
+
         button:hover {
-            background-color: #ff0000;
+            background-color: red;
         }
+
         pre {
             min-height: 100px;
             text-align: left;
@@ -47,72 +60,37 @@
             background: #b1b1b1;
             padding: 10px;
             border: 1px solid #ddd;
+            border-radius: 8px; /* Rounded edges */
         }
     </style>
 </head>
 <body>
-<header>
-    <h1>Metadata Editor</h1>
-    <nav>
-        <a href="../../index.html">Home</a>
-        <div class="dropdown">
-            <a href="#">Audio Tools</a>
-            <div class="dropdown-content">
-                <a href="../audio/audio-converter.html">Audio Converter</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <a href="#">Video Tools</a>
-            <div class="dropdown-content">
-                <a href="../video/video-converter.html">Video Converter</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <a href="#">Image Tools</a>
-            <div class="dropdown-content">
-                <a href="../images/image-extraction.html">PDF Image Extraction</a>
-                <a href="../images/background-removal.html">Background Removal</a>
-                <a href="../images/image-converter.html">Image Converter</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <a href="#">Web Tools</a>
-            <div class="dropdown-content">
-                <a href="../coding/html-validator.html">HTML/CSS Validator</a>
-                <a href="../coding/json-formatter.html">JSON Formatter</a>
-                <a href="../coding/regex-tester.html">Regex Tester</a>
-                <a href="../coding/json-xml-converter.html">JSON-XML Converter</a>
-                <a href="../coding/code-beautifier.html">Code Beautifier</a>
-                <a href="../coding/markdown-previewer.html">Markdown Previewer</a>
-                <a href="../coding/css-minifier.html">CSS Minifier</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <a href="#">Other Tools</a>
-            <div class="dropdown-content">
-                <a href="password-generator.html">Password Generator</a>
-                <a href="finance-tracker.html">Finance Tracker</a>
-                <a href="llm.html">Web-Based LLM</a>
-            </div>
-        </div>
-    </nav>
-</header>
+
+<div id="navbar-placeholder"></div>
+
+<script>
+    fetch("../../html/navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+        });
+</script>
 
 <div class="container">
     <h1>Edit Metadata</h1>
     <form id="media-form">
-        <input type="file" id="file-input" accept="audio/*,video/*,image/*">
+        <input accept="audio/*,video/*,image/*" class="file-input" id="file-input" type="file">
         <select id="metadata-type">
             <option value="auto">Detect Type Automatically</option>
             <option value="image">Image</option>
             <option value="audio">Audio</option>
             <option value="video">Video</option>
         </select>
-        <input type="text" id="title" placeholder="Title">
-        <input type="text" id="author" placeholder="Author">
-        <input type="text" id="description" placeholder="Description">
+        <input id="title" placeholder="Title" type="text">
+        <input id="author" placeholder="Author" type="text">
+        <input id="description" placeholder="Description" type="text">
         <textarea id="comments" placeholder="Comments"></textarea>
-        <button type="button" onclick="editMetadata()">Save Metadata</button>
+        <button onclick="editMetadata()" type="button">Save Metadata</button>
     </form>
     <h2>Metadata Output</h2>
     <pre id="output"></pre>
@@ -150,7 +128,7 @@
 
     function readAudioMetadata(file) {
         jsmediatags.read(file, {
-            onSuccess: function(tag) {
+            onSuccess: function (tag) {
                 const metadata = tag.tags;
                 document.getElementById('title').value = metadata.title || '';
                 document.getElementById('author').value = metadata.artist || '';
@@ -158,7 +136,7 @@
                 document.getElementById('comments').value = metadata.comment || '';
                 document.getElementById('output').textContent = JSON.stringify(metadata, null, 2);
             },
-            onError: function(error) {
+            onError: function (error) {
                 console.error('Error reading audio metadata:', error);
                 document.getElementById('output').textContent = 'Error reading audio metadata: ' + error;
             }
@@ -167,12 +145,12 @@
 
     function readImageMetadata(file) {
         const reader = new FileReader();
-        reader.onload = function(event) {
+        reader.onload = function (event) {
             const dataURL = event.target.result;
             const img = new Image();
             img.src = dataURL;
-            img.onload = function() {
-                EXIF.getData(img, function() {
+            img.onload = function () {
+                EXIF.getData(img, function () {
                     const metadata = EXIF.getAllTags(this);
                     document.getElementById('title').value = metadata.ImageDescription || '';
                     document.getElementById('author').value = metadata.Artist || '';
@@ -186,8 +164,8 @@
     }
 
     async function readVideoMetadata(file) {
-        const { createFFmpeg, fetchFile } = FFmpeg;
-        const ffmpeg = createFFmpeg({ log: true });
+        const {createFFmpeg, fetchFile} = FFmpeg;
+        const ffmpeg = createFFmpeg({log: true});
         const output = document.getElementById('output');
 
         await ffmpeg.load();
@@ -229,7 +207,7 @@
 
     function editAudioMetadata(file, metadata) {
         jsmediatags.read(file, {
-            onSuccess: function(tag) {
+            onSuccess: function (tag) {
                 const writer = new jsmediatags.Reader(file).setTagsToWrite({
                     title: metadata.title,
                     artist: metadata.author,
@@ -239,7 +217,7 @@
                 writer.write();
                 createDownloadLink(file, 'audio');
             },
-            onError: function(error) {
+            onError: function (error) {
                 console.error('Error editing audio metadata:', error);
             }
         });
@@ -252,8 +230,8 @@
     }
 
     async function editVideoMetadata(file, metadata) {
-        const { createFFmpeg, fetchFile } = FFmpeg;
-        const ffmpeg = createFFmpeg({ log: true });
+        const {createFFmpeg, fetchFile} = FFmpeg;
+        const ffmpeg = createFFmpeg({log: true});
 
         await ffmpeg.load();
         await ffmpeg.FS('writeFile', file.name, await fetchFile(file));
@@ -262,7 +240,7 @@
         await ffmpeg.run('-i', file.name, '-metadata', `title=${metadata.title}`, '-metadata', `artist=${metadata.author}`, '-metadata', `comment=${metadata.description}`, 'output.mp4');
 
         const data = ffmpeg.FS('readFile', 'output.mp4');
-        const blob = new Blob([data.buffer], { type: 'video/mp4' });
+        const blob = new Blob([data.buffer], {type: 'video/mp4'});
         createDownloadLink(blob, 'video', 'output.mp4');
     }
 

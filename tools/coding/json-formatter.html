@@ -1,120 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>JSON Formatter</title>
-    <link rel="stylesheet" href="../../styles/web-styles.css" />
-  </head>
-  <body>
-    <header>
-      <h1>JSON Formatter</h1>
-      <nav>
-        <a href="../../index.html">Home</a>
-        <div class="dropdown">
-          <a href="#">Audio Tools</a>
-          <div class="dropdown-content">
-            <a href="../audio/audio-converter.html">Audio Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Video Tools</a>
-          <div class="dropdown-content">
-            <a href="../video/video-converter.html">Video Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Image Tools</a>
-          <div class="dropdown-content">
-            <a href="../images/image-extraction.html">PDF Image Extraction</a>
-            <a href="../images/background-removal.html">Background Removal</a>
-            <a href="../images/image-converter.html">Image Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Web Tools</a>
-          <div class="dropdown-content">
-            <a href="html-validator.html">HTML/CSS Validator</a>
-            <a href="json-formatter.html">JSON Formatter</a>
-            <a href="regex-tester.html">Regex Tester</a>
-            <a href="json-xml-converter.html">JSON-XML Converter</a>
-            <a href="code-beautifier.html">Code Beautifier</a>
-            <a href="markdown-previewer.html">Markdown Previewer</a>
-            <a href="css-minifier.html">CSS Minifier</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Other Tools</a>
-          <div class="dropdown-content">
-            <a href="../misc/password-generator.html">Password Generator</a>
-            <a href="../misc/finance-tracker.html">Finance Tracker</a>
-            <a href="../misc/llm.html">Web-Based LLM</a>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <div class="container">
-      <h2>Format Your JSON</h2>
-      <p class="description">
+    <link href="../../styles/web-styles.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<script>
+    fetch("../../html/navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+        });
+</script>
+
+<div class="container">
+    <h2>Format Your JSON</h2>
+    <p class="description">
         Easily format and beautify your JSON data with this tool. Paste your
         JSON into the box below, and click "Format JSON" to see it organized for
         easy reading and editing.
-      </p>
-      <textarea id="json-input" placeholder="Paste your JSON here"></textarea>
-      <div class="button-group">
+    </p>
+    <textarea id="json-input" placeholder="Paste your JSON here"></textarea>
+    <div class="button-group">
         <button onclick="formatJSON()">Format JSON</button>
         <button onclick="copyToClipboard()">Copy to Clipboard</button>
-      </div>
-      <pre id="formatted-json"></pre>
-      <div id="copy-message"></div>
     </div>
-    <footer>
-      <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
-    </footer>
-    <script>
-      document.querySelectorAll(".dropdown").forEach((dropdown) => {
+    <pre id="formatted-json"></pre>
+    <div id="copy-message"></div>
+</div>
+<footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
+<script>
+    document.querySelectorAll(".dropdown").forEach((dropdown) => {
         const dropdownContent = dropdown.querySelector(".dropdown-content");
         dropdown.addEventListener("mouseenter", () => {
-          dropdownContent.style.display = "block";
+            dropdownContent.style.display = "block";
         });
         dropdown.addEventListener("mouseleave", () => {
-          dropdownContent.style.display = "none";
+            dropdownContent.style.display = "none";
         });
         dropdown.querySelector("a").addEventListener("focus", () => {
-          dropdownContent.style.display = "block";
+            dropdownContent.style.display = "block";
         });
         dropdown.querySelector("a").addEventListener("blur", () => {
-          dropdownContent.style.display = "none";
+            dropdownContent.style.display = "none";
         });
-      });
+    });
 
-      // Define a variable to store the timeout ID
-      let copyMessageTimeout;
+    // Define a variable to store the timeout ID
+    let copyMessageTimeout;
 
-      function formatJSON() {
+    function formatJSON() {
         const input = document.getElementById("json-input").value.trim();
         const notification = document.getElementById("copy-message");
 
         if (!input) {
-          document.getElementById("formatted-json").innerText =
-            "No JSON input provided.";
-          notification.textContent = "";
-          return;
+            document.getElementById("formatted-json").innerText =
+                "No JSON input provided.";
+            notification.textContent = "";
+            return;
         }
 
         try {
-          const fixedInput = fixJSON(input);
-          const parsed = JSON.parse(fixedInput);
-          const formatted = JSON.stringify(parsed, null, 4);
-          document.getElementById("formatted-json").innerText = formatted;
-          notification.textContent = ""; // Clear previous message
+            const fixedInput = fixJSON(input);
+            const parsed = JSON.parse(fixedInput);
+            const formatted = JSON.stringify(parsed, null, 4);
+            document.getElementById("formatted-json").innerText = formatted;
+            notification.textContent = ""; // Clear previous message
         } catch (error) {
-          document.getElementById("formatted-json").innerText = "Invalid JSON";
-          notification.textContent = ""; // Clear previous message
+            document.getElementById("formatted-json").innerText = "Invalid JSON";
+            notification.textContent = ""; // Clear previous message
         }
-      }
+    }
 
-      function fixJSON(jsonString) {
+    function fixJSON(jsonString) {
         // Step 1: Add missing commas between object properties
         jsonString = jsonString.replace(/}(\s*{)/g, "},$1");
         jsonString = jsonString.replace(/}(\s*\")/g, "},$1");
@@ -130,56 +95,56 @@
         let openBrackets = jsonString.match(/{/g) || [];
         let closeBrackets = jsonString.match(/}/g) || [];
         if (openBrackets.length > closeBrackets.length) {
-          jsonString += "}".repeat(openBrackets.length - closeBrackets.length);
+            jsonString += "}".repeat(openBrackets.length - closeBrackets.length);
         }
 
         openBrackets = jsonString.match(/\[/g) || [];
         closeBrackets = jsonString.match(/\]/g) || [];
         if (openBrackets.length > closeBrackets.length) {
-          jsonString += "]".repeat(openBrackets.length - closeBrackets.length);
+            jsonString += "]".repeat(openBrackets.length - closeBrackets.length);
         }
 
         // Step 5: Remove invalid characters
         jsonString = jsonString.replace(/[^\x20-\x7E]+/g, "");
 
         return jsonString;
-      }
+    }
 
-      function copyToClipboard() {
+    function copyToClipboard() {
         const formattedJson =
-          document.getElementById("formatted-json").innerText;
+            document.getElementById("formatted-json").innerText;
         const notification = document.getElementById("copy-message");
 
         if (
-          formattedJson.trim() === "" ||
-          formattedJson === "Invalid JSON" ||
-          formattedJson === "No JSON input provided."
+            formattedJson.trim() === "" ||
+            formattedJson === "Invalid JSON" ||
+            formattedJson === "No JSON input provided."
         ) {
-          // Show an error message if there's nothing to copy or the JSON is invalid
-          notification.textContent = "Nothing to copy!";
-          notification.style.color = "red";
+            // Show an error message if there's nothing to copy or the JSON is invalid
+            notification.textContent = "Nothing to copy!";
+            notification.style.color = "red";
         } else {
-          // Proceed with copying
-          navigator.clipboard
-            .writeText(formattedJson)
-            .then(() => {
-              // Show success message
-              notification.textContent = "Copied to clipboard!";
-              notification.style.color = "green";
-            })
-            .catch((err) => {
-              // Show failure message
-              notification.textContent = "Failed to copy.";
-              notification.style.color = "red";
-            });
+            // Proceed with copying
+            navigator.clipboard
+                .writeText(formattedJson)
+                .then(() => {
+                    // Show success message
+                    notification.textContent = "Copied to clipboard!";
+                    notification.style.color = "green";
+                })
+                .catch((err) => {
+                    // Show failure message
+                    notification.textContent = "Failed to copy.";
+                    notification.style.color = "red";
+                });
         }
 
         // Clear the previous timeout and set a new one
         clearTimeout(copyMessageTimeout);
         copyMessageTimeout = setTimeout(() => {
-          notification.textContent = "";
+            notification.textContent = "";
         }, 3000);
-      }
-    </script>
-  </body>
+    }
+</script>
+</body>
 </html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Flight Tracker</title>
+    <link href="/styles/navbar.css" rel="stylesheet"/>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            color: white;
+            background: black;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .flex-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding-top: 40px;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(51, 51, 51, 0.8);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label, input, button {
+            display: block;
+            margin: 10px auto;
+            color: white;
+        }
+
+        input, button, select {
+            padding: 10px;
+            background-color: #333;
+            border: 1px solid #555;
+            border-radius: 5px;
+            color: white;
+            width: 90%;
+            max-width: 300px;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #28a745;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #flightInfo, #message {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(51, 51, 51, 0.8);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            text-align: left;
+            display: none;
+        }
+
+        footer {
+            background-color: #8b0000;
+            padding: 1em;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<script>
+    fetch("../../html/navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+        });
+</script>
+
+<div class="flex-container">
+    <main class="container">
+        <h1>Flight Tracker</h1>
+        <form id="flightForm">
+            <label for="flightNumber">Enter Flight Number:</label>
+            <input id="flightNumber" name="flightNumber" type="text">
+
+            <label for="airlineName">Enter Airline Name:</label>
+            <input id="airlineName" name="airlineName" type="text">
+
+            <label for="depIata">Enter Departure Airport IATA Code:</label>
+            <input id="depIata" name="depIata" type="text">
+
+            <label for="arrIata">Enter Arrival Airport IATA Code:</label>
+            <input id="arrIata" name="arrIata" type="text">
+
+            <label for="flightDate">Enter Flight Date (YYYY-MM-DD):</label>
+            <input id="flightDate" name="flightDate" type="date">
+
+            <button type="submit">Track Flight</button>
+        </form>
+        <div id="message"></div>
+        <div id="flightInfo"></div>
+    </main>
+</div>
+
+<footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
+
+<script>
+    document.getElementById('flightForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const apiKey = '822488e8d93ebfbcff9b24901138fc78'; // Your actual API key
+        let apiUrl = `http://api.aviationstack.com/v1/flights?access_key=${apiKey}`;
+
+        const flightNumber = document.getElementById('flightNumber').value.trim().toUpperCase();
+        if (flightNumber) apiUrl += `&flight_number=${flightNumber}`;
+
+        const airlineName = document.getElementById('airlineName').value.trim();
+        if (airlineName) apiUrl += `&airline_name=${airlineName}`;
+
+        const depIata = document.getElementById('depIata').value.trim().toUpperCase();
+        if (depIata) apiUrl += `&dep_iata=${depIata}`;
+
+        const arrIata = document.getElementById('arrIata').value.trim().toUpperCase();
+        if (arrIata) apiUrl += `&arr_iata=${arrIata}`;
+
+        const flightDate = document.getElementById('flightDate').value;
+        if (flightDate) apiUrl += `&flight_date=${flightDate}`;
+
+        const messageDiv = document.getElementById('message');
+        const flightInfoDiv = document.getElementById('flightInfo');
+        messageDiv.style.display = 'block';
+        messageDiv.innerText = 'Fetching flight data...';
+        flightInfoDiv.style.display = 'none';
+
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(error => {
+                        throw error;
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                messageDiv.style.display = 'none';
+                if (data.data && data.data.length > 0) {
+                    const flight = data.data[0];
+                    flightInfoDiv.innerHTML = `
+                        <h2>Flight Information</h2>
+                        <p><strong>Airline:</strong> ${flight.airline.name}</p>
+                        <p><strong>Flight Number:</strong> ${flight.flight.iata}</p>
+                        <p><strong>Departure Airport:</strong> ${flight.departure.airport} (${flight.departure.iata})</p>
+                        <p><strong>Arrival Airport:</strong> ${flight.arrival.airport} (${flight.arrival.iata})</p>
+                        <p><strong>Departure Time:</strong> ${flight.departure.estimated || flight.departure.scheduled}</p>
+                        <p><strong>Arrival Time:</strong> ${flight.arrival.estimated || flight.arrival.scheduled}</p>
+                        <p><strong>Status:</strong> ${flight.flight_status}</p>
+                    `;
+                    flightInfoDiv.style.display = 'block';
+                } else {
+                    messageDiv.style.display = 'block';
+                    messageDiv.innerText = 'Flight not found. Please check the details and try again.';
+                }
+            })
+            .catch(error => {
+                messageDiv.style.display = 'block';
+                switch (error.error.code) {
+                    case 'invalid_access_key':
+                        messageDiv.innerText = 'Invalid API access key.';
+                        break;
+                    case 'missing_access_key':
+                        messageDiv.innerText = 'No API access key was supplied.';
+                        break;
+                    case 'inactive_user':
+                        messageDiv.innerText = 'The given user account is inactive.';
+                        break;
+                    case 'https_access_restricted':
+                        messageDiv.innerText = 'HTTPS access is not supported on the current subscription plan.';
+                        break;
+                    case 'function_access_restricted':
+                        messageDiv.innerText = 'The given API endpoint is not supported on the current subscription plan.';
+                        break;
+                    case 'invalid_api_function':
+                        messageDiv.innerText = 'The given API endpoint does not exist.';
+                        break;
+                    case '404_not_found':
+                        messageDiv.innerText = 'Resource not found.';
+                        break;
+                    case 'usage_limit_reached':
+                        messageDiv.innerText = 'The given user account has reached its monthly allowed request volume.';
+                        break;
+                    case 'rate_limit_reached':
+                        messageDiv.innerText = 'The given user account has reached the rate limit.';
+                        break;
+                    case 'internal_error':
+                        messageDiv.innerText = 'An internal error occurred.';
+                        break;
+                    default:
+                        messageDiv.innerText = 'An error occurred while fetching flight data. Please try again later.';
+                        break;
+                }
+                console.error('Error fetching flight data:', error);
+            });
+    });
+</script>
+</body>
+</html>

@@ -1,144 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>CSS Minifier</title>
-    <link rel="stylesheet" href="../../styles/web-styles.css" />
+    <link href="../../styles/web-styles.css" rel="stylesheet"/>
     <style>
-      #copy-notification {
-        margin-top: 10px;
-        font-weight: bold;
-      }
+        #copy-notification {
+            margin-top: 10px;
+            font-weight: bold;
+        }
     </style>
-  </head>
-  <body>
-    <header>
-      <h1>Jarrod's Tool Hub</h1>
-      <nav>
-        <a href="../../index.html">Home</a>
-        <div class="dropdown">
-          <a href="#">Audio Tools</a>
-          <div class="dropdown-content">
-            <a href="../audio/audio-converter.html">Audio Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Video Tools</a>
-          <div class="dropdown-content">
-            <a href="../video/video-converter.html">Video Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Image Tools</a>
-          <div class="dropdown-content">
-            <a href="../images/image-extraction.html">PDF Image Extraction</a>
-            <a href="../images/background-removal.html">Background Removal</a>
-            <a href="../images/image-converter.html">Image Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Web Tools</a>
-          <div class="dropdown-content">
-            <a href="html-validator.html">HTML/CSS Validator</a>
-            <a href="json-formatter.html">JSON Formatter</a>
-            <a href="regex-tester.html">Regex Tester</a>
-            <a href="json-xml-converter.html">JSON-XML Converter</a>
-            <a href="code-beautifier.html">Code Beautifier</a>
-            <a href="markdown-previewer.html">Markdown Previewer</a>
-            <a href="css-minifier.html">CSS Minifier</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Other Tools</a>
-          <div class="dropdown-content">
-            <a href="../misc/password-generator.html">Password Generator</a>
-            <a href="../misc/finance-tracker.html">Finance Tracker</a>
-            <a href="../misc/llm.html">Web-Based LLM</a>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <div class="container">
-      <h2>Minify Your CSS</h2>
-      <p class="description">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<script>
+    fetch("../../html/navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+        });
+</script>
+
+<div class="container">
+    <h2>Minify Your CSS</h2>
+    <p class="description">
         Optimize your CSS by removing unnecessary spaces, comments, and
         formatting with this CSS Minifier tool. Paste your CSS code into the
         input box and click "Minify CSS" to get a compact and efficient version
         of your stylesheet.
-      </p>
-      <textarea id="css-input" placeholder="Paste your CSS here"></textarea>
-      <div class="button-group">
+    </p>
+    <textarea id="css-input" placeholder="Paste your CSS here"></textarea>
+    <div class="button-group">
         <button onclick="minifyCSS()">Minify CSS</button>
         <button id="copy-button" onclick="copyToClipboard()">Copy</button>
-      </div>
-      <pre id="minified-css"></pre>
-      <p id="copy-notification"></p>
-      <!-- New element for copy notification -->
     </div>
-    <footer>
-      <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
-    </footer>
-    <script>
-      // Define a variable to store the timeout ID
-      let notificationTimeout;
+    <pre id="minified-css"></pre>
+    <p id="copy-notification"></p>
+    <!-- New element for copy notification -->
+</div>
+<footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
+<script>
+    // Define a variable to store the timeout ID
+    let notificationTimeout;
 
-      function minifyCSS() {
+    function minifyCSS() {
         const cssInput = document.getElementById("css-input").value.trim();
         const notification = document.getElementById("copy-notification");
 
         if (cssInput === "") {
-          // Show an error message if there's nothing to minify
-          notification.textContent = "Nothing to minify!";
-          notification.style.color = "red";
+            // Show an error message if there's nothing to minify
+            notification.textContent = "Nothing to minify!";
+            notification.style.color = "red";
         } else {
-          const minified = cssInput
-            .replace(/\/\*[\s\S]*?\*\//g, "") // Remove comments
-            .replace(/\s+/g, " ") // Collapse whitespace
-            .replace(/\s*({|}|;|:|,)\s*/g, "$1") // Remove space around { } ; : ,
-            .replace(/;}/g, "}"); // Remove last semicolon in block
-          document.getElementById("minified-css").textContent = minified;
+            const minified = cssInput
+                .replace(/\/\*[\s\S]*?\*\//g, "") // Remove comments
+                .replace(/\s+/g, " ") // Collapse whitespace
+                .replace(/\s*({|}|;|:|,)\s*/g, "$1") // Remove space around { } ; : ,
+                .replace(/;}/g, "}"); // Remove last semicolon in block
+            document.getElementById("minified-css").textContent = minified;
 
-          // Show success message
-          notification.textContent = "CSS minified successfully!";
-          notification.style.color = "green";
+            // Show success message
+            notification.textContent = "CSS minified successfully!";
+            notification.style.color = "green";
         }
 
         // Clear the previous timeout and set a new one
         clearTimeout(notificationTimeout);
         notificationTimeout = setTimeout(() => {
-          notification.textContent = "";
+            notification.textContent = "";
         }, 3000);
-      }
+    }
 
-      function copyToClipboard() {
+    function copyToClipboard() {
         const minifiedCss = document.getElementById("minified-css").textContent;
         const notification = document.getElementById("copy-notification");
 
         if (minifiedCss.trim() === "") {
-          // If minified CSS is blank, show an error message
-          notification.textContent = "Nothing to copy!";
-          notification.style.color = "red";
+            // If minified CSS is blank, show an error message
+            notification.textContent = "Nothing to copy!";
+            notification.style.color = "red";
         } else {
-          // Otherwise, proceed with copying
-          const textarea = document.createElement("textarea");
-          textarea.value = minifiedCss;
-          document.body.appendChild(textarea);
-          textarea.select();
-          document.execCommand("copy");
-          document.body.removeChild(textarea);
+            // Otherwise, proceed with copying
+            const textarea = document.createElement("textarea");
+            textarea.value = minifiedCss;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
 
-          // Show success message
-          notification.textContent = "Minified CSS copied to clipboard!";
-          notification.style.color = "green";
+            // Show success message
+            notification.textContent = "Minified CSS copied to clipboard!";
+            notification.style.color = "green";
         }
 
         // Clear the previous timeout and set a new one
         clearTimeout(notificationTimeout);
         notificationTimeout = setTimeout(() => {
-          notification.textContent = "";
+            notification.textContent = "";
         }, 3000);
-      }
-    </script>
-  </body>
+    }
+</script>
+</body>
 </html>

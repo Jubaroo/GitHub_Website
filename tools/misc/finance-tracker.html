@@ -1,462 +1,427 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta
-      name="description"
-      content="Finance Tracker: Manage your bills and income efficiently."
+            content="Finance Tracker: Manage your bills and income efficiently."
+            name="description"
     />
     <meta
-      name="keywords"
-      content="finance, tracker, bills, income, management"
+            content="finance, tracker, bills, income, management"
+            name="keywords"
     />
     <title>Finance Tracker</title>
-    <link rel="stylesheet" href="../../styles/navbar.css" />
-    <link rel="stylesheet" href="../../styles/file_ops.css" />
+    <link href="../../styles/navbar.css" rel="stylesheet"/>
+    <link href="../../styles/file_ops.css" rel="stylesheet"/>
     <style>
-      :root {
-        --main-bg-color: black;
-        --main-text-color: red;
-        --header-footer-bg: #8b0000;
-        --header-footer-text: white;
-        --button-bg: #8b0000;
-        --button-bg-hover: red;
-        --input-bg: #1e1e1e;
-        --input-text: white;
-        --dropdown-bg: #8b0000;
-        --dropdown-hover-bg: red;
-        --modal-bg: rgba(0, 0, 0, 0.8);
-        --modal-content-bg: #fefefe;
-      }
+        :root {
+            --main-bg-color: black;
+            --main-text-color: red;
+            --header-footer-bg: #8b0000;
+            --header-footer-text: white;
+            --button-bg: #8b0000;
+            --button-bg-hover: red;
+            --input-bg: #1e1e1e;
+            --input-text: white;
+            --dropdown-bg: #8b0000;
+            --dropdown-hover-bg: red;
+            --modal-bg: rgba(0, 0, 0, 0.8);
+            --modal-content-bg: #fefefe;
+        }
 
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: var(--main-bg-color);
-        color: var(--main-text-color);
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--main-bg-color);
+            color: var(--main-text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-      footer {
-        background-color: var(--header-footer-bg);
-        color: var(--header-footer-text);
-        text-align: center;
-        padding: 1em 0;
-      }
+        footer {
+            background-color: var(--header-footer-bg);
+            color: var(--header-footer-text);
+            text-align: center;
+            padding: 1em 0;
+        }
 
-      .container {
-        flex: 1;
-        max-width: 1000px;
-        margin: auto;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+        .container {
+            flex: 1;
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-      .summary-charts-container {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        margin-bottom: 20px;
-      }
-
-      .summary-section {
-        flex: 1;
-        background-color: #222;
-        padding: 10px;
-        border-radius: 8px;
-        margin-right: 10px;
-        max-width: 30%;
-      }
-
-      .summary-section p {
-        margin: 0;
-      }
-
-      .charts-section {
-        flex: 1;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 70%;
-      }
-
-      .chart {
-        flex: 1;
-        margin: 0 10px;
-        background-color: #222;
-        padding: 10px;
-        border-radius: 8px;
-      }
-
-      .flex-container {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        padding: 20px 0;
-      }
-
-      section {
-        flex: 1;
-        margin: 0 10px;
-        max-width: 48%;
-        background-color: #222;
-        padding: 10px;
-        border-radius: 8px;
-      }
-
-      form {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-      }
-
-      form label,
-      form input,
-      form button {
-        margin-bottom: 10px;
-      }
-
-      input {
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background-color: var(--input-bg);
-        color: var(--input-text);
-      }
-
-      button {
-        background-color: var(--button-bg);
-        color: var(--header-footer-text);
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-        border-radius: 10px;
-        margin: 5px;
-        transition: background-color 0.3s;
-      }
-
-      button:hover {
-        background-color: var(--button-bg-hover);
-      }
-
-      ul {
-        list-style: none;
-        padding: 0;
-        width: 100%;
-      }
-
-      li {
-        padding: 10px;
-        background: var(--input-bg);
-        border-bottom: 1px solid #ddd;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: var(--header-footer-text);
-      }
-
-      li button {
-        margin-left: 10px;
-      }
-
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: var(--modal-bg);
-        padding-top: 60px;
-      }
-
-      .modal-content {
-        background-color: var(--modal-content-bg);
-        margin: 5% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 500px;
-        border-radius: 10px;
-      }
-
-      .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-      }
-
-      .close:hover,
-      .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-      }
-
-      .edit-form {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .edit-form input,
-      .edit-form button {
-        margin-bottom: 10px;
-      }
-
-      /* Media Queries */
-      @media (max-width: 800px) {
-        .file-operations,
-        .summary-charts-container,
-        .flex-container {
-          flex-direction: column;
-          align-items: center;
+        .summary-charts-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 20px;
         }
 
         .summary-section {
-          max-width: 100%;
-          margin-bottom: 20px;
+            flex: 1;
+            background-color: #222;
+            padding: 10px;
+            border-radius: 8px;
+            margin-right: 10px;
+            max-width: 30%;
+        }
+
+        .summary-section p {
+            margin: 0;
         }
 
         .charts-section {
-          max-width: 100%;
-          margin-bottom: 20px;
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 70%;
         }
 
         .chart {
-          max-width: 100%;
-          margin-bottom: 20px;
+            flex: 1;
+            margin: 0 10px;
+            background-color: #222;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 20px 0;
         }
 
         section {
-          max-width: 100%;
-          margin: 10px 0;
+            flex: 1;
+            margin: 0 10px;
+            max-width: 48%;
+            background-color: #222;
+            padding: 10px;
+            border-radius: 8px;
         }
-      }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        form label,
+        form input,
+        form button {
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: var(--input-bg);
+            color: var(--input-text);
+        }
+
+        button {
+            background-color: var(--button-bg);
+            color: var(--header-footer-text);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 10px;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: var(--button-bg-hover);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        li {
+            padding: 10px;
+            background: var(--input-bg);
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--header-footer-text);
+        }
+
+        li button {
+            margin-left: 10px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: var(--modal-bg);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: var(--modal-content-bg);
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .edit-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .edit-form input,
+        .edit-form button {
+            margin-bottom: 10px;
+        }
+
+        /* Media Queries */
+        @media (max-width: 800px) {
+            .file-operations,
+            .summary-charts-container,
+            .flex-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .summary-section {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .charts-section {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .chart {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            section {
+                max-width: 100%;
+                margin: 10px 0;
+            }
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  </head>
-  <body>
-    <header>
-      <h1>Finance Tracker</h1>
-      <nav>
-        <a href="../../index.html">Home</a>
-        <div class="dropdown">
-          <a href="#">Audio Tools</a>
-          <div class="dropdown-content">
-            <a href="../audio/audio-converter.html">Audio Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Video Tools</a>
-          <div class="dropdown-content">
-            <a href="../video/video-converter.html">Video Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Image Tools</a>
-          <div class="dropdown-content">
-            <a href="../images/image-extraction.html">PDF Image Extraction</a>
-            <a href="../images/background-removal.html">Background Removal</a>
-            <a href="../images/image-converter.html">Image Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Web Tools</a>
-          <div class="dropdown-content">
-            <a href="../coding/html-validator.html">HTML/CSS Validator</a>
-            <a href="../coding/json-formatter.html">JSON Formatter</a>
-            <a href="../coding/regex-tester.html">Regex Tester</a>
-            <a href="../coding/json-xml-converter.html">JSON-XML Converter</a>
-            <a href="../coding/code-beautifier.html">Code Beautifier</a>
-            <a href="../coding/markdown-previewer.html">Markdown Previewer</a>
-            <a href="../coding/css-minifier.html">CSS Minifier</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Other Tools</a>
-          <div class="dropdown-content">
-            <a href="password-generator.html">Password Generator</a>
-            <a href="finance-tracker.html">Finance Tracker</a>
-            <a href="llm.html">Web-Based LLM</a>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <main class="container">
-      <!-- File Operations Section -->
-      <div class="file-operations">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<script>
+    fetch("../../html/navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+        });
+</script>
+
+<main class="container">
+    <!-- File Operations Section -->
+    <div class="file-operations">
         <label for="file-input">Load Data:</label>
         <input
-          type="file"
-          id="file-input"
-          accept=".json"
-          onchange="loadFromFile()"
+                accept=".json"
+                id="file-input"
+                onchange="loadFromFile()"
+                type="file"
         />
         <button onclick="saveToFile()">Save Data</button>
-      </div>
-
-      <!-- Summary and Charts Section -->
-      <div class="summary-charts-container">
-        <div class="summary-section">
-          <h2>Summary</h2>
-          <p>Total Bills: <span id="total-bills">0</span></p>
-          <p>Total Income: <span id="total-income">0</span></p>
-          <p>Remaining Balance: <span id="remaining-balance">0</span></p>
-        </div>
-        <div class="charts-section">
-          <div class="chart">
-            <h3>Bills Chart</h3>
-            <canvas id="bills-chart"></canvas>
-          </div>
-          <div class="chart">
-            <h3>Income Chart</h3>
-            <canvas id="income-chart"></canvas>
-          </div>
-          <div class="chart">
-            <h3>Balance Chart</h3>
-            <canvas id="balance-chart"></canvas>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bills and Income Section -->
-      <div class="flex-container">
-        <section id="bills-section">
-          <h2>Manage Bills</h2>
-          <form id="bill-form">
-            <label for="bill-name">Bill Name:</label>
-            <input type="text" id="bill-name" required aria-label="Bill Name" />
-            <label for="bill-amount">Amount:</label>
-            <input
-              type="number"
-              id="bill-amount"
-              required
-              aria-label="Bill Amount"
-            />
-            <label for="bill-due-date">Due Date:</label>
-            <input
-              type="date"
-              id="bill-due-date"
-              required
-              aria-label="Bill Due Date"
-            />
-            <button type="button" onclick="addBill()">Add Bill</button>
-          </form>
-          <ul id="bills-list"></ul>
-        </section>
-        <section id="income-section">
-          <h2>Manage Income</h2>
-          <form id="income-form">
-            <label for="income-amount">Income Amount:</label>
-            <input
-              type="number"
-              id="income-amount"
-              required
-              aria-label="Income Amount"
-            />
-            <label for="income-date">Paycheck Date:</label>
-            <input
-              type="date"
-              id="income-date"
-              required
-              aria-label="Paycheck Date"
-            />
-            <button type="button" onclick="addIncome()">Add Income</button>
-          </form>
-          <ul id="income-list"></ul>
-        </section>
-      </div>
-    </main>
-    <footer>
-      <p>&copy; 2024 Finance Tracker. All rights reserved.</p>
-      <p>
-        No personal data is stored on the server. Data is stored locally and can
-        be saved/loaded via file.
-      </p>
-    </footer>
-
-    <div id="myModal" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal('myModal')">&times;</span>
-        <p>
-          No personal data is stored on the server. All data is handled locally
-          and can be saved or loaded using files.
-        </p>
-      </div>
     </div>
 
-    <!-- Edit Modal for Bills -->
-    <div id="editBillModal" class="modal">
-      <div class="modal-content">
+    <!-- Summary and Charts Section -->
+    <div class="summary-charts-container">
+        <div class="summary-section">
+            <h2>Summary</h2>
+            <p>Total Bills: <span id="total-bills">0</span></p>
+            <p>Total Income: <span id="total-income">0</span></p>
+            <p>Remaining Balance: <span id="remaining-balance">0</span></p>
+        </div>
+        <div class="charts-section">
+            <div class="chart">
+                <h3>Bills Chart</h3>
+                <canvas id="bills-chart"></canvas>
+            </div>
+            <div class="chart">
+                <h3>Income Chart</h3>
+                <canvas id="income-chart"></canvas>
+            </div>
+            <div class="chart">
+                <h3>Balance Chart</h3>
+                <canvas id="balance-chart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bills and Income Section -->
+    <div class="flex-container">
+        <section id="bills-section">
+            <h2>Manage Bills</h2>
+            <form id="bill-form">
+                <label for="bill-name">Bill Name:</label>
+                <input aria-label="Bill Name" id="bill-name" required type="text"/>
+                <label for="bill-amount">Amount:</label>
+                <input
+                        aria-label="Bill Amount"
+                        id="bill-amount"
+                        required
+                        type="number"
+                />
+                <label for="bill-due-date">Due Date:</label>
+                <input
+                        aria-label="Bill Due Date"
+                        id="bill-due-date"
+                        required
+                        type="date"
+                />
+                <button onclick="addBill()" type="button">Add Bill</button>
+            </form>
+            <ul id="bills-list"></ul>
+        </section>
+        <section id="income-section">
+            <h2>Manage Income</h2>
+            <form id="income-form">
+                <label for="income-amount">Income Amount:</label>
+                <input
+                        aria-label="Income Amount"
+                        id="income-amount"
+                        required
+                        type="number"
+                />
+                <label for="income-date">Paycheck Date:</label>
+                <input
+                        aria-label="Paycheck Date"
+                        id="income-date"
+                        required
+                        type="date"
+                />
+                <button onclick="addIncome()" type="button">Add Income</button>
+            </form>
+            <ul id="income-list"></ul>
+        </section>
+    </div>
+</main>
+<footer>
+    <p>&copy; 2024 Finance Tracker. All rights reserved.</p>
+    <p>
+        No personal data is stored on the server. Data is stored locally and can
+        be saved/loaded via file.
+    </p>
+</footer>
+
+<div class="modal" id="myModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('myModal')">&times;</span>
+        <p>
+            No personal data is stored on the server. All data is handled locally
+            and can be saved or loaded using files.
+        </p>
+    </div>
+</div>
+
+<!-- Edit Modal for Bills -->
+<div class="modal" id="editBillModal">
+    <div class="modal-content">
         <span class="close" onclick="closeModal('editBillModal')">&times;</span>
         <h3>Edit Bill</h3>
         <form class="edit-form">
-          <label for="edit-bill-name">Bill Name:</label>
-          <input
-            type="text"
-            id="edit-bill-name"
-            required
-            aria-label="Edit Bill Name"
-          />
-          <label for="edit-bill-amount">Amount:</label>
-          <input
-            type="number"
-            id="edit-bill-amount"
-            required
-            aria-label="Edit Bill Amount"
-          />
-          <label for="edit-bill-due-date">Due Date:</label>
-          <input
-            type="date"
-            id="edit-bill-due-date"
-            required
-            aria-label="Edit Bill Due Date"
-          />
-          <button type="button" onclick="saveEditedBill()">Save Changes</button>
+            <label for="edit-bill-name">Bill Name:</label>
+            <input
+                    aria-label="Edit Bill Name"
+                    id="edit-bill-name"
+                    required
+                    type="text"
+            />
+            <label for="edit-bill-amount">Amount:</label>
+            <input
+                    aria-label="Edit Bill Amount"
+                    id="edit-bill-amount"
+                    required
+                    type="number"
+            />
+            <label for="edit-bill-due-date">Due Date:</label>
+            <input
+                    aria-label="Edit Bill Due Date"
+                    id="edit-bill-due-date"
+                    required
+                    type="date"
+            />
+            <button onclick="saveEditedBill()" type="button">Save Changes</button>
         </form>
-      </div>
     </div>
+</div>
 
-    <!-- Edit Modal for Income -->
-    <div id="editIncomeModal" class="modal">
-      <div class="modal-content">
+<!-- Edit Modal for Income -->
+<div class="modal" id="editIncomeModal">
+    <div class="modal-content">
         <span class="close" onclick="closeModal('editIncomeModal')"
-          >&times;</span
+        >&times;</span
         >
         <h3>Edit Income</h3>
         <form class="edit-form">
-          <label for="edit-income-amount">Income Amount:</label>
-          <input
-            type="number"
-            id="edit-income-amount"
-            required
-            aria-label="Edit Income Amount"
-          />
-          <label for="edit-income-date">Paycheck Date:</label>
-          <input
-            type="date"
-            id="edit-income-date"
-            required
-            aria-label="Edit Paycheck Date"
-          />
-          <button type="button" onclick="saveEditedIncome()">
-            Save Changes
-          </button>
+            <label for="edit-income-amount">Income Amount:</label>
+            <input
+                    aria-label="Edit Income Amount"
+                    id="edit-income-amount"
+                    required
+                    type="number"
+            />
+            <label for="edit-income-date">Paycheck Date:</label>
+            <input
+                    aria-label="Edit Paycheck Date"
+                    id="edit-income-date"
+                    required
+                    type="date"
+            />
+            <button onclick="saveEditedIncome()" type="button">
+                Save Changes
+            </button>
         </form>
-      </div>
     </div>
+</div>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
         let bills = [];
         let income = [];
         let editingBillIndex = null;
@@ -466,245 +431,246 @@
         const incomeForm = document.getElementById("income-form");
 
         window.addBill = function () {
-          const name = document.getElementById("bill-name").value.trim();
-          const amount = parseFloat(
-            document.getElementById("bill-amount").value
-          );
-          const dueDate = document.getElementById("bill-due-date").value;
+            const name = document.getElementById("bill-name").value.trim();
+            const amount = parseFloat(
+                document.getElementById("bill-amount").value
+            );
+            const dueDate = document.getElementById("bill-due-date").value;
 
-          if (name && amount > 0 && dueDate) {
-            bills.push({ name, amount, dueDate });
-            billForm.reset();
-            updateData();
-          }
+            if (name && amount > 0 && dueDate) {
+                bills.push({name, amount, dueDate});
+                billForm.reset();
+                updateData();
+            }
         };
 
         window.addIncome = function () {
-          const amount = parseFloat(
-            document.getElementById("income-amount").value
-          );
-          const date = document.getElementById("income-date").value;
+            const amount = parseFloat(
+                document.getElementById("income-amount").value
+            );
+            const date = document.getElementById("income-date").value;
 
-          if (amount > 0 && date) {
-            income.push({ amount, date });
-            incomeForm.reset();
-            updateData();
-          }
+            if (amount > 0 && date) {
+                income.push({amount, date});
+                incomeForm.reset();
+                updateData();
+            }
         };
 
         window.editBill = function (index) {
-          editingBillIndex = index;
-          const bill = bills[index];
-          document.getElementById("edit-bill-name").value = bill.name;
-          document.getElementById("edit-bill-amount").value = bill.amount;
-          document.getElementById("edit-bill-due-date").value = bill.dueDate;
-          showModal("editBillModal");
+            editingBillIndex = index;
+            const bill = bills[index];
+            document.getElementById("edit-bill-name").value = bill.name;
+            document.getElementById("edit-bill-amount").value = bill.amount;
+            document.getElementById("edit-bill-due-date").value = bill.dueDate;
+            showModal("editBillModal");
         };
 
         window.editIncome = function (index) {
-          editingIncomeIndex = index;
-          const inc = income[index];
-          document.getElementById("edit-income-amount").value = inc.amount;
-          document.getElementById("edit-income-date").value = inc.date;
-          showModal("editIncomeModal");
+            editingIncomeIndex = index;
+            const inc = income[index];
+            document.getElementById("edit-income-amount").value = inc.amount;
+            document.getElementById("edit-income-date").value = inc.date;
+            showModal("editIncomeModal");
         };
 
         window.saveEditedBill = function () {
-          const name = document.getElementById("edit-bill-name").value.trim();
-          const amount = parseFloat(
-            document.getElementById("edit-bill-amount").value
-          );
-          const dueDate = document.getElementById("edit-bill-due-date").value;
+            const name = document.getElementById("edit-bill-name").value.trim();
+            const amount = parseFloat(
+                document.getElementById("edit-bill-amount").value
+            );
+            const dueDate = document.getElementById("edit-bill-due-date").value;
 
-          if (name && amount > 0 && dueDate && editingBillIndex !== null) {
-            bills[editingBillIndex] = { name, amount, dueDate };
-            closeModal("editBillModal");
-            updateData();
-          }
+            if (name && amount > 0 && dueDate && editingBillIndex !== null) {
+                bills[editingBillIndex] = {name, amount, dueDate};
+                closeModal("editBillModal");
+                updateData();
+            }
         };
 
         window.saveEditedIncome = function () {
-          const amount = document.getElementById("edit-income-amount").value;
-          const date = document.getElementById("edit-income-date").value;
+            const amount = document.getElementById("edit-income-amount").value;
+            const date = document.getElementById("edit-income-date").value;
 
-          if (amount > 0 && date && editingIncomeIndex !== null) {
-            income[editingIncomeIndex] = { amount, date };
-            closeModal("editIncomeModal");
-            updateData();
-          }
+            if (amount > 0 && date && editingIncomeIndex !== null) {
+                income[editingIncomeIndex] = {amount, date};
+                closeModal("editIncomeModal");
+                updateData();
+            }
         };
 
         function updateData() {
-          updateBillsList();
-          updateIncomeList();
-          updateSummary();
-          updateCharts();
+            updateBillsList();
+            updateIncomeList();
+            updateSummary();
+            updateCharts();
         }
 
         function updateBillsList() {
-          const billsList = document.getElementById("bills-list");
-          billsList.innerHTML = bills
-            .map(
-              (bill, index) => `
+            const billsList = document.getElementById("bills-list");
+            billsList.innerHTML = bills
+                .map(
+                    (bill, index) => `
             <li>
               ${bill.name} - $${bill.amount.toFixed(2)} - Due: ${bill.dueDate}
               <button onclick="editBill(${index})">Edit</button>
               <button onclick="removeBill(${index})">Remove</button>
             </li>
           `
-            )
-            .join("");
+                )
+                .join("");
         }
 
         function updateIncomeList() {
-          const incomeList = document.getElementById("income-list");
-          incomeList.innerHTML = income
-            .map(
-              (inc, index) => `
+            const incomeList = document.getElementById("income-list");
+            incomeList.innerHTML = income
+                .map(
+                    (inc, index) => `
             <li>
               $${inc.amount.toFixed(2)} - Received: ${inc.date}
               <button onclick="editIncome(${index})">Edit</button>
               <button onclick="removeIncome(${index})">Remove</button>
             </li>
           `
-            )
-            .join("");
+                )
+                .join("");
         }
 
         window.removeBill = function (index) {
-          bills.splice(index, 1);
-          updateData();
+            bills.splice(index, 1);
+            updateData();
         };
 
         window.removeIncome = function (index) {
-          income.splice(index, 1);
-          updateData();
+            income.splice(index, 1);
+            updateData();
         };
 
         function updateSummary() {
-          const totalBills = bills.reduce((sum, bill) => sum + bill.amount, 0);
-          const totalIncome = income.reduce((sum, inc) => sum + inc.amount, 0);
-          const remainingBalance = totalIncome - totalBills;
+            const totalBills = bills.reduce((sum, bill) => sum + bill.amount, 0);
+            const totalIncome = income.reduce((sum, inc) => sum + inc.amount, 0);
+            const remainingBalance = totalIncome - totalBills;
 
-          document.getElementById("total-bills").innerText =
-            totalBills.toFixed(2);
-          document.getElementById("total-income").innerText =
-            totalIncome.toFixed(2);
-          document.getElementById("remaining-balance").innerText =
-            remainingBalance.toFixed(2);
+            document.getElementById("total-bills").innerText =
+                totalBills.toFixed(2);
+            document.getElementById("total-income").innerText =
+                totalIncome.toFixed(2);
+            document.getElementById("remaining-balance").innerText =
+                remainingBalance.toFixed(2);
         }
 
         const charts = {};
+
         function updateCharts() {
-          const billLabels = bills.map((bill) => bill.name);
-          const billData = bills.map((bill) => bill.amount);
+            const billLabels = bills.map((bill) => bill.name);
+            const billData = bills.map((bill) => bill.amount);
 
-          const incomeLabels = income.map((inc) => inc.date);
-          const incomeData = income.map((inc) => inc.amount);
+            const incomeLabels = income.map((inc) => inc.date);
+            const incomeData = income.map((inc) => inc.amount);
 
-          // Update Bills Chart
-          if (charts.bills) charts.bills.destroy();
-          charts.bills = new Chart(document.getElementById("bills-chart"), {
-            type: "pie",
-            data: {
-              labels: billLabels,
-              datasets: [
-                {
-                  data: billData,
-                  backgroundColor: generateColors(billData.length),
+            // Update Bills Chart
+            if (charts.bills) charts.bills.destroy();
+            charts.bills = new Chart(document.getElementById("bills-chart"), {
+                type: "pie",
+                data: {
+                    labels: billLabels,
+                    datasets: [
+                        {
+                            data: billData,
+                            backgroundColor: generateColors(billData.length),
+                        },
+                    ],
                 },
-              ],
-            },
-            options: {
-              responsive: true,
-              plugins: {
-                legend: {
-                  position: "top",
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: "top",
+                        },
+                    },
                 },
-              },
-            },
-          });
+            });
 
-          // Update Income Chart
-          if (charts.income) charts.income.destroy();
-          charts.income = new Chart(document.getElementById("income-chart"), {
-            type: "bar",
-            data: {
-              labels: incomeLabels,
-              datasets: [
-                {
-                  label: "Income",
-                  data: incomeData,
-                  backgroundColor: generateColors(incomeData.length),
+            // Update Income Chart
+            if (charts.income) charts.income.destroy();
+            charts.income = new Chart(document.getElementById("income-chart"), {
+                type: "bar",
+                data: {
+                    labels: incomeLabels,
+                    datasets: [
+                        {
+                            label: "Income",
+                            data: incomeData,
+                            backgroundColor: generateColors(incomeData.length),
+                        },
+                    ],
                 },
-              ],
-            },
-            options: {
-              responsive: true,
-              plugins: {
-                legend: {
-                  display: false,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                    },
                 },
-              },
-            },
-          });
+            });
 
-          // Update Balance Chart
-          if (charts.balance) charts.balance.destroy();
-          charts.balance = new Chart(document.getElementById("balance-chart"), {
-            type: "doughnut",
-            data: {
-              labels: ["Total Bills", "Total Income", "Remaining Balance"],
-              datasets: [
-                {
-                  data: [totalBills, totalIncome, totalIncome - totalBills],
-                  backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+            // Update Balance Chart
+            if (charts.balance) charts.balance.destroy();
+            charts.balance = new Chart(document.getElementById("balance-chart"), {
+                type: "doughnut",
+                data: {
+                    labels: ["Total Bills", "Total Income", "Remaining Balance"],
+                    datasets: [
+                        {
+                            data: [totalBills, totalIncome, totalIncome - totalBills],
+                            backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+                        },
+                    ],
                 },
-              ],
-            },
-            options: {
-              responsive: true,
-              plugins: {
-                legend: {
-                  position: "top",
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: "top",
+                        },
+                    },
                 },
-              },
-            },
-          });
+            });
         }
 
         function generateColors(length) {
-          return Array.from(
-            { length },
-            (_, i) => `hsl(${(i * 360) / length}, 100%, 75%)`
-          );
+            return Array.from(
+                {length},
+                (_, i) => `hsl(${(i * 360) / length}, 100%, 75%)`
+            );
         }
 
         window.saveToFile = function () {
-          const data = { bills, income };
-          const blob = new Blob([JSON.stringify(data, null, 2)], {
-            type: "application/json",
-          });
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement("a");
-          a.href = url;
-          a.download = "finance-data.json";
-          a.click();
-          URL.revokeObjectURL(url);
+            const data = {bills, income};
+            const blob = new Blob([JSON.stringify(data, null, 2)], {
+                type: "application/json",
+            });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "finance-data.json";
+            a.click();
+            URL.revokeObjectURL(url);
         };
 
         window.loadFromFile = function () {
-          const file = document.getElementById("file-input").files[0];
-          if (file) {
-            const reader = new FileReader();
-            reader.onload = (event) => {
-              const data = JSON.parse(event.target.result);
-              bills = data.bills || [];
-              income = data.income || [];
-              updateData();
-            };
-            reader.readAsText(file);
-          }
+            const file = document.getElementById("file-input").files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const data = JSON.parse(event.target.result);
+                    bills = data.bills || [];
+                    income = data.income || [];
+                    updateData();
+                };
+                reader.readAsText(file);
+            }
         };
 
         // Modal for data privacy
@@ -712,19 +678,19 @@
         modal.style.display = "block";
 
         window.onclick = (event) => {
-          if (event.target == modal) modal.style.display = "none";
+            if (event.target == modal) modal.style.display = "none";
         };
 
         updateCharts();
-      });
+    });
 
-      function showModal(modalId) {
+    function showModal(modalId) {
         document.getElementById(modalId).style.display = "block";
-      }
+    }
 
-      function closeModal(modalId) {
+    function closeModal(modalId) {
         document.getElementById(modalId).style.display = "none";
-      }
-    </script>
-  </body>
+    }
+</script>
+</body>
 </html>

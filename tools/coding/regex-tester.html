@@ -1,217 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Regex Tester</title>
-    <link rel="stylesheet" href="../../styles/navbar.css" />
+    <link href="../../styles/navbar.css" rel="stylesheet"/>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-        background-color: black;
-        color: #ff0000;
-      }
-      .container {
-        max-width: 600px;
-        margin: 50px auto;
-        padding: 20px;
-        background-color: #1e1e1e;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-      }
-      input,
-      textarea {
-        width: 90%;
-        margin: 10px 0;
-        padding: 10px;
-        border: 1px solid #8b0000;
-        border-radius: 5px;
-        background-color: #333;
-        color: #ffffff;
-      }
-      pre {
-        background-color: #333;
-        padding: 10px;
-        width: 90%;
-        height: auto;
-        overflow: auto;
-        white-space: pre-wrap;
-        text-align: left;
-        margin: 10px auto;
-        color: #ffffff;
-        border: 1px solid #8b0000;
-        border-radius: 5px;
-      }
-      button {
-        background-color: #8b0000;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-        margin: 10px;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-      }
-      button:hover {
-        background-color: #ff0000;
-      }
-      footer {
-        background-color: #8b0000;
-        padding: 1em;
-        color: #ffffff;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-      }
-      .description {
-        color: #ffffff;
-        font-size: 1.2em;
-        margin-bottom: 20px;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: black;
+            color: red;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        input,
+        textarea {
+            width: 90%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #8b0000;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+        }
+
+        pre {
+            background-color: #333;
+            padding: 10px;
+            width: 90%;
+            height: auto;
+            overflow: auto;
+            white-space: pre-wrap;
+            text-align: left;
+            margin: 10px auto;
+            color: white;
+            border: 1px solid #8b0000;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #8b0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: red;
+        }
+
+        footer {
+            background-color: #8b0000;
+            padding: 1em;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .description {
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
     </style>
-  </head>
-  <body>
-    <header>
-      <h1>Regex Tester</h1>
-      <nav>
-        <a href="../../index.html">Home</a>
-        <div class="dropdown">
-          <a href="#">Audio Tools</a>
-          <div class="dropdown-content">
-            <a href="../audio/audio-converter.html">Audio Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Video Tools</a>
-          <div class="dropdown-content">
-            <a href="../video/video-converter.html">Video Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Image Tools</a>
-          <div class="dropdown-content">
-            <a href="../images/image-extraction.html">PDF Image Extraction</a>
-            <a href="../images/background-removal.html">Background Removal</a>
-            <a href="../images/image-converter.html">Image Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Web Tools</a>
-          <div class="dropdown-content">
-            <a href="html-validator.html">HTML/CSS Validator</a>
-            <a href="json-formatter.html">JSON Formatter</a>
-            <a href="regex-tester.html">Regex Tester</a>
-            <a href="json-xml-converter.html">JSON-XML Converter</a>
-            <a href="code-beautifier.html">Code Beautifier</a>
-            <a href="markdown-previewer.html">Markdown Previewer</a>
-            <a href="css-minifier.html">CSS Minifier</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Other Tools</a>
-          <div class="dropdown-content">
-            <a href="../misc/password-generator.html">Password Generator</a>
-            <a href="../misc/finance-tracker.html">Finance Tracker</a>
-            <a href="../misc/llm.html">Web-Based LLM</a>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <div class="container">
-      <h2>Test Your Regex</h2>
-      <p class="description">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<script>
+    fetch("../../html/navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+        });
+</script>
+
+<div class="container">
+    <h2>Test Your Regex</h2>
+    <p class="description">
         Use this tool to test your regular expressions. Enter your regex pattern
         and the text to search, and see the matches highlighted below.
-      </p>
-      <input type="text" id="regex-pattern" placeholder="Enter regex pattern" />
-      <textarea id="text-input" placeholder="Enter text here"></textarea>
-      <button onclick="testRegex()">Test Regex</button>
-      <button onclick="generateSample()">Generate Sample Regex</button>
-      <pre id="regex-results"></pre>
-    </div>
-    <footer>
-      <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
-    </footer>
-    <script>
-      document.querySelectorAll(".dropdown").forEach((dropdown) => {
+    </p>
+    <input id="regex-pattern" placeholder="Enter regex pattern" type="text"/>
+    <textarea id="text-input" placeholder="Enter text here"></textarea>
+    <button onclick="testRegex()">Test Regex</button>
+    <button onclick="generateSample()">Generate Sample Regex</button>
+    <pre id="regex-results"></pre>
+</div>
+<footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
+<script>
+    document.querySelectorAll(".dropdown").forEach((dropdown) => {
         const dropdownContent = dropdown.querySelector(".dropdown-content");
         dropdown.addEventListener("mouseenter", () => {
-          dropdownContent.style.display = "block";
+            dropdownContent.style.display = "block";
         });
         dropdown.addEventListener("mouseleave", () => {
-          dropdownContent.style.display = "none";
+            dropdownContent.style.display = "none";
         });
         dropdown.querySelector("a").addEventListener("focus", () => {
-          dropdownContent.style.display = "block";
+            dropdownContent.style.display = "block";
         });
         dropdown.querySelector("a").addEventListener("blur", () => {
-          dropdownContent.style.display = "none";
+            dropdownContent.style.display = "none";
         });
-      });
+    });
 
-      function testRegex() {
+    function testRegex() {
         const pattern = document.getElementById("regex-pattern").value;
         const text = document.getElementById("text-input").value;
 
         if (!pattern) {
-          document.getElementById("regex-results").innerText =
-            "Please enter a regex pattern.";
-          return;
+            document.getElementById("regex-results").innerText =
+                "Please enter a regex pattern.";
+            return;
         }
 
         if (!text) {
-          document.getElementById("regex-results").innerText =
-            "Please enter text to search.";
-          return;
+            document.getElementById("regex-results").innerText =
+                "Please enter text to search.";
+            return;
         }
 
         try {
-          const regex = new RegExp(pattern, "g");
-          const matches = text.match(regex);
-          document.getElementById("regex-results").innerText = matches
-            ? matches.join("\n")
-            : "No matches found.";
+            const regex = new RegExp(pattern, "g");
+            const matches = text.match(regex);
+            document.getElementById("regex-results").innerText = matches
+                ? matches.join("\n")
+                : "No matches found.";
         } catch (error) {
-          document.getElementById("regex-results").innerText =
-            "Invalid regex pattern.";
+            document.getElementById("regex-results").innerText =
+                "Invalid regex pattern.";
         }
-      }
-      function generateSample() {
+    }
+
+    function generateSample() {
         const samples = [
-          {
-            pattern: "\\b\\d{4}\\b",
-            text: "Years: 2023, 2024, 1999. Random numbers: 123, 5678, 9012.",
-          },
-          {
-            pattern: "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b",
-            text: "Emails: test@example.com, user@domain.org, admin@site.co.uk.",
-          },
-          {
-            pattern: "\\b\\d{2}/\\d{2}/\\d{4}\\b",
-            text: "Dates: 01/01/2024, 31/12/2023, 15/07/2025.",
-          },
-          {
-            pattern:
-              "https?:\\/\\/(www\\.)?[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}(\\/\\S*)?",
-            text: "URLs: https://example.com, http://site.org, https://www.website.co.uk/page.",
-          },
-          {
-            pattern: "#[A-Fa-f0-9]{6}\\b",
-            text: "Colors: #FF5733, #4A7DAB, #1A2B3C.",
-          },
-          {
-            pattern: "\\(\\d{3}\\)\\s\\d{3}-\\d{4}",
-            text: "Phone numbers: (123) 456-7890, (987) 654-3210, (555) 123-4567.",
-          },
+            {
+                pattern: "\\b\\d{4}\\b",
+                text: "Years: 2023, 2024, 1999. Random numbers: 123, 5678, 9012.",
+            },
+            {
+                pattern: "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b",
+                text: "Emails: test@example.com, user@domain.org, admin@site.co.uk.",
+            },
+            {
+                pattern: "\\b\\d{2}/\\d{2}/\\d{4}\\b",
+                text: "Dates: 01/01/2024, 31/12/2023, 15/07/2025.",
+            },
+            {
+                pattern:
+                    "https?:\\/\\/(www\\.)?[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}(\\/\\S*)?",
+                text: "URLs: https://example.com, http://site.org, https://www.website.co.uk/page.",
+            },
+            {
+                pattern: "#[A-Fa-f0-9]{6}\\b",
+                text: "Colors: #FF5733, #4A7DAB, #1A2B3C.",
+            },
+            {
+                pattern: "\\(\\d{3}\\)\\s\\d{3}-\\d{4}",
+                text: "Phone numbers: (123) 456-7890, (987) 654-3210, (555) 123-4567.",
+            },
         ];
         const randomSample =
-          samples[Math.floor(Math.random() * samples.length)];
+            samples[Math.floor(Math.random() * samples.length)];
         document.getElementById("regex-pattern").value = randomSample.pattern;
         document.getElementById("text-input").value = randomSample.text;
-      }
-    </script>
-  </body>
+    }
+</script>
+</body>
 </html>

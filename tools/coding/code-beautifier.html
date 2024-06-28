@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Multi-Language Code Beautifier</title>
-    <link rel="stylesheet" href="../../styles/web-styles.css" />
+    <link href="../../styles/web-styles.css" rel="stylesheet"/>
     <style>
         .modal {
             display: flex;
@@ -19,6 +19,7 @@
             justify-content: center;
             align-items: center;
         }
+
         .modal-content {
             background-color: #1e1e1e;
             padding: 20px;
@@ -28,16 +29,19 @@
             max-width: 600px;
             text-align: center;
         }
+
         .modal-content h2 {
-            color: #fff;
+            color: white;
             margin-bottom: 20px;
         }
+
         .close {
             color: #f00;
             float: right;
             font-size: 28px;
             font-weight: bold;
         }
+
         .close:hover, .close:focus {
             color: red;
             text-decoration: none;
@@ -46,64 +50,29 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>Jarrod's Tool Hub</h1>
-        <nav>
-            <a href="../../index.html">Home</a>
-            <div class="dropdown">
-              <a href="#">Audio Tools</a>
-              <div class="dropdown-content">
-                <a href="../audio/audio-converter.html">Audio Converter</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <a href="#">Video Tools</a>
-              <div class="dropdown-content">
-                <a href="../video/video-converter.html">Video Converter</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <a href="#">Image Tools</a>
-              <div class="dropdown-content">
-                <a href="../images/image-extraction.html">PDF Image Extraction</a>
-                <a href="../images/background-removal.html">Background Removal</a>
-                <a href="../images/image-converter.html">Image Converter</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <a href="#">Web Tools</a>
-              <div class="dropdown-content">
-                <a href="html-validator.html">HTML/CSS Validator</a>
-                <a href="json-formatter.html">JSON Formatter</a>
-                <a href="regex-tester.html">Regex Tester</a>
-                <a href="json-xml-converter.html">JSON-XML Converter</a>
-                <a href="code-beautifier.html">Code Beautifier</a>
-                <a href="markdown-previewer.html">Markdown Previewer</a>
-                <a href="css-minifier.html">CSS Minifier</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <a href="#">Other Tools</a>
-              <div class="dropdown-content">
-                <a href="../misc/password-generator.html">Password Generator</a>
-                <a href="../misc/finance-tracker.html">Finance Tracker</a>
-                <a href="../misc/llm.html">Web-Based LLM</a>
-              </div>
-            </div>
-          </nav>
-        </header>
-    <div class="container">
-        <h2>Beautify Your Code</h2>
-        <textarea id="code-input" placeholder="Paste your code here..."></textarea>
-        <button onclick="beautifyCode()">Beautify Code</button>
-        <pre id="beautified-code"></pre>
-    </div>
-    <footer>
-        <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
-    </footer>
 
-    <!-- Modal Structure -->
-<div id="constructionModal" class="modal">
+<div id="navbar-placeholder"></div>
+
+<script>
+    fetch("../../html/navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+        });
+</script>
+
+<div class="container">
+    <h2>Beautify Your Code</h2>
+    <textarea id="code-input" placeholder="Paste your code here..."></textarea>
+    <button onclick="beautifyCode()">Beautify Code</button>
+    <pre id="beautified-code"></pre>
+</div>
+<footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
+
+<!-- Modal Structure -->
+<div class="modal" id="constructionModal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
         <h2>Under Construction</h2>
@@ -112,80 +81,92 @@
     </div>
 </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify-css.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify-html.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prettier/2.8.8/standalone.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prettier/2.8.8/parser-java.js"></script>
-    <script>
-        function detectLanguage(code) {
-            const trimmed = code.trim();
-            if (/^<!DOCTYPE html>/i.test(trimmed) || /^<html/i.test(trimmed)) return 'html';
-            if (/(^|\W)(function|var|let|const|=>|\{.*\}|^import\s+|^export\s+)/.test(trimmed)) return 'js';
-            if (/^\s*@import\s+|^\s*@media\s+|^\s*[.#]?[\w-]+\s*\{/.test(trimmed)) return 'css';
-            if (/^\s*{\s*("|')?[\w-]+\1?:/.test(trimmed)) return 'json';
-            if (/^\s*import\s+|^\s*package\s+|^\s*public\s+class\s+|^\s*void\s+main\s*\(/.test(trimmed)) return 'java';
-            if (/^\s*def\s+|^\s*import\s+|^\s*class\s+|^\s*if\s+__name__\s*==/.test(trimmed)) return 'python';
-            return null;
-        }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify-html.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prettier/2.8.8/standalone.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prettier/2.8.8/parser-java.js"></script>
+<script>
+    function detectLanguage(code) {
+        const trimmed = code.trim();
+        if (/^<!DOCTYPE html>/i.test(trimmed) || /^<html/i.test(trimmed)) return 'html';
+        if (/(^|\W)(function|var|let|const|=>|\{.*\}|^import\s+|^export\s+)/.test(trimmed)) return 'js';
+        if (/^\s*@import\s+|^\s*@media\s+|^\s*[.#]?[\w-]+\s*\{/.test(trimmed)) return 'css';
+        if (/^\s*{\s*("|')?[\w-]+\1?:/.test(trimmed)) return 'json';
+        if (/^\s*import\s+|^\s*package\s+|^\s*public\s+class\s+|^\s*void\s+main\s*\(/.test(trimmed)) return 'java';
+        if (/^\s*def\s+|^\s*import\s+|^\s*class\s+|^\s*if\s+__name__\s*==/.test(trimmed)) return 'python';
+        return null;
+    }
 
-        function beautifyMixedContent(code) {
-            // First beautify script tags
-            code = code.replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gi, function(_, content) {
-                return `<script>${js_beautify(content, { indent_size: 2 })}</script>`;
-            });
+    function beautifyMixedContent(code) {
+        // First beautify script tags
+        code = code.replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gi, function (_, content) {
+            return `<script>${js_beautify(content, {indent_size: 2})}</script>
+`;
+});
 
-            // Then beautify style tags
-            code = code.replace(/<style\b[^>]*>([\s\S]*?)<\/style>/gi, function(_, content) {
-                return `<style>${css_beautify(content, { indent_size: 2 })}</style>`;
-            });
+// Then beautify style tags
+code = code.replace(/
+<style
+\b[^>]*>([\s\S]*?)<\/style>/gi, function(_, content) {
+return `
+<style>${css_beautify(content, { indent_size: 2 }
 
-            // Finally, beautify the entire HTML
-            return html_beautify(code, { indent_size: 2 });
-        }
+)
+}</style>
+`;
+});
 
-        function beautifyCode() {
-            const input = document.getElementById('code-input').value;
-            const lang = detectLanguage(input);
-            let beautified = '';
+// Finally, beautify the entire HTML
+return html_beautify(code, { indent_size: 2 });
+}
 
-            if (lang === 'html' && (input.includes('<script') || input.includes('<style'))) {
-                beautified = beautifyMixedContent(input);
-            } else {
-                switch (lang) {
-                    case 'js': beautified = js_beautify(input, { indent_size: 2 }); break;
-                    case 'css': beautified = css_beautify(input, { indent_size: 2 }); break;
-                    case 'html': beautified = html_beautify(input, { indent_size: 2 }); break;
-                    case 'json': beautified = js_beautify(input, { indent_size: 2 }); break;
-                    case 'java': beautified = prettier.format(input, { parser: 'java' }); break;
-                    case 'python': beautified = prettier.format(input, { parser: 'python' }); break;
-                    default: beautified = input;
-                }
-            }
+function beautifyCode() {
+const input = document.getElementById('code-input').value;
+const lang = detectLanguage(input);
+let beautified = '';
 
-            document.getElementById('beautified-code').textContent = beautified;
-        }
+if (lang === 'html' && (input.includes('
+<script
+') || input.includes('
+<style
+'))) {
+beautified = beautifyMixedContent(input);
+} else {
+switch (lang) {
+case 'js': beautified = js_beautify(input, { indent_size: 2 }); break;
+case 'css': beautified = css_beautify(input, { indent_size: 2 }); break;
+case 'html': beautified = html_beautify(input, { indent_size: 2 }); break;
+case 'json': beautified = js_beautify(input, { indent_size: 2 }); break;
+case 'java': beautified = prettier.format(input, { parser: 'java' }); break;
+case 'python': beautified = prettier.format(input, { parser: 'python' }); break;
+default: beautified = input;
+}
+}
 
-        // Modal functions
-        function showModal() {
-            document.getElementById('constructionModal').style.display = 'flex';
-        }
+document.getElementById('beautified-code').textContent = beautified;
+}
 
-        function closeModal() {
-            document.getElementById('constructionModal').style.display = 'none';
-        }
+// Modal functions
+function showModal() {
+document.getElementById('constructionModal').style.display = 'flex';
+}
 
-        // Show the modal immediately on page load
-        window.onload = function() {
-            showModal();
-        };
+function closeModal() {
+document.getElementById('constructionModal').style.display = 'none';
+}
 
-        // Close the modal when clicking outside of it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
-            }
-        };
-    </script>
+// Show the modal immediately on page load
+window.onload = function() {
+showModal();
+};
+
+// Close the modal when clicking outside of it
+window.onclick = function(event) {
+if (event.target == modal) {
+closeModal();
+}
+};
+</script>
 </body>
 </html>

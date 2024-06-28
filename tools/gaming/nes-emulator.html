@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link href="../../styles/navbar.css" rel="stylesheet">
     <title>Enhanced NES Emulator</title>
     <style>
-        body {
+        html, body {
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            background-color: #000;
-            color: #fff;
+            background-color: black;
+            color: white;
             margin: 0;
+            padding: 0;
         }
 
+        navbar-placeholder {
+            width: 100%;
+
+        }
         #screen-container {
             position: relative;
             max-width: 100%;
@@ -38,7 +44,7 @@
 
         button {
             background-color: #333;
-            color: #fff;
+            color: white;
             border: none;
             padding: 10px;
             margin: 5px;
@@ -56,7 +62,7 @@
 
         label {
             background-color: #333;
-            color: #fff;
+            color: white;
             padding: 10px;
             margin: 5px;
             cursor: pointer;
@@ -88,7 +94,7 @@
             border: none;
             border-radius: 50%;
             font-size: 1.5em;
-            color: #fff;
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -98,13 +104,32 @@
         .touch-button:active {
             background-color: rgba(255, 255, 255, 0.5);
         }
+
+        footer {
+            background-color: #8b0000;
+            padding: 1em;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
+<div id="navbar-placeholder"></div>
+
+<script>
+    fetch("../../html/navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+        });
+</script>
+
 <h1>Enhanced NES Emulator</h1>
 <div id="screen-container">
-    <canvas id="screen" width="256" height="240"></canvas>
-    <div id="touch-controls" class="hidden">
+    <canvas height="240" id="screen" width="256"></canvas>
+    <div class="hidden" id="touch-controls">
         <button class="touch-button" id="up">↑</button>
         <button class="touch-button" id="down">↓</button>
         <button class="touch-button" id="left">←</button>
@@ -117,10 +142,11 @@
 </div>
 <div id="controls">
     <label for="rom">Choose ROM</label>
-    <input type="file" id="rom" accept=".nes">
+    <input accept=".nes" id="rom" type="file">
     <button onclick="toggleFullScreen()">Toggle Fullscreen</button>
     <button onclick="saveState()">Save State</button>
     <button onclick="loadState()">Load State</button>
+    <button onclick="toggleControls()">Toggle Controls</button>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/jsnes@0.9.0/dist/jsnes.min.js"></script>
 <script>
@@ -138,6 +164,8 @@
             ctx.putImageData(imageData, 0, 0);
         }
     });
+
+    document.getElementById('rom').addEventListener('change', loadROM);
 
     function loadROM() {
         let fileInput = document.getElementById('rom');
@@ -234,8 +262,16 @@
     function adjustCanvasSize() {
         const screenContainer = document.getElementById('screen-container');
         const canvas = document.getElementById('screen');
-        canvas.width = screenContainer.clientWidth;
-        canvas.height = screenContainer.clientHeight;
+        const aspectRatio = 256 / 240;
+        let width = screenContainer.clientWidth;
+        let height = screenContainer.clientHeight;
+        if (width / height > aspectRatio) {
+            width = height * aspectRatio;
+        } else {
+            height = width / aspectRatio;
+        }
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
     }
 
     function detectMobile() {
@@ -245,10 +281,20 @@
         }
     }
 
+    function toggleControls() {
+        const touchControls = document.getElementById('touch-controls');
+        touchControls.classList.toggle('hidden');
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         detectMobile();
         adjustCanvasSize();
     });
 </script>
+
+<footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
 </body>
 </html>
+

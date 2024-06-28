@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Interactive Sheet Music Viewer and Creator</title>
-    <link rel="stylesheet" href="../../styles/navbar.css" />
+    <link href="../../styles/navbar.css" rel="stylesheet"/>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: black;
-            color: #ff0000;
+            color: red;
             margin: 0;
             padding: 0;
             display: flex;
@@ -19,7 +19,7 @@
         }
 
         nav a {
-            color: #ffffff;
+            color: white;
             text-decoration: none;
             margin: 0 15px;
             font-weight: bold;
@@ -54,7 +54,7 @@
 
         button {
             background-color: #8b0000;
-            color: #ffffff;
+            color: white;
             border: none;
             padding: 10px 20px;
             cursor: pointer;
@@ -64,7 +64,7 @@
         }
 
         button:hover {
-            background-color: #ff0000;
+            background-color: red;
         }
 
         input[type="text"] {
@@ -74,13 +74,13 @@
             border: 1px solid #8b0000;
             border-radius: 4px;
             background-color: #333;
-            color: #fff;
+            color: white;
         }
 
         footer {
             background-color: #8b0000;
             padding: 1em;
-            color: #ffffff;
+            color: white;
             text-align: center;
         }
     </style>
@@ -90,66 +90,31 @@
 </head>
 
 <body>
-<header>
-    <h1>Interactive Sheet Music Viewer and Creator</h1>
-    <nav>
-        <a href="../../index.html">Home</a>
-        <div class="dropdown">
-            <a href="#">Audio Tools</a>
-            <div class="dropdown-content">
-                <a href="audio-converter.html">Audio Converter</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <a href="#">Video Tools</a>
-            <div class="dropdown-content">
-                <a href="../video/video-converter.html">Video Converter</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <a href="#">Image Tools</a>
-            <div class="dropdown-content">
-                <a href="../images/image-extraction.html">PDF Image Extraction</a>
-                <a href="../images/background-removal.html">Background Removal</a>
-                <a href="../images/image-converter.html">Image Converter</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <a href="#">Web Tools</a>
-            <div class="dropdown-content">
-                <a href="../coding/html-validator.html">HTML/CSS Validator</a>
-                <a href="../coding/json-formatter.html">JSON Formatter</a>
-                <a href="../coding/regex-tester.html">Regex Tester</a>
-                <a href="../coding/json-xml-converter.html">JSON-XML Converter</a>
-                <a href="../coding/code-beautifier.html">Code Beautifier</a>
-                <a href="../coding/markdown-previewer.html">Markdown Previewer</a>
-                <a href="../coding/css-minifier.html">CSS Minifier</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <a href="#">Other Tools</a>
-            <div class="dropdown-content">
-                <a href="../misc/password-generator.html">Password Generator</a>
-                <a href="../misc/finance-tracker.html">Finance Tracker</a>
-                <a href="../misc/llm.html">Web-Based LLM</a>
-            </div>
-        </div>
-    </nav>
-</header>
+
+<div id="navbar-placeholder"></div>
+
+<script>
+    fetch("../../html/navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+        });
+</script>
+
 <div class="container">
     <h2>Upload and Play Sheet Music</h2>
-    <input type="file" id="file-input" accept=".musicxml,.mxl,.xml,.midi">
+    <input accept=".musicxml,.mxl,.xml,.midi" id="file-input" type="file">
     <div id="music-container"></div>
     <div class="controls">
         <button id="play-btn"><i class="ph-play-fill"></i> Play</button>
         <button id="pause-btn" style="display:none;"><i class="ph-pause-fill"></i> Pause</button>
         <label for="tempo">Tempo:</label>
-        <input type="range" id="tempo" min="30" max="200" value="120">
+        <input id="tempo" max="200" min="30" type="range" value="120">
         <span id="tempo-value">120</span> BPM
     </div>
     <div id="metronome">
         <label for="metronome-switch">Metronome:</label>
-        <input type="checkbox" id="metronome-switch">
+        <input id="metronome-switch" type="checkbox">
     </div>
 </div>
 
@@ -157,7 +122,7 @@
     <h2>Create Your Own Sheet Music</h2>
     <div id="creation-container"></div>
     <div class="controls">
-        <input type="text" id="note-input" placeholder="Enter notes (e.g., C4/q, D4, E4, F4)">
+        <input id="note-input" placeholder="Enter notes (e.g., C4/q, D4, E4, F4)" type="text">
         <button id="add-notes-btn"><i class="ph-plus-fill"></i> Add Notes</button>
         <button id="play-creation-btn"><i class="ph-play-fill"></i> Play</button>
         <button id="clear-sheet-btn"><i class="ph-trash-fill"></i> Clear Sheet</button>
@@ -190,7 +155,7 @@
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 const xml = e.target.result;
                 renderSheetMusic(xml);
             };
@@ -200,7 +165,7 @@
 
     function renderSheetMusic(xml) {
         document.getElementById('music-container').innerHTML = ''; // Clear previous rendering
-        vfViewer = new Vex.Flow.Factory({ renderer: { elementId: 'music-container', width: 800, height: 400 } });
+        vfViewer = new Vex.Flow.Factory({renderer: {elementId: 'music-container', width: 800, height: 400}});
         viewerContext = vfViewer.getContext();
         const score = vfViewer.EasyScore();
         const system = vfViewer.System();
@@ -208,7 +173,7 @@
         // Example notes; in a real application, parse MusicXML or MIDI to get notes
         system.addStave({
             voices: [
-                score.voice(score.notes("C4/q, D4, E4, F4", { stem: "up" }))
+                score.voice(score.notes("C4/q, D4, E4, F4", {stem: "up"}))
             ]
         }).addClef('treble').addTimeSignature('4/4');
 
@@ -253,7 +218,7 @@
         }
 
         if (!vfCreator) {
-            vfCreator = new Vex.Flow.Factory({ renderer: { elementId: 'creation-container', width: 800, height: 400 } });
+            vfCreator = new Vex.Flow.Factory({renderer: {elementId: 'creation-container', width: 800, height: 400}});
             creatorContext = vfCreator.getContext();
         }
 

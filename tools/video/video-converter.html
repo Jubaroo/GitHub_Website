@@ -1,159 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Video Converter</title>
-    <link rel="stylesheet" href="../../styles/navbar.css" />
+    <link href="../../styles/navbar.css" rel="stylesheet"/>
     <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        font-family: Arial, sans-serif;
-        background-color: black;
-        color: #ff0000;
-        display: flex;
-        flex-direction: column;
-      }
-      .container {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 20px;
-        text-align: center;
-      }
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: red;
+            display: flex;
+            flex-direction: column;
+        }
 
-      video {
-        max-width: 100%;
-        margin: 10px 0;
-        display: block;
-      }
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+            text-align: center;
+        }
 
-      button {
-        background-color: #8b0000;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-        margin: 10px;
-      }
+        video {
+            max-width: 100%;
+            margin: 10px 0;
+            display: block;
+        }
 
-      button:hover {
-        background-color: #ff0000;
-      }
+        button {
+            background-color: #8b0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 10px;
+        }
 
-      footer {
-        background-color: #8b0000;
-        padding: 1em;
-        color: #ffffff;
-        text-align: center;
-      }
+        button:hover {
+            background-color: red;
+        }
 
-      #message {
-        margin-top: 10px;
-        font-size: 1em;
-        color: #ff0000;
-      }
+        footer {
+            background-color: #8b0000;
+            padding: 1em;
+            color: white;
+            text-align: center;
+        }
 
-      #log {
-        white-space: pre-wrap;
-        background: transparent;
-        padding: 10px;
-        border: none;
-        max-height: 200px;
-        overflow-y: auto;
-        margin-top: 10px;
-        font-family: monospace;
-        color: #ff0000;
-        width: 80%;
-      }
+        #message {
+            margin-top: 10px;
+            font-size: 1em;
+            color: red;
+        }
+
+        #log {
+            white-space: pre-wrap;
+            background: transparent;
+            padding: 10px;
+            border: none;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 10px;
+            font-family: monospace;
+            color: red;
+            width: 80%;
+        }
     </style>
-  </head>
+</head>
 
-  <body>
-    <header>
-      <h1>Video Converter</h1>
-      <nav>
-        <a href="../../index.html">Home</a>
-        <div class="dropdown">
-          <a href="#">Audio Tools</a>
-          <div class="dropdown-content">
-            <a href="../audio/audio-converter.html">Audio Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Video Tools</a>
-          <div class="dropdown-content">
-            <a href="video-converter.html">Video Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Image Tools</a>
-          <div class="dropdown-content">
-            <a href="../images/image-extraction.html">PDF Image Extraction</a>
-            <a href="../images/background-removal.html">Background Removal</a>
-            <a href="../images/image-converter.html">Image Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Web Tools</a>
-          <div class="dropdown-content">
-            <a href="../coding/html-validator.html">HTML/CSS Validator</a>
-            <a href="../coding/json-formatter.html">JSON Formatter</a>
-            <a href="../coding/regex-tester.html">Regex Tester</a>
-            <a href="../coding/json-xml-converter.html">JSON-XML Converter</a>
-            <a href="../coding/code-beautifier.html">Code Beautifier</a>
-            <a href="../coding/markdown-previewer.html">Markdown Previewer</a>
-            <a href="../coding/css-minifier.html">CSS Minifier</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Other Tools</a>
-          <div class="dropdown-content">
-            <a href="../misc/password-generator.html">Password Generator</a>
-            <a href="../misc/finance-tracker.html">Finance Tracker</a>
-            <a href="../misc/llm.html">Web-Based LLM</a>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <div class="container">
-      <h2>Convert Video Format</h2>
-      <p class="description">
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<script>
+    fetch("../../html/navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+        });
+</script>
+
+<div class="container">
+    <h2>Convert Video Format</h2>
+    <p class="description">
         Easily convert your video files to different formats using this tool.
         Select a video file from your device, choose the desired format, and
         click "Convert Video" to begin the conversion process. You can then
         download and view your converted video directly from the browser.
-      </p>
-      <input type="file" id="video-upload" accept="video/*" />
-      <select id="format">
+    </p>
+    <input accept="video/*" id="video-upload" type="file"/>
+    <select id="format">
         <option value="mp4">MP4</option>
         <option value="webm">WebM</option>
         <option value="ogg">OGG</option>
-      </select>
-      <button onclick="convertVideo()">Convert Video</button>
-      <div id="log"></div>
-      <video id="video-preview" controls style="display: none"></video>
-    </div>
-    <footer>
-      <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/videoconverter.js/dist/videoconverter.min.js"></script>
-    <script>
-      async function convertVideo() {
+    </select>
+    <button onclick="convertVideo()">Convert Video</button>
+    <div id="log"></div>
+    <video controls id="video-preview" style="display: none"></video>
+</div>
+<footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/videoconverter.js/dist/videoconverter.min.js"></script>
+<script>
+    async function convertVideo() {
         const fileInput = document.getElementById("video-upload");
         const formatSelect = document.getElementById("format");
         const logArea = document.getElementById("log");
         const videoPreview = document.getElementById("video-preview");
 
         if (fileInput.files.length === 0) {
-          alert("Please choose a video file.");
-          logMessage("No file chosen.");
-          return;
+            alert("Please choose a video file.");
+            logMessage("No file chosen.");
+            return;
         }
 
         const file = fileInput.files[0];
@@ -166,56 +132,56 @@
 
         const reader = new FileReader();
         reader.onload = async function (event) {
-          const data = new Uint8Array(event.target.result);
+            const data = new Uint8Array(event.target.result);
 
-          try {
-            logMessage("Converting video...");
-            const result = await videoconverter.convert({
-              arguments: ["-i", inputName, "-f", format, outputName],
-              files: [{ name: inputName, data: data }],
-            });
+            try {
+                logMessage("Converting video...");
+                const result = await videoconverter.convert({
+                    arguments: ["-i", inputName, "-f", format, outputName],
+                    files: [{name: inputName, data: data}],
+                });
 
-            const outputFile = result.MEMFS.find(
-              (file) => file.name === outputName
-            );
+                const outputFile = result.MEMFS.find(
+                    (file) => file.name === outputName
+                );
 
-            if (outputFile) {
-              const blob = new Blob([outputFile.data], {
-                type: `video/${format}`,
-              });
-              const url = URL.createObjectURL(blob);
+                if (outputFile) {
+                    const blob = new Blob([outputFile.data], {
+                        type: `video/${format}`,
+                    });
+                    const url = URL.createObjectURL(blob);
 
-              videoPreview.src = url;
-              videoPreview.style.display = "block";
+                    videoPreview.src = url;
+                    videoPreview.style.display = "block";
 
-              const downloadLink = document.createElement("a");
-              downloadLink.href = url;
-              downloadLink.download = `converted.${format}`;
-              downloadLink.textContent = "Download converted file";
-              document.body.appendChild(downloadLink);
-              downloadLink.click();
-              document.body.removeChild(downloadLink);
+                    const downloadLink = document.createElement("a");
+                    downloadLink.href = url;
+                    downloadLink.download = `converted.${format}`;
+                    downloadLink.textContent = "Download converted file";
+                    document.body.appendChild(downloadLink);
+                    downloadLink.click();
+                    document.body.removeChild(downloadLink);
 
-              logMessage("Conversion complete. Video downloaded.");
-            } else {
-              logMessage("Conversion failed: Output file not found.");
+                    logMessage("Conversion complete. Video downloaded.");
+                } else {
+                    logMessage("Conversion failed: Output file not found.");
+                }
+            } catch (err) {
+                console.error("Error during conversion:", err);
+                logMessage("Error during conversion: " + err.message);
             }
-          } catch (err) {
-            console.error("Error during conversion:", err);
-            logMessage("Error during conversion: " + err.message);
-          }
         };
 
         reader.readAsArrayBuffer(file);
-      }
+    }
 
-      function logMessage(message) {
+    function logMessage(message) {
         const logArea = document.getElementById("log");
         const newMessage = document.createElement("div");
         newMessage.textContent = message;
         logArea.appendChild(newMessage);
         logArea.scrollTop = logArea.scrollHeight; // Scroll to bottom
-      }
-    </script>
-  </body>
+    }
+</script>
+</body>
 </html>

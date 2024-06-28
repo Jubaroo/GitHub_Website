@@ -1,94 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>HTML/CSS Validator</title>
-    <link rel="stylesheet" href="../../styles/web-styles.css" />
-  </head>
-  <body>
-    <header>
-      <h1>Validate Your HTML/CSS</h1>
-      <nav>
-        <a href="../../index.html">Home</a>
-        <div class="dropdown">
-          <a href="#">Audio Tools</a>
-          <div class="dropdown-content">
-            <a href="../audio/audio-converter.html">Audio Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Video Tools</a>
-          <div class="dropdown-content">
-            <a href="../video/video-converter.html">Video Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Image Tools</a>
-          <div class="dropdown-content">
-            <a href="../images/image-extraction.html">PDF Image Extraction</a>
-            <a href="../images/background-removal.html">Background Removal</a>
-            <a href="../images/image-converter.html">Image Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Web Tools</a>
-          <div class="dropdown-content">
-            <a href="html-validator.html">HTML/CSS Validator</a>
-            <a href="json-formatter.html">JSON Formatter</a>
-            <a href="regex-tester.html">Regex Tester</a>
-            <a href="json-xml-converter.html">JSON-XML Converter</a>
-            <a href="code-beautifier.html">Code Beautifier</a>
-            <a href="markdown-previewer.html">Markdown Previewer</a>
-            <a href="css-minifier.html">CSS Minifier</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Other Tools</a>
-          <div class="dropdown-content">
-            <a href="../misc/password-generator.html">Password Generator</a>
-            <a href="../misc/finance-tracker.html">Finance Tracker</a>
-            <a href="../misc/llm.html">Web-Based LLM</a>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <div class="container">
-      <h2>Validate Your HTML/CSS</h2>
-      <p class="description">
+    <link href="../../styles/web-styles.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<script>
+    fetch("../../html/navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+        });
+</script>
+
+<div class="container">
+    <h2>Validate Your HTML/CSS</h2>
+    <p class="description">
         Ensure your HTML and CSS code is error-free and follows best practices
         with this validation tool. Paste your HTML or CSS code in the box below
         and click "Validate" to check for syntax errors and warnings. Improve
         your web development quality with easy-to-understand validation results.
-      </p>
-      <textarea
-        id="html-input"
-        placeholder="Paste your HTML/CSS here"
-      ></textarea>
-      <button onclick="validateHTML()">Validate</button>
-      <pre id="validation-results"></pre>
-    </div>
-    <footer>
-      <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
-    </footer>
-    <script>
-      document.querySelectorAll(".dropdown").forEach((dropdown) => {
+    </p>
+    <textarea
+            id="html-input"
+            placeholder="Paste your HTML/CSS here"
+    ></textarea>
+    <button onclick="validateHTML()">Validate</button>
+    <pre id="validation-results"></pre>
+</div>
+<footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
+<script>
+    document.querySelectorAll(".dropdown").forEach((dropdown) => {
         const dropdownContent = dropdown.querySelector(".dropdown-content");
         dropdown.addEventListener("mouseenter", () => {
-          dropdownContent.style.display = "block";
+            dropdownContent.style.display = "block";
         });
         dropdown.addEventListener("mouseleave", () => {
-          dropdownContent.style.display = "none";
+            dropdownContent.style.display = "none";
         });
         dropdown.querySelector("a").addEventListener("focus", () => {
-          dropdownContent.style.display = "block";
+            dropdownContent.style.display = "block";
         });
         dropdown.querySelector("a").addEventListener("blur", () => {
-          dropdownContent.style.display = "none";
+            dropdownContent.style.display = "none";
         });
-      });
+    });
 
-      function validateHTML() {
+    function validateHTML() {
         const input = document.getElementById("html-input").value;
         const iframe = document.createElement("iframe");
         iframe.style.display = "none";
@@ -99,10 +64,10 @@
         doc.close();
         const errors = doc.querySelectorAll("parsererror");
         document.getElementById("validation-results").innerText = errors.length
-          ? errors[0].textContent
-          : "No syntax errors found.";
+            ? errors[0].textContent
+            : "No syntax errors found.";
         document.body.removeChild(iframe);
-      }
-    </script>
-  </body>
+    }
+</script>
+</body>
 </html>

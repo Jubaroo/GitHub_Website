@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Jarrod's Tool Hub</title>
-    <link rel="stylesheet" href="styles/navbar.css"/>
+    <link href="styles/navbar.css" rel="stylesheet"/>
     <style>
-        html,
-        body {
+        html, body {
             margin: 0;
             padding: 0;
             height: 100%;
@@ -31,7 +30,7 @@
             height: 100%;
             top: 0;
             left: 0;
-            z-index: 0;
+            z-index: 1;
         }
 
         .flex-container {
@@ -136,17 +135,16 @@
             }
         }
 
-        /* Hint styles */
         #hint {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 1);
             color: black;
             padding: 10px 20px;
             border-radius: 5px;
             font-size: 14px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 1);
             opacity: 0;
             transition: opacity 0.5s;
             z-index: 100;
@@ -154,52 +152,15 @@
     </style>
 </head>
 <body>
-<header>
-    <h1>Jarrod's Tool Hub</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <div class="dropdown">
-            <a href="#">Audio Tools</a>
-            <div class="dropdown-content">
-                <a href="tools/audio/audio-converter.html">Audio Converter</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <a href="#">Video Tools</a>
-            <div class="dropdown-content">
-                <a href="tools/video/video-converter.html">Video Converter</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <a href="#">Image Tools</a>
-            <div class="dropdown-content">
-                <a href="tools/images/image-extraction.html">PDF Image Extraction</a>
-                <a href="tools/images/background-removal.html">Background Removal</a>
-                <a href="tools/images/image-converter.html">Image Converter</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <a href="#">Web Tools</a>
-            <div class="dropdown-content">
-                <a href="tools/coding/html-validator.html">HTML/CSS Validator</a>
-                <a href="tools/coding/json-formatter.html">JSON Formatter</a>
-                <a href="tools/coding/regex-tester.html">Regex Tester</a>
-                <a href="tools/coding/json-xml-converter.html">JSON-XML Converter</a>
-                <a href="tools/coding/code-beautifier.html">Code Beautifier</a>
-                <a href="tools/coding/markdown-previewer.html">Markdown Previewer</a>
-                <a href="tools/coding/css-minifier.html">CSS Minifier</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <a href="#">Other Tools</a>
-            <div class="dropdown-content">
-                <a href="tools/misc/password-generator.html">Password Generator</a>
-                <a href="tools/misc/finance-tracker.html">Finance Tracker</a>
-                <a href="tools/misc/llm.html">Web-Based LLM</a>
-            </div>
-        </div>
-    </nav>
-</header>
+<div id="navbar-placeholder"></div>
+
+<script>
+    fetch("../html/navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+        });
+</script>
 
 <div id="particles-js"></div>
 <div class="flex-container">
@@ -207,61 +168,61 @@
         <h2 class="main-title">Welcome to Jarrod's Tool Hub</h2>
         <p class="subtitle">Explore my most frequently used tools:</p>
         <div class="card-container">
-            <a href="tools/audio/audio-converter.html" class="card-link">
+            <a class="card-link" href="tools/audio/audio-converter.html">
                 <div class="card">
                     <canvas></canvas>
                     <div class="card-content">
-                        <img src="icons/image-icon.png" alt="Image Converter"/>
+                        <img alt="Image Converter" src="icons/image-icon.png"/>
                         <h3>Image Converter</h3>
                         <p>Convert image files</p>
                     </div>
                 </div>
             </a>
-            <a href="tools/images/image-extraction.html" class="card-link">
+            <a class="card-link" href="tools/images/pdf-image-extraction.html">
                 <div class="card">
                     <canvas></canvas>
                     <div class="card-content">
-                        <img src="icons/image-icon.png" alt="PDF Image Extractor"/>
+                        <img alt="PDF Image Extractor" src="icons/image-icon.png"/>
                         <h3>PDF Image Extractor</h3>
                         <p>Extract images from PDFs</p>
                     </div>
                 </div>
             </a>
-            <a href="tools/misc/password-generator.html" class="card-link">
+            <a class="card-link" href="tools/misc/password-generator.html">
                 <div class="card">
                     <canvas></canvas>
                     <div class="card-content">
-                        <img src="icons/password-icon.png" alt="Password Generator"/>
+                        <img alt="Password Generator" src="icons/password-icon.png"/>
                         <h3>Password Generator</h3>
                         <p>Generate secure passwords</p>
                     </div>
                 </div>
             </a>
-            <a href="video-tools.html" class="card-link">
+            <a class="card-link" href="video-tools.html">
                 <div class="card">
                     <canvas></canvas>
                     <div class="card-content">
-                        <img src="icons/video-icon.png" alt="Video Tools"/>
+                        <img alt="Video Tools" src="icons/video-icon.png"/>
                         <h3>Video Tools</h3>
                         <p>Access video tools</p>
                     </div>
                 </div>
             </a>
-            <a href="tools/coding/json-formatter.html" class="card-link">
+            <a class="card-link" href="tools/coding/json-formatter.html">
                 <div class="card">
                     <canvas></canvas>
                     <div class="card-content">
-                        <img src="icons/web-tools-icon.png" alt="JSON Formatter"/>
+                        <img alt="JSON Formatter" src="icons/web-tools-icon.png"/>
                         <h3>JSON Formatter</h3>
                         <p>Clean and format JSON data</p>
                     </div>
                 </div>
             </a>
-            <a href="tools/misc/llm.html" class="card-link">
+            <a class="card-link" href="tools/misc/llm.html">
                 <div class="card">
                     <canvas></canvas>
                     <div class="card-content">
-                        <img src="icons/llm-icon.png" alt="Web-Based LLM"/>
+                        <img alt="Web-Based LLM" src="icons/llm-icon.png"/>
                         <h3>Web-Based LLM</h3>
                         <p>Ask questions to the AI</p>
                     </div>
@@ -279,36 +240,7 @@
 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="scripts/particles-config.js"></script>
+<script src="scripts/index.js"></script>
 
-<!-- JavaScript for inactivity hint -->
-<script>
-    let lastInteractionTime = Date.now();
-    const hintTimeout = 5000; // Time in milliseconds (e.g., 5000ms = 5 seconds)
-
-    function showHint() {
-        const hintElement = document.getElementById("hint");
-        hintElement.style.opacity = "1";
-    }
-
-    function hideHint() {
-        const hintElement = document.getElementById("hint");
-        hintElement.style.opacity = "0";
-    }
-
-    function updateInteractionTime() {
-        lastInteractionTime = Date.now();
-        hideHint();
-    }
-
-    document.addEventListener("click", updateInteractionTime);
-    document.addEventListener("mousemove", updateInteractionTime);
-    document.addEventListener("keypress", updateInteractionTime);
-
-    setInterval(() => {
-        if (Date.now() - lastInteractionTime > hintTimeout) {
-            showHint();
-        }
-    }, 1000); // Check every second
-</script>
 </body>
 </html>

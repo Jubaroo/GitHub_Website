@@ -1,208 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Audio Converter</title>
-    <link rel="stylesheet" href="../../styles/navbar.css" />
+    <link href="../../styles/navbar.css" rel="stylesheet"/>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-        background-color: black;
-        color: red;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
-      .container {
-        flex: 1;
-        max-width: 800px;
-        margin: auto;
-        padding: 20px;
-      }
-      footer {
-        background-color: #8b0000;
-        padding: 1em;
-        color: #ffffff;
-        text-align: center;
-        margin-top: auto;
-      }
-      input[type="file"],
-      select,
-      button {
-        display: block;
-        margin: 10px auto;
-      }
-      button {
-        background-color: #8b0000;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-      }
-      button:hover {
-        background-color: red;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: black;
+            color: red;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            flex: 1;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #8b0000;
+            padding: 1em;
+            color: white;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        input[type="file"],
+        select,
+        button {
+            display: block;
+            margin: 10px auto;
+        }
+
+        button {
+            background-color: #8b0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: red;
+        }
     </style>
-  </head>
-  <body>
-    <header>
-      <h1>Audio Converter</h1>
-      <nav>
-        <a href="../../index.html">Home</a>
-        <div class="dropdown">
-          <a href="#">Audio Tools</a>
-          <div class="dropdown-content">
-            <a href="audio-converter.html">Audio Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Video Tools</a>
-          <div class="dropdown-content">
-            <a href="../video/video-converter.html">Video Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Image Tools</a>
-          <div class="dropdown-content">
-            <a href="../images/image-extraction.html">PDF Image Extraction</a>
-            <a href="../images/background-removal.html">Background Removal</a>
-            <a href="../images/image-converter.html">Image Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Web Tools</a>
-          <div class="dropdown-content">
-            <a href="../coding/html-validator.html">HTML/CSS Validator</a>
-            <a href="../coding/json-formatter.html">JSON Formatter</a>
-            <a href="../coding/regex-tester.html">Regex Tester</a>
-            <a href="../coding/json-xml-converter.html">JSON-XML Converter</a>
-            <a href="../coding/code-beautifier.html">Code Beautifier</a>
-            <a href="../coding/markdown-previewer.html">Markdown Previewer</a>
-            <a href="../coding/css-minifier.html">CSS Minifier</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Other Tools</a>
-          <div class="dropdown-content">
-            <a href="../misc/password-generator.html">Password Generator</a>
-            <a href="../misc/finance-tracker.html">Finance Tracker</a>
-            <a href="../misc/llm.html">Web-Based LLM</a>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <div class="container">
-      <h2>Convert Your Audio Files</h2>
-      <p class="description">
+</head>
+
+<div id="navbar-placeholder"></div>
+
+<script>
+    fetch("../../html/navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+        });
+</script>
+
+<body>
+<div class="container">
+    <h2>Convert Your Audio Files</h2>
+    <p class="description">
         Convert your audio files to different formats quickly and easily. Simply
         upload your audio file, select the desired output format, and click
         "Convert". The tool will handle the conversion and provide a download
         link for the new file.
-      </p>
-      <form id="upload-form">
-        <input type="file" id="audio-file" accept="audio/*" />
+    </p>
+    <form id="upload-form">
+        <input accept="audio/*" id="audio-file" type="file"/>
         <select id="format">
-          <option value="mp3">MP3</option>
-          <option value="wav">WAV</option>
-          <option value="ogg">OGG</option>
-          <option value="flac">FLAC</option>
+            <option value="mp3">MP3</option>
+            <option value="wav">WAV</option>
+            <option value="ogg">OGG</option>
+            <option value="flac">FLAC</option>
         </select>
-        <button type="button" onclick="convertAudio()">Convert</button>
-      </form>
-      <div id="log-container">
+        <button onclick="convertAudio()" type="button">Convert</button>
+    </form>
+    <div id="log-container">
         <h2>Log Messages</h2>
         <div id="message"></div>
-      </div>
     </div>
-    <footer>
-      <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/ffmpeg.wasm@0.11.0/dist/ffmpeg.min.js"></script>
-    <script>
-      document.querySelectorAll(".dropdown").forEach((dropdown) => {
+</div>
+<footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/ffmpeg.wasm@0.11.0/dist/ffmpeg.min.js"></script>
+<script>
+    document.querySelectorAll(".dropdown").forEach((dropdown) => {
         const dropdownContent = dropdown.querySelector(".dropdown-content");
         dropdown.addEventListener("mouseenter", () => {
-          dropdownContent.style.display = "block";
+            dropdownContent.style.display = "block";
         });
         dropdown.addEventListener("mouseleave", () => {
-          dropdownContent.style.display = "none";
+            dropdownContent.style.display = "none";
         });
         dropdown.querySelector("a").addEventListener("focus", () => {
-          dropdownContent.style.display = "block";
+            dropdownContent.style.display = "block";
         });
         dropdown.querySelector("a").addEventListener("blur", () => {
-          dropdownContent.style.display = "none";
+            dropdownContent.style.display = "none";
         });
-      });
+    });
 
-      async function convertAudio() {
+    async function convertAudio() {
         const fileInput = document.getElementById("audio-file");
         const format = document.getElementById("format").value;
         const message = document.getElementById("message");
 
         if (fileInput.files.length === 0) {
-          alert("Please choose an audio file.");
-          return;
+            alert("Please choose an audio file.");
+            return;
         }
 
         const file = fileInput.files[0];
         const reader = new FileReader();
 
         reader.onload = async function (e) {
-          const arrayBuffer = e.target.result;
-          const fileData = new Uint8Array(arrayBuffer);
+            const arrayBuffer = e.target.result;
+            const fileData = new Uint8Array(arrayBuffer);
 
-          const { createFFmpeg } = FFmpeg;
-          const ffmpeg = createFFmpeg({
-            corePath:
-              "https://cdn.jsdelivr.net/npm/ffmpeg.wasm@0.11.0/dist/ffmpeg-core.js",
-          });
+            const {createFFmpeg} = FFmpeg;
+            const ffmpeg = createFFmpeg({
+                corePath:
+                    "https://cdn.jsdelivr.net/npm/ffmpeg.wasm@0.11.0/dist/ffmpeg-core.js",
+            });
 
-          try {
-            message.innerHTML = "Loading FFmpeg...";
-            await ffmpeg.load();
-            console.log("FFmpeg loaded successfully.");
+            try {
+                message.innerHTML = "Loading FFmpeg...";
+                await ffmpeg.load();
+                console.log("FFmpeg loaded successfully.");
 
-            message.innerHTML = "Writing file to filesystem...";
-            ffmpeg.FS("writeFile", "input", fileData);
-            console.log("File written to filesystem.");
+                message.innerHTML = "Writing file to filesystem...";
+                ffmpeg.FS("writeFile", "input", fileData);
+                console.log("File written to filesystem.");
 
-            message.innerHTML = "Converting...";
-            await ffmpeg.run("-i", "input", `output.${format}`);
-            console.log("Conversion command executed.");
+                message.innerHTML = "Converting...";
+                await ffmpeg.run("-i", "input", `output.${format}`);
+                console.log("Conversion command executed.");
 
-            const data = ffmpeg.FS("readFile", `output.${format}`);
-            console.log("File read from filesystem.");
+                const data = ffmpeg.FS("readFile", `output.${format}`);
+                console.log("File read from filesystem.");
 
-            const blob = new Blob([data.buffer], { type: `audio/${format}` });
-            const url = URL.createObjectURL(blob);
+                const blob = new Blob([data.buffer], {type: `audio/${format}`});
+                const url = URL.createObjectURL(blob);
 
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = `converted.${format}`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = `converted.${format}`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
 
-            message.innerHTML = "Download started automatically.";
-          } catch (error) {
-            console.error("Error during conversion:", error);
-            message.innerHTML = `Conversion failed. Please try again. Error: ${error.message}`;
-          }
+                message.innerHTML = "Download started automatically.";
+            } catch (error) {
+                console.error("Error during conversion:", error);
+                message.innerHTML = `Conversion failed. Please try again. Error: ${error.message}`;
+            }
         };
 
         reader.onerror = function (error) {
-          console.error("File reading error:", error);
-          message.innerHTML = "Failed to read file. Please try again.";
+            console.error("File reading error:", error);
+            message.innerHTML = "Failed to read file. Please try again.";
         };
 
         reader.readAsArrayBuffer(file);
-      }
-    </script>
-  </body>
+    }
+</script>
+</body>
 </html>

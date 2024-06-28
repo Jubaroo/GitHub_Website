@@ -1,99 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Web-Based BERT</title>
-    <link rel="stylesheet" href="../../styles/web-styles.css" />
+    <link href="../../styles/web-styles.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/bert"></script>
-  </head>
-  <body>
-    <header>
-      <h1>Web-Based BERT</h1>
-      <nav>
-        <a href="../../index.html">Home</a>
-        <div class="dropdown">
-          <a href="#">Audio Tools</a>
-          <div class="dropdown-content">
-            <a href="../audio/audio-converter.html">Audio Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Video Tools</a>
-          <div class="dropdown-content">
-            <a href="../video/video-converter.html">Video Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Image Tools</a>
-          <div class="dropdown-content">
-            <a href="../images/image-extraction.html">PDF Image Extraction</a>
-            <a href="../images/background-removal.html">Background Removal</a>
-            <a href="../images/image-converter.html">Image Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Web Tools</a>
-          <div class="dropdown-content">
-            <a href="../coding/html-validator.html">HTML/CSS Validator</a>
-            <a href="../coding/json-formatter.html">JSON Formatter</a>
-            <a href="../coding/regex-tester.html">Regex Tester</a>
-            <a href="../coding/json-xml-converter.html">JSON-XML Converter</a>
-            <a href="../coding/code-beautifier.html">Code Beautifier</a>
-            <a href="../coding/markdown-previewer.html">Markdown Previewer</a>
-            <a href="../coding/css-minifier.html">CSS Minifier</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Other Tools</a>
-          <div class="dropdown-content">
-            <a href="password-generator.html">Password Generator</a>
-            <a href="finance-tracker.html">Finance Tracker</a>
-            <a href="llm.html">Web-Based LLM</a>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <div class="container">
-      <h2>Ask a Question</h2>
-      <p class="description">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<script>
+    fetch("../../html/navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+        });
+</script>
+
+<div class="container">
+    <h2>Ask a Question</h2>
+    <p class="description">
         Utilize this tool to interact with a BERT-based question-answering model
         directly in your browser. Enter your question, and this tool will
         leverage BERT's capabilities to provide relevant answers based on the
         given context. Good for quick queries and testing BERT's comprehension
         in real-time.
-      </p>
-      <textarea
-        id="user-input"
-        placeholder="Type your question here"
-      ></textarea>
-      <button onclick="runModel()">Submit</button>
-      <pre id="response"></pre>
-      <button onclick="copyToClipboard()">Copy to Clipboard</button>
-      <div id="copy-message"></div>
-    </div>
-    <footer>
-      <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
-    </footer>
-    <script>
-      document.querySelectorAll(".dropdown").forEach((dropdown) => {
+    </p>
+    <textarea
+            id="user-input"
+            placeholder="Type your question here"
+    ></textarea>
+    <button onclick="runModel()">Submit</button>
+    <pre id="response"></pre>
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+    <div id="copy-message"></div>
+</div>
+<footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
+<script>
+    document.querySelectorAll(".dropdown").forEach((dropdown) => {
         const dropdownContent = dropdown.querySelector(".dropdown-content");
         dropdown.addEventListener("mouseenter", () => {
-          dropdownContent.style.display = "block";
+            dropdownContent.style.display = "block";
         });
         dropdown.addEventListener("mouseleave", () => {
-          dropdownContent.style.display = "none";
+            dropdownContent.style.display = "none";
         });
         dropdown.querySelector("a").addEventListener("focus", () => {
-          dropdownContent.style.display = "block";
+            dropdownContent.style.display = "block";
         });
         dropdown.querySelector("a").addEventListener("blur", () => {
-          dropdownContent.style.display = "none";
+            dropdownContent.style.display = "none";
         });
-      });
+    });
 
-      async function runModel() {
+    async function runModel() {
         // Load the BERT model
         const model = await bert.loadQnA();
 
@@ -103,32 +68,32 @@
         // Example question and context
         const question = inputText;
         const context =
-          "Replace this with your context or use a predefined context for testing";
+            "Replace this with your context or use a predefined context for testing";
 
         // Perform question answering
         const answers = await model.findAnswers(question, context);
 
         // Display the answers
         document.getElementById("response").innerText = JSON.stringify(
-          answers,
-          null,
-          4
+            answers,
+            null,
+            4
         );
-      }
+    }
 
-      function copyToClipboard() {
+    function copyToClipboard() {
         const responseText = document.getElementById("response").innerText;
         navigator.clipboard
-          .writeText(responseText)
-          .then(() => {
-            document.getElementById("copy-message").innerText =
-              "Copied to clipboard!";
-          })
-          .catch((err) => {
-            document.getElementById("copy-message").innerText =
-              "Failed to copy.";
-          });
-      }
-    </script>
-  </body>
+            .writeText(responseText)
+            .then(() => {
+                document.getElementById("copy-message").innerText =
+                    "Copied to clipboard!";
+            })
+            .catch((err) => {
+                document.getElementById("copy-message").innerText =
+                    "Failed to copy.";
+            });
+    }
+</script>
+</body>
 </html>

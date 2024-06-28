@@ -1,234 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Markdown Previewer</title>
-    <link rel="stylesheet" href="../../styles/navbar.css" />
+    <link href="../../styles/navbar.css" rel="stylesheet"/>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: black;
-        color: #ffffff;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
-      .container {
-        flex: 1;
-        max-width: 800px;
-        margin: auto;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-      }
-      .main-title {
-        text-align: center;
-        color: #ff0000;
-      }
-      .description {
-        color: #ffffff;
-        font-size: 1.2em;
-        margin-bottom: 20px;
-        text-align: center;
-      }
-      .markdown-controls {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-      }
-      .markdown-area {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 80vw; /* 80% of the viewport width */
-        max-width: 800px; /* Max width constraint */
-      }
-      .sample-button {
-        background-color: #8b0000;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        margin: 10px 0;
-      }
-      .sample-button:hover {
-        background-color: #ff0000;
-      }
-      textarea,
-      #preview {
-        width: 100%;
-        height: 40vh; /* 40% of the viewport height */
-        margin: 10px 0;
-        padding: 10px;
-        background-color: #1e1e1e;
-        color: #ffffff;
-        border: 1px solid #8b0000;
-        font-family: inherit;
-        box-sizing: border-box; /* Ensure padding is included in width and height */
-      }
-      #preview {
-        min-height: 200px; /* Ensure preview is not too small */
-        padding-bottom: 20px; /* Padding below the preview */
-        overflow: auto; /* Ensure content inside can scroll if needed */
-      }
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.4);
-        justify-content: center;
-        align-items: center;
-      }
-      .modal-content {
-        background-color: #1e1e1e;
-        color: #ffffff;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #8b0000;
-        width: 80%;
-        max-width: 500px;
-        text-align: center;
-        border-radius: 10px;
-      }
-      .modal-button {
-        background-color: #8b0000;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-        margin: 10px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-      .modal-button:hover {
-        background-color: #ff0000;
-      }
-      .modal.show {
-        display: flex;
-      }
-      footer {
-        background-color: #8b0000;
-        padding: 1em;
-        color: #ffffff;
-        text-align: center;
-        margin-top: auto; /* Push footer to the bottom */
-        width: 100%;
-        box-sizing: border-box; /* Ensure padding is included in width */
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>Markdown Previewer</h1>
-      <nav>
-        <a href="../../index.html">Home</a>
-        <div class="dropdown">
-          <a href="#">Audio Tools</a>
-          <div class="dropdown-content">
-            <a href="../audio/audio-converter.html">Audio Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Video Tools</a>
-          <div class="dropdown-content">
-            <a href="../video/video-converter.html">Video Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Image Tools</a>
-          <div class="dropdown-content">
-            <a href="../images/image-extraction.html">PDF Image Extraction</a>
-            <a href="../images/background-removal.html">Background Removal</a>
-            <a href="../images/image-converter.html">Image Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Web Tools</a>
-          <div class="dropdown-content">
-            <a href="html-validator.html">HTML/CSS Validator</a>
-            <a href="json-formatter.html">JSON Formatter</a>
-            <a href="regex-tester.html">Regex Tester</a>
-            <a href="json-xml-converter.html">JSON-XML Converter</a>
-            <a href="code-beautifier.html">Code Beautifier</a>
-            <a href="markdown-previewer.html">Markdown Previewer</a>
-            <a href="css-minifier.html">CSS Minifier</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Other Tools</a>
-          <div class="dropdown-content">
-            <a href="../misc/password-generator.html">Password Generator</a>
-            <a href="../misc/finance-tracker.html">Finance Tracker</a>
-            <a href="../misc/llm.html">Web-Based LLM</a>
-          </div>
-        </div>
-      </nav>
-    </header>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-    <div class="container">
-      <h2 class="main-title">Write and Preview Markdown</h2>
-      <p class="description">
+        .container {
+            flex: 1;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .main-title {
+            text-align: center;
+            color: red;
+        }
+
+        .description {
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .markdown-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .markdown-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80vw; /* 80% of the viewport width */
+            max-width: 800px; /* Max width constraint */
+        }
+
+        .sample-button {
+            background-color: #8b0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 10px 0;
+        }
+
+        .sample-button:hover {
+            background-color: red;
+        }
+
+        textarea,
+        #preview {
+            width: 100%;
+            height: 40vh; /* 40% of the viewport height */
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #1e1e1e;
+            color: white;
+            border: 1px solid #8b0000;
+            font-family: inherit;
+            box-sizing: border-box; /* Ensure padding is included in width and height */
+        }
+
+        #preview {
+            min-height: 200px; /* Ensure preview is not too small */
+            padding-bottom: 20px; /* Padding below the preview */
+            overflow: auto; /* Ensure content inside can scroll if needed */
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #1e1e1e;
+            color: white;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #8b0000;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .modal-button {
+            background-color: #8b0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .modal-button:hover {
+            background-color: red;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        footer {
+            background-color: #8b0000;
+            padding: 1em;
+            color: white;
+            text-align: center;
+            margin-top: auto; /* Push footer to the bottom */
+            width: 100%;
+            box-sizing: border-box; /* Ensure padding is included in width */
+        }
+    </style>
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<script>
+    fetch("../../html/navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+        });
+</script>
+
+<div class="container">
+    <h2 class="main-title">Write and Preview Markdown</h2>
+    <p class="description">
         This Markdown Previewer allows you to write and instantly preview
         Markdown content. Type your Markdown in the provided text area, and see
         the rendered HTML preview on the right. You can use this tool to format
         text, create headers, lists, links, and more, all in real-time.
-      </p>
-      <div id="markdown-previewer"></div>
-    </div>
+    </p>
+    <div id="markdown-previewer"></div>
+</div>
 
-    <footer>
-      <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
-    </footer>
+<footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
 
-    <!-- React and ReactDOM -->
-    <script src="https://unpkg.com/react/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
+<!-- React and ReactDOM -->
+<script src="https://unpkg.com/react/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
 
-    <!-- Babel for JSX support -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<!-- Babel for JSX support -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <!-- Marked for Markdown parsing -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<!-- Marked for Markdown parsing -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-    <!-- DOMPurify for sanitizing -->
-    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+<!-- DOMPurify for sanitizing -->
+<script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
 
-    <script type="text/babel">
-      const { useState } = React;
+<script type="text/babel">
+    const {useState} = React;
 
-      function Modal({ showModal, handleClose, handleConfirm }) {
+    function Modal({showModal, handleClose, handleConfirm}) {
         return (
-          <div className={`modal ${showModal ? "show" : ""}`}>
-            <div className="modal-content">
-              <p>
-                There is already text in the input field. Do you want to
-                overwrite it?
-              </p>
-              <button className="modal-button" onClick={handleConfirm}>
-                Yes
-              </button>
-              <button className="modal-button" onClick={handleClose}>
-                No
-              </button>
+            <div className={`modal ${showModal ? "show" : ""}`}>
+                <div className="modal-content">
+                    <p>
+                        There is already text in the input field. Do you want to
+                        overwrite it?
+                    </p>
+                    <button className="modal-button" onClick={handleConfirm}>
+                        Yes
+                    </button>
+                    <button className="modal-button" onClick={handleClose}>
+                        No
+                    </button>
+                </div>
             </div>
-          </div>
         );
-      }
+    }
 
-      function MarkdownPreviewer() {
+    function MarkdownPreviewer() {
         const [markdown, setMarkdown] = useState("");
         const [showModal, setShowModal] = useState(false);
         const [pendingSampleText, setPendingSampleText] = useState("");
@@ -236,11 +215,11 @@
         const handleMarkdownChange = (e) => setMarkdown(e.target.value);
 
         const getMarkdownText = () => ({
-          __html: DOMPurify.sanitize(marked.parse(markdown)),
+            __html: DOMPurify.sanitize(marked.parse(markdown)),
         });
 
         const loadSampleMarkdown = () => {
-          const sampleText = `
+            const sampleText = `
 # Test Page
 
 ## Headers
@@ -327,54 +306,54 @@ You can also include HTML elements in Markdown:
 
 <div style="color: red;">This is a red div.</div>
   `;
-          if (markdown.trim()) {
-            setPendingSampleText(sampleText);
-            setShowModal(true);
-          } else {
-            setMarkdown(sampleText);
-          }
+            if (markdown.trim()) {
+                setPendingSampleText(sampleText);
+                setShowModal(true);
+            } else {
+                setMarkdown(sampleText);
+            }
         };
 
         const handleConfirm = () => {
-          setMarkdown(pendingSampleText);
-          setPendingSampleText("");
-          setShowModal(false);
+            setMarkdown(pendingSampleText);
+            setPendingSampleText("");
+            setShowModal(false);
         };
 
         const handleClose = () => {
-          setPendingSampleText("");
-          setShowModal(false);
+            setPendingSampleText("");
+            setShowModal(false);
         };
 
         return (
-          <React.Fragment>
-            <div className="markdown-controls">
-              <button className="sample-button" onClick={loadSampleMarkdown}>
-                Load Sample Markdown
-              </button>
-              <div className="markdown-area">
+            <React.Fragment>
+                <div className="markdown-controls">
+                    <button className="sample-button" onClick={loadSampleMarkdown}>
+                        Load Sample Markdown
+                    </button>
+                    <div className="markdown-area">
                 <textarea
-                  id="markdown-input"
-                  value={markdown}
-                  onChange={handleMarkdownChange}
-                  placeholder="Type your Markdown here..."
+                    id="markdown-input"
+                    value={markdown}
+                    onChange={handleMarkdownChange}
+                    placeholder="Type your Markdown here..."
                 />
-                <div id="preview" dangerouslySetInnerHTML={getMarkdownText()} />
-              </div>
-            </div>
-            <Modal
-              showModal={showModal}
-              handleClose={handleClose}
-              handleConfirm={handleConfirm}
-            />
-          </React.Fragment>
+                        <div id="preview" dangerouslySetInnerHTML={getMarkdownText()}/>
+                    </div>
+                </div>
+                <Modal
+                    showModal={showModal}
+                    handleClose={handleClose}
+                    handleConfirm={handleConfirm}
+                />
+            </React.Fragment>
         );
-      }
+    }
 
-      ReactDOM.render(
-        <MarkdownPreviewer />,
+    ReactDOM.render(
+        <MarkdownPreviewer/>,
         document.getElementById("markdown-previewer")
-      );
-    </script>
-  </body>
+    );
+</script>
+</body>
 </html>

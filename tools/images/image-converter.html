@@ -1,117 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Image Converter</title>
-    <link rel="stylesheet" href="../../styles/navbar.css" />
+    <link href="../../styles/navbar.css" rel="stylesheet"/>
     <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        font-family: Arial, sans-serif;
-        background-color: black;
-        color: #ff0000;
-        display: flex;
-        flex-direction: column;
-      }
-      .container {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 20px;
-        text-align: center;
-      }
-      img,
-      canvas {
-        max-width: 100%;
-        margin: 10px 0;
-      }
-      button {
-        background-color: #8b0000;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-        margin: 10px;
-      }
-      button:hover {
-        background-color: #ff0000;
-      }
-      footer {
-        background-color: #8b0000;
-        padding: 1em;
-        color: #ffffff;
-        text-align: center;
-      }
-      #message {
-        margin-top: 10px;
-        font-size: 1em;
-        color: #ff0000;
-      }
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: red;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+            text-align: center;
+        }
+
+        img,
+        canvas {
+            max-width: 100%;
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #8b0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: red;
+        }
+
+        footer {
+            background-color: #8b0000;
+            padding: 1em;
+            color: white;
+            text-align: center;
+        }
+
+        #message {
+            margin-top: 10px;
+            font-size: 1em;
+            color: red;
+        }
     </style>
-  </head>
-  <body>
-    <header>
-      <h1>Image Converter</h1>
-      <nav>
-        <a href="../../index.html">Home</a>
-        <div class="dropdown">
-          <a href="#">Audio Tools</a>
-          <div class="dropdown-content">
-            <a href="../audio/audio-converter.html">Audio Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Video Tools</a>
-          <div class="dropdown-content">
-            <a href="../video/video-converter.html">Video Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Image Tools</a>
-          <div class="dropdown-content">
-            <a href="image-extraction.html">PDF Image Extraction</a>
-            <a href="background-removal.html">Background Removal</a>
-            <a href="image-converter.html">Image Converter</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Web Tools</a>
-          <div class="dropdown-content">
-            <a href="../coding/html-validator.html">HTML/CSS Validator</a>
-            <a href="../coding/json-formatter.html">JSON Formatter</a>
-            <a href="../coding/regex-tester.html">Regex Tester</a>
-            <a href="../coding/json-xml-converter.html">JSON-XML Converter</a>
-            <a href="../coding/code-beautifier.html">Code Beautifier</a>
-            <a href="../coding/markdown-previewer.html">Markdown Previewer</a>
-            <a href="../coding/css-minifier.html">CSS Minifier</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Other Tools</a>
-          <div class="dropdown-content">
-            <a href="../misc/password-generator.html">Password Generator</a>
-            <a href="../misc/finance-tracker.html">Finance Tracker</a>
-            <a href="../misc/llm.html">Web-Based LLM</a>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <div class="container">
-      <h2>Convert Image Format</h2>
-      <p class="description">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<script>
+    fetch("../../html/navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+        });
+</script>
+
+<div class="container">
+    <h2>Convert Image Format</h2>
+    <p class="description">
         Quickly convert your images to various formats with this tool. Select
         your image, choose the desired format, and convert it with a click.
         Supports popular formats like JPEG, PNG, WebP, BMP, GIF, TIFF, ICO, PDF,
         and SVG.
-      </p>
-      <input type="file" id="image-upload" accept="image/*" />
-      <select id="format">
+    </p>
+    <input accept="image/*" id="image-upload" type="file"/>
+    <select id="format">
         <option value="jpeg">JPEG</option>
         <option value="png">PNG</option>
         <option value="webp">WebP</option>
@@ -121,45 +92,45 @@
         <option value="ico">ICO</option>
         <option value="pdf">PDF</option>
         <option value="svg">SVG</option>
-      </select>
-      <button onclick="convertImage()">Convert Image</button>
-      <div id="message"></div>
-      <button
-        id="download-button"
-        style="display: none"
-        onclick="downloadImage()"
-      >
+    </select>
+    <button onclick="convertImage()">Convert Image</button>
+    <div id="message"></div>
+    <button
+            id="download-button"
+            onclick="downloadImage()"
+            style="display: none"
+    >
         Download Image
-      </button>
-      <div id="preview"></div>
-    </div>
-    <footer>
-      <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
-    </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvg"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@iconify/ico"></script>
-    <script>
-      let convertedUrl = "";
-      let downloadFilename = "";
+    </button>
+    <div id="preview"></div>
+</div>
+<footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvg"></script>
+<script src="https://cdn.jsdelivr.net/npm/@iconify/ico"></script>
+<script>
+    let convertedUrl = "";
+    let downloadFilename = "";
 
-      document.querySelectorAll(".dropdown").forEach((dropdown) => {
+    document.querySelectorAll(".dropdown").forEach((dropdown) => {
         const dropdownContent = dropdown.querySelector(".dropdown-content");
         dropdown.addEventListener("mouseenter", () => {
-          dropdownContent.style.display = "block";
+            dropdownContent.style.display = "block";
         });
         dropdown.addEventListener("mouseleave", () => {
-          dropdownContent.style.display = "none";
+            dropdownContent.style.display = "none";
         });
         dropdown.querySelector("a").addEventListener("focus", () => {
-          dropdownContent.style.display = "block";
+            dropdownContent.style.display = "block";
         });
         dropdown.querySelector("a").addEventListener("blur", () => {
-          dropdownContent.style.display = "none";
+            dropdownContent.style.display = "none";
         });
-      });
+    });
 
-      async function convertImage() {
+    async function convertImage() {
         const fileInput = document.getElementById("image-upload");
         const formatSelect = document.getElementById("format");
         const preview = document.getElementById("preview");
@@ -170,8 +141,8 @@
         downloadButton.style.display = "none";
 
         if (fileInput.files.length === 0) {
-          alert("Please choose an image file.");
-          return;
+            alert("Please choose an image file.");
+            return;
         }
 
         const file = fileInput.files[0];
@@ -179,73 +150,73 @@
         const reader = new FileReader();
 
         reader.onload = function (e) {
-          const img = new Image();
-          img.onload = async function () {
-            const canvas = document.createElement("canvas");
-            canvas.width = img.width;
-            canvas.height = img.height;
+            const img = new Image();
+            img.onload = async function () {
+                const canvas = document.createElement("canvas");
+                canvas.width = img.width;
+                canvas.height = img.height;
 
-            const ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0);
+                const ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0);
 
-            try {
-              if (format === "ico") {
-                const blob = await canvasToBlob(canvas, "image/png");
-                const icoArrayBuffer = await convertToIco(blob);
-                convertedUrl = URL.createObjectURL(
-                  new Blob([icoArrayBuffer], { type: "image/x-icon" })
-                );
-              } else if (format === "pdf") {
-                convertedUrl = canvasToPdf(canvas);
-              } else if (format === "svg") {
-                convertedUrl = canvasToSvg(canvas);
-              } else {
-                convertedUrl = canvas.toDataURL(`image/${format}`);
-              }
+                try {
+                    if (format === "ico") {
+                        const blob = await canvasToBlob(canvas, "image/png");
+                        const icoArrayBuffer = await convertToIco(blob);
+                        convertedUrl = URL.createObjectURL(
+                            new Blob([icoArrayBuffer], {type: "image/x-icon"})
+                        );
+                    } else if (format === "pdf") {
+                        convertedUrl = canvasToPdf(canvas);
+                    } else if (format === "svg") {
+                        convertedUrl = canvasToSvg(canvas);
+                    } else {
+                        convertedUrl = canvas.toDataURL(`image/${format}`);
+                    }
 
-              const convertedImg = document.createElement("img");
-              convertedImg.src = convertedUrl;
-              preview.appendChild(convertedImg);
+                    const convertedImg = document.createElement("img");
+                    convertedImg.src = convertedUrl;
+                    preview.appendChild(convertedImg);
 
-              downloadFilename = `converted.${format}`;
-              downloadButton.style.display = "block";
-              message.textContent = "Image converted successfully!";
-            } catch (error) {
-              console.error("Conversion error:", error);
-              message.textContent =
-                "Failed to convert image. Please try again.";
-            }
-          };
-          img.src = e.target.result;
+                    downloadFilename = `converted.${format}`;
+                    downloadButton.style.display = "block";
+                    message.textContent = "Image converted successfully!";
+                } catch (error) {
+                    console.error("Conversion error:", error);
+                    message.textContent =
+                        "Failed to convert image. Please try again.";
+                }
+            };
+            img.src = e.target.result;
         };
 
         reader.onerror = function (error) {
-          console.error("Error reading file:", error);
-          message.textContent = "Failed to read file. Please try again.";
+            console.error("Error reading file:", error);
+            message.textContent = "Failed to read file. Please try again.";
         };
 
         reader.readAsDataURL(file);
-      }
+    }
 
-      async function convertToIco(blob) {
+    async function convertToIco(blob) {
         const arrayBuffer = await blob.arrayBuffer();
         const pngBuffer = new Uint8Array(arrayBuffer);
         const iconDir = new Uint8Array(6 + 16); // 6 bytes for header + 16 bytes for the image entry
         iconDir.set([0, 0, 1, 0, 1, 0], 0); // ICO header
         iconDir.set(
-          [
-            16,
-            16,
-            0,
-            0,
-            1,
-            0,
-            32,
-            0,
-            ...new Uint32Array([pngBuffer.length]),
-            22,
-          ],
-          6
+            [
+                16,
+                16,
+                0,
+                0,
+                1,
+                0,
+                32,
+                0,
+                ...new Uint32Array([pngBuffer.length]),
+                22,
+            ],
+            6
         ); // Image entry
 
         const iconData = new Uint8Array(iconDir.length + pngBuffer.length);
@@ -253,31 +224,31 @@
         iconData.set(pngBuffer, iconDir.length);
 
         return iconData.buffer;
-      }
+    }
 
-      function canvasToBlob(canvas, type) {
+    function canvasToBlob(canvas, type) {
         return new Promise((resolve) => {
-          canvas.toBlob((blob) => {
-            resolve(blob);
-          }, type);
+            canvas.toBlob((blob) => {
+                resolve(blob);
+            }, type);
         });
-      }
+    }
 
-      function canvasToPdf(canvas) {
-        const { jsPDF } = window.jspdf;
+    function canvasToPdf(canvas) {
+        const {jsPDF} = window.jspdf;
         const pdf = new jsPDF();
         pdf.addImage(
-          canvas.toDataURL("image/png"),
-          "PNG",
-          0,
-          0,
-          canvas.width,
-          canvas.height
+            canvas.toDataURL("image/png"),
+            "PNG",
+            0,
+            0,
+            canvas.width,
+            canvas.height
         );
         return pdf.output("dataurlstring");
-      }
+    }
 
-      function canvasToSvg(canvas) {
+    function canvasToSvg(canvas) {
         const svgCanvas = document.createElement("canvas");
         const svgCtx = svgCanvas.getContext("2d");
         svgCanvas.width = canvas.width;
@@ -286,15 +257,15 @@
 
         const svg = `
             <svg xmlns="http://www.w3.org/2000/svg" width="${
-              canvas.width
-            }" height="${canvas.height}">
+            canvas.width
+        }" height="${canvas.height}">
                 <image href="${canvas.toDataURL("image/png")}" width="${
-          canvas.width
+            canvas.width
         }" height="${canvas.height}"/>
             </svg>`;
-        const svgBlob = new Blob([svg], { type: "image/svg+xml" });
+        const svgBlob = new Blob([svg], {type: "image/svg+xml"});
         return URL.createObjectURL(svgBlob);
-      }
-    </script>
-  </body>
+    }
+</script>
+</body>
 </html>
