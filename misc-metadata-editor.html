@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Metadata Editor</title>
-    <link href="../../styles/navbar.css" rel="stylesheet"/>
+    <link href="/styles/header.css" rel="stylesheet"/>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -62,6 +62,12 @@
             border: 1px solid #ddd;
             border-radius: 8px; /* Rounded edges */
         }
+        footer {
+            background-color: #8b0000;
+            padding: 1em;
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
@@ -69,10 +75,18 @@
 <div id="navbar-placeholder"></div>
 
 <script>
-    fetch("../../html/navbar.html")
-        .then(response => response.text())
+    fetch("header.html")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
         .then(data => {
             document.getElementById("navbar-placeholder").innerHTML = data;
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
         });
 </script>
 
@@ -96,6 +110,10 @@
     <pre id="output"></pre>
     <div id="download-link"></div>
 </div>
+
+<footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
 
 <!-- Include Libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.7/jsmediatags.min.js"></script>

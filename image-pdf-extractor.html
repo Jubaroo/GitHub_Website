@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>PDF Image Extraction</title>
-    <link href="../../styles/navbar.css" rel="stylesheet"/>
+    <link href="/styles/header.css" rel="stylesheet"/>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -103,10 +103,18 @@
 <div id="navbar-placeholder"></div>
 
 <script>
-    fetch("../../html/navbar.html")
-        .then(response => response.text())
+    fetch("header.html")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
         .then(data => {
             document.getElementById("navbar-placeholder").innerHTML = data;
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
         });
 </script>
 

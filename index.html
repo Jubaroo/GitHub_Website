@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Jarrod's Tool Hub</title>
-    <link href="styles/navbar.css" rel="stylesheet"/>
+    <link href="styles/header.css" rel="stylesheet"/>
     <style>
         html, body {
             margin: 0;
@@ -155,92 +155,98 @@
 <div id="navbar-placeholder"></div>
 
 <script>
-    fetch("../html/navbar.html")
-        .then(response => response.text())
+    fetch("header.html")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
         .then(data => {
             document.getElementById("navbar-placeholder").innerHTML = data;
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
         });
 </script>
-
-<div id="particles-js"></div>
-<div class="flex-container">
-    <main class="container">
-        <h2 class="main-title">Welcome to Jarrod's Tool Hub</h2>
-        <p class="subtitle">Explore my most frequently used tools:</p>
-        <div class="card-container">
-            <a class="card-link" href="tools/audio/audio-converter.html">
-                <div class="card">
-                    <canvas></canvas>
-                    <div class="card-content">
-                        <img alt="Image Converter" src="icons/image-icon.png"/>
-                        <h3>Image Converter</h3>
-                        <p>Convert image files</p>
+    <div id="particles-js"></div>
+    <div class="flex-container">
+        <main class="container">
+            <h2 class="main-title">Welcome to Jarrod's Tool Hub</h2>
+            <p class="subtitle">Explore my most frequently used tools:</p>
+            <div class="card-container">
+                <a class="card-link" href="audio-converter.html">
+                    <div class="card">
+                        <canvas></canvas>
+                        <div class="card-content">
+                            <img alt="Image Converter" src="icons/image-icon.png"/>
+                            <h3>Image Converter</h3>
+                            <p>Convert image files</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-            <a class="card-link" href="tools/images/pdf-image-extraction.html">
-                <div class="card">
-                    <canvas></canvas>
-                    <div class="card-content">
-                        <img alt="PDF Image Extractor" src="icons/image-icon.png"/>
-                        <h3>PDF Image Extractor</h3>
-                        <p>Extract images from PDFs</p>
+                </a>
+                <a class="card-link" href="image-pdf-extractor.html">
+                    <div class="card">
+                        <canvas></canvas>
+                        <div class="card-content">
+                            <img alt="PDF Image Extractor" src="icons/image-icon.png"/>
+                            <h3>PDF Image Extractor</h3>
+                            <p>Extract images from PDFs</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-            <a class="card-link" href="tools/misc/password-generator.html">
-                <div class="card">
-                    <canvas></canvas>
-                    <div class="card-content">
-                        <img alt="Password Generator" src="icons/password-icon.png"/>
-                        <h3>Password Generator</h3>
-                        <p>Generate secure passwords</p>
+                </a>
+                <a class="card-link" href="misc-password-generator.html">
+                    <div class="card">
+                        <canvas></canvas>
+                        <div class="card-content">
+                            <img alt="Password Generator" src="icons/password-icon.png"/>
+                            <h3>Password Generator</h3>
+                            <p>Generate secure passwords</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-            <a class="card-link" href="video-tools.html">
-                <div class="card">
-                    <canvas></canvas>
-                    <div class="card-content">
-                        <img alt="Video Tools" src="icons/video-icon.png"/>
-                        <h3>Video Tools</h3>
-                        <p>Access video tools</p>
+                </a>
+                <a class="card-link" href="video-tools.html">
+                    <div class="card">
+                        <canvas></canvas>
+                        <div class="card-content">
+                            <img alt="Video Tools" src="icons/video-icon.png"/>
+                            <h3>Video Tools</h3>
+                            <p>Access video tools</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-            <a class="card-link" href="tools/coding/json-formatter.html">
-                <div class="card">
-                    <canvas></canvas>
-                    <div class="card-content">
-                        <img alt="JSON Formatter" src="icons/web-tools-icon.png"/>
-                        <h3>JSON Formatter</h3>
-                        <p>Clean and format JSON data</p>
+                </a>
+                <a class="card-link" href="coding-json-formatter.html">
+                    <div class="card">
+                        <canvas></canvas>
+                        <div class="card-content">
+                            <img alt="JSON Formatter" src="icons/web-tools-icon.png"/>
+                            <h3>JSON Formatter</h3>
+                            <p>Clean and format JSON data</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-            <a class="card-link" href="tools/misc/llm.html">
-                <div class="card">
-                    <canvas></canvas>
-                    <div class="card-content">
-                        <img alt="Web-Based LLM" src="icons/llm-icon.png"/>
-                        <h3>Web-Based LLM</h3>
-                        <p>Ask questions to the AI</p>
+                </a>
+                <a class="card-link" href="misc-llm.html">
+                    <div class="card">
+                        <canvas></canvas>
+                        <div class="card-content">
+                            <img alt="Web-Based LLM" src="icons/llm-icon.png"/>
+                            <h3>Web-Based LLM</h3>
+                            <p>Ask questions to the AI</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
-    </main>
-</div>
-
+                </a>
+            </div>
+        </main>
+    </div>
 <footer>
     <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
 </footer>
+
 
 <div id="hint">Click around to create new particles!</div>
 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="scripts/particles-config.js"></script>
 <script src="scripts/index.js"></script>
-
 </body>
 </html>
