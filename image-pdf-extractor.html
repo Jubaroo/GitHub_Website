@@ -156,6 +156,7 @@
             <option value="svg">SVG</option>
         </select>
         <button onclick="saveCurrentPage()" type="button">Save Image</button>
+        <button onclick="saveAllPages()" type="button">Save All Images</button>
     </div>
     <div class="preview" id="preview"></div>
     <div id="message"></div>
@@ -302,6 +303,19 @@
         link.href = imgData;
         link.download = `page_${pageNum}.${format}`;
         link.click();
+    }
+
+    async function saveAllPages() {
+        const format = document.getElementById("format").value;
+        const messageElement = document.getElementById("message");
+        if (!format) {
+            messageElement.textContent = "Please select a format before saving.";
+            return;
+        }
+
+        for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+            await savePage(pageNum, format);
+        }
     }
 
     // Function to convert canvas to SVG
