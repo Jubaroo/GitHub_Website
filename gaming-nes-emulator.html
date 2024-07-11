@@ -2,27 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <link href="styles/header.css" rel="stylesheet">
-    <title>Enhanced NES Emulator</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="styles/header.css" rel="stylesheet"/>
+    <title>NES Emulator</title>
     <style>
         html, body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: black;
+            color: red;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        #navbar-placeholder {
+            width: 100%;
+            background-color: #8b0000; /* Ensures full-width background color */
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        #content {
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            background-color: black;
-            color: white;
-            margin: 0;
-            padding: 0;
-        }
-
-        navbar-placeholder {
             width: 100%;
-
         }
+
         #screen-container {
             position: relative;
             max-width: 100%;
@@ -134,28 +147,35 @@
         });
 </script>
 
-<h1>Enhanced NES Emulator</h1>
-<div id="screen-container">
-    <canvas height="240" id="screen" width="256"></canvas>
-    <div class="hidden" id="touch-controls">
-        <button class="touch-button" id="up">↑</button>
-        <button class="touch-button" id="down">↓</button>
-        <button class="touch-button" id="left">←</button>
-        <button class="touch-button" id="right">→</button>
-        <button class="touch-button" id="a">A</button>
-        <button class="touch-button" id="b">B</button>
-        <button class="touch-button" id="start">Start</button>
-        <button class="touch-button" id="select">Select</button>
+<div id="content">
+    <h1>NES Emulator</h1>
+    <div id="screen-container">
+        <canvas height="240" id="screen" width="256"></canvas>
+        <div class="hidden" id="touch-controls">
+            <button class="touch-button" id="up">↑</button>
+            <button class="touch-button" id="down">↓</button>
+            <button class="touch-button" id="left">←</button>
+            <button class="touch-button" id="right">→</button>
+            <button class="touch-button" id="a">A</button>
+            <button class="touch-button" id="b">B</button>
+            <button class="touch-button" id="start">Start</button>
+            <button class="touch-button" id="select">Select</button>
+        </div>
+    </div>
+    <div id="controls">
+        <label for="rom">Choose ROM</label>
+        <input accept=".nes" id="rom" type="file">
+        <button onclick="toggleFullScreen()">Toggle Fullscreen</button>
+        <button onclick="saveState()">Save State</button>
+        <button onclick="loadState()">Load State</button>
+        <button onclick="toggleControls()">Toggle Controls</button>
     </div>
 </div>
-<div id="controls">
-    <label for="rom">Choose ROM</label>
-    <input accept=".nes" id="rom" type="file">
-    <button onclick="toggleFullScreen()">Toggle Fullscreen</button>
-    <button onclick="saveState()">Save State</button>
-    <button onclick="loadState()">Load State</button>
-    <button onclick="toggleControls()">Toggle Controls</button>
-</div>
+
+<footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
+
 <script src="https://cdn.jsdelivr.net/npm/jsnes@0.9.0/dist/jsnes.min.js"></script>
 <script>
     const nes = new jsnes.NES({
@@ -300,9 +320,5 @@
     });
 </script>
 
-<footer>
-    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
-</footer>
 </body>
 </html>
-

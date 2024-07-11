@@ -103,11 +103,7 @@
     </select>
     <button onclick="convertImage()">Convert Image</button>
     <div id="message"></div>
-    <button
-            id="download-button"
-            onclick="downloadImage()"
-            style="display: none"
-    >
+    <button id="download-button" onclick="downloadImage()" style="display: none">
         Download Image
     </button>
     <div id="preview"></div>
@@ -155,6 +151,7 @@
 
         const file = fileInput.files[0];
         const format = formatSelect.value;
+        const originalFilename = file.name.replace(/\.[^/.]+$/, ""); // Get original file name without extension
         const reader = new FileReader();
 
         reader.onload = function (e) {
@@ -186,7 +183,7 @@
                     convertedImg.src = convertedUrl;
                     preview.appendChild(convertedImg);
 
-                    downloadFilename = `converted.${format}`;
+                    downloadFilename = `converted_${originalFilename}.${format}`;
                     downloadButton.style.display = "block";
                     message.textContent = "Image converted successfully!";
                 } catch (error) {
@@ -240,6 +237,13 @@
                 resolve(blob);
             }, type);
         });
+    }
+
+    function downloadImage() {
+        const anchor = document.createElement("a");
+        anchor.href = convertedUrl;
+        anchor.download = downloadFilename;
+        anchor.click();
     }
 
     function canvasToPdf(canvas) {
