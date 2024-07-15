@@ -50,12 +50,12 @@
         .save-options button {
             margin: 5px;
             padding: 10px;
-            background-color: #8b0000;
+            background-color: darkred;
             color: white;
             border: none;
             cursor: pointer;
-            flex: 1 1 auto; /* Make buttons flexible */
-            max-width: 120px; /* Constrain maximum width */
+            flex: 1 1 auto;
+            max-width: 120px;
         }
 
         .navigation button:hover,
@@ -70,8 +70,8 @@
             align-items: center;
             margin-top: 20px;
             padding: 10px;
-            border: 1px solid #8b0000;
-            height: 50vh; /* Responsive height */
+            border: 1px solid darkred;
+            height: 50vh;
             width: 100%;
             overflow: hidden;
         }
@@ -84,7 +84,7 @@
         }
 
         footer {
-            background-color: #8b0000;
+            background-color: darkred;
             padding: 1em;
             color: white;
             text-align: center;
@@ -133,7 +133,7 @@
     </div>
     <div class="navigation">
         <button onclick="prevPage()" type="button"><< Prev</button>
-        <input
+        <label for="page-number"></label><input
                 id="page-number"
                 min="1"
                 onchange="goToPage()"
@@ -164,6 +164,9 @@
 <footer>
     <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
 </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 <script>
     let pdfDoc = null;
     let currentPage = 1;
@@ -299,10 +302,7 @@
             imgData = canvas.toDataURL(`image/${format}`);
         }
 
-        const link = document.createElement("a");
-        link.href = imgData;
-        link.download = `page_${pageNum}.${format}`;
-        link.click();
+        return imgData;
     }
 
     async function saveAllPages() {
@@ -313,9 +313,16 @@
             return;
         }
 
+        const zip = new JSZip();
         for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
-            await savePage(pageNum, format);
+            const imgData = await savePage(pageNum, format);
+            const data = imgData.split(',')[1]; // remove data URL prefix
+            zip.file(`page_${pageNum}.${format}`, data, { base64: true });
         }
+
+        zip.generateAsync({ type: 'blob' }).then((content) => {
+            saveAs(content, 'images.zip');
+        });
     }
 
     // Function to convert canvas to SVG

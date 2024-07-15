@@ -12,5 +12,6 @@
     <orderEntry type="library" name="particles" level="application" />
     <orderEntry type="library" name="handlebars" level="application" />
     <orderEntry type="library" name="jquery-3.6.0" level="application" />
+    <orderEntry type="library" name="jsnes" level="application" />
   </component>
 </module>

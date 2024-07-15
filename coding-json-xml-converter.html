@@ -41,7 +41,7 @@
         tool simplifies data interchange between systems that use different data
         formats.
     </p>
-    <textarea id="json-input" placeholder="Paste your JSON here"></textarea>
+    <label for="json-input"></label><textarea id="json-input" placeholder="Paste your JSON here"></textarea>
     <div class="button-group">
         <button onclick="convertJSONtoXML()">Convert to XML</button>
         <button onclick="copyToClipboard()">Copy to Clipboard</button>
@@ -69,8 +69,7 @@
 
         try {
             const jsonObj = JSON.parse(jsonInput);
-            const xmlOutput = jsonToXml(jsonObj);
-            document.getElementById("xml-output").textContent = xmlOutput;
+            document.getElementById("xml-output").textContent = jsonToXml(jsonObj);
             notification.textContent = ""; // Clear previous message
         } catch (error) {
             document.getElementById("xml-output").textContent =

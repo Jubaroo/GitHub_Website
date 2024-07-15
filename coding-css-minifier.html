@@ -40,7 +40,7 @@
         input box and click "Minify CSS" to get a compact and efficient version
         of your stylesheet.
     </p>
-    <textarea id="css-input" placeholder="Paste your CSS here"></textarea>
+    <label for="css-input"></label><textarea id="css-input" placeholder="Paste your CSS here"></textarea>
     <div class="button-group">
         <button onclick="minifyCSS()">Minify CSS</button>
         <button id="copy-button" onclick="copyToClipboard()">Copy</button>
@@ -65,12 +65,12 @@
             notification.textContent = "Nothing to minify!";
             notification.style.color = "red";
         } else {
-            const minified = cssInput
+             // Remove last semicolon in block
+            document.getElementById("minified-css").textContent = cssInput
                 .replace(/\/\*[\s\S]*?\*\//g, "") // Remove comments
                 .replace(/\s+/g, " ") // Collapse whitespace
                 .replace(/\s*({|}|;|:|,)\s*/g, "$1") // Remove space around { } ; : ,
-                .replace(/;}/g, "}"); // Remove last semicolon in block
-            document.getElementById("minified-css").textContent = minified;
+                .replace(/;}/g, "}");
 
             // Show success message
             notification.textContent = "CSS minified successfully!";

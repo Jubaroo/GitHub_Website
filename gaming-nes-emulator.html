@@ -20,7 +20,7 @@
 
         #navbar-placeholder {
             width: 100%;
-            background-color: #8b0000; /* Ensures full-width background color */
+            background-color: darkred;
             position: fixed;
             top: 0;
             left: 0;
@@ -119,12 +119,11 @@
         }
 
         footer {
-            background-color: #8b0000;
+            background-color: darkred;
             padding: 1em;
+            color: white;
             text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            margin-top: auto;
         }
     </style>
 </head>
@@ -176,22 +175,24 @@
     <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/jsnes@0.9.0/dist/jsnes.min.js"></script>
+<script src="https://unpkg.com/jsnes/dist/jsnes.min.js"></script>
 <script>
-    const nes = new jsnes.NES({
-        onFrame: function (frameBuffer) {
-            let canvas = document.getElementById('screen');
-            let ctx = canvas.getContext('2d');
-            let imageData = ctx.createImageData(256, 240);
-            for (let i = 0; i < frameBuffer.length; i++) {
-                imageData.data[i * 4] = frameBuffer[i] & 0xFF;
-                imageData.data[i * 4 + 1] = (frameBuffer[i] >> 8) & 0xFF;
-                imageData.data[i * 4 + 2] = (frameBuffer[i] >> 16) & 0xFF;
-                imageData.data[i * 4 + 3] = 0xFF;
-            }
-            ctx.putImageData(imageData, 0, 0);
+    const nes = new jsnes.NES();
+    const canvas = document.getElementById('screen');
+    const ctx = canvas.getContext('2d');
+    const imageData = ctx.createImageData(256, 240);
+
+    function onFrame(frameBuffer) {
+        for (let i = 0; i < frameBuffer.length; i++) {
+            imageData.data[i * 4] = frameBuffer[i] & 0xFF;
+            imageData.data[i * 4 + 1] = (frameBuffer[i] >> 8) & 0xFF;
+            imageData.data[i * 4 + 2] = (frameBuffer[i] >> 16) & 0xFF;
+            imageData.data[i * 4 + 3] = 0xFF;
         }
-    });
+        ctx.putImageData(imageData, 0, 0);
+    }
+
+    nes.frame = onFrame;
 
     document.getElementById('rom').addEventListener('change', loadROM);
 
@@ -201,10 +202,20 @@
         if (file) {
             let reader = new FileReader();
             reader.onload = function (e) {
-                nes.loadROM(e.target.result);
-                nes.start();
+                try {
+                    let data = new Uint8Array(e.target.result);
+                    console.log('ROM loaded, size:', data.byteLength);
+                    nes.loadROM(data);
+                    nes.frame = onFrame; // Set the frame handler
+                    nes.start();
+                } catch (error) {
+                    console.error('Error loading ROM:', error);
+                }
             };
-            reader.readAsBinaryString(file);
+            reader.onerror = function (error) {
+                console.error('Error reading file:', error);
+            };
+            reader.readAsArrayBuffer(file);
         }
     }
 
@@ -275,7 +286,6 @@
             const state = JSON.parse(localStorage.getItem('nesSaveState'));
             if (state) {
                 nes.fromJSON(state);
-                nes.start();
                 alert('State loaded!');
             } else {
                 alert('No saved state found.');

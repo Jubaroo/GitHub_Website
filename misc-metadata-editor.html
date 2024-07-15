@@ -8,16 +8,20 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
             background-color: black;
             color: white;
+            text-align: center;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            margin: 0;
         }
 
         .container {
-            max-width: 800px;
+            flex: 1;
+
+            max-width: 33%;
             margin: 10px 10px 10px 33.33%;
             background: #1e1e1e;
             padding: 20px;
@@ -35,15 +39,15 @@
         }
 
         .file-input {
-            width: 95%; /* Adjust the width of the file input here */
+            width: 95%;
         }
 
         textarea {
-            height: 150px; /* Default height for the comments box */
+            height: 150px;
         }
 
         button {
-            background-color: #8b0000;
+            background-color: darkred;
             color: white;
             font-weight: bold;
             border: none;
@@ -62,14 +66,13 @@
             background: #b1b1b1;
             padding: 10px;
             border: 1px solid #ddd;
-            border-radius: 8px; /* Rounded edges */
+            border-radius: 8px;
         }
         footer {
-            background-color: #8b0000;
-            width: 100%;
-            text-align: center;
+            background-color: darkred;
             padding: 1em;
             color: white;
+            text-align: center;
             margin-top: auto;
         }
 
@@ -99,16 +102,16 @@
     <h1>Edit Metadata</h1>
     <form id="media-form">
         <input accept="audio/*,video/*,image/*" class="file-input" id="file-input" type="file">
-        <select id="metadata-type">
+        <label for="metadata-type"></label><select id="metadata-type">
             <option value="auto">Detect Type Automatically</option>
             <option value="image">Image</option>
             <option value="audio">Audio</option>
             <option value="video">Video</option>
         </select>
-        <input id="title" placeholder="Title" type="text">
-        <input id="author" placeholder="Author" type="text">
-        <input id="description" placeholder="Description" type="text">
-        <textarea id="comments" placeholder="Comments"></textarea>
+        <label for="title"></label><input id="title" placeholder="Title" type="text">
+        <label for="author"></label><input id="author" placeholder="Author" type="text">
+        <label for="description"></label><input id="description" placeholder="Description" type="text">
+        <label for="comments"></label><textarea id="comments" placeholder="Comments"></textarea>
         <button onclick="editMetadata()" type="button">Save Metadata</button>
     </form>
     <h2>Metadata Output</h2>
