@@ -1,3 +1,12 @@
+// background-remover.js
+
+// List of remove.bg API keys
+const apiKeys = [
+    'VLiX2psPycMn2dVRfTbUZoip',
+    'bWFnyvvguRTCyQ4RDu8kAamd',
+    'B7C9AaygMJpwrMskPHucAZra'
+];
+
 document.getElementById("source").addEventListener("change", function () {
     const selectedSource = this.value;
     document.getElementById("image-upload").style.display =
@@ -117,6 +126,8 @@ document
         document.getElementById("bg-color-hex").value = colorValue; // Update hex value
     });
 
+let downloadUrl = '';
+
 async function removeBackground() {
     const fileInput = document.getElementById("image-upload");
     const imageUrlInput = document.getElementById("image-url");
@@ -132,14 +143,14 @@ async function removeBackground() {
     const typeLevel = document.getElementById("type-level").value;
     const format = document.getElementById("format").value;
     const roi = document.getElementById("roi").value;
-    const crop = document.getElementById("crop").checked ? "true" : "false";
+    const crop = document.getElementById("crop").checked;
     const cropMargin = document.getElementById("crop-margin").value;
     const scale = document.getElementById("scale").value;
     const position = document.getElementById("position").value;
     const channels = document.getElementById("channels").value;
     const shadowType = document.getElementById("shadow-type").value;
     const shadowOpacity = document.getElementById("shadow-opacity").value;
-    const semitransparency = document.getElementById("semitransparency").checked ? "true" : "false";
+    const semitransparency = document.getElementById("semitransparency").checked;
     const bgColor = document.getElementById("bg-color").value;
     const bgImageUrl = document.getElementById("bg-image-url").value;
 
@@ -147,6 +158,7 @@ async function removeBackground() {
     downloadButton.style.display = "none";
     comparisonContainer.style.display = "none";
 
+    // Prepare the form data
     let formData = new FormData();
 
     if (source === "image_file" && fileInput.files.length > 0) {
@@ -162,70 +174,118 @@ async function removeBackground() {
         return;
     }
 
+    // Append additional options
     formData.append("size", size);
     formData.append("type", type);
     formData.append("type_level", typeLevel);
     formData.append("format", format);
-    formData.append("roi", roi);
+    if (roi) formData.append("roi", roi);
     formData.append("crop", crop);
-    formData.append("crop_margin", cropMargin);
+    if (cropMargin) formData.append("crop_margin", cropMargin);
     formData.append("scale", scale);
-    formData.append("position", position);
+    if (position) formData.append("position", position);
     formData.append("channels", channels);
     formData.append("shadow_type", shadowType);
     formData.append("shadow_opacity", shadowOpacity);
     formData.append("semitransparency", semitransparency);
-    formData.append("bg_color", bgColor);
-    formData.append("bg_image_url", bgImageUrl);
-
-    console.log(...formData.entries());
+    if (bgColor) formData.append("bg_color", bgColor);
+    if (bgImageUrl) formData.append("bg_image_url", bgImageUrl);
 
     message.textContent = "Removing background...";
 
-    try {
-        const response = await fetch('https://your-app-name.herokuapp.com/remove-background', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                imageUrl: source === "image_url" ? imageUrlInput.value : null,
-                options: Object.fromEntries(formData)
-            })
-        });
+    // Iterate through API keys
+    for (let i = 0; i < apiKeys.length; i++) {
+        const apiKey = apiKeys[i];
+        console.log(`Trying API Key: ${apiKey}`);
+        try {
+            const response = await fetch('https://api.remove.bg/v1.0/removebg', {
+                method: 'POST',
+                headers: {
+                    'X-Api-Key': apiKey
+                    // Note: Do NOT set 'Content-Type' when sending FormData
+                },
+                body: formData
+            });
 
-        if (response.ok) {
-            const result = await response.json();
-            // Handle the result and display images
-            originalImage.onload = () => {
-                comparisonContainer.style.width = originalImage.width + "px";
-                comparisonContainer.style.height = originalImage.height + "px";
-                convertedImage.style.width = originalImage.width + "px";
-                convertedImage.style.height = originalImage.height + "px";
+            if (response.status === 200) {
+                console.log("Background removal successful.");
+                // Successful response
+                const blob = await response.blob();
+                const objectURL = URL.createObjectURL(blob);
+                convertedImage.src = objectURL;
 
+                // Determine original image source
+                let originalImageSrc;
+                if (source === "image_file") {
+                    originalImageSrc = URL.createObjectURL(fileInput.files[0]);
+                } else if (source === "image_url") {
+                    originalImageSrc = imageUrlInput.value;
+                } else if (source === "image_file_b64") {
+                    originalImageSrc = 'data:image/png;base64,' + imageB64Input.value;
+                }
+
+                // Set both images and wait for them to load
+                await Promise.all([
+                    new Promise((resolve, reject) => {
+                        originalImage.src = originalImageSrc;
+                        originalImage.onload = resolve;
+                        originalImage.onerror = () => {
+                            console.error("Original image failed to load.");
+                            reject();
+                        };
+                    }),
+                    new Promise((resolve, reject) => {
+                        convertedImage.src = objectURL;
+                        convertedImage.onload = resolve;
+                        convertedImage.onerror = () => {
+                            console.error("Converted image failed to load.");
+                            reject();
+                        };
+                    })
+                ]);
+
+                // Display the comparison slider and download button
                 comparisonContainer.style.display = "block";
                 downloadButton.style.display = "block";
                 message.textContent = "Background removed successfully!";
+                downloadUrl = objectURL;
                 initComparisons();
-            };
-
-            originalImage.src = URL.createObjectURL(fileInput.files[0]);
-            convertedImage.src = result.data; // Adjust according to the actual response structure
-            downloadUrl = result.data;
-        } else {
-            message.textContent = `Error: ${response.statusText}`;
+                return; // Exit after successful processing
+            } else if (response.status === 402) {
+                // API key exhausted or payment required
+                const errorData = await response.json();
+                console.warn(`API Key ${apiKey} exhausted: ${errorData.errors[0].title}`);
+                // Continue to the next API key
+            } else {
+                // Other errors
+                const errorData = await response.json();
+                message.textContent = `Error (${response.status}): ${errorData.errors[0].title}`;
+                message.style.color = "yellow";
+                console.error(`Error with API Key ${apiKey}:`, errorData.errors[0].title);
+                return; // Exit on other errors
+            }
+        } catch (error) {
+            console.error(`Error with API Key ${apiKey}:`, error);
+            // Continue to the next API key
         }
-    } catch (error) {
-        console.error("Error removing background:", error);
-        message.textContent = `Error: ${error.message}`;
     }
+
+    // If all API keys are exhausted or failed
+    message.textContent = "Error: All API keys have been exhausted or invalid.";
+    message.style.color = "yellow";
 }
 
 function downloadImage() {
+    if (!downloadUrl) {
+        alert("No image available to download.");
+        return;
+    }
     const link = document.createElement("a");
     link.href = downloadUrl;
     link.download = "background-removed.png";
+    document.body.appendChild(link); // Append to the DOM to make it clickable
     link.click();
+    document.body.removeChild(link); // Remove after clicking
 }
 
 function initComparisons() {
@@ -235,39 +295,57 @@ function initComparisons() {
     const imageWrapper = document.querySelector(".image-wrapper");
     let clicked = false;
 
-    slider.style.left = comparisonContainer.offsetWidth / 2 + "px";
-    convertedWrapper.style.clipPath = `rect(0, ${comparisonContainer.offsetWidth / 2}px, ${comparisonContainer.offsetHeight}px, 0)`;
-    imageWrapper.style.clipPath = `rect(0, ${comparisonContainer.offsetWidth}px, ${comparisonContainer.offsetHeight}px, ${comparisonContainer.offsetWidth / 2}px)`;
+    // Reset slider position to 50%
+    slider.style.left = "50%";
+    convertedWrapper.style.clipPath = `inset(0 50% 0 0)`;
+    imageWrapper.style.clipPath = `inset(0 0 0 50%)`;
 
+    // Event listeners for mouse interaction
     slider.addEventListener("mousedown", () => {
         clicked = true;
         window.addEventListener("mousemove", slideMove);
         window.addEventListener("mouseup", slideStop);
     });
 
+    // Event listeners for touch interaction
+    slider.addEventListener("touchstart", () => {
+        clicked = true;
+        window.addEventListener("touchmove", slideMove);
+        window.addEventListener("touchend", slideStop);
+    });
+
     function slideMove(event) {
         if (!clicked) return;
-        slide(getCursorPos(event));
-        window.getSelection().removeAllRanges();
+        let x;
+        if (event.type.startsWith('mouse')) {
+            x = event.clientX;
+        } else if (event.type.startsWith('touch')) {
+            x = event.touches[0].clientX;
+        }
+        slide(getCursorPos(x));
+        window.getSelection().removeAllRanges(); // Prevent text selection during slide
     }
 
     function slideStop() {
         clicked = false;
         window.removeEventListener("mousemove", slideMove);
         window.removeEventListener("mouseup", slideStop);
+        window.removeEventListener("touchmove", slideMove);
+        window.removeEventListener("touchend", slideStop);
     }
 
-    function getCursorPos(event) {
+    function getCursorPos(clientX) {
         const rect = comparisonContainer.getBoundingClientRect();
-        return event.clientX - rect.left;
+        return clientX - rect.left;
     }
 
     function slide(x) {
         const containerWidth = comparisonContainer.offsetWidth;
         x = Math.max(0, Math.min(x, containerWidth));
 
-        slider.style.left = x + "px";
-        convertedWrapper.style.clipPath = `rect(0, ${x}px, ${comparisonContainer.offsetHeight}px, 0)`;
-        imageWrapper.style.clipPath = `rect(0, ${containerWidth}px, ${comparisonContainer.offsetHeight}px, ${x}px)`;
+        const percentage = (x / containerWidth) * 100;
+        slider.style.left = `${percentage}%`;
+        convertedWrapper.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+        imageWrapper.style.clipPath = `inset(0 0 0 ${percentage}%)`;
     }
 }

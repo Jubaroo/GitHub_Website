@@ -4,9 +4,241 @@
     <meta charset="UTF-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Background Removal</title>
-    <link href="styles/header.css" rel="stylesheet"/>
-    <link href="styles/sidebar.css" rel="stylesheet"/>
     <style>
+        /* Integrated header.css */
+        header {
+            background-color: darkred;
+            padding: 1em;
+            color: white;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            white-space: nowrap;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffcccb;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: darkred;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border: 1px solid white;
+            border-radius: 10px;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: red;
+            border-radius: 10px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav a {
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 0.5em;
+            }
+
+            nav a {
+                font-size: 0.9em;
+                margin: 5px 0;
+            }
+        }
+
+        /* Integrated sidebar.css */
+        .description {
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #1c1c1c;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            transition: width 0.3s;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid darkred;
+        }
+
+        .sidebar input, .sidebar select, .sidebar textarea, .sidebar button {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #2e2e2e;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .sidebar label {
+            margin-bottom: 5px;
+        }
+
+        .sidebar textarea {
+            height: 100px;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: max-content;
+            background-color: #555;
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 5px;
+            position: absolute;
+            z-index: auto;
+            bottom: 125%;
+            left: 105%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .sidebar.collapsed {
+            width: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .sidebar.collapsed .form-group, .sidebar.collapsed .remove-bg-btn {
+            display: none;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+        }
+
+        .toggle-button {
+            background-color: #1c1c1c;
+            color: white;
+            border: none;
+            position: absolute;
+            left: 291px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            padding: 10px;
+            transition: left 0.3s, background-color 0.3s;
+            z-index: 1;
+            border-radius: 0 5px 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toggle-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .toggle-button:hover {
+            background-color: red;
+        }
+
+        .remove-bg-btn {
+            background-color: darkred !important;
+            font-weight: bold;
+            border: 1px solid black;
+            border-radius: 15px;
+            padding: 15px 20px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .remove-bg-btn:hover {
+            background-color: red !important;
+            border-color: darkred !important;
+        }
+
+        .tooltip-right .tooltiptext {
+            left: 105%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .tooltip-right .tooltiptext::after {
+            visibility: hidden;
+            width: max-content;
+            background-color: #555;
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 5px;
+            position: absolute;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        /* Additional Styles */
         html,
         body {
             margin: 0;
@@ -44,30 +276,44 @@
             text-align: center;
         }
 
+        /* Existing Comparison Container Styles */
         .comparison-container {
             position: relative;
-            display: inline-block;
             margin: 20px auto;
             overflow: hidden;
             max-width: 100%;
+            width: 600px; /* Adjust as needed */
+            height: 400px; /* Set a fixed height or use a responsive approach */
         }
 
-        .comparison-container .image-wrapper,
-        .comparison-container .converted-wrapper {
+        .image-wrapper,
+        .converted-wrapper {
             position: absolute;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
         }
 
         .comparison-container img {
-            display: block;
             width: 100%;
-            height: auto;
-            user-drag: none;
-            user-select: none;
+            height: 100%;
+            object-fit: contain; /* Adjust based on your image requirements */
+            display: block;
+            -webkit-user-drag: none; /* Prevent image dragging in Safari */
+            user-drag: none;         /* Prevent image dragging in other browsers */
         }
 
+        /* Prevent user selection on comparison container and its children */
+        .comparison-container,
+        .comparison-container * {
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none;    /* Firefox */
+            -ms-user-select: none;     /* Internet Explorer/Edge */
+            user-select: none;         /* Standard */
+        }
+
+        /* Slider Styles */
         .slider {
             position: absolute;
             top: 0;
@@ -98,28 +344,17 @@
         }
 
         .slider::after {
-            content: "\2194";
+            content: "\2194"; /* Unicode for left-right arrow */
             font-size: 18px;
             color: white;
             position: absolute;
             z-index: 12;
         }
 
-        .toggle-button {
-            background-color: #1c1c1c;
-            color: white;
-            border: 1px solid darkred;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            padding: 10px;
-            transition: left 0.3s, background-color 0.3s;
-            z-index: 10;
-            border-radius: 0 5px 5px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .warning {
+            color: yellow;
+            font-weight: bold;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -385,6 +620,340 @@
 <footer>
     <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
 </footer>
-<script src="scripts/background-remover.js"></script>
+<script>
+    // List of remove.bg API keys
+    const apiKeys = [
+        'VLiX2psPycMn2dVRfTbUZoip',
+        'bWFnyvvguRTCyQ4RDu8kAamd',
+        'B7C9AaygMJpwrMskPHucAZra'
+    ];
+
+    document.getElementById("source").addEventListener("change", function () {
+        const selectedSource = this.value;
+        document.getElementById("image-upload").style.display =
+            selectedSource === "image_file" ? "block" : "none";
+        document.getElementById("url-group").style.display =
+            selectedSource === "image_url" ? "block" : "none";
+        document.getElementById("b64-group").style.display =
+            selectedSource === "image_file_b64" ? "block" : "none";
+    });
+
+    document.getElementById("crop").addEventListener("change", function () {
+        document.getElementById("crop-margin-group").style.display = this
+            .checked
+            ? "block"
+            : "none";
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const sidebar = document.querySelector(".sidebar");
+        const toggleButton = document.getElementById("toggle-sidebar");
+        const tooltipDiv = toggleButton.querySelector(".tooltip");
+        const tooltipText = toggleButton.querySelector(".tooltiptext");
+        const sidebarContents = sidebar.querySelectorAll(
+            ".form-group, .remove-bg-btn, #image-upload"
+        );
+        const imageSource = document.getElementById("source");
+        const urlGroup = document.getElementById("url-group");
+        const b64Group = document.getElementById("b64-group");
+        const fileInput = document.getElementById("image-upload");
+        const cropCheckbox = document.getElementById("crop");
+        const cropMarginGroup = document.getElementById("crop-margin-group");
+
+        let selectedSource = imageSource.value; // Track selected input type
+        let isCropChecked = cropCheckbox.checked; // Track crop checkbox state
+
+        // Function to center the button vertically
+        function centerToggleButton() {
+            const windowHeight = window.innerHeight;
+            const buttonHeight = toggleButton.offsetHeight;
+            toggleButton.style.top = `${(windowHeight - buttonHeight) / 2 - 83}px`;
+        }
+
+        // Function to hide sidebar contents immediately
+        function hideSidebarContents() {
+            sidebarContents.forEach((el) => {
+                el.classList.remove("visible"); // Remove visibility for fade-in
+                el.classList.remove("fade-in"); // Remove fade-in class
+                el.style.display = "none"; // Hide immediately
+            });
+        }
+
+        // Function to show sidebar contents with fade-in effect
+        function showSidebarContents() {
+            sidebarContents.forEach((el) => {
+                if (
+                    (el === urlGroup && selectedSource === "image_url") ||
+                    (el === b64Group && selectedSource === "image_file_b64") ||
+                    (el !== urlGroup && el !== b64Group)
+                ) {
+                    el.style.display = "block"; // Make visible relevant elements
+                    el.classList.add("fade-in");
+                    setTimeout(() => el.classList.add("visible"), 10); // Apply fade-in after setting display
+                }
+            });
+            cropMarginGroup.style.display = isCropChecked ? "block" : "none"; // Show or hide crop margin
+        }
+
+        // Center the button on load and when resized
+        centerToggleButton();
+        window.addEventListener("resize", centerToggleButton);
+
+        toggleButton.addEventListener("click", () => {
+            sidebar.classList.toggle("collapsed");
+
+            if (sidebar.classList.contains("collapsed")) {
+                toggleButton.style.left = "0px"; // Position when collapsed
+                tooltipText.textContent = "Click to expand the sidebar";
+                tooltipDiv.classList.add("right"); // Add class to move tooltip to the right
+                selectedSource = imageSource.value; // Save the current selected source
+                isCropChecked = cropCheckbox.checked; // Save the crop checkbox state
+                hideSidebarContents(); // Hide sidebar contents
+            } else {
+                toggleButton.style.left = "291px"; // Position when expanded
+                tooltipText.textContent = "Click to collapse the sidebar";
+                tooltipDiv.classList.remove("right"); // Remove class to reset tooltip position
+                setTimeout(showSidebarContents, 300); // Show contents after sidebar transition
+            }
+
+            // Center the button after toggling
+            centerToggleButton();
+        });
+
+        // Handle changes in the source select element
+        imageSource.addEventListener("change", () => {
+            selectedSource = imageSource.value; // Update the selected source
+            fileInput.style.display =
+                selectedSource === "image_file" ? "block" : "none";
+            urlGroup.style.display =
+                selectedSource === "image_url" ? "block" : "none";
+            b64Group.style.display =
+                selectedSource === "image_file_b64" ? "block" : "none";
+        });
+
+        // Handle changes in the crop checkbox
+        cropCheckbox.addEventListener("change", () => {
+            isCropChecked = cropCheckbox.checked; // Update the crop checkbox state
+            cropMarginGroup.style.display = isCropChecked ? "block" : "none"; // Show or hide crop margin
+        });
+    });
+
+    document
+        .getElementById("bg-color")
+        .addEventListener("input", function () {
+            const colorValue = this.value;
+            document.getElementById("color-preview").style.backgroundColor =
+                colorValue;
+            document.getElementById("bg-color-hex").value = colorValue; // Update hex value
+        });
+
+    let downloadUrl = '';
+
+    async function removeBackground() {
+        const fileInput = document.getElementById("image-upload");
+        const imageUrlInput = document.getElementById("image-url");
+        const imageB64Input = document.getElementById("image-b64");
+        const comparisonContainer = document.getElementById("comparison-container");
+        const originalImage = document.getElementById("original-image");
+        const convertedImage = document.getElementById("converted-image");
+        const downloadButton = document.getElementById("download-button");
+        const message = document.getElementById("message");
+        const source = document.getElementById("source").value;
+        const size = document.getElementById("size").value;
+        const type = document.getElementById("type").value;
+        const typeLevel = document.getElementById("type-level").value;
+        const format = document.getElementById("format").value;
+        const roi = document.getElementById("roi").value;
+        const crop = document.getElementById("crop").checked;
+        const cropMargin = document.getElementById("crop-margin").value;
+        const scale = document.getElementById("scale").value;
+        const position = document.getElementById("position").value;
+        const channels = document.getElementById("channels").value;
+        const shadowType = document.getElementById("shadow-type").value;
+        const shadowOpacity = document.getElementById("shadow-opacity").value;
+        const semitransparency = document.getElementById("semitransparency").checked;
+        const bgColor = document.getElementById("bg-color").value;
+        const bgImageUrl = document.getElementById("bg-image-url").value;
+
+        message.textContent = "";
+        downloadButton.style.display = "none";
+        comparisonContainer.style.display = "none";
+
+        // Prepare the form data
+        let formData = new FormData();
+
+        if (source === "image_file" && fileInput.files.length > 0) {
+            formData.append("image_file", fileInput.files[0]);
+        } else if (source === "image_url") {
+            formData.append("image_url", imageUrlInput.value);
+        } else if (source === "image_file_b64") {
+            formData.append("image_file_b64", imageB64Input.value);
+        } else {
+            message.textContent = "Please provide a valid image source.";
+            message.style.color = "yellow";
+            message.style.fontWeight = "bold";
+            return;
+        }
+
+        // Append additional options
+        formData.append("size", size);
+        formData.append("type", type);
+        formData.append("type_level", typeLevel);
+        formData.append("format", format);
+        if (roi) formData.append("roi", roi);
+        formData.append("crop", crop);
+        if (cropMargin) formData.append("crop_margin", cropMargin);
+        formData.append("scale", scale);
+        if (position) formData.append("position", position);
+        formData.append("channels", channels);
+        formData.append("shadow_type", shadowType);
+        formData.append("shadow_opacity", shadowOpacity);
+        formData.append("semitransparency", semitransparency);
+        if (bgColor) formData.append("bg_color", bgColor);
+        if (bgImageUrl) formData.append("bg_image_url", bgImageUrl);
+
+        message.textContent = "Removing background...";
+
+        // Iterate through API keys
+        for (let i = 0; i < apiKeys.length; i++) {
+            const apiKey = apiKeys[i];
+            try {
+                const response = await fetch('https://api.remove.bg/v1.0/removebg', {
+                    method: 'POST',
+                    headers: {
+                        'X-Api-Key': apiKey
+                        // Note: Do NOT set 'Content-Type' when sending FormData
+                    },
+                    body: formData
+                });
+
+                if (response.status === 200) {
+                    // Successful response
+                    const blob = await response.blob();
+                    const objectURL = URL.createObjectURL(blob);
+                    convertedImage.src = objectURL;
+
+                    // Set original image source based on input type
+                    let originalImageSrc;
+                    if (source === "image_file") {
+                        originalImageSrc = URL.createObjectURL(fileInput.files[0]);
+                    } else if (source === "image_url") {
+                        originalImageSrc = imageUrlInput.value;
+                    } else if (source === "image_file_b64") {
+                        originalImageSrc = 'data:image/png;base64,' + imageB64Input.value;
+                    }
+
+                    // Set both images and wait for them to load
+                    await Promise.all([
+                        new Promise((resolve, reject) => {
+                            originalImage.src = originalImageSrc;
+                            originalImage.onload = resolve;
+                            originalImage.onerror = reject;
+                        }),
+                        new Promise((resolve, reject) => {
+                            convertedImage.src = objectURL;
+                            convertedImage.onload = resolve;
+                            convertedImage.onerror = reject;
+                        })
+                    ]);
+
+                    comparisonContainer.style.display = "block";
+                    downloadButton.style.display = "block";
+                    message.textContent = "Background removed successfully!";
+                    downloadUrl = objectURL;
+                    initComparisons();
+                    return; // Exit the function after successful processing
+                } else if (response.status === 402) {
+                    // API key exhausted or payment required
+                    const errorData = await response.json();
+                    console.warn(`API Key ${apiKey} exhausted: ${errorData.errors[0].title}`);
+                    // Continue to the next API key
+                } else {
+                    // Other errors
+                    const errorData = await response.json();
+                    message.textContent = `Error (${response.status}): ${errorData.errors[0].title}`;
+                    message.style.color = "yellow";
+                    return; // Exit on other errors
+                }
+            } catch (error) {
+                console.error(`Error with API Key ${apiKey}:`, error);
+                // Continue to the next API key
+            }
+        }
+
+        // If all API keys are exhausted or failed
+        message.textContent = "Error: All API keys have been exhausted or invalid.";
+        message.style.color = "yellow";
+    }
+
+    function downloadImage() {
+        if (!downloadUrl) {
+            alert("No image available to download.");
+            return;
+        }
+        const link = document.createElement("a");
+        link.href = downloadUrl;
+        link.download = "background-removed.png";
+        document.body.appendChild(link); // Append to the DOM to make it clickable
+        link.click();
+        document.body.removeChild(link); // Remove after clicking
+    }
+
+    function initComparisons() {
+        const slider = document.getElementById("slider");
+        const comparisonContainer = document.getElementById("comparison-container");
+        const convertedWrapper = document.querySelector(".converted-wrapper");
+        const imageWrapper = document.querySelector(".image-wrapper");
+        let clicked = false;
+
+        // Reset slider position to 50%
+        slider.style.left = "50%";
+        convertedWrapper.style.clipPath = `inset(0 50% 0 0)`;
+        imageWrapper.style.clipPath = `inset(0 0 0 50%)`;
+
+        // Event listeners for slider interaction
+        slider.addEventListener("mousedown", () => {
+            clicked = true;
+            window.addEventListener("mousemove", slideMove);
+            window.addEventListener("mouseup", slideStop);
+        });
+
+        slider.addEventListener("touchstart", () => {
+            clicked = true;
+            window.addEventListener("touchmove", slideMove);
+            window.addEventListener("touchend", slideStop);
+        });
+
+        function slideMove(event) {
+            if (!clicked) return;
+            let x;
+            if (event.type.includes('touch')) {
+                x = event.touches[0].clientX - comparisonContainer.getBoundingClientRect().left;
+            } else {
+                x = event.clientX - comparisonContainer.getBoundingClientRect().left;
+            }
+            slide(x);
+            event.preventDefault();
+        }
+
+        function slideStop() {
+            clicked = false;
+            window.removeEventListener("mousemove", slideMove);
+            window.removeEventListener("mouseup", slideStop);
+            window.removeEventListener("touchmove", slideMove);
+            window.removeEventListener("touchend", slideStop);
+        }
+
+        function slide(x) {
+            const containerWidth = comparisonContainer.offsetWidth;
+            x = Math.max(0, Math.min(x, containerWidth));
+
+            const percentage = (x / containerWidth) * 100;
+            slider.style.left = `${percentage}%`;
+            convertedWrapper.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+            imageWrapper.style.clipPath = `inset(0 0 0 ${percentage}%)`;
+        }
+    }
+</script>
 </body>
 </html>

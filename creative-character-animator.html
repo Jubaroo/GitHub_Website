@@ -6,6 +6,7 @@
     <title>Character Drawing and Animation</title>
     <link href="styles/header.css" rel="stylesheet"/>
     <style>
+        /* Original Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -21,19 +22,38 @@
         nav a, footer {
             display: flex;
             justify-content: center;
-            padding: 0.001em;
+            padding: 0.5em 1em;
+            text-decoration: none;
+            color: #f0f0f0;
+        }
+
+        nav {
+            background-color: #333;
         }
 
         main {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            margin-top: 20px;
+            padding: 20px;
         }
 
         #canvas-container {
-            border: 1px solid #ccc;
+            border: 2px solid #555;
+            border-radius: 10px;
+            background-color: #1a1a1a;
+            padding: 10px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        #controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
             margin-bottom: 20px;
         }
 
@@ -46,6 +66,7 @@
             border: none;
             border-radius: 10px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         #controls button:hover {
@@ -53,12 +74,38 @@
         }
 
         footer {
-            background-color: darkred;
+            background-color: #333;
             width: 100%;
             text-align: center;
             padding: 1em;
-            color: white;
+            color: #f0f0f0;
             margin-top: auto;
+        }
+
+        /* New Styles for Rigging Features */
+        #controls .active {
+            background-color: #a00; /* Darker red for active buttons */
+        }
+
+        /* Tooltip for Instructions */
+        #tooltip {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(50, 0, 0, 0.8);
+            color: #f0f0f0;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            pointer-events: none;
+        }
+
+        /* Responsive Canvas */
+        canvas {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            cursor: crosshair;
         }
 
     </style>
@@ -68,6 +115,7 @@
 <div id="navbar-placeholder"></div>
 
 <script>
+    // Load the navigation bar from header.html
     fetch("header.html")
         .then(response => {
             if (!response.ok) {
@@ -84,54 +132,154 @@
 </script>
 
 <main>
-    <div id="canvas-container">
-        <canvas id="draw-canvas" width="800" height="600"></canvas>
-    </div>
     <div id="controls">
+        <!-- Original Controls -->
         <button id="add-skeleton">Add Skeleton</button>
         <button id="start-animation">Start Walking Animation</button>
         <button id="stop-animation">Stop Animation</button>
+        <!-- New Rigging Controls -->
+        <button id="add-joint">Add Joint</button>
+        <button id="connect-bones">Connect Bones</button>
+        <button id="clear-all">Clear All</button>
+    </div>
+    <div id="canvas-container">
+        <canvas id="draw-canvas" width="800" height="600"></canvas>
+        <div id="tooltip">Mode: Add Skeleton</div>
     </div>
 </main>
 <script>
     const canvas = document.getElementById('draw-canvas');
     const ctx = canvas.getContext('2d');
+    const tooltip = document.getElementById('tooltip');
+    let mode = 'add-skeleton'; // Modes: 'add-skeleton', 'start-animation', 'stop-animation', 'add-joint', 'connect-bones'
+    let animationId = null;
+    let frame = 0;
+
+    // Original Variables
     let drawing = false;
     let dragging = false;
     let skeleton = [];
     let characterDrawing = [];
     let selectedPoint = null;
 
-    canvas.addEventListener('mousedown', startDrawing);
-    canvas.addEventListener('mouseup', stopDrawing);
-    canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('mousedown', startDragging);
-    canvas.addEventListener('mouseup', stopDragging);
-    canvas.addEventListener('mousemove', drag);
+    // Rigging Variables
+    let joints = [];
+    let bones = [];
+    let jointIdCounter = 0;
+    let selectedJoints = [];
+    let draggingJoint = null;
+    let offsetX, offsetY;
 
-    document.getElementById('add-skeleton').addEventListener('click', addSkeleton);
-    document.getElementById('start-animation').addEventListener('click', startAnimation);
-    document.getElementById('stop-animation').addEventListener('click', stopAnimation);
+    // Animation Variables for Rigging
+    const walkCycleSpeed = 0.05; // Controls the speed of the walking cycle
 
-    function startDrawing(e) {
+    // UI Buttons
+    const addSkeletonBtn = document.getElementById('add-skeleton');
+    const startAnimationBtn = document.getElementById('start-animation');
+    const stopAnimationBtn = document.getElementById('stop-animation');
+    const addJointBtn = document.getElementById('add-joint');
+    const connectBonesBtn = document.getElementById('connect-bones');
+    const clearAllBtn = document.getElementById('clear-all');
+
+    // Set initial active button
+    setActiveButton(addSkeletonBtn);
+
+    // Event Listeners for Original Buttons
+    addSkeletonBtn.addEventListener('click', () => {
+        mode = 'add-skeleton';
+        setActiveButton(addSkeletonBtn);
+        tooltip.textContent = 'Mode: Add Skeleton';
+        // Clear rigging data
+        joints = [];
+        bones = [];
+        selectedJoints = [];
+        drawCanvas();
+        addSkeleton();
+    });
+
+    startAnimationBtn.addEventListener('click', startAnimation);
+    stopAnimationBtn.addEventListener('click', stopAnimation);
+
+    // Event Listeners for New Rigging Buttons
+    addJointBtn.addEventListener('click', () => {
+        mode = 'add-joint';
+        setActiveButton(addJointBtn);
+        tooltip.textContent = 'Mode: Add Joint';
+        selectedJoints = [];
+    });
+
+    connectBonesBtn.addEventListener('click', () => {
+        mode = 'connect-bones';
+        setActiveButton(connectBonesBtn);
+        tooltip.textContent = 'Mode: Connect Bones';
+        selectedJoints = [];
+    });
+
+    clearAllBtn.addEventListener('click', () => {
+        mode = 'add-skeleton';
+        setActiveButton(addSkeletonBtn);
+        tooltip.textContent = 'Mode: Add Skeleton';
+        // Clear all data
+        skeleton = [];
+        characterDrawing = [];
+        joints = [];
+        bones = [];
+        selectedJoints = [];
+        dragging = false;
+        selectedPoint = null;
+        draggingJoint = null;
+        animationId = null;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    });
+
+    // Helper Function to Set Active Button
+    function setActiveButton(activeBtn) {
+        document.querySelectorAll('#controls button').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        activeBtn.classList.add('active');
+    }
+
+    // Canvas Event Listeners for Original Drawing
+    canvas.addEventListener('mousedown', handleCanvasMouseDown);
+    canvas.addEventListener('mouseup', handleCanvasMouseUp);
+    canvas.addEventListener('mousemove', handleCanvasMouseMove);
+    canvas.addEventListener('mouseleave', handleCanvasMouseLeave);
+
+    // Canvas Event Listeners for Rigging
+    canvas.addEventListener('mousedown', handleRiggingMouseDown);
+    canvas.addEventListener('mouseup', handleRiggingMouseUp);
+    canvas.addEventListener('mousemove', handleRiggingMouseMove);
+    canvas.addEventListener('mouseleave', handleRiggingMouseLeave);
+
+    // Original Drawing Functions
+    function handleCanvasMouseDown(e) {
+        if (mode !== 'add-skeleton') return;
         drawing = true;
         draw(e);
     }
 
-    function stopDrawing() {
+    function handleCanvasMouseUp() {
+        if (mode !== 'add-skeleton') return;
         drawing = false;
         ctx.beginPath();
         bindSkeletonToDrawing();
     }
 
+    function handleCanvasMouseMove(e) {
+        if (mode !== 'add-skeleton' || !drawing) return;
+        draw(e);
+    }
+
+    // Original Drawing Logic
     function draw(e) {
-        if (!drawing) return;
         ctx.lineWidth = 5;
         ctx.lineCap = 'round';
-        ctx.strokeStyle = '#000';
+        ctx.strokeStyle = '#f0f0f0'; // Changed to white for visibility on black background
 
-        const x = e.clientX - canvas.offsetLeft;
-        const y = e.clientY - canvas.offsetTop;
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
 
         ctx.lineTo(x, y);
         ctx.stroke();
@@ -139,29 +287,6 @@
         ctx.moveTo(x, y);
 
         characterDrawing.push({ x, y });
-    }
-
-    function startDragging(e) {
-        const { offsetX, offsetY } = e;
-        skeleton.forEach(point => {
-            if (Math.abs(point.x - offsetX) < 10 && Math.abs(point.y - offsetY) < 10) {
-                dragging = true;
-                selectedPoint = point;
-            }
-        });
-    }
-
-    function stopDragging() {
-        dragging = false;
-        selectedPoint = null;
-    }
-
-    function drag(e) {
-        if (!dragging || !selectedPoint) return;
-        const { offsetX, offsetY } = e;
-        selectedPoint.x = offsetX;
-        selectedPoint.y = offsetY;
-        drawSkeleton();
     }
 
     function addSkeleton() {
@@ -191,7 +316,7 @@
         if (characterDrawing.length > 0) {
             ctx.lineWidth = 5;
             ctx.lineCap = 'round';
-            ctx.strokeStyle = '#000';
+            ctx.strokeStyle = '#f0f0f0'; // White color for drawing
             ctx.beginPath();
             ctx.moveTo(characterDrawing[0].x, characterDrawing[0].y);
             characterDrawing.forEach(point => {
@@ -221,32 +346,237 @@
         drawSkeleton();
     }
 
-    let animationId;
-    let frame = 0;
+    function handleCanvasMouseLeave() {
+        if (mode !== 'add-skeleton') return;
+        handleCanvasMouseUp();
+    }
 
+    // Animation Functions
     function startAnimation() {
+        if (animationId !== null) return; // Prevent multiple animations
         animationId = requestAnimationFrame(animate);
     }
 
     function animate() {
+        frame += walkCycleSpeed;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         updateSkeleton(frame);
         drawSkeleton();
-        frame++;
         animationId = requestAnimationFrame(animate);
     }
 
     function stopAnimation() {
-        cancelAnimationFrame(animationId);
+        if (animationId !== null) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+        }
     }
 
     function updateSkeleton(frame) {
-        const angle = Math.sin(frame * 0.1) * 30;
+        const angle = Math.sin(frame) * 30;
         skeleton[4].x += Math.sin(angle * Math.PI / 180) * 2; // left leg
         skeleton[5].x += Math.sin(-angle * Math.PI / 180) * 2; // right leg
         skeleton[2].x += Math.sin(angle * Math.PI / 180); // left arm
         skeleton[3].x += Math.sin(-angle * Math.PI / 180); // right arm
     }
+
+    // Rigging Functions
+
+    // Canvas Event Handlers for Rigging
+    function handleRiggingMouseDown(e) {
+        if (mode !== 'add-joint' && mode !== 'connect-bones') return;
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        if (mode === 'add-joint') {
+            addJoint(x, y);
+        } else if (mode === 'connect-bones') {
+            const joint = getJointAtPosition(x, y);
+            if (joint) {
+                selectedJoints.push(joint.id);
+                if (selectedJoints.length === 2) {
+                    connectBones(selectedJoints[0], selectedJoints[1]);
+                    selectedJoints = [];
+                }
+            }
+        }
+
+        // Check if clicking on a joint for dragging
+        const joint = getJointAtPosition(x, y);
+        if (joint) {
+            draggingJoint = joint;
+            offsetX = x - joint.x;
+            offsetY = y - joint.y;
+        }
+    }
+
+    function handleRiggingMouseMove(e) {
+        if (mode !== 'add-joint' && mode !== 'connect-bones') return;
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        if (draggingJoint) {
+            draggingJoint.x = x - offsetX;
+            draggingJoint.y = y - offsetY;
+            drawCanvas();
+            drawSkeleton(); // Redraw the original skeleton if present
+        }
+    }
+
+    function handleRiggingMouseUp(e) {
+        if (mode !== 'add-joint' && mode !== 'connect-bones') return;
+        draggingJoint = null;
+    }
+
+    function handleRiggingMouseLeave(e) {
+        if (mode !== 'add-joint' && mode !== 'connect-bones') return;
+        draggingJoint = null;
+    }
+
+    // Rigging Logic
+    function addJoint(x, y) {
+        const newJoint = {
+            id: jointIdCounter++,
+            x: x,
+            y: y,
+            angleOffset: 0 // For animation purposes
+        };
+        joints.push(newJoint);
+        drawCanvas();
+    }
+
+    function connectBones(id1, id2) {
+        // Prevent connecting a joint to itself
+        if (id1 === id2) return;
+        // Prevent duplicate bones
+        if (bones.some(bone =>
+            (bone[0] === id1 && bone[1] === id2) ||
+            (bone[0] === id2 && bone[1] === id1)
+        )) {
+            return;
+        }
+        bones.push([id1, id2]);
+        drawCanvas();
+    }
+
+    function getJointAtPosition(x, y) {
+        return joints.find(joint => Math.hypot(joint.x - x, joint.y - y) < 10);
+    }
+
+    function drawCanvas() {
+        // Clear both skeleton and rigging drawings
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw Original Character if exists
+        drawCharacter();
+
+        // Draw Original Skeleton
+        if (skeleton.length > 0) {
+            ctx.fillStyle = 'red';
+            skeleton.forEach(point => {
+                ctx.beginPath();
+                ctx.arc(point.x, point.y, 5, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+
+        // Draw Rigging Bones
+        ctx.strokeStyle = '#f0f0f0'; // White color for bones
+        ctx.lineWidth = 2;
+        bones.forEach(bone => {
+            const jointA = joints.find(j => j.id === bone[0]);
+            const jointB = joints.find(j => j.id === bone[1]);
+            if (jointA && jointB) {
+                ctx.beginPath();
+                ctx.moveTo(jointA.x, jointA.y);
+                ctx.lineTo(jointB.x, jointB.y);
+                ctx.stroke();
+            }
+        });
+
+        // Draw Rigging Joints
+        joints.forEach(joint => {
+            ctx.beginPath();
+            ctx.arc(joint.x, joint.y, 8, 0, Math.PI * 2);
+            ctx.fillStyle = '#ff5722'; // Orange color for joints
+            ctx.fill();
+            ctx.strokeStyle = '#f0f0f0';
+            ctx.stroke();
+        });
+    }
+
+    // Draw Original Skeleton and Character
+    function drawSkeleton() {
+        if (skeleton.length === 0) return;
+        // Draw limbs
+        ctx.strokeStyle = '#f0f0f0'; // White color for limbs
+        ctx.lineWidth = 2;
+
+        // Head to torso
+        drawLine(skeleton[0], skeleton[1]);
+        // Torso to arms
+        drawLine(skeleton[1], skeleton[2]);
+        drawLine(skeleton[1], skeleton[3]);
+        // Torso to legs
+        drawLine(skeleton[1], skeleton[4]);
+        drawLine(skeleton[1], skeleton[5]);
+    }
+
+    function drawLine(pointA, pointB) {
+        ctx.beginPath();
+        ctx.moveTo(pointA.x, pointA.y);
+        ctx.lineTo(pointB.x, pointB.y);
+        ctx.stroke();
+    }
+
+    // Rigging Animation (Example: Simple Oscillation)
+    function animateRigging() {
+        frame += walkCycleSpeed;
+
+        // Example Animation: Oscillate joints
+        joints.forEach(joint => {
+            joint.y += Math.sin(frame + joint.id) * 0.5;
+        });
+
+        drawCanvas();
+        animationId = requestAnimationFrame(animateRigging);
+    }
+
+    // Updated Start and Stop Animation Functions to Handle Both Features
+    function startAnimation() {
+        if (animationId !== null) return; // Prevent multiple animations
+        if (mode === 'add-skeleton') {
+            animationId = requestAnimationFrame(animate);
+        } else if (mode === 'add-joint' || mode === 'connect-bones') {
+            animationId = requestAnimationFrame(animateRigging);
+        }
+    }
+
+    function animate() {
+        frame += walkCycleSpeed;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        updateSkeleton(frame);
+        drawSkeleton();
+        drawCharacter();
+        animationId = requestAnimationFrame(animate);
+    }
+
+    function stopAnimation() {
+        if (animationId !== null) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+        }
+    }
+
+    // Initial Draw
+    drawCanvas();
+
+    // Optional: Automatically add skeleton on load
+    window.onload = () => {
+        addSkeletonBtn.click();
+    };
 </script>
 
 <footer>
