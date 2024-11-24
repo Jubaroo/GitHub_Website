@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags and Title -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astroneer Resources & Items</title>
+    <!-- External CSS (if any) -->
+    <link href="styles/header.css" rel="stylesheet">
+    <!-- Internal CSS -->
+    <style>
+        :root {
+            --primary-bg: #000000;
+            --secondary-bg: #1e1e1e;
+            --text-color: #ffffff;
+            --accent-color: #d32f2f; /* Updated to a more vibrant red */
+            --hover-accent: #f44336;
+            --border-color: #333333;
+            --transition-speed: 0.3s;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+        }
+
+        h1, h2, h3 {
+            color: var(--accent-color);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            text-align: left;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 500px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 1px solid var(--accent-color);
+            background-color: var(--secondary-bg);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: border-color var(--transition-speed);
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--hover-accent);
+        }
+
+        .accordion {
+            background-color: var(--secondary-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 15px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color var(--transition-speed);
+        }
+
+        .accordion:hover, .accordion:focus {
+            background-color: var(--hover-accent);
+            outline: none;
+        }
+
+        .accordion:after {
+            content: '\25BC';
+            font-size: 1rem;
+            transition: transform var(--transition-speed);
+        }
+
+        .accordion.active:after {
+            transform: rotate(180deg);
+        }
+
+        .panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-speed) ease-out;
+            padding: 0 15px;
+            background-color: var(--primary-bg);
+            border-left: 4px solid var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .panel.expanded {
+            max-height: 600px; /* Increased max-height to accommodate more content */
+            overflow-y: auto;  /* Enable vertical scrolling */
+            transition: max-height var(--transition-speed) ease-in;
+        }
+
+        /* Resource List Styles */
+        .resource-list {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -5px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .resource-item {
+            background-color: var(--secondary-bg);
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color var(--transition-speed);
+            flex: 1 1 calc(33.333% - 10px);
+            margin: 5px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .resource-item:hover, .resource-item:focus {
+            background-color: var(--hover-accent);
+            outline: none;
+        }
+
+        .resource-item.active {
+            background-color: var(--hover-accent);
+        }
+
+        .resource-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .resource-details {
+            display: none;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border-color);
+            color: #cccccc;
+            font-size: 0.95rem;
+        }
+
+        .resource-item.active .resource-details {
+            display: block;
+        }
+
+        footer {
+            background-color: var(--accent-color);
+            text-align: center;
+            padding: 15px 10px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .resource-item {
+                flex: 1 1 calc(50% - 10px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .resource-item {
+                flex: 1 1 100%;
+            }
+
+            .accordion {
+                font-size: 1rem;
+                padding: 10px;
+            }
+
+            .resource-details {
+                font-size: 0.9rem;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar Placeholder -->
+<div id="navbar-placeholder"></div>
+
+<!-- Load External Navbar -->
+<script>
+    fetch("header.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error loading navbar:', error);
+        });
+</script>
+
+<!-- Main Content -->
+<main class="container">
+    <h1>Astroneer Resources & Items</h1>
+    <div class="search-container">
+        <input type="text" class="search-box" id="search-box" placeholder="Search for a resource or item..." aria-label="Search resources and items">
+    </div>
+
+    <!-- Resource Categories -->
+    <section>
+        <!-- Natural Resources -->
+        <button class="accordion" aria-expanded="false" aria-controls="natural-resources-panel" id="natural-resources">
+            Natural Resources
+        </button>
+        <div class="panel" id="natural-resources-panel" role="region" aria-labelledby="natural-resources">
+            <ul class="resource-list">
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Compound</div>
+                    <div class="resource-details">Commonly found on all planets.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Resin</div>
+                    <div class="resource-details">Commonly found on all planets.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Organic</div>
+                    <div class="resource-details">Harvested from flora on all planets.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Clay</div>
+                    <div class="resource-details">Found on all planets.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Quartz</div>
+                    <div class="resource-details">Found on all planets.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Graphite</div>
+                    <div class="resource-details">Found on all planets.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Ammonium</div>
+                    <div class="resource-details">Found on all planets.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Laterite</div>
+                    <div class="resource-details">Found on all planets; smelts into Aluminum.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Malachite</div>
+                    <div class="resource-details">Found on Sylva and Calidor; smelts into Copper.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Sphalerite</div>
+                    <div class="resource-details">Found on Sylva and Desolo; smelts into Zinc.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Wolframite</div>
+                    <div class="resource-details">Found on Desolo and Calidor; smelts into Tungsten.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Hematite</div>
+                    <div class="resource-details">Found on Novus and Glacio; smelts into Iron.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Lithium</div>
+                    <div class="resource-details">Found on Vesania and Novus.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Titanite</div>
+                    <div class="resource-details">Found on Glacio and Vesania; smelts into Titanium.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Astronium</div>
+                    <div class="resource-details">Found on all planets at lower depths.</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Refined Resources -->
+        <button class="accordion" aria-expanded="false" aria-controls="refined-resources-panel" id="refined-resources">
+            Refined Resources
+        </button>
+        <div class="panel" id="refined-resources-panel" role="region" aria-labelledby="refined-resources">
+            <ul class="resource-list">
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Aluminum</div>
+                    <div class="resource-details">Smelted from Laterite.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Copper</div>
+                    <div class="resource-details">Smelted from Malachite.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Zinc</div>
+                    <div class="resource-details">Smelted from Sphalerite.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Tungsten</div>
+                    <div class="resource-details">Smelted from Wolframite.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Iron</div>
+                    <div class="resource-details">Smelted from Hematite.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Titanium</div>
+                    <div class="resource-details">Smelted from Titanite.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Ceramic</div>
+                    <div class="resource-details">Smelted from Clay.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Glass</div>
+                    <div class="resource-details">Smelted from Quartz.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Carbon</div>
+                    <div class="resource-details">Smelted from Organic.</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Atmospheric Resources -->
+        <button class="accordion" aria-expanded="false" aria-controls="atmospheric-resources-panel" id="atmospheric-resources">
+            Atmospheric Resources
+        </button>
+        <div class="panel" id="atmospheric-resources-panel" role="region" aria-labelledby="atmospheric-resources">
+            <ul class="resource-list">
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Hydrogen</div>
+                    <div class="resource-details">Available on Vesania (100 ppu), Sylva (75 ppu), Calidor (50 ppu), and Novus (25 ppu).</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Nitrogen</div>
+                    <div class="resource-details">Available on Sylva (100 ppu), Vesania (75 ppu), and Atrox (50 ppu).</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Argon</div>
+                    <div class="resource-details">Available on Glacio (100 ppu) and Vesania (50 ppu).</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Methane</div>
+                    <div class="resource-details">Available on Atrox (100 ppu) and Novus (75 ppu).</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Sulfur</div>
+                    <div class="resource-details">Available on Calidor (100 ppu) and Atrox (75 ppu).</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Helium</div>
+                    <div class="resource-details">Available on Atrox (25 ppu).</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Composite Resources -->
+        <button class="accordion" aria-expanded="false" aria-controls="composite-resources-panel" id="composite-resources">
+            Composite Resources
+        </button>
+        <div class="panel" id="composite-resources-panel" role="region" aria-labelledby="composite-resources">
+            <ul class="resource-list">
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Rubber</div>
+                    <div class="resource-details">Made from Organic and Resin.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Plastic</div>
+                    <div class="resource-details">Made from Carbon and Compound.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Aluminum Alloy</div>
+                    <div class="resource-details">Made from Aluminum and Copper.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Tungsten Carbide</div>
+                    <div class="resource-details">Made from Tungsten and Carbon.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Graphene</div>
+                    <div class="resource-details">Made from Graphite and Hydrazine.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Diamond</div>
+                    <div class="resource-details">Made from two Graphene.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Hydrazine</div>
+                    <div class="resource-details">Made from two Ammonium and Hydrogen.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Silicone</div>
+                    <div class="resource-details">Made from Resin, Quartz, and Methane.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Explosive Powder</div>
+                    <div class="resource-details">Made from two Carbon and Sulfur.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Steel</div>
+                    <div class="resource-details">Made from Iron, Carbon, and Argon.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Titanium Alloy</div>
+                    <div class="resource-details">Made from Titanium, Graphene, and Nitrogen.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Nanocarbon Alloy</div>
+                    <div class="resource-details">Made from Titanium Alloy, Steel, and Helium.</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Manufactured Items -->
+        <button class="accordion" aria-expanded="false" aria-controls="manufactured-items-panel" id="manufactured-items">
+            Manufactured Items
+        </button>
+        <div class="panel" id="manufactured-items-panel" role="region" aria-labelledby="manufactured-items">
+            <ul class="resource-list">
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Small Printer</div>
+                    <div class="resource-details">Used to print basic items and structures. Essential for early base development.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Large Printer</div>
+                    <div class="resource-details">Allows for larger constructions and more complex item printing. Supports advanced base infrastructure.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Packager</div>
+                    <div class="resource-details">Stores and organizes items efficiently. Increases storage capacity within the base.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Beacon</div>
+                    <div class="resource-details">Provides a navigational aid and base marker for explorers and travelers.</div>
+                </li>
+                <!-- Additional Manufactured Items -->
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Solar Panel</div>
+                    <div class="resource-details">Generates power from sunlight, essential for maintaining base operations and equipment.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Oxygen Tank</div>
+                    <div class="resource-details">Provides breathable air for explorers during extended missions and cave explorations.</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Vehicles -->
+        <button class="accordion" aria-expanded="false" aria-controls="vehicles-panel" id="vehicles">
+            Vehicles
+        </button>
+        <div class="panel" id="vehicles-panel" role="region" aria-labelledby="vehicles">
+            <!-- Rovers -->
+            <h3>Rovers</h3>
+            <ul class="resource-list">
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Buggy</div>
+                    <div class="resource-details">A small, agile vehicle ideal for quick surface travel. It has limited storage and requires a Rover Seat for operation.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Tractor</div>
+                    <div class="resource-details">A compact vehicle capable of towing up to three Trailers, making it useful for early-game resource transport. It includes a built-in seat.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Trailer</div>
+                    <div class="resource-details">An attachable unit that extends the storage capacity of vehicles like the Tractor. It cannot operate independently.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Medium Rover</div>
+                    <div class="resource-details">A balanced vehicle offering moderate speed and storage, suitable for mid-game exploration. Requires a Rover Seat.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Large Rover</div>
+                    <div class="resource-details">The largest land vehicle with substantial storage and the ability to support various modules. Requires a Rover Seat.</div>
+                </li>
+            </ul>
+
+            <!-- Shuttles -->
+            <h3>Shuttles</h3>
+            <ul class="resource-list">
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Small Shuttle</div>
+                    <div class="resource-details">Enables basic space travel between planets. It has no storage and requires a Thruster and Oxygenator.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Medium Shuttle</div>
+                    <div class="resource-details">Offers greater storage and range for interplanetary journeys. Requires a Thruster and Oxygenator.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Large Shuttle</div>
+                    <div class="resource-details">Provides the most storage and functionality for space exploration. Requires a Thruster and Oxygenator.</div>
+                </li>
+            </ul>
+
+            <!-- Jet-Powered Vehicles -->
+            <h3>Jet-Powered Vehicles</h3>
+            <ul class="resource-list">
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Hoverboard</div>
+                    <div class="resource-details">A personal mobility device that allows for faster travel than by simply running. It is placed in the player's Backpack and activated when needed. It is driven by electrical power. It can't be researched but has to be unlocked via Missions.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">VTOL (Vertical Take-Off and Landing)</div>
+                    <div class="resource-details">A lightweight aircraft that allows travel over long distances by flying over the surface of a planet. It uses Hydrazine as fuel and has two Tier 1 and two Tier 2 slots for passengers or cargo. It can't be researched but has to be unlocked via Missions.</div>
+                </li>
+            </ul>
+
+            <!-- Rail Vehicles -->
+            <h3>Rail Vehicles</h3>
+            <ul class="resource-list">
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Rail Cars and Rail Engines</div>
+                    <div class="resource-details">Components that allow players to create trains to ride along rail lines set down via Rail Post Bundles or Tall Rail Post Bundles.</div>
+                </li>
+            </ul>
+
+            <!-- Other Vehicles -->
+            <h3>Other Vehicles</h3>
+            <ul class="resource-list">
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Gravity Globe</div>
+                    <div class="resource-details">A spherical recreational item that players may sit inside and control as with normal vehicles. It doesn't have any slots, meaning nothing can be placed inside except for Galastropods, which can drive Gravity Globes around on their own.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">LREV (Long Range Exploration Vehicle)</div>
+                    <div class="resource-details">The spaceship that brings Astroneers to the solar system. The player begins their game at the LREV, launching a drop pod to the planet below.</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Equipment -->
+        <button class="accordion" aria-expanded="false" aria-controls="equipment-panel" id="equipment">
+            Equipment
+        </button>
+        <div class="panel" id="equipment-panel" role="region" aria-labelledby="equipment">
+            <ul class="resource-list">
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Refinery</div>
+                    <div class="resource-details">Processes raw materials into usable resources, essential for advanced crafting.</div>
+                </li>
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Water Recycler</div>
+                    <div class="resource-details">Converts wastewater into clean water, supporting sustainable base operations.</div>
+                </li>
+                <!-- Additional Equipment -->
+                <li class="resource-item" tabindex="0">
+                    <div class="resource-title">Power Generator</div>
+                    <div class="resource-details">Provides a stable power source to keep all base equipment and structures operational.</div>
+                </li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
+
+<!-- JavaScript Code -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const accordions = document.querySelectorAll('.accordion');
+        const searchBox = document.getElementById('search-box');
+
+        // Accordion functionality with ARIA support
+        accordions.forEach(button => {
+            button.addEventListener('click', () => {
+                const panel = document.getElementById(button.getAttribute('aria-controls'));
+                const isActive = button.classList.contains('active');
+                toggleAccordion(button, panel, !isActive);
+            });
+
+            // Enable keyboard navigation for accordion
+            button.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    button.click();
+                }
+            });
+        });
+
+        function toggleAccordion(button, panel, expand) {
+            if (expand) {
+                button.classList.add('active');
+                button.setAttribute('aria-expanded', 'true');
+                panel.classList.add('expanded');
+            } else {
+                button.classList.remove('active');
+                button.setAttribute('aria-expanded', 'false');
+                panel.classList.remove('expanded');
+            }
+        }
+
+        // Toggle resource item details
+        document.addEventListener('click', function (e) {
+            if (e.target.closest('.resource-item')) {
+                const item = e.target.closest('.resource-item');
+                item.classList.toggle('active');
+            }
+        });
+
+        // Enable keyboard navigation for resource items
+        document.querySelectorAll('.resource-item').forEach(item => {
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    item.click();
+                }
+            });
+        });
+
+        // Search functionality
+        searchBox.addEventListener('input', function () {
+            const query = this.value.trim().toLowerCase();
+
+            accordions.forEach(button => {
+                const panel = document.getElementById(button.getAttribute('aria-controls'));
+                const items = panel.querySelectorAll('.resource-item');
+                let anyVisible = false;
+
+                items.forEach(item => {
+                    const title = item.querySelector('.resource-title').textContent.toLowerCase();
+                    const details = item.querySelector('.resource-details').textContent.toLowerCase();
+                    const matches = title.includes(query) || details.includes(query);
+
+                    if (matches) {
+                        item.style.display = 'flex';
+                        anyVisible = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                if (query === '') {
+                    // Reset all accordions
+                    button.style.display = '';
+                    toggleAccordion(button, panel, false);
+                    panel.style.display = '';
+                } else {
+                    if (anyVisible) {
+                        button.style.display = '';
+                        toggleAccordion(button, panel, true);
+                        panel.style.display = '';
+                    } else {
+                        button.style.display = 'none';
+                        panel.style.display = 'none';
+                    }
+                }
+            });
+        });
+
+        // Optional: Close other accordions when one is opened
+        accordions.forEach(button => {
+            button.addEventListener('click', () => {
+                const panel = document.getElementById(button.getAttribute('aria-controls'));
+                accordions.forEach(otherButton => {
+                    const otherPanel = document.getElementById(otherButton.getAttribute('aria-controls'));
+                    if (otherButton !== button && otherButton.classList.contains('active')) {
+                        toggleAccordion(otherButton, otherPanel, false);
+                    }
+                });
+            });
+        });
+    });
+</script>
+</body>
+</html>
