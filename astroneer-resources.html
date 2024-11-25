@@ -122,6 +122,7 @@
             max-height: 600px; /* Increased max-height to accommodate more content */
             overflow-y: auto;  /* Enable vertical scrolling */
             transition: max-height var(--transition-speed) ease-in;
+            padding: 15px; /* Added padding when expanded */
         }
 
         /* Resource List Styles */
@@ -145,6 +146,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: relative; /* For positioning the favorite button */
         }
 
         .resource-item:hover, .resource-item:focus {
@@ -156,9 +158,17 @@
             background-color: var(--hover-accent);
         }
 
+        .resource-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 10px;
+            align-self: center; /* Center the icon horizontally */
+        }
+
         .resource-title {
             font-weight: bold;
             margin-bottom: 10px;
+            text-align: center; /* Center the title */
         }
 
         .resource-details {
@@ -172,6 +182,31 @@
 
         .resource-item.active .resource-details {
             display: block;
+        }
+
+        /* Favorite Button Styles */
+        .favorite-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .favorite-button.active {
+            color: gold;
+        }
+
+        /* Styles for Favorites Section */
+        .no-favorites {
+            color: #cccccc;
+            text-align: center;
+            width: 100%;
+            padding: 20px;
+            font-size: 1rem;
         }
 
         footer {
@@ -209,6 +244,11 @@
             h3 {
                 font-size: 1.3rem;
             }
+
+            .resource-icon {
+                width: 40px;
+                height: 40px;
+            }
         }
     </style>
 </head>
@@ -244,64 +284,122 @@
         <div class="panel" id="natural-resources-panel" role="region" aria-labelledby="natural-resources">
             <ul class="resource-list">
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Compound Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Compound</div>
-                    <div class="resource-details">Commonly found on all planets.</div>
+                    <div class="resource-details">Commonly found on all planets; used in crafting basic items like Tethers and Small Generators.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Resin Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Resin</div>
-                    <div class="resource-details">Commonly found on all planets.</div>
+                    <div class="resource-details">Abundant on all planets; essential for creating platforms and storage units.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Organic Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Organic</div>
-                    <div class="resource-details">Harvested from flora on all planets.</div>
+                    <div class="resource-details">Collected from flora; used as fuel in Small Generators and for crafting Carbon.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Clay Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Clay</div>
-                    <div class="resource-details">Found on all planets.</div>
+                    <div class="resource-details">Mined on all planets; smelted into Ceramic for crafting items like Drill Mods.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Quartz Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Quartz</div>
-                    <div class="resource-details">Found on all planets.</div>
+                    <div class="resource-details">Available on all planets; smelted into Glass for crafting Solar Panels and Beacons.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Graphite Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Graphite</div>
-                    <div class="resource-details">Found on all planets.</div>
+                    <div class="resource-details">Found on all planets; used to craft Packagers and in composite materials.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Ammonium Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Ammonium</div>
-                    <div class="resource-details">Found on all planets.</div>
+                    <div class="resource-details">Present on all planets; used to produce Hydrazine fuel.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Laterite Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Laterite</div>
-                    <div class="resource-details">Found on all planets; smelts into Aluminum.</div>
+                    <div class="resource-details">Found on all planets; smelted into Aluminum for vehicles and modules.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Malachite Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Malachite</div>
-                    <div class="resource-details">Found on Sylva and Calidor; smelts into Copper.</div>
+                    <div class="resource-details">Located on Sylva and Calidor; smelted into Copper for electrical items.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Sphalerite Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Sphalerite</div>
-                    <div class="resource-details">Found on Sylva and Desolo; smelts into Zinc.</div>
+                    <div class="resource-details">Found on Sylva and Desolo; smelted into Zinc for crafting batteries.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Wolframite Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Wolframite</div>
-                    <div class="resource-details">Found on Desolo and Calidor; smelts into Tungsten.</div>
+                    <div class="resource-details">Present on Desolo and Calidor; smelted into Tungsten for advanced modules.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Hematite Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Hematite</div>
-                    <div class="resource-details">Found on Novus and Glacio; smelts into Iron.</div>
+                    <div class="resource-details">Located on Novus and Glacio; smelted into Iron for crafting large structures.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Lithium Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Lithium</div>
-                    <div class="resource-details">Found on Vesania and Novus.</div>
+                    <div class="resource-details">Found on Vesania and Novus; used in crafting batteries.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Titanite Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Titanite</div>
-                    <div class="resource-details">Found on Glacio and Vesania; smelts into Titanium.</div>
+                    <div class="resource-details">Present on Glacio and Vesania; smelted into Titanium for high-end equipment.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Astronium Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Astronium</div>
-                    <div class="resource-details">Found on all planets at lower depths.</div>
+                    <div class="resource-details">
+                        <strong>Location and Extraction:</strong>
+                        <ul>
+                            <li>Planetary Cores: Astronium is located in the outer core layers of every planet. Players must dig deep toward the planet's center to access it.</li>
+                            <li>Surface Deposits: During specific events, such as the F.A.R.M update, Astronium can also be found inside purple Spookysquash.</li>
+                        </ul>
+                        <strong>Uses:</strong>
+                        <ul>
+                            <li><strong>Trading:</strong>
+                                <ul>
+                                    <li>EXO Chip: 3 Astronium for 1 EXO Chip.</li>
+                                    <li>Packager: 1 Astronium for 4 Packagers.</li>
+                                    <li>Solid-Fuel Jump Jet: 1 Astronium for 2 Jump Jets.</li>
+                                    <li>Dynamite: 3 Astronium for 4 Dynamite.</li>
+                                    <li>Hydrazine: 3 Astronium for 4 Hydrazine.</li>
+                                    <li>Portable Smelting Furnace: 8 Astronium for 1 Furnace.</li>
+                                    <li>Gravity Globe: 8 Astronium for 1 Globe.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Research:</strong> Placing Astronium in a Research Chamber yields 500 bytes over 2.5 minutes, equating to 200 bytes per minute per nugget.</li>
+                            <li><strong>EXO Dynamics Research Aids:</strong> Some research aids require Astronium to open, rewarding players with items like the QT-RTG.</li>
+                        </ul>
+                        <strong>Additional Information:</strong>
+                        <ul>
+                            <li><strong>Appearance:</strong> Astronium deposits are iridescent clusters, fading from green in the center to fuchsia on the edge.</li>
+                            <li><strong>Historical Changes:</strong> Before Patch 1.0, Astronium deposits were bright fuchsia. The nuggets' color has changed over time, reflecting various updates.</li>
+                        </ul>
+                        <em>ASTRONEER WIKI</em>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -313,40 +411,58 @@
         <div class="panel" id="refined-resources-panel" role="region" aria-labelledby="refined-resources">
             <ul class="resource-list">
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Aluminum Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Aluminum</div>
-                    <div class="resource-details">Smelted from Laterite.</div>
+                    <div class="resource-details">Smelted from Laterite; used in crafting vehicles and modules.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Copper Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Copper</div>
-                    <div class="resource-details">Smelted from Malachite.</div>
+                    <div class="resource-details">Smelted from Malachite; essential for electrical components.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Zinc Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Zinc</div>
-                    <div class="resource-details">Smelted from Sphalerite.</div>
+                    <div class="resource-details">Smelted from Sphalerite; used in crafting batteries and sensors.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Tungsten Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Tungsten</div>
-                    <div class="resource-details">Smelted from Wolframite.</div>
+                    <div class="resource-details">Smelted from Wolframite; necessary for advanced modules like the Chemistry Lab.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Iron Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Iron</div>
-                    <div class="resource-details">Smelted from Hematite.</div>
+                    <div class="resource-details">Smelted from Hematite; used in large structures and equipment.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Titanium Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Titanium</div>
-                    <div class="resource-details">Smelted from Titanite.</div>
+                    <div class="resource-details">Smelted from Titanite; used in high-end tools and vehicles.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Ceramic Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Ceramic</div>
-                    <div class="resource-details">Smelted from Clay.</div>
+                    <div class="resource-details">Smelted from Clay; used in crafting Drill Mods and other items.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Glass Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Glass</div>
-                    <div class="resource-details">Smelted from Quartz.</div>
+                    <div class="resource-details">Smelted from Quartz; used in crafting Solar Panels and Beacons.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Carbon Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Carbon</div>
-                    <div class="resource-details">Smelted from Organic.</div>
+                    <div class="resource-details">Smelted from Organic; used in crafting composite materials and as fuel.</div>
                 </li>
             </ul>
         </div>
@@ -358,28 +474,40 @@
         <div class="panel" id="atmospheric-resources-panel" role="region" aria-labelledby="atmospheric-resources">
             <ul class="resource-list">
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Hydrogen Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Hydrogen</div>
-                    <div class="resource-details">Available on Vesania (100 ppu), Sylva (75 ppu), Calidor (50 ppu), and Novus (25 ppu).</div>
+                    <div class="resource-details">Collected on Vesania (100 ppu), Sylva (75 ppu), Calidor (50 ppu), and Novus (25 ppu); used in crafting Hydrazine.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Nitrogen Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Nitrogen</div>
-                    <div class="resource-details">Available on Sylva (100 ppu), Vesania (75 ppu), and Atrox (50 ppu).</div>
+                    <div class="resource-details">Available on Sylva (100 ppu), Vesania (75 ppu), and Atrox (50 ppu); used in composite materials.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Argon Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Argon</div>
-                    <div class="resource-details">Available on Glacio (100 ppu) and Vesania (50 ppu).</div>
+                    <div class="resource-details">Found on Glacio (100 ppu) and Vesania (50 ppu); used in crafting Steel.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Methane Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Methane</div>
-                    <div class="resource-details">Available on Atrox (100 ppu) and Novus (75 ppu).</div>
+                    <div class="resource-details">Collected on Atrox (100 ppu) and Novus (75 ppu); used in crafting Silicone.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Sulfur Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Sulfur</div>
-                    <div class="resource-details">Available on Calidor (100 ppu) and Atrox (75 ppu).</div>
+                    <div class="resource-details">Available on Calidor (100 ppu) and Atrox (75 ppu); used in crafting Explosive Powder.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Helium Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Helium</div>
-                    <div class="resource-details">Available on Atrox (25 ppu).</div>
+                    <div class="resource-details">Found on Atrox (25 ppu); used in crafting Nanocarbon Alloy.</div>
                 </li>
             </ul>
         </div>
@@ -391,50 +519,74 @@
         <div class="panel" id="composite-resources-panel" role="region" aria-labelledby="composite-resources">
             <ul class="resource-list">
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Rubber Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Rubber</div>
                     <div class="resource-details">Made from Organic and Resin.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Plastic Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Plastic</div>
                     <div class="resource-details">Made from Carbon and Compound.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Aluminum Alloy Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Aluminum Alloy</div>
                     <div class="resource-details">Made from Aluminum and Copper.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Tungsten Carbide Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Tungsten Carbide</div>
                     <div class="resource-details">Made from Tungsten and Carbon.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Graphene Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Graphene</div>
                     <div class="resource-details">Made from Graphite and Hydrazine.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Diamond Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Diamond</div>
                     <div class="resource-details">Made from two Graphene.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Hydrazine Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Hydrazine</div>
                     <div class="resource-details">Made from two Ammonium and Hydrogen.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Silicone Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Silicone</div>
                     <div class="resource-details">Made from Resin, Quartz, and Methane.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Explosive Powder Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Explosive Powder</div>
                     <div class="resource-details">Made from two Carbon and Sulfur.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Steel Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Steel</div>
                     <div class="resource-details">Made from Iron, Carbon, and Argon.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Titanium Alloy Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Titanium Alloy</div>
                     <div class="resource-details">Made from Titanium, Graphene, and Nitrogen.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Nanocarbon Alloy Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Nanocarbon Alloy</div>
                     <div class="resource-details">Made from Titanium Alloy, Steel, and Helium.</div>
                 </li>
@@ -448,27 +600,39 @@
         <div class="panel" id="manufactured-items-panel" role="region" aria-labelledby="manufactured-items">
             <ul class="resource-list">
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Small Printer Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Small Printer</div>
                     <div class="resource-details">Used to print basic items and structures. Essential for early base development.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Large Printer Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Large Printer</div>
                     <div class="resource-details">Allows for larger constructions and more complex item printing. Supports advanced base infrastructure.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Packager Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Packager</div>
                     <div class="resource-details">Stores and organizes items efficiently. Increases storage capacity within the base.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Beacon Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Beacon</div>
                     <div class="resource-details">Provides a navigational aid and base marker for explorers and travelers.</div>
                 </li>
                 <!-- Additional Manufactured Items -->
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Solar Panel Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Solar Panel</div>
                     <div class="resource-details">Generates power from sunlight, essential for maintaining base operations and equipment.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Oxygen Tank Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Oxygen Tank</div>
                     <div class="resource-details">Provides breathable air for explorers during extended missions and cave explorations.</div>
                 </li>
@@ -484,22 +648,32 @@
             <h3>Rovers</h3>
             <ul class="resource-list">
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Buggy Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Buggy</div>
                     <div class="resource-details">A small, agile vehicle ideal for quick surface travel. It has limited storage and requires a Rover Seat for operation.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Tractor Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Tractor</div>
                     <div class="resource-details">A compact vehicle capable of towing up to three Trailers, making it useful for early-game resource transport. It includes a built-in seat.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Trailer Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Trailer</div>
                     <div class="resource-details">An attachable unit that extends the storage capacity of vehicles like the Tractor. It cannot operate independently.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Medium Rover Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Medium Rover</div>
                     <div class="resource-details">A balanced vehicle offering moderate speed and storage, suitable for mid-game exploration. Requires a Rover Seat.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Large Rover Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Large Rover</div>
                     <div class="resource-details">The largest land vehicle with substantial storage and the ability to support various modules. Requires a Rover Seat.</div>
                 </li>
@@ -509,14 +683,20 @@
             <h3>Shuttles</h3>
             <ul class="resource-list">
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Small Shuttle Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Small Shuttle</div>
                     <div class="resource-details">Enables basic space travel between planets. It has no storage and requires a Thruster and Oxygenator.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Medium Shuttle Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Medium Shuttle</div>
                     <div class="resource-details">Offers greater storage and range for interplanetary journeys. Requires a Thruster and Oxygenator.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Large Shuttle Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Large Shuttle</div>
                     <div class="resource-details">Provides the most storage and functionality for space exploration. Requires a Thruster and Oxygenator.</div>
                 </li>
@@ -526,10 +706,14 @@
             <h3>Jet-Powered Vehicles</h3>
             <ul class="resource-list">
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Hoverboard Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Hoverboard</div>
                     <div class="resource-details">A personal mobility device that allows for faster travel than by simply running. It is placed in the player's Backpack and activated when needed. It is driven by electrical power. It can't be researched but has to be unlocked via Missions.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="VTOL Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">VTOL (Vertical Take-Off and Landing)</div>
                     <div class="resource-details">A lightweight aircraft that allows travel over long distances by flying over the surface of a planet. It uses Hydrazine as fuel and has two Tier 1 and two Tier 2 slots for passengers or cargo. It can't be researched but has to be unlocked via Missions.</div>
                 </li>
@@ -539,6 +723,8 @@
             <h3>Rail Vehicles</h3>
             <ul class="resource-list">
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Rail Cars and Rail Engines Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Rail Cars and Rail Engines</div>
                     <div class="resource-details">Components that allow players to create trains to ride along rail lines set down via Rail Post Bundles or Tall Rail Post Bundles.</div>
                 </li>
@@ -548,10 +734,14 @@
             <h3>Other Vehicles</h3>
             <ul class="resource-list">
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Gravity Globe Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Gravity Globe</div>
                     <div class="resource-details">A spherical recreational item that players may sit inside and control as with normal vehicles. It doesn't have any slots, meaning nothing can be placed inside except for Galastropods, which can drive Gravity Globes around on their own.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="LREV Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">LREV (Long Range Exploration Vehicle)</div>
                     <div class="resource-details">The spaceship that brings Astroneers to the solar system. The player begins their game at the LREV, launching a drop pod to the planet below.</div>
                 </li>
@@ -565,18 +755,33 @@
         <div class="panel" id="equipment-panel" role="region" aria-labelledby="equipment">
             <ul class="resource-list">
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Refinery Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Refinery</div>
                     <div class="resource-details">Processes raw materials into usable resources, essential for advanced crafting.</div>
                 </li>
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Water Recycler Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Water Recycler</div>
                     <div class="resource-details">Converts wastewater into clean water, supporting sustainable base operations.</div>
                 </li>
                 <!-- Additional Equipment -->
                 <li class="resource-item" tabindex="0">
+                    <img src="https://i.imgur.com/n4FOgo0_d.webp?maxwidth=760&fidelity=grand" alt="Power Generator Icon" class="resource-icon">
+                    <button class="favorite-button" aria-label="Add to Favorites">☆</button>
                     <div class="resource-title">Power Generator</div>
                     <div class="resource-details">Provides a stable power source to keep all base equipment and structures operational.</div>
                 </li>
+            </ul>
+        </div>
+        <!-- Favorites Section -->
+        <button class="accordion" aria-expanded="false" aria-controls="favorites-panel" id="favorites">
+            Favorites
+        </button>
+        <div class="panel" id="favorites-panel" role="region" aria-labelledby="favorites">
+            <ul class="resource-list" id="favorites-list">
+                <li class="no-favorites">No favorites selected.</li>
             </ul>
         </div>
     </section>
@@ -592,24 +797,10 @@
     document.addEventListener('DOMContentLoaded', () => {
         const accordions = document.querySelectorAll('.accordion');
         const searchBox = document.getElementById('search-box');
+        const favoritesList = document.getElementById('favorites-list');
+        const noFavorites = favoritesList.querySelector('.no-favorites');
 
-        // Accordion functionality with ARIA support
-        accordions.forEach(button => {
-            button.addEventListener('click', () => {
-                const panel = document.getElementById(button.getAttribute('aria-controls'));
-                const isActive = button.classList.contains('active');
-                toggleAccordion(button, panel, !isActive);
-            });
-
-            // Enable keyboard navigation for accordion
-            button.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    button.click();
-                }
-            });
-        });
-
+        // Function to toggle accordion
         function toggleAccordion(button, panel, expand) {
             if (expand) {
                 button.classList.add('active');
@@ -621,6 +812,97 @@
                 panel.classList.remove('expanded');
             }
         }
+
+        // Function to render favorites
+        function renderFavorites() {
+            const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            favoritesList.innerHTML = ''; // Clear existing items
+
+            if (favorites.length === 0) {
+                noFavorites.style.display = 'block';
+            } else {
+                noFavorites.style.display = 'none';
+                favorites.forEach(title => {
+                    // Find the resource item by title
+                    const allTitles = document.querySelectorAll('.resource-title');
+                    let foundItem = null;
+                    allTitles.forEach(item => {
+                        if (item.textContent.trim().toLowerCase() === title.trim().toLowerCase()) {
+                            foundItem = item;
+                        }
+                    });
+                    if (foundItem) {
+                        const originalItem = foundItem.parentElement.cloneNode(true);
+                        // Update favorite button state
+                        const favButton = originalItem.querySelector('.favorite-button');
+                        if (favButton) {
+                            favButton.classList.add('active');
+                            favButton.textContent = '★'; // Filled star
+                        }
+                        favoritesList.appendChild(originalItem);
+                    }
+                });
+
+                // Add event listeners to the favorite buttons in the Favorites panel
+                favoritesList.querySelectorAll('.favorite-button').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        e.stopPropagation(); // Prevent triggering the resource-item click
+                        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+                        const title = button.parentElement.querySelector('.resource-title').textContent;
+
+                        if (favorites.includes(title)) {
+                            favorites = favorites.filter(item => item !== title);
+                            button.classList.remove('active');
+                            button.textContent = '☆'; // Empty star
+                        } else {
+                            favorites.push(title);
+                            button.classList.add('active');
+                            button.textContent = '★'; // Filled star
+                        }
+
+                        localStorage.setItem('favorites', JSON.stringify(favorites));
+                        renderFavorites(); // Update the Favorites section
+                        // Also update the main list's favorite button
+                        const mainFavoriteButton = Array.from(favoriteButtons).find(btn =>
+                            btn.parentElement.querySelector('.resource-title').textContent.trim().toLowerCase() === title.trim().toLowerCase()
+                        );
+                        if (mainFavoriteButton) {
+                            if (favorites.includes(title)) {
+                                mainFavoriteButton.classList.add('active');
+                                mainFavoriteButton.textContent = '★';
+                            } else {
+                                mainFavoriteButton.classList.remove('active');
+                                mainFavoriteButton.textContent = '☆';
+                            }
+                        }
+                    });
+                });
+            }
+        }
+
+        // Initial render of favorites
+        renderFavorites();
+
+        // Accordion functionality with ARIA support
+        accordions.forEach(button => {
+            button.addEventListener('click', () => {
+                const panel = document.getElementById(button.getAttribute('aria-controls'));
+                const isActive = button.classList.contains('active');
+                toggleAccordion(button, panel, !isActive);
+
+                if (button.id === 'favorites') {
+                    renderFavorites();
+                }
+            });
+
+            // Enable keyboard navigation for accordion
+            button.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    button.click();
+                }
+            });
+        });
 
         // Toggle resource item details
         document.addEventListener('click', function (e) {
@@ -637,6 +919,39 @@
                     e.preventDefault();
                     item.click();
                 }
+            });
+        });
+
+        // Favorite Button Functionality
+        const favoriteButtons = document.querySelectorAll('.favorite-button');
+
+        favoriteButtons.forEach(button => {
+            // Load favorites from localStorage
+            const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            const resourceTitle = button.parentElement.querySelector('.resource-title').textContent;
+
+            if (favorites.includes(resourceTitle)) {
+                button.classList.add('active');
+                button.textContent = '★'; // Filled star
+            }
+
+            button.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent triggering the resource-item click
+                let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+                const title = button.parentElement.querySelector('.resource-title').textContent;
+
+                if (favorites.includes(title)) {
+                    favorites = favorites.filter(item => item !== title);
+                    button.classList.remove('active');
+                    button.textContent = '☆'; // Empty star
+                } else {
+                    favorites.push(title);
+                    button.classList.add('active');
+                    button.textContent = '★'; // Filled star
+                }
+
+                localStorage.setItem('favorites', JSON.stringify(favorites));
+                renderFavorites(); // Update the Favorites section
             });
         });
 
