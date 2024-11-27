@@ -66,14 +66,14 @@
 
         .preview {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             margin-top: 20px;
             padding: 10px;
             border: 1px solid darkred;
             height: 50vh;
             width: 100%;
-            overflow: hidden;
+            overflow-y: auto;
         }
 
         .preview canvas {
@@ -164,35 +164,18 @@
 <footer>
     <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
 </footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 <script>
     let pdfDoc = null;
     let currentPage = 1;
     let totalPages = 0;
-
-    document.querySelectorAll(".dropdown").forEach((dropdown) => {
-        const dropdownContent = dropdown.querySelector(".dropdown-content");
-        dropdown.addEventListener("mouseenter", () => {
-            dropdownContent.style.display = "block";
-        });
-        dropdown.addEventListener("mouseleave", () => {
-            dropdownContent.style.display = "none";
-        });
-        dropdown.querySelector("a").addEventListener("focus", () => {
-            dropdownContent.style.display = "block";
-        });
-        dropdown.querySelector("a").addEventListener("blur", () => {
-            dropdownContent.style.display = "none";
-        });
-    });
+    let imagesPerPage = {};
 
     async function loadPDF() {
         const fileInput = document.getElementById("pdf-file");
-        const previewContainer = document.getElementById("preview");
         const messageElement = document.getElementById("message");
-        previewContainer.innerHTML = ""; // Clear previous preview
+        document.getElementById("preview").innerHTML = ""; // Clear previous preview
         messageElement.textContent = ""; // Clear message
 
         if (fileInput.files.length === 0) {
@@ -204,7 +187,7 @@
         const pdfData = new Uint8Array(await file.arrayBuffer());
 
         pdfjsLib
-            .getDocument({data: pdfData})
+            .getDocument({ data: pdfData })
             .promise.then(async (pdf) => {
             pdfDoc = pdf;
             totalPages = pdf.numPages;
@@ -212,41 +195,88 @@
             document.getElementById(
                 "page-info"
             ).textContent = `Page: ${currentPage} / ${totalPages}`;
-            showPage(currentPage);
+            await extractImagesFromPDF();
+            showImages(currentPage);
         })
             .catch((err) => {
                 alert("Error loading PDF: " + err.message);
             });
     }
 
-    async function showPage(pageNum) {
+    async function extractImagesFromPDF() {
+        imagesPerPage = {};
+
+        for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+            const page = await pdfDoc.getPage(pageNum);
+            const operatorList = await page.getOperatorList();
+            const imagesOnPage = [];
+
+            const svgGfx = new pdfjsLib.SVGGraphics(page.commonObjs, page.objs);
+
+            for (let i = 0; i < operatorList.fnArray.length; i++) {
+                const fnId = operatorList.fnArray[i];
+                const args = operatorList.argsArray[i];
+
+                if (
+                    fnId === pdfjsLib.OPS.paintImageXObject ||
+                    fnId === pdfjsLib.OPS.paintJpegXObject
+                ) {
+                    const imgName = args[0];
+                    const img = await page.objs.get(imgName);
+
+                    if (img && img instanceof ImageBitmap) {
+                        // Create a canvas to draw the ImageBitmap
+                        const canvas = document.createElement("canvas");
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        const ctx = canvas.getContext("2d");
+                        ctx.drawImage(img, 0, 0);
+
+                        // Convert canvas to Data URL
+                        const dataURL = canvas.toDataURL();
+                        imagesOnPage.push(dataURL);
+                    } else if (img && img.data) {
+                        // If img is an image data object
+                        const canvas = document.createElement("canvas");
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        const ctx = canvas.getContext("2d");
+                        const imageData = new ImageData(
+                            new Uint8ClampedArray(img.data),
+                            img.width,
+                            img.height
+                        );
+                        ctx.putImageData(imageData, 0, 0);
+
+                        // Convert canvas to Data URL
+                        const dataURL = canvas.toDataURL();
+                        imagesOnPage.push(dataURL);
+                    }
+                }
+            }
+
+            imagesPerPage[pageNum] = imagesOnPage;
+        }
+    }
+
+    function showImages(pageNum) {
         const previewContainer = document.getElementById("preview");
-        previewContainer.innerHTML = ""; // Clear previous preview
+        previewContainer.innerHTML = ""; // Clear previous content
+        const images = imagesPerPage[pageNum];
 
-        const page = await pdfDoc.getPage(pageNum);
-        const viewport = page.getViewport({scale: 1});
+        if (images && images.length > 0) {
+            images.forEach((imgData, index) => {
+                const imgElement = document.createElement("img");
+                imgElement.src = imgData;
+                imgElement.style.maxWidth = "100%";
+                imgElement.style.maxHeight = "100%";
+                imgElement.style.margin = "10px 0";
+                previewContainer.appendChild(imgElement);
+            });
+        } else {
+            previewContainer.textContent = "No images found on this page.";
+        }
 
-        // Calculate the scale factor to fit the preview container while maintaining aspect ratio
-        const containerWidth = previewContainer.clientWidth;
-        const containerHeight = previewContainer.clientHeight;
-        const scale = Math.min(
-            containerWidth / viewport.width,
-            containerHeight / viewport.height
-        );
-
-        const canvas = document.createElement("canvas");
-        const context = canvas.getContext("2d");
-        canvas.height = viewport.height * scale;
-        canvas.width = viewport.width * scale;
-
-        const renderContext = {
-            canvasContext: context,
-            viewport: page.getViewport({scale: scale}),
-        };
-
-        await page.render(renderContext).promise;
-
-        previewContainer.appendChild(canvas);
         document.getElementById(
             "page-info"
         ).textContent = `Page: ${currentPage} / ${totalPages}`;
@@ -255,96 +285,77 @@
     function nextPage() {
         if (currentPage >= totalPages) return;
         currentPage++;
-        showPage(currentPage);
+        showImages(currentPage);
     }
 
     function prevPage() {
         if (currentPage <= 1) return;
         currentPage--;
-        showPage(currentPage);
+        showImages(currentPage);
     }
 
     function goToPage() {
         const pageNum = parseInt(document.getElementById("page-number").value);
         if (pageNum >= 1 && pageNum <= totalPages) {
             currentPage = pageNum;
-            showPage(currentPage);
+            showImages(currentPage);
         } else {
             alert("Invalid page number.");
         }
     }
 
     function saveCurrentPage() {
-        const format = document.getElementById("format").value;
+        const format = document.getElementById("format").value || "png";
         const messageElement = document.getElementById("message");
-        if (!format) {
-            messageElement.textContent = "Please select a format before saving.";
+        const images = imagesPerPage[currentPage];
+        if (!images || images.length === 0) {
+            messageElement.textContent = "No images to save on this page.";
             return;
         }
-        savePage(currentPage, format);
-    }
-
-    async function savePage(pageNum, format) {
-        const page = await pdfDoc.getPage(pageNum);
-        const viewport = page.getViewport({scale: 1});
-        const canvas = document.createElement("canvas");
-        const context = canvas.getContext("2d");
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
-
-        await page.render({canvasContext: context, viewport: viewport})
-            .promise;
-
-        let imgData;
-        if (format === "svg") {
-            imgData = canvasToSVG(canvas);
-        } else {
-            imgData = canvas.toDataURL(`image/${format}`);
-        }
-
-        return imgData;
-    }
-
-    async function saveAllPages() {
-        const format = document.getElementById("format").value;
-        const messageElement = document.getElementById("message");
-        if (!format) {
-            messageElement.textContent = "Please select a format before saving.";
-            return;
-        }
-
-        const zip = new JSZip();
-        for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
-            const imgData = await savePage(pageNum, format);
-            const data = imgData.split(',')[1]; // remove data URL prefix
-            zip.file(`page_${pageNum}.${format}`, data, { base64: true });
-        }
-
-        zip.generateAsync({ type: 'blob' }).then((content) => {
-            saveAs(content, 'images.zip');
+        images.forEach((imgData, index) => {
+            const a = document.createElement("a");
+            a.href = imgData.replace("image/png", `image/${format}`);
+            a.download = `page_${currentPage}_image_${index + 1}.${format}`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
         });
     }
 
-    // Function to convert canvas to SVG
-    function canvasToSVG(canvas) {
-        const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${canvas.width}" height="${canvas.height}">
-            <foreignObject width="100%" height="100%">
-                <canvas xmlns="http://www.w3.org/1999/xhtml" width="${canvas.width}" height="${canvas.height}"></canvas>
-            </foreignObject>
-        </svg>`;
-        const blob = new Blob([svg], {type: "image/svg+xml"});
-        return URL.createObjectURL(blob);
+    async function saveAllPages() {
+        const format = document.getElementById("format").value || "png";
+        const messageElement = document.getElementById("message");
+        const zip = new JSZip();
+        let hasImages = false;
+
+        for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+            const images = imagesPerPage[pageNum];
+            if (images && images.length > 0) {
+                hasImages = true;
+                images.forEach((imgData, index) => {
+                    const data = imgData.split(",")[1]; // Remove data URL prefix
+                    zip.file(
+                        `page_${pageNum}_image_${index + 1}.${format}`,
+                        data,
+                        { base64: true }
+                    );
+                });
+            }
+        }
+
+        if (!hasImages) {
+            messageElement.textContent = "No images found in the PDF to save.";
+            return;
+        }
+
+        zip.generateAsync({ type: "blob" }).then((content) => {
+            saveAs(content, "extracted_images.zip");
+        });
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-        const script = document.createElement("script");
-        script.src =
-            "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js";
-        script.onload = () => {
-            pdfjsLib.GlobalWorkerOptions.workerSrc =
-                "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js";
-        };
-        document.head.appendChild(script);
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+            "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
     });
 </script>
 </body>

@@ -2,164 +2,482 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Regex Tester</title>
     <link href="styles/header.css" rel="stylesheet"/>
     <style>
+        /* Reset and Basic Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            text-align: center;
-            background-color: black;
-            color: red;
+            background-color: #000;
+            color: #ff0000;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header, footer {
+            width: 100%;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            background-color: #121212;
         }
 
         .container {
-            max-width: 600px;
-            margin: 50px auto;
+            width: 100%;
+            max-width: 800px;
             padding: 20px;
             background-color: #1e1e1e;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
         }
 
+        h2 {
+            margin-top: 0;
+            text-align: center;
+            color: #ff4d4d;
+        }
+
+        .description {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #ff9999;
+        }
+
+        /* Accordion Styles */
+        .accordion {
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+            padding: 15px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.1em;
+            transition: background-color 0.3s, transform 0.3s;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .accordion:hover,
+        .accordion.active {
+            background-color: darkred;
+        }
+
+        .accordion:after {
+            content: '\25BC'; /* Down arrow */
+            font-size: 1.2em;
+            transition: transform 0.3s;
+        }
+
+        .accordion.active:after {
+            transform: rotate(180deg); /* Up arrow */
+        }
+
+        .panel {
+            padding: 0 15px;
+            background-color: #1e1e1e;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .panel-content {
+            color: #cccccc;
+            padding: 15px 0;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: white;
+            font-weight: bold;
+        }
+
         input,
         textarea {
-            width: 90%;
-            margin: 10px 0;
+            width: 100%;
             padding: 10px;
             border: 1px solid darkred;
             border-radius: 5px;
             background-color: #333;
-            color: white;
+            color: #fff;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
         }
 
         pre {
             background-color: #333;
             padding: 10px;
-            width: 90%;
+            width: 100%;
             height: auto;
-            overflow: auto;
+            overflow: visible; /* Changed from auto to visible to allow tooltip overflow */
             white-space: pre-wrap;
             text-align: left;
-            margin: 10px auto;
-            color: white;
+            margin: 10px 0;
+            color: #fff;
             border: 1px solid darkred;
             border-radius: 5px;
+            position: relative;
+            padding-right: 40px; /* Space for the copy button */
+            line-height: normal; /* Ensures text aligns to top like other fields */
+        }
+
+        /* Copy Button Styles */
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            transition: transform 0.2s;
+        }
+
+        .copy-button:hover {
+            color: #ff4d4d;
+            transform: scale(1.1);
+        }
+
+        .copy-button:disabled {
+            color: #555;
+            cursor: not-allowed;
+        }
+
+        .copy-button svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Tooltip Styles */
+        .tooltip {
+            position: absolute;
+            bottom: 35px; /* Position it above the copy button */
+            right: 10px;
+            background-color: #555;
+            color: #fff;
+            padding: 5px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 1; /* Ensure it appears above other elements */
+        }
+
+        .tooltip.show {
+            opacity: 1;
+        }
+
+        /* Button Styles */
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         button {
+            flex: 1 1 48%;
             background-color: darkred;
-            color: white;
+            color: #fff;
             border: none;
             padding: 10px 20px;
             cursor: pointer;
-            margin: 10px;
+            margin: 5px 0;
             border-radius: 5px;
             transition: background-color 0.3s;
+            font-size: 1em;
         }
 
         button:hover {
             background-color: red;
         }
 
+        /* Footer Styles */
         footer {
             background-color: darkred;
             padding: 1em;
-            color: white;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            color: #fff;
+            text-align: center;
         }
 
-        .description {
-            color: white;
-            font-size: 1.2em;
-            margin-bottom: 20px;
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .button-group {
+                flex-direction: column;
+            }
+
+            button {
+                flex: 1 1 100%;
+            }
         }
     </style>
 </head>
 <body>
 
-<div id="navbar-placeholder"></div>
+<header>
+    <div id="navbar-placeholder"></div>
+</header>
+
+<main>
+    <div class="container">
+        <h2>Test Your Regex</h2>
+        <p class="description">
+            Use this tool to test your regular expressions. Enter your regex pattern
+            and the text to search, and see the matches below.
+        </p>
+
+        <!-- Tutorial Section with Enhanced Accordion -->
+        <button class="accordion" aria-expanded="false" aria-controls="tutorial-panel">📚 How It Works</button>
+        <div class="panel" id="tutorial-panel" role="region" aria-labelledby="tutorial-heading">
+            <div class="panel-content">
+                <h3 id="tutorial-heading">Introduction to Regular Expressions</h3>
+                <p>
+                    Regular Expressions (Regex) are patterns used to match character combinations in strings. They are widely used for searching, replacing, and validating text.
+                </p>
+
+                <h3>Using the Regex Tester</h3>
+                <ol>
+                    <li><strong>Enter Regex Pattern:</strong> In the "Regex Pattern" field, input your desired regular expression.</li>
+                    <li><strong>Enter Text:</strong> In the "Text to Search" area, input the text where you want to apply the regex.</li>
+                    <li><strong>Test Regex:</strong> Click the "Test Regex" button to see the matches.</li>
+                    <li><strong>Generate Sample Regex:</strong> Click the "Generate Sample Regex" button to load predefined regex patterns and texts for practice.</li>
+                </ol>
+
+                <h3>Regex Syntax Basics</h3>
+                <ul>
+                    <li><code>.</code> - Matches any single character except newline.</li>
+                    <li><code>*</code> - Matches 0 or more occurrences of the preceding element.</li>
+                    <li><code>+</code> - Matches 1 or more occurrences of the preceding element.</li>
+                    <li><code>?</code> - Makes the preceding element optional.</li>
+                    <li><code>\d</code> - Matches any digit (equivalent to [0-9]).</li>
+                    <li><code>\w</code> - Matches any word character (alphanumeric & underscore).</li>
+                    <li><code>\s</code> - Matches any whitespace character (spaces, tabs, line breaks).</li>
+                    <li><code>^</code> - Asserts position at the start of a line.</li>
+                    <li><code>$</code> - Asserts position at the end of a line.</li>
+                </ul>
+
+                <h3>Examples</h3>
+                <p>
+                    Try generating sample regex patterns to see how different patterns work with various texts.
+                </p>
+            </div>
+        </div>
+        <!-- End of Tutorial Section -->
+
+        <form id="regex-form" novalidate>
+            <div class="form-group">
+                <label for="regex-pattern">Regex Pattern:</label>
+                <input id="regex-pattern" type="text" placeholder="Enter regex pattern" required aria-required="true" aria-describedby="regex-pattern-desc"/>
+                <small id="regex-pattern-desc" style="color: #ff9999;">Example: <code>\d+</code> to match one or more digits.</small>
+            </div>
+            <div class="form-group">
+                <label for="text-input">Text to Search:</label>
+                <textarea id="text-input" placeholder="Enter text here" required aria-required="true" aria-describedby="text-input-desc"></textarea>
+                <small id="text-input-desc" style="color: #ff9999;">Enter the text where you want to apply the regex.</small>
+            </div>
+            <div class="button-group">
+                <button type="button" id="test-button">Test Regex</button>
+                <button type="button" id="generate-button">Generate Sample Regex</button>
+            </div>
+        </form>
+        <pre id="regex-results" aria-live="polite" aria-atomic="true">
+            <!-- Copy Button -->
+            <button class="copy-button" id="copy-button" title="Copy Matches to Clipboard" aria-label="Copy Matches" disabled>
+                <!-- Inline SVG Icon for Copy -->
+                <svg id="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                </svg>
+                <!-- Tooltip -->
+                <span class="tooltip" id="copy-tooltip">Copied!</span>
+            </button>
+            <!-- Matches will be displayed here -->
+            <span id="matches-content"></span>
+        </pre>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
 
 <script>
+    // Load the header/navbar
     fetch("header.html")
         .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error('Failed to load header.');
             }
             return response.text();
         })
         .then(data => {
             document.getElementById("navbar-placeholder").innerHTML = data;
+            initializeDropdowns();
         })
         .catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
+            console.error('Error loading header:', error);
         });
-</script>
 
-<div class="container">
-    <h2>Test Your Regex</h2>
-    <p class="description">
-        Use this tool to test your regular expressions. Enter your regex pattern
-        and the text to search, and see the matches highlighted below.
-    </p>
-    <input id="regex-pattern" placeholder="Enter regex pattern" type="text"/>
-    <textarea id="text-input" placeholder="Enter text here"></textarea>
-    <button onclick="testRegex()">Test Regex</button>
-    <button onclick="generateSample()">Generate Sample Regex</button>
-    <pre id="regex-results"></pre>
-</div>
-<footer>
-    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
-</footer>
-<script>
-    document.querySelectorAll(".dropdown").forEach((dropdown) => {
-        const dropdownContent = dropdown.querySelector(".dropdown-content");
-        dropdown.addEventListener("mouseenter", () => {
-            dropdownContent.style.display = "block";
+    // Initialize dropdowns after header is loaded
+    function initializeDropdowns() {
+        const dropdowns = document.querySelectorAll(".dropdown");
+        dropdowns.forEach(dropdown => {
+            const dropdownContent = dropdown.querySelector(".dropdown-content");
+
+            dropdown.addEventListener("mouseenter", () => {
+                dropdownContent.style.display = "block";
+            });
+
+            dropdown.addEventListener("mouseleave", () => {
+                dropdownContent.style.display = "none";
+            });
+
+            const toggleDropdown = () => {
+                const isVisible = dropdownContent.style.display === "block";
+                dropdownContent.style.display = isVisible ? "none" : "block";
+            };
+
+            dropdown.querySelector("a").addEventListener("click", (e) => {
+                e.preventDefault();
+                toggleDropdown();
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener("click", (e) => {
+                if (!dropdown.contains(e.target)) {
+                    dropdownContent.style.display = "none";
+                }
+            });
         });
-        dropdown.addEventListener("mouseleave", () => {
-            dropdownContent.style.display = "none";
-        });
-        dropdown.querySelector("a").addEventListener("focus", () => {
-            dropdownContent.style.display = "block";
-        });
-        dropdown.querySelector("a").addEventListener("blur", () => {
-            dropdownContent.style.display = "none";
+    }
+
+    // Event listeners for buttons
+    document.addEventListener("DOMContentLoaded", () => {
+        const testButton = document.getElementById("test-button");
+        const generateButton = document.getElementById("generate-button");
+        const copyButton = document.getElementById("copy-button");
+        const accordions = document.querySelectorAll(".accordion");
+
+        testButton.addEventListener("click", testRegex);
+        generateButton.addEventListener("click", generateSample);
+        copyButton.addEventListener("click", copyMatches);
+
+        // Accordion functionality with ARIA support
+        accordions.forEach(button => {
+            button.addEventListener("click", function() {
+                const isActive = this.classList.contains("active");
+                // Toggle active state
+                this.classList.toggle("active");
+                // Update ARIA attribute
+                this.setAttribute("aria-expanded", !isActive);
+                // Toggle panel
+                const panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
         });
     });
 
+    // Function to test regex
     function testRegex() {
-        const pattern = document.getElementById("regex-pattern").value;
-        const text = document.getElementById("text-input").value;
+        const patternInput = document.getElementById("regex-pattern");
+        const textInput = document.getElementById("text-input");
+        const results = document.getElementById("matches-content");
+        const copyButton = document.getElementById("copy-button");
+
+        const pattern = patternInput.value.trim();
+        const text = textInput.value.trim();
 
         if (!pattern) {
-            document.getElementById("regex-results").innerText =
-                "Please enter a regex pattern.";
+            results.textContent = "Please enter a regex pattern.";
+            copyButton.disabled = true;
+            updateCopyButtonState(false);
             return;
         }
 
         if (!text) {
-            document.getElementById("regex-results").innerText =
-                "Please enter text to search.";
+            results.textContent = "Please enter text to search.";
+            copyButton.disabled = true;
+            updateCopyButtonState(false);
             return;
         }
 
         try {
-            const regex = new RegExp(pattern, "g");
+            const regex = new RegExp(pattern, "gm"); // Added 'm' flag for multiline
             const matches = text.match(regex);
-            document.getElementById("regex-results").innerText = matches
-                ? matches.join("\n")
-                : "No matches found.";
+            if (matches && matches.length > 0) {
+                // Display matches as a comma-separated list
+                results.textContent = matches.join(", ");
+                // Enable the copy button
+                copyButton.disabled = false;
+                updateCopyButtonState(true);
+            } else {
+                results.textContent = "No matches found.";
+                // Disable the copy button
+                copyButton.disabled = true;
+                updateCopyButtonState(false);
+            }
         } catch (error) {
-            document.getElementById("regex-results").innerText =
-                "Invalid regex pattern.";
+            results.textContent = "Invalid regex pattern.";
+            // Disable the copy button
+            copyButton.disabled = true;
+            updateCopyButtonState(false);
         }
     }
 
+    // Function to update copy button state
+    function updateCopyButtonState(isEnabled) {
+        const copyButton = document.getElementById("copy-button");
+        if (isEnabled) {
+            copyButton.style.opacity = '1';
+            copyButton.style.cursor = 'pointer';
+        } else {
+            copyButton.style.opacity = '0.5';
+            copyButton.style.cursor = 'not-allowed';
+        }
+    }
+
+    // Function to generate a random sample regex
     function generateSample() {
         const samples = [
             {
@@ -167,7 +485,7 @@
                 text: "Years: 2023, 2024, 1999. Random numbers: 123, 5678, 9012.",
             },
             {
-                pattern: "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b",
+                pattern: "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\\b",
                 text: "Emails: test@example.com, user@domain.org, admin@site.co.uk.",
             },
             {
@@ -175,8 +493,7 @@
                 text: "Dates: 01/01/2024, 31/12/2023, 15/07/2025.",
             },
             {
-                pattern:
-                    "https?:\\/\\/(www\\.)?[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}(\\/\\S*)?",
+                pattern: "https?:\\/\\/(www\\.)?[A-Za-z0-9.-]+\\.[A-Za-z]{2,}(\\/\\S*)?",
                 text: "URLs: https://example.com, http://site.org, https://www.website.co.uk/page.",
             },
             {
@@ -187,11 +504,104 @@
                 pattern: "\\(\\d{3}\\)\\s\\d{3}-\\d{4}",
                 text: "Phone numbers: (123) 456-7890, (987) 654-3210, (555) 123-4567.",
             },
+            // New Examples
+            {
+                pattern: "\\b(?:\\d{1,3}\\.){3}\\d{1,3}\\b",
+                text: "Server IPs: 192.168.1.1, 10.0.0.254, 255.255.255.255, 123.45.67.89.\nInvalid IPs: 256.256.256.256, 192.168.1, 123.456.78.90.",
+            },
+            {
+                pattern: "<\\/?([a-zA-Z]+)(\\s[a-zA-Z]+=\"[^\"]*\")*\\/?",
+                text: "HTML Elements: <div>, </div>, <img src=\"image.png\" />, <a href=\"https://example.com\">Link</a>.\nInvalid Tags: <123>, <div><>, <a href='single quotes'>.",
+            },
+            {
+                pattern: "\\b\\d{3}-\\d{2}-\\d{4}\\b",
+                text: "Valid SSNs: 123-45-6789, 987-65-4321.\nInvalid SSNs: 123456789, 12-345-6789, 123-45-678.",
+            },
+            // Additional Examples
+            {
+                pattern: "\\b[A-Z][a-z]+\\b",
+                text: "Names: Alice, Bob, charlie, David.\nInvalid Names: alice, bob123, 123David.",
+            },
+            {
+                pattern: "^Hello.*world!$",
+                text: "Greetings:\nHello wonderful world!\nHello world!\nHi world!\nHello everyone in the world!",
+            },
         ];
-        const randomSample =
-            samples[Math.floor(Math.random() * samples.length)];
+
+        const randomSample = samples[Math.floor(Math.random() * samples.length)];
         document.getElementById("regex-pattern").value = randomSample.pattern;
         document.getElementById("text-input").value = randomSample.text;
+        document.getElementById("matches-content").textContent = "";
+
+        // Disable the copy button since there are no results yet
+        const copyButton = document.getElementById("copy-button");
+        copyButton.disabled = true;
+        copyButton.style.opacity = '0.5';
+        copyButton.style.cursor = 'not-allowed';
+
+        // Reset the copy icon and tooltip if active
+        resetCopyButton();
+    }
+
+    // Function to copy matches to clipboard with feedback
+    function copyMatches() {
+        const matchesContent = document.getElementById("matches-content").textContent.trim();
+        if (!matchesContent) {
+            return;
+        }
+
+        navigator.clipboard.writeText(matchesContent).then(() => {
+            showCopyFeedback();
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+            // Optionally, handle the error silently or display a different feedback
+        });
+    }
+
+    // Function to show copy feedback
+    function showCopyFeedback() {
+        const copyButton = document.getElementById("copy-button");
+        const copyIcon = document.getElementById("copy-icon");
+        const tooltip = document.getElementById("copy-tooltip");
+
+        // Change icon to checkmark
+        copyIcon.innerHTML = '<path d="M20 6L9 17l-5-5"/>'; // Checkmark path
+
+        // Show tooltip
+        tooltip.classList.add("show");
+
+        // Disable button temporarily to prevent multiple clicks
+        copyButton.disabled = true;
+
+        // After 1 second, revert the icon and hide tooltip
+        setTimeout(() => {
+            resetCopyButton();
+        }, 1000);
+    }
+
+    // Function to reset the copy button to its original state
+    function resetCopyButton() {
+        const copyButton = document.getElementById("copy-button");
+        const copyIcon = document.getElementById("copy-icon");
+        const tooltip = document.getElementById("copy-tooltip");
+
+        // Revert icon to clipboard
+        copyIcon.innerHTML = '<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>';
+
+        // Hide tooltip
+        tooltip.classList.remove("show");
+
+        // Re-enable the button if there are matches
+        const matchesContent = document.getElementById("matches-content").textContent.trim();
+        if (matchesContent) {
+            copyButton.disabled = false;
+            copyButton.style.opacity = '1';
+            copyButton.style.cursor = 'pointer';
+        } else {
+            copyButton.disabled = true;
+            copyButton.style.opacity = '0.5';
+            copyButton.style.cursor = 'not-allowed';
+        }
     }
 </script>
 </body>

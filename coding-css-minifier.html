@@ -6,9 +6,15 @@
     <title>CSS Minifier</title>
     <link href="/styles/forms.css" rel="stylesheet"/>
     <style>
-        #copy-notification {
+        #notification-message {
             margin-top: 10px;
             font-weight: bold;
+        }
+        .input-group, .output-group {
+            margin-bottom: 15px;
+        }
+        .button-group button {
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -16,7 +22,41 @@
 
 <div id="navbar-placeholder"></div>
 
+<div class="container">
+    <h2>Minify Your CSS</h2>
+    <p class="description">
+        Optimize your CSS by removing unnecessary spaces, comments, and
+        formatting with this CSS Minifier tool. Paste your CSS code into the
+        input box and click "Minify CSS" to get a compact and efficient version
+        of your stylesheet.
+    </p>
+
+    <div class="input-group">
+        <label for="css-input">CSS Input:</label>
+        <textarea id="css-input" placeholder="Paste your CSS here"></textarea>
+    </div>
+
+    <div class="button-group">
+        <button id="minify-button">Minify CSS</button>
+        <button id="copy-button">Copy</button>
+        <button id="download-button">Download</button>
+        <button id="clear-button">Clear</button>
+    </div>
+
+    <div class="output-group">
+        <label for="minified-css">Minified CSS:</label>
+        <pre id="minified-css"></pre>
+    </div>
+
+    <p id="notification-message"></p>
+</div>
+
+<footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
+
 <script>
+    // Fetch the navbar and insert it
     fetch("header.html")
         .then(response => {
             if (!response.ok) {
@@ -30,88 +70,96 @@
         .catch(error => {
             console.error('There has been a problem with your fetch operation:', error);
         });
-</script>
 
-<div class="container">
-    <h2>Minify Your CSS</h2>
-    <p class="description">
-        Optimize your CSS by removing unnecessary spaces, comments, and
-        formatting with this CSS Minifier tool. Paste your CSS code into the
-        input box and click "Minify CSS" to get a compact and efficient version
-        of your stylesheet.
-    </p>
-    <label for="css-input"></label><textarea id="css-input" placeholder="Paste your CSS here"></textarea>
-    <div class="button-group">
-        <button onclick="minifyCSS()">Minify CSS</button>
-        <button id="copy-button" onclick="copyToClipboard()">Copy</button>
-    </div>
-    <pre id="minified-css"></pre>
-    <p id="copy-notification"></p>
-    <!-- New element for copy notification -->
-</div>
-<footer>
-    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
-</footer>
-<script>
-    // Define a variable to store the timeout ID
-    let notificationTimeout;
+    // Wait for the DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        const minifyButton = document.getElementById('minify-button');
+        const copyButton = document.getElementById('copy-button');
+        const downloadButton = document.getElementById('download-button');
+        const clearButton = document.getElementById('clear-button');
+        let notificationTimeout;
 
-    function minifyCSS() {
-        const cssInput = document.getElementById("css-input").value.trim();
-        const notification = document.getElementById("copy-notification");
+        minifyButton.addEventListener('click', minifyCSS);
+        copyButton.addEventListener('click', copyToClipboard);
+        downloadButton.addEventListener('click', downloadMinifiedCSS);
+        clearButton.addEventListener('click', clearFields);
 
-        if (cssInput === "") {
-            // Show an error message if there's nothing to minify
-            notification.textContent = "Nothing to minify!";
-            notification.style.color = "red";
-        } else {
-             // Remove last semicolon in block
-            document.getElementById("minified-css").textContent = cssInput
-                .replace(/\/\*[\s\S]*?\*\//g, "") // Remove comments
-                .replace(/\s+/g, " ") // Collapse whitespace
-                .replace(/\s*({|}|;|:|,)\s*/g, "$1") // Remove space around { } ; : ,
-                .replace(/;}/g, "}");
+        function showNotification(message, color) {
+            const notification = document.getElementById("notification-message");
+            notification.textContent = message;
+            notification.style.color = color;
 
-            // Show success message
-            notification.textContent = "CSS minified successfully!";
-            notification.style.color = "green";
+            clearTimeout(notificationTimeout);
+            notificationTimeout = setTimeout(() => {
+                notification.textContent = "";
+            }, 3000);
         }
 
-        // Clear the previous timeout and set a new one
-        clearTimeout(notificationTimeout);
-        notificationTimeout = setTimeout(() => {
-            notification.textContent = "";
-        }, 3000);
-    }
+        function minifyCSS() {
+            const cssInput = document.getElementById("css-input").value.trim();
 
-    function copyToClipboard() {
-        const minifiedCss = document.getElementById("minified-css").textContent;
-        const notification = document.getElementById("copy-notification");
+            if (cssInput === "") {
+                showNotification("Nothing to minify!", "red");
+            } else {
+                const minified = cssInput
+                    .replace(/\/\*[\s\S]*?\*\//g, "") // Remove comments
+                    .replace(/\s+/g, " ")             // Collapse whitespace
+                    .replace(/\s*({|}|;|:|,)\s*/g, "$1") // Remove space around symbols
+                    .replace(/;}/g, "}");
 
-        if (minifiedCss.trim() === "") {
-            // If minified CSS is blank, show an error message
-            notification.textContent = "Nothing to copy!";
-            notification.style.color = "red";
-        } else {
-            // Otherwise, proceed with copying
-            const textarea = document.createElement("textarea");
-            textarea.value = minifiedCss;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand("copy");
-            document.body.removeChild(textarea);
+                document.getElementById("minified-css").textContent = minified;
 
-            // Show success message
-            notification.textContent = "Minified CSS copied to clipboard!";
-            notification.style.color = "green";
+                const originalSize = cssInput.length;
+                const minifiedSize = minified.length;
+                const reduction = originalSize > 0 ? (((originalSize - minifiedSize) / originalSize) * 100).toFixed(2) : 0;
+
+                showNotification(`CSS minified successfully! Reduced size by ${reduction}%`, "green");
+            }
         }
 
-        // Clear the previous timeout and set a new one
-        clearTimeout(notificationTimeout);
-        notificationTimeout = setTimeout(() => {
-            notification.textContent = "";
-        }, 3000);
-    }
+        function copyToClipboard() {
+            const minifiedCss = document.getElementById("minified-css").textContent;
+
+            if (minifiedCss.trim() === "") {
+                showNotification("Nothing to copy!", "red");
+            } else {
+                navigator.clipboard.writeText(minifiedCss)
+                    .then(() => {
+                        showNotification("Minified CSS copied to clipboard!", "green");
+                    })
+                    .catch(err => {
+                        showNotification("Failed to copy to clipboard!", "red");
+                        console.error('Failed to copy: ', err);
+                    });
+            }
+        }
+
+        function downloadMinifiedCSS() {
+            const minifiedCss = document.getElementById("minified-css").textContent;
+
+            if (minifiedCss.trim() === "") {
+                showNotification("Nothing to download!", "red");
+            } else {
+                const blob = new Blob([minifiedCss], { type: 'text/css' });
+                const url = URL.createObjectURL(blob);
+
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'minified.css';
+                a.click();
+
+                URL.revokeObjectURL(url);
+
+                showNotification("Minified CSS downloaded!", "green");
+            }
+        }
+
+        function clearFields() {
+            document.getElementById("css-input").value = "";
+            document.getElementById("minified-css").textContent = "";
+            showNotification("Fields cleared.", "green");
+        }
+    });
 </script>
 </body>
 </html>

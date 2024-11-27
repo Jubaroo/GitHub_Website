@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Interactive Sheet Music Viewer and Creator</title>
-    <link href="styles/header.css" rel="stylesheet"/>
+    <link href="styles/header.css" rel="stylesheet" />
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: black;
-            color: red;
+            background-color: #121212;
+            color: #FFFFFF;
             margin: 0;
             padding: 0;
             display: flex;
@@ -19,14 +19,14 @@
         }
 
         nav a {
-            color: white;
+            color: #FFFFFF;
             text-decoration: none;
             margin: 0 15px;
             font-weight: bold;
         }
 
         nav a:hover {
-            color: #ffcccb;
+            color: #FFFFFF;
         }
 
         .container {
@@ -35,12 +35,14 @@
             text-align: center;
         }
 
-        #music-container, #creation-container {
-            border: 1px solid darkred;
+        #music-container,
+        #creation-container {
+            border: 1px solid red;
             padding: 20px;
-            background-color: #1e1e1e;
+            background-color: #1E1E1E;
             border-radius: 8px;
             margin-bottom: 20px;
+            position: relative;
         }
 
         .controls {
@@ -54,37 +56,76 @@
 
         button {
             background-color: darkred;
-            color: white;
+            color: #FFFFFF;
             border: none;
             padding: 10px 20px;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 5px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
             background-color: red;
         }
 
-        input[type="text"] {
-            width: 200px;
-            padding: 5px;
-            margin: 5px;
-            border: 1px solid darkred;
+        select {
+            padding: 5px 10px;
+            border: 1px solid red;
             border-radius: 4px;
-            background-color: #333;
-            color: white;
+            background-color: #333333;
+            color: #FFFFFF;
+        }
+
+        input[type="range"] {
+            width: 150px;
         }
 
         footer {
             background-color: darkred;
             padding: 1em;
-            color: white;
+            color: #FFFFFF;
             text-align: center;
         }
+
+        /* Ensure SVG elements within the creation and music containers use white color */
+        #creation-container svg,
+        #music-container svg {
+            stroke: #FFFFFF !important;
+            fill: #FFFFFF !important;
+        }
+
+        /* Enhance visibility of text elements */
+        #creation-container svg text,
+        #music-container svg text {
+            fill: #FFFFFF !important;
+        }
+
+        /* Responsive SVG */
+        svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Note Input Section Styling */
+        .note-input-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .note-input-section select,
+        .note-input-section button {
+            min-width: 100px;
+        }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vexflow/1.2.93/vexflow-min.js"></script>
+    <!-- Using Stable VexFlow Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vexflow/3.0.9/vexflow-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.25/Tone.min.js"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
@@ -120,7 +161,7 @@
         <input id="tempo" max="200" min="30" type="range" value="120">
         <span id="tempo-value">120</span> BPM
     </div>
-    <div id="metronome">
+    <div class="controls">
         <label for="metronome-switch">Metronome:</label>
         <input id="metronome-switch" type="checkbox">
     </div>
@@ -129,9 +170,43 @@
 <div class="container">
     <h2>Create Your Own Sheet Music</h2>
     <div id="creation-container"></div>
+    <div class="note-input-section">
+        <select id="note-select">
+            <option value="">Select Note</option>
+            <option value="C">C</option>
+            <option value="C#">C#</option>
+            <option value="D">D</option>
+            <option value="D#">D#</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="F#">F#</option>
+            <option value="G">G</option>
+            <option value="G#">G#</option>
+            <option value="A">A</option>
+            <option value="A#">A#</option>
+            <option value="B">B</option>
+        </select>
+
+        <select id="octave-select">
+            <option value="">Octave</option>
+            <option value="3">3</option>
+            <option value="4" selected>4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select>
+
+        <select id="duration-select">
+            <option value="">Duration</option>
+            <option value="w">Whole</option>
+            <option value="h">Half</option>
+            <option value="q">Quarter</option>
+            <option value="8">Eighth</option>
+            <option value="16">Sixteenth</option>
+        </select>
+
+        <button id="add-note-button"><i class="ph-plus-fill"></i> Add Note</button>
+    </div>
     <div class="controls">
-        <input id="note-input" placeholder="Enter notes (e.g., C4/q, D4, E4, F4)" type="text">
-        <button id="add-notes-btn"><i class="ph-plus-fill"></i> Add Notes</button>
         <button id="play-creation-btn"><i class="ph-play-fill"></i> Play</button>
         <button id="clear-sheet-btn"><i class="ph-trash-fill"></i> Clear Sheet</button>
     </div>
@@ -140,16 +215,22 @@
 <footer>
     <p>&copy; 2024 Your Website. All rights reserved.</p>
 </footer>
+
 <script>
+    // Event Listeners
     document.getElementById('file-input').addEventListener('change', handleFileUpload);
-    document.getElementById('play-btn').addEventListener('click', playMusic);
+    document.getElementById('play-btn').addEventListener('click', async () => {
+        await Tone.start(); // Ensure audio context is started
+        playMusic();
+    });
     document.getElementById('pause-btn').addEventListener('click', pauseMusic);
     document.getElementById('tempo').addEventListener('input', updateTempo);
     document.getElementById('metronome-switch').addEventListener('change', toggleMetronome);
-    document.getElementById('add-notes-btn').addEventListener('click', addNotes);
+    document.getElementById('add-note-button').addEventListener('click', addNote);
     document.getElementById('play-creation-btn').addEventListener('click', playCreatedMusic);
     document.getElementById('clear-sheet-btn').addEventListener('click', clearSheet);
 
+    // VexFlow and Tone.js Variables
     let vfViewer = null;
     let vfCreator = null;
     let viewerContext = null;
@@ -159,6 +240,10 @@
     let metronome = new Tone.MembraneSynth().toDestination();
     let isPlaying = false;
 
+    // Global arrays to store notes
+    let createdNotes = [];
+
+    // Handle File Upload for Viewing Sheet Music
     function handleFileUpload(event) {
         const file = event.target.files[0];
         if (file) {
@@ -171,30 +256,48 @@
         }
     }
 
+    // Render Uploaded Sheet Music
     function renderSheetMusic(xml) {
         document.getElementById('music-container').innerHTML = ''; // Clear previous rendering
-        vfViewer = new Vex.Flow.Factory({renderer: {elementId: 'music-container', width: 800, height: 400}});
+
+        // Initialize VexFlow Factory
+        vfViewer = new Vex.Flow.Factory({
+            renderer: { elementId: 'music-container', width: 800, height: 400 }
+        });
         viewerContext = vfViewer.getContext();
+
+        // Set Styles
+        viewerContext.setFillStyle("#FF3B3B"); // Set fill color for notes
+        viewerContext.setStrokeStyle("#FF3B3B"); // Set stroke color for staff lines and notes
+        viewerContext.setFont("Arial", 10, "bold"); // Enhance font visibility
+
         const score = vfViewer.EasyScore();
         const system = vfViewer.System();
 
         // Example notes; in a real application, parse MusicXML or MIDI to get notes
         system.addStave({
             voices: [
-                score.voice(score.notes("C4/q, D4, E4, F4", {stem: "up"}))
+                score.voice(score.notes("C4/q, D4/q, E4/q, F4/q", { stem: "up" }))
             ]
         }).addClef('treble').addTimeSignature('4/4');
 
         vfViewer.draw();
     }
 
-    function playMusic() {
+    // Play Uploaded Sheet Music
+    async function playMusic() {
+        if (!vfViewer) {
+            alert("Please upload sheet music first.");
+            return;
+        }
+
         player.start();
         document.getElementById('play-btn').style.display = 'none';
         document.getElementById('pause-btn').style.display = 'inline';
         isPlaying = true;
     }
 
+    // Pause Uploaded Sheet Music
     function pauseMusic() {
         player.stop();
         document.getElementById('play-btn').style.display = 'inline';
@@ -202,68 +305,147 @@
         isPlaying = false;
     }
 
+    // Update Tempo
     function updateTempo(event) {
         tempo = event.target.value;
         document.getElementById('tempo-value').textContent = tempo;
         Tone.Transport.bpm.value = tempo;
     }
 
+    // Toggle Metronome
     function toggleMetronome(event) {
         if (event.target.checked) {
             Tone.Transport.scheduleRepeat(time => {
                 metronome.triggerAttackRelease('C2', '8n', time);
             }, '4n');
+            Tone.Transport.start();
         } else {
             Tone.Transport.cancel();
         }
     }
 
-    function addNotes() {
-        const noteInput = document.getElementById('note-input').value;
-        if (!noteInput) {
-            alert("Please enter some notes.");
+    // Add Note Function
+    function addNote() {
+        const note = document.getElementById('note-select').value;
+        const octave = document.getElementById('octave-select').value;
+        const duration = document.getElementById('duration-select').value;
+
+        if (!note || !octave || !duration) {
+            alert("Please select a note, octave, and duration.");
             return;
         }
 
-        if (!vfCreator) {
-            vfCreator = new Vex.Flow.Factory({renderer: {elementId: 'creation-container', width: 800, height: 400}});
-            creatorContext = vfCreator.getContext();
-        }
+        // Construct the full note string
+        const fullNote = `${note}${octave}/${duration}`;
+
+        // Push to createdNotes array
+        createdNotes.push(fullNote);
+
+        // Update the sheet
+        renderCreatedSheet();
+
+        // Clear selections
+        document.getElementById('note-select').value = "";
+        document.getElementById('octave-select').value = "4";
+        document.getElementById('duration-select').value = "";
+    }
+
+    // Render Created Sheet Music
+    function renderCreatedSheet() {
+        // Clear previous rendering
+        document.getElementById('creation-container').innerHTML = '';
+
+        // Re-initialize the VexFlow Factory
+        vfCreator = new Vex.Flow.Factory({
+            renderer: { elementId: 'creation-container', width: 800, height: 200 }
+        });
+        creatorContext = vfCreator.getContext();
+
+        // Set Styles
+        creatorContext.setFillStyle("#FF6B6B"); // Notes color
+        creatorContext.setStrokeStyle("#FF6B6B"); // Staff lines and notes outline color
+        creatorContext.setFont("Arial", 10, "bold"); // Font settings
 
         const score = vfCreator.EasyScore();
         const system = vfCreator.System();
+
+        // Create a voice with the created notes
+        const voice = score.voice(score.notes(createdNotes.join(', ')), { time: '4/4' });
+
+        // Add the voice to the system with clef and time signature
         system.addStave({
-            voices: [score.voice(score.notes(noteInput))]
+            voices: [voice]
         }).addClef('treble').addTimeSignature('4/4');
+
         vfCreator.draw();
     }
 
+    // Play Created Music
     function playCreatedMusic() {
-        if (!vfCreator) {
-            alert("Please add notes first.");
-            return;
-        }
-
-        const notes = document.querySelector('#creation-container .vf-voice .vf-note');
-        if (notes.length === 0) {
+        if (createdNotes.length === 0) {
             alert("No notes to play.");
             return;
         }
 
-        // Convert VexFlow notation to a format that Tone.js can play (pseudo code)
-        // const midiData = convertVexFlowToMIDI(vfCreator);
-        // player.load(midiData).then(() => {
-        //     player.start();
-        // });
+        // Initialize Tone.js Synth
+        const synth = new Tone.Synth().toDestination();
 
-        alert("Playback for created music is not yet implemented.");
+        let now = Tone.now();
+
+        createdNotes.forEach((noteStr, index) => {
+            // Parse the note string
+            const [key, duration] = noteStr.split('/');
+
+            // Calculate frequency
+            const frequency = Tone.Frequency(key).toFrequency();
+
+            // Map VexFlow duration to Tone.js duration
+            let toneDuration;
+            switch (duration) {
+                case 'w':
+                    toneDuration = "1n";
+                    break;
+                case 'h':
+                    toneDuration = "2n";
+                    break;
+                case 'q':
+                    toneDuration = "4n";
+                    break;
+                case '8':
+                    toneDuration = "8n";
+                    break;
+                case '16':
+                    toneDuration = "16n";
+                    break;
+                default:
+                    toneDuration = "4n";
+            }
+
+            // Trigger the note
+            synth.triggerAttackRelease(frequency, toneDuration, now + index * 0.5);
+        });
+
+        // Start Tone.js Transport if not already started
+        if (Tone.Transport.state !== 'started') {
+            Tone.Transport.start();
+        }
     }
 
+    // Clear Created Sheet Music
     function clearSheet() {
+        // Clear created notes
+        createdNotes = [];
+
+        // Clear VexFlow rendering
         document.getElementById('creation-container').innerHTML = '';
         vfCreator = null;
         creatorContext = null;
     }
+
+    // Initialize the Creation Stave on Page Load
+    window.onload = () => {
+        renderCreatedSheet();
+    };
 </script>
 </body>
 

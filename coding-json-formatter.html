@@ -5,6 +5,24 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>JSON Formatter</title>
     <link href="/styles/forms.css" rel="stylesheet"/>
+    <style>
+        /* Syntax highlighting styles */
+        .number { color: darkorange; }
+        .string { color: green; }
+        .boolean { color: blue; }
+        .null { color: magenta; }
+        .key { color: red; }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            overflow: auto;
+            color: black; /* Added this line to set default text color */
+        }
+        #copy-message {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 
@@ -14,12 +32,15 @@
     fetch("header.html")
         .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                console.error('Failed to load header:', response.statusText);
+                return;
             }
             return response.text();
         })
         .then(data => {
-            document.getElementById("navbar-placeholder").innerHTML = data;
+            if (data) {
+                document.getElementById("navbar-placeholder").innerHTML = data;
+            }
         })
         .catch(error => {
             console.error('There has been a problem with your fetch operation:', error);
@@ -33,7 +54,8 @@
         JSON into the box below, and click "Format JSON" to see it organized for
         easy reading and editing.
     </p>
-    <label for="json-input"></label><textarea id="json-input" placeholder="Paste your JSON here"></textarea>
+    <label for="json-input">JSON Input:</label>
+    <textarea id="json-input" placeholder="Paste your JSON here"></textarea>
     <div class="button-group">
         <button onclick="formatJSON()">Format JSON</button>
         <button onclick="copyToClipboard()">Copy to Clipboard</button>
@@ -45,87 +67,60 @@
     <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
 </footer>
 <script>
-    document.querySelectorAll(".dropdown").forEach((dropdown) => {
-        const dropdownContent = dropdown.querySelector(".dropdown-content");
-        dropdown.addEventListener("mouseenter", () => {
-            dropdownContent.style.display = "block";
-        });
-        dropdown.addEventListener("mouseleave", () => {
-            dropdownContent.style.display = "none";
-        });
-        dropdown.querySelector("a").addEventListener("focus", () => {
-            dropdownContent.style.display = "block";
-        });
-        dropdown.querySelector("a").addEventListener("blur", () => {
-            dropdownContent.style.display = "none";
-        });
-    });
-
     // Define a variable to store the timeout ID
     let copyMessageTimeout;
 
     function formatJSON() {
         const input = document.getElementById("json-input").value.trim();
         const notification = document.getElementById("copy-message");
+        const output = document.getElementById("formatted-json");
 
         if (!input) {
-            document.getElementById("formatted-json").innerText =
-                "No JSON input provided.";
+            output.innerText = "No JSON input provided.";
             notification.textContent = "";
             return;
         }
 
         try {
-            const fixedInput = fixJSON(input);
-            const parsed = JSON.parse(fixedInput);
+            const parsed = JSON.parse(input);
             const formatted = JSON.stringify(parsed, null, 4);
-            document.getElementById("formatted-json").innerText = formatted;
+            output.innerHTML = syntaxHighlight(formatted);
             notification.textContent = ""; // Clear previous message
         } catch (error) {
-            document.getElementById("formatted-json").innerText = "Invalid JSON";
+            output.innerText = "Invalid JSON: " + error.message;
             notification.textContent = ""; // Clear previous message
         }
     }
 
-    function fixJSON(jsonString) {
-        // Step 1: Add missing commas between object properties
-        jsonString = jsonString.replace(/}(\s*{)/g, "},$1");
-        jsonString = jsonString.replace(/}(\s*\")/g, "},$1");
-        jsonString = jsonString.replace(/(\")(\s*\w)/g, "$1,$2");
-
-        // Step 2: Add missing quotes around keys
-        jsonString = jsonString.replace(/(\w+)\s*:/g, '"$1":');
-
-        // Step 3: Remove trailing commas
-        jsonString = jsonString.replace(/,\s*(?=[}\]])/g, "");
-
-        // Step 4: Ensure valid brackets
-        let openBrackets = jsonString.match(/{/g) || [];
-        let closeBrackets = jsonString.match(/}/g) || [];
-        if (openBrackets.length > closeBrackets.length) {
-            jsonString += "}".repeat(openBrackets.length - closeBrackets.length);
-        }
-
-        openBrackets = jsonString.match(/\[/g) || [];
-        closeBrackets = jsonString.match(/\]/g) || [];
-        if (openBrackets.length > closeBrackets.length) {
-            jsonString += "]".repeat(openBrackets.length - closeBrackets.length);
-        }
-
-        // Step 5: Remove invalid characters
-        jsonString = jsonString.replace(/[^\x20-\x7E]+/g, "");
-
-        return jsonString;
+    function syntaxHighlight(json) {
+        json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return json.replace(
+            /("(\\u[\da-fA-F]{4}|\\[^u]|[^\\"])*"(?:\s*:)?|\b(true|false|null)\b|-?\d+\.?\d*(?:[eE][+\-]?\d+)?)/g,
+            function (match) {
+                let cls = 'number';
+                if (/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        cls = 'key';
+                    } else {
+                        cls = 'string';
+                    }
+                } else if (/true|false/.test(match)) {
+                    cls = 'boolean';
+                } else if (/null/.test(match)) {
+                    cls = 'null';
+                }
+                return '<span class="' + cls + '">' + match + '</span>';
+            }
+        );
     }
 
     function copyToClipboard() {
-        const formattedJson =
-            document.getElementById("formatted-json").innerText;
+        const formattedJson = document.getElementById("formatted-json").innerText;
         const notification = document.getElementById("copy-message");
 
         if (
             formattedJson.trim() === "" ||
-            formattedJson === "Invalid JSON" ||
+            formattedJson.startsWith("Invalid JSON") ||
             formattedJson === "No JSON input provided."
         ) {
             // Show an error message if there's nothing to copy or the JSON is invalid

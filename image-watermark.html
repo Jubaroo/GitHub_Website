@@ -2,566 +2,669 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Image Watermark Tool</title>
     <link href="styles/header.css" rel="stylesheet"/>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Futura:wght@400&family=Avenir:wght@400&family=Lato:wght@400&family=Raleway:wght@400&family=Montserrat:wght@400&family=Ubuntu:wght@400&family=Open+Sans:wght@400&family=Roboto:wght@400&family=Noto+Sans:wght@400&family=Playfair+Display:wght@400&family=Merriweather:wght@400&family=Oswald:wght@400&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Futura:wght@400&family=Avenir:wght@400&family=Lato:wght@400&family=Raleway:wght@400&family=Montserrat:wght@400&family=Ubuntu:wght@400&family=Open+Sans:wght@400&family=Roboto:wght@400&family=Noto+Sans:wght@400&family=Playfair+Display:wght@400&family=Merriweather:wght@400&family=Oswald:wght@400&display=swap" rel="stylesheet"/>
     <style>
+        /* Reset and Basic Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            text-align: center;
-            background-color: black;
-            color: red;
+            background-color: #000;
+            color: #ff0000;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
+
+        header, footer {
+            width: 100%;
+        }
+
+        /* Toolbar Styles */
         #toolbar {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            background-color: #333;
+            background-color: #1e1e1e;
             padding: 1em;
             border-bottom: 2px solid darkred;
         }
+
         .toolbar-group {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin: 0.5em;
         }
+
         .toolbar-group label {
             margin-bottom: 0.2em;
             color: #fff;
+            font-weight: bold;
         }
+
+        /* Input Styles */
+        input[type="file"],
+        input[type="text"],
+        input[type="url"],
+        select,
+        input[type="color"],
+        input[type="range"],
+        input[type="checkbox"],
+        button {
+            padding: 0.5em;
+            border: none;
+            background-color: darkred;
+            color: #fff;
+            cursor: pointer;
+            margin: 0.2em;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        input[type="color"] {
+            width: 40px;
+            height: 40px;
+            padding: 3px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="text"],
+        input[type="url"],
+        select {
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        button:hover,
+        select:hover,
+        input[type="file"]:hover,
+        input[type="text"]:hover,
+        input[type="url"]:hover,
+        input[type="range"]:hover,
+        input[type="checkbox"]:hover {
+            background-color: red;
+        }
+
+        button {
+            height: auto;
+        }
+
+        /* Canvas Styles */
         #canvas-container {
             margin: 1em auto;
             position: relative;
-            background-color: white;
+            background-color: #1e1e1e;
             border: 1px solid #ccc;
-            width: 100%;
+            width: 90%;
             max-width: 1024px;
             height: auto;
+            padding: 10px;
+            border-radius: 10px;
         }
+
         canvas {
             border: 1px solid black;
             width: 100%;
             height: auto;
+            background-color: #fff;
+            border-radius: 5px;
+            max-width: 100%;
+            height: auto;
         }
-        button, select, input[type="color"], input[type="file"], input[type="text"], input[type="url"], input[type="range"], input[type="checkbox"] {
-            padding: 0.5em;
-            border: none;
-            background-color: darkred;
-            color: white;
-            cursor: pointer;
-            margin: 0.2em;
-            border-radius: 1em;
+
+        /* Message Styles */
+        #message {
+            color: #ff9999;
+            margin-top: 1em;
+            text-align: center;
         }
-        input[type="color"] {
-            width: 60px;
-            height: 40px;
-            padding: 3px;
-            border-radius: 0.3em;
-            border: none;
-            cursor: pointer;
-        }
-        input[type="text"] {
-            width: 200px;
-        }
-        button:hover, select:hover, input[type="color"]:hover, input[type="file"]:hover, input[type="text"]:hover, input[type="url"]:hover, input[type="range"]:hover, input[type="checkbox"]:hover {
-            background-color: red;
-        }
-        button {
-            height: 50px;
-        }
+
+        /* Footer Styles */
         footer {
             background-color: darkred;
             width: 100%;
             text-align: center;
             padding: 1em;
-            color: white;
+            color: #fff;
             margin-top: auto;
         }
-        #message {
-            color: white;
-            margin-top: 1em;
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #toolbar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .toolbar-group {
+                width: 100%;
+                align-items: center;
+            }
+
+            input[type="text"],
+            input[type="url"],
+            select {
+                width: 90%;
+            }
         }
-        select#watermark-font option {
-            font-family: Arial, sans-serif;
-        }
-        option[value="Arial"] { font-family: Arial,serif; }
-        option[value="Verdana"] { font-family: Verdana,serif; }
-        option[value="Times New Roman"] { font-family: "Times New Roman",serif; }
-        option[value="Courier New"] { font-family: "Courier New",serif; }
-        option[value="Georgia"] { font-family: Georgia,serif; }
-        option[value="Palatino Linotype"] { font-family: "Palatino Linotype",serif; }
-        option[value="Trebuchet MS"] { font-family: "Trebuchet MS",serif; }
-        option[value="Arial Black"] { font-family: "Arial Black",serif; }
-        option[value="Impact"] { font-family: Impact,serif; }
-        option[value="Comic Sans MS"] { font-family: "Comic Sans MS",serif; }
-        option[value="Lucida Sans Unicode"] { font-family: "Lucida Sans Unicode",serif; }
-        option[value="Tahoma"] { font-family: Tahoma,serif; }
-        option[value="Century Gothic"] { font-family: "Century Gothic",serif; }
-        option[value="Lucida Console"] { font-family: "Lucida Console",serif; }
-        option[value="Garamond"] { font-family: Garamond,serif; }
-        option[value="MS Sans Serif"] { font-family: "MS Sans Serif",serif; }
-        option[value="MS Serif"] { font-family: "MS Serif",serif; }
-        option[value="Franklin Gothic Medium"] { font-family: "Franklin Gothic Medium",serif; }
-        option[value="Bookman Old Style"] { font-family: "Bookman Old Style",serif; }
-        option[value="Perpetua"] { font-family: Perpetua,serif; }
-        option[value="Copperplate Gothic Light"] { font-family: "Copperplate Gothic Light",serif; }
-        option[value="Brush Script MT"] { font-family: "Brush Script MT",serif; }
-        option[value="Candara"] { font-family: Candara,serif; }
-        option[value="Calibri"] { font-family: Calibri,serif; }
-        option[value="Cambria"] { font-family: Cambria,serif; }
-        option[value="Andale Mono"] { font-family: "Andale Mono",serif; }
-        option[value="Century Schoolbook"] { font-family: "Century Schoolbook",serif; }
-        option[value="Lucida Bright"] { font-family: "Lucida Bright",serif; }
-        option[value="Segoe UI"] { font-family: "Segoe UI",serif; }
-        option[value="Gill Sans"] { font-family: "Gill Sans",serif; }
-        option[value="Futura"] { font-family: "Futura",serif; }
-        option[value="Baskerville"] { font-family: "Baskerville",serif; }
-        option[value="Rockwell"] { font-family: "Rockwell",serif; }
-        option[value="Avenir"] { font-family: "Avenir",serif; }
-        option[value="Lato"] { font-family: "Lato",serif; }
-        option[value="Raleway"] { font-family: "Raleway",serif; }
-        option[value="Montserrat"] { font-family: "Montserrat",serif; }
-        option[value="Ubuntu"] { font-family: "Ubuntu",serif; }
-        option[value="Open Sans"] { font-family: "Open Sans",serif; }
-        option[value="Roboto"] { font-family: "Roboto",serif; }
-        option[value="Noto Sans"] { font-family: "Noto Sans",serif; }
-        option[value="Playfair Display"] { font-family: "Playfair Display",serif; }
-        option[value="Merriweather"] { font-family: "Merriweather",serif; }
-        option[value="Oswald"] { font-family: "Oswald",serif; }
-        option[value="Dancing Script"] { font-family: "Dancing Script",serif; }
     </style>
 </head>
 <body>
 
-<div id="navbar-placeholder"></div>
+<header>
+    <div id="navbar-placeholder"></div>
+</header>
 
-<script>
-    fetch("header.html")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text();
-        })
-        .then(data => {
-            document.getElementById("navbar-placeholder").innerHTML = data;
-        })
-        .catch(error => {
-            displayMessage('Error loading header: ' + error.message);
-            console.error('There has been a problem with your fetch operation:', error);
-        });
-</script>
+<main>
+    <!-- Toolbar -->
+    <div id="toolbar">
+        <div class="toolbar-group">
+            <label for="upload">Original Image:</label>
+            <input type="file" id="upload" accept="image/*" aria-label="Upload Original Image">
+        </div>
+        <div class="toolbar-group">
+            <label for="watermark-type">Watermark Type:</label>
+            <select id="watermark-type" aria-label="Select Watermark Type">
+                <option value="text">Text</option>
+                <option value="image-url">Image from URL</option>
+                <option value="image-upload">Image from Upload</option>
+            </select>
+        </div>
+        <div class="toolbar-group" id="watermark-text-group">
+            <label for="watermark-text">Watermark Text:</label>
+            <input type="text" id="watermark-text" placeholder="Enter watermark text" aria-label="Watermark Text">
+        </div>
+        <div class="toolbar-group" id="watermark-file-group" style="display: none;">
+            <label for="watermark-file">Watermark Image:</label>
+            <input type="file" id="watermark-file" accept="image/*" aria-label="Upload Watermark Image">
+        </div>
+        <div class="toolbar-group" id="watermark-url-group" style="display: none;">
+            <label for="watermark-url">Watermark Image URL:</label>
+            <input type="url" id="watermark-url" placeholder="Enter image URL" aria-label="Watermark Image URL">
+        </div>
+        <div class="toolbar-group">
+            <label for="watermark-color">Text Color:</label>
+            <input type="color" id="watermark-color" value="#ffffff" aria-label="Select Text Color">
+        </div>
+        <div class="toolbar-group">
+            <label for="watermark-font">Font:</label>
+            <select id="watermark-font" aria-label="Select Font">
+                <!-- Font options -->
+                <option value="Arial" style="font-family: Arial;">Arial</option>
+                <option value="Verdana" style="font-family: Verdana;">Verdana</option>
+                <option value="Times New Roman" style="font-family: 'Times New Roman';">Times New Roman</option>
+                <option value="Courier New" style="font-family: 'Courier New';">Courier New</option>
+                <option value="Georgia" style="font-family: Georgia;">Georgia</option>
+                <option value="Palatino Linotype" style="font-family: 'Palatino Linotype';">Palatino Linotype</option>
+                <option value="Trebuchet MS" style="font-family: 'Trebuchet MS';">Trebuchet MS</option>
+                <option value="Arial Black" style="font-family: 'Arial Black';">Arial Black</option>
+                <option value="Impact" style="font-family: Impact;">Impact</option>
+                <option value="Comic Sans MS" style="font-family: 'Comic Sans MS';">Comic Sans MS</option>
+                <option value="Lucida Sans Unicode" style="font-family: 'Lucida Sans Unicode';">Lucida Sans Unicode</option>
+                <option value="Tahoma" style="font-family: Tahoma;">Tahoma</option>
+                <option value="Century Gothic" style="font-family: 'Century Gothic';">Century Gothic</option>
+                <option value="Lucida Console" style="font-family: 'Lucida Console';">Lucida Console</option>
+                <option value="Garamond" style="font-family: Garamond;">Garamond</option>
+                <option value="MS Sans Serif" style="font-family: 'MS Sans Serif';">MS Sans Serif</option>
+                <option value="MS Serif" style="font-family: 'MS Serif';">MS Serif</option>
+                <option value="Franklin Gothic Medium" style="font-family: 'Franklin Gothic Medium';">Franklin Gothic Medium</option>
+                <option value="Bookman Old Style" style="font-family: 'Bookman Old Style';">Bookman Old Style</option>
+                <option value="Perpetua" style="font-family: Perpetua;">Perpetua</option>
+                <option value="Copperplate Gothic Light" style="font-family: 'Copperplate Gothic Light';">Copperplate Gothic Light</option>
+                <option value="Brush Script MT" style="font-family: 'Brush Script MT';">Brush Script MT</option>
+                <option value="Candara" style="font-family: Candara;">Candara</option>
+                <option value="Calibri" style="font-family: Calibri;">Calibri</option>
+                <option value="Cambria" style="font-family: Cambria;">Cambria</option>
+                <option value="Andale Mono" style="font-family: 'Andale Mono';">Andale Mono</option>
+                <option value="Century Schoolbook" style="font-family: 'Century Schoolbook';">Century Schoolbook</option>
+                <option value="Lucida Bright" style="font-family: 'Lucida Bright';">Lucida Bright</option>
+                <option value="Segoe UI" style="font-family: 'Segoe UI';">Segoe UI</option>
+                <option value="Gill Sans" style="font-family: 'Gill Sans';">Gill Sans</option>
+                <option value="Futura" style="font-family: 'Futura';">Futura</option>
+                <option value="Baskerville" style="font-family: 'Baskerville';">Baskerville</option>
+                <option value="Rockwell" style="font-family: 'Rockwell';">Rockwell</option>
+                <option value="Avenir" style="font-family: 'Avenir';">Avenir</option>
+                <option value="Lato" style="font-family: 'Lato';">Lato</option>
+                <option value="Raleway" style="font-family: 'Raleway';">Raleway</option>
+                <option value="Montserrat" style="font-family: 'Montserrat';">Montserrat</option>
+                <option value="Ubuntu" style="font-family: 'Ubuntu';">Ubuntu</option>
+                <option value="Open Sans" style="font-family: 'Open Sans';">Open Sans</option>
+                <option value="Roboto" style="font-family: 'Roboto';">Roboto</option>
+                <option value="Noto Sans" style="font-family: 'Noto Sans';">Noto Sans</option>
+                <option value="Playfair Display" style="font-family: 'Playfair Display';">Playfair Display</option>
+                <option value="Merriweather" style="font-family: 'Merriweather';">Merriweather</option>
+                <option value="Oswald" style="font-family: 'Oswald';">Oswald</option>
+                <option value="Dancing Script" style="font-family: 'Dancing Script';">Dancing Script</option>
+            </select>
+        </div>
+        <div class="toolbar-group">
+            <label>
+                <input type="checkbox" id="bold" aria-label="Bold Text"> Bold
+            </label>
+            <label>
+                <input type="checkbox" id="italic" aria-label="Italic Text"> Italic
+            </label>
+        </div>
+        <div class="toolbar-group">
+            <label for="opacity">Opacity: <span id="opacity-value">0.5</span></label>
+            <input type="range" id="opacity" min="0" max="1" step="0.01" value="0.5" aria-label="Adjust Opacity">
+        </div>
+        <div class="toolbar-group">
+            <label for="size">Size: <span id="size-value">100</span>%</label>
+            <input type="range" id="size" min="10" max="200" step="1" value="100" aria-label="Adjust Size">
+        </div>
+        <div class="toolbar-group">
+            <label for="rotation">Rotation: <span id="rotation-value">0</span>°</label>
+            <input type="range" id="rotation" min="0" max="360" step="1" value="0" aria-label="Adjust Rotation">
+        </div>
+        <div class="toolbar-group">
+            <label for="tile">
+                <input type="checkbox" id="tile" aria-label="Tile Watermark"> Tile Watermark
+            </label>
+        </div>
+        <div class="toolbar-group">
+            <button id="center-watermark" aria-label="Center Watermark">Center Watermark</button>
+            <button id="save-image" aria-label="Save Image">Save Image</button>
+        </div>
+    </div>
 
-<div id="toolbar">
-    <div class="toolbar-group">
-        <label for="upload">Original Image:</label>
-        <input type="file" id="upload" accept="image/*">
-    </div>
-    <div class="toolbar-group">
-        <label for="watermark-type">Watermark Type:</label>
-        <select id="watermark-type">
-            <option value="text">Text</option>
-            <option value="image-url">Image from URL</option>
-            <option value="image-upload">Image from Upload</option>
-        </select>
-    </div>
-    <div class="toolbar-group" id="watermark-text-group">
-        <label for="watermark-text">Watermark Text:</label>
-        <input type="text" id="watermark-text" placeholder="Enter watermark text">
-    </div>
-    <div class="toolbar-group" id="watermark-file-group" style="display: none;">
-        <label for="watermark-file">Watermark Image:</label>
-        <input type="file" id="watermark-file" accept="image/*">
-    </div>
-    <div class="toolbar-group" id="watermark-url-group" style="display: none;">
-        <label for="watermark-url">Watermark Image URL:</label>
-        <input type="url" id="watermark-url" placeholder="Enter image URL">
-    </div>
-    <div class="toolbar-group">
-        <label for="watermark-color">Text Color:</label>
-        <input type="color" id="watermark-color" value="#ffffff">
-    </div>
-    <div class="toolbar-group">
-        <label for="watermark-font">Font:</label>
-        <select id="watermark-font">
-            <option value="Arial" style="font-family: Arial,serif;">Arial</option>
-            <option value="Verdana" style="font-family: Verdana,serif;">Verdana</option>
-            <option value="Times New Roman" style="font-family: 'Times New Roman',serif;">Times New Roman</option>
-            <option value="Courier New" style="font-family: 'Courier New',serif;">Courier New</option>
-            <option value="Georgia" style="font-family: Georgia,serif;">Georgia</option>
-            <option value="Palatino Linotype" style="font-family: 'Palatino Linotype',serif;">Palatino Linotype</option>
-            <option value="Trebuchet MS" style="font-family: 'Trebuchet MS',serif;">Trebuchet MS</option>
-            <option value="Arial Black" style="font-family: 'Arial Black',serif;">Arial Black</option>
-            <option value="Impact" style="font-family: Impact,serif;">Impact</option>
-            <option value="Comic Sans MS" style="font-family: 'Comic Sans MS',serif;">Comic Sans MS</option>
-            <option value="Lucida Sans Unicode" style="font-family: 'Lucida Sans Unicode',serif;">Lucida Sans Unicode</option>
-            <option value="Tahoma" style="font-family: Tahoma,serif;">Tahoma</option>
-            <option value="Century Gothic" style="font-family: 'Century Gothic',serif;">Century Gothic</option>
-            <option value="Lucida Console" style="font-family: 'Lucida Console',serif;">Lucida Console</option>
-            <option value="Garamond" style="font-family: Garamond,serif;">Garamond</option>
-            <option value="MS Sans Serif" style="font-family: 'MS Sans Serif',serif;">MS Sans Serif</option>
-            <option value="MS Serif" style="font-family: 'MS Serif',serif;">MS Serif</option>
-            <option value="Franklin Gothic Medium" style="font-family: 'Franklin Gothic Medium',serif;">Franklin Gothic Medium</option>
-            <option value="Bookman Old Style" style="font-family: 'Bookman Old Style',serif;">Bookman Old Style</option>
-            <option value="Perpetua" style="font-family: Perpetua,serif;">Perpetua</option>
-            <option value="Copperplate Gothic Light" style="font-family: 'Copperplate Gothic Light',serif;">Copperplate Gothic Light</option>
-            <option value="Brush Script MT" style="font-family: 'Brush Script MT',serif;">Brush Script MT</option>
-            <option value="Candara" style="font-family: Candara,serif;">Candara</option>
-            <option value="Calibri" style="font-family: Calibri,serif;">Calibri</option>
-            <option value="Cambria" style="font-family: Cambria,serif;">Cambria</option>
-            <option value="Andale Mono" style="font-family: 'Andale Mono',serif;">Andale Mono</option>
-            <option value="Century Schoolbook" style="font-family: 'Century Schoolbook',serif;">Century Schoolbook</option>
-            <option value="Lucida Bright" style="font-family: 'Lucida Bright',serif;">Lucida Bright</option>
-            <option value="Segoe UI" style="font-family: 'Segoe UI',serif;">Segoe UI</option>
-            <option value="Gill Sans" style="font-family: 'Gill Sans',serif;">Gill Sans</option>
-            <option value="Futura" style="font-family: 'Futura',serif;">Futura</option>
-            <option value="Baskerville" style="font-family: 'Baskerville',serif;">Baskerville</option>
-            <option value="Rockwell" style="font-family: 'Rockwell',serif;">Rockwell</option>
-            <option value="Avenir" style="font-family: 'Avenir',serif;">Avenir</option>
-            <option value="Lato" style="font-family: 'Lato',serif;">Lato</option>
-            <option value="Raleway" style="font-family: 'Raleway',serif;">Raleway</option>
-            <option value="Montserrat" style="font-family: 'Montserrat',serif;">Montserrat</option>
-            <option value="Ubuntu" style="font-family: 'Ubuntu',serif;">Ubuntu</option>
-            <option value="Open Sans" style="font-family: 'Open Sans',serif;">Open Sans</option>
-            <option value="Roboto" style="font-family: 'Roboto',serif;">Roboto</option>
-            <option value="Noto Sans" style="font-family: 'Noto Sans',serif;">Noto Sans</option>
-            <option value="Playfair Display" style="font-family: 'Playfair Display',serif;">Playfair Display</option>
-            <option value="Merriweather" style="font-family: 'Merriweather',serif;">Merriweather</option>
-            <option value="Oswald" style="font-family: 'Oswald',serif;">Oswald</option>
-            <option value="Dancing Script" style="font-family: 'Dancing Script',serif;">Dancing Script</option>
-        </select>
-    </div>
-    <div class="toolbar-group">
-        <label>
-            <input type="checkbox" id="bold"> Bold
-        </label>
-        <label>
-            <input type="checkbox" id="italic"> Italic
-        </label>
-    </div>
-    <div class="toolbar-group">
-        <label for="opacity">Opacity: <span id="opacity-value">0.5</span></label>
-        <input type="range" id="opacity" min="0" max="1" step="0.01" value="0.5">
-    </div>
-    <div class="toolbar-group">
-        <label for="size">Size: <span id="size-value">100</span>%</label>
-        <input type="range" id="size" min="10" max="200" step="1" value="100">
-    </div>
-    <div class="toolbar-group">
-        <label for="rotation">Rotation: <span id="rotation-value">0</span>°</label>
-        <input type="range" id="rotation" min="0" max="360" step="1" value="0">
-    </div>
-    <div class="toolbar-group">
-        <label for="tile">Tile Watermark:</label>
-        <input type="checkbox" id="tile">
-    </div>
-    <button id="center-watermark">Center Watermark</button>
-    <button id="save-image">Save Image</button>
-</div>
+    <!-- Message Display -->
+    <div id="message" role="alert" aria-live="polite"></div>
 
-<div id="message"></div>
-
-<div id="canvas-container">
-    <canvas id="canvas"></canvas>
-</div>
+    <!-- Canvas Container -->
+    <div id="canvas-container">
+        <canvas id="canvas" aria-label="Image Canvas"></canvas>
+    </div>
+</main>
 
 <footer>
     <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
 </footer>
 
+<!-- Scripts -->
 <script>
+    // Load the header/navbar
+    fetch("header.html")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load header.');
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+            initializeDropdowns();
+        })
+        .catch(error => {
+            displayMessage('Error loading header: ' + error.message);
+            console.error('Error loading header:', error);
+        });
+
+    // Initialize dropdowns in navbar
+    function initializeDropdowns() {
+        const dropdowns = document.querySelectorAll(".dropdown");
+        dropdowns.forEach(dropdown => {
+            const dropdownContent = dropdown.querySelector(".dropdown-content");
+
+            dropdown.addEventListener("mouseenter", () => {
+                dropdownContent.style.display = "block";
+            });
+
+            dropdown.addEventListener("mouseleave", () => {
+                dropdownContent.style.display = "none";
+            });
+
+            const toggleDropdown = () => {
+                const isVisible = dropdownContent.style.display === "block";
+                dropdownContent.style.display = isVisible ? "none" : "block";
+            };
+
+            dropdown.querySelector("a").addEventListener("click", (e) => {
+                e.preventDefault();
+                toggleDropdown();
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener("click", (e) => {
+                if (!dropdown.contains(e.target)) {
+                    dropdownContent.style.display = "none";
+                }
+            });
+        });
+    }
+
+    // Display messages to the user
     function displayMessage(message) {
-        document.getElementById('message').textContent = message;
+        const messageDiv = document.getElementById('message');
+        messageDiv.textContent = message;
+        // Automatically hide the message after 5 seconds
+        setTimeout(() => {
+            messageDiv.textContent = '';
+        }, 5000);
     }
 
-    let originalImage = null;
-    let watermarkImg = null;
-    let watermarkText = '';
-    let watermarkType = 'text';
-    let watermarkColor = '#ffffff';
-    let opacity = 0.5;
-    let size = 1;
-    let rotation = 0;
-    let tile = false;
-    let isDragging = false;
-    let startX, startY;
-    let watermarkX, watermarkY;
-    let isBold = false;
-    let isItalic = false;
-    let font = 'Arial';
+    // Main script for watermark functionality
+    (function() {
+        let originalImage = null;
+        let watermarkImg = null;
+        let watermarkText = '';
+        let watermarkType = 'text';
+        let watermarkColor = '#ffffff';
+        let opacity = 0.5;
+        let size = 1;
+        let rotation = 0;
+        let tile = false;
+        let isDragging = false;
+        let startX, startY;
+        let watermarkX, watermarkY;
+        let isBold = false;
+        let isItalic = false;
+        let font = 'Arial';
 
-    document.getElementById('watermark-type').addEventListener('change', function() {
-        watermarkType = this.value;
-        document.getElementById('watermark-text-group').style.display = watermarkType === 'text' ? 'flex' : 'none';
-        document.getElementById('watermark-file-group').style.display = watermarkType === 'image-upload' ? 'flex' : 'none';
-        document.getElementById('watermark-url-group').style.display = watermarkType === 'image-url' ? 'flex' : 'none';
-        if (watermarkType !== 'text') {
-            watermarkText = '';
-            watermarkImg = null;
-        }
-        updateCanvas();
-    });
-
-    document.getElementById('watermark-text').addEventListener('input', function() {
-        watermarkText = this.value;
-        updateCanvas();
-    });
-
-    document.getElementById('watermark-color').addEventListener('input', function() {
-        watermarkColor = this.value;
-        updateCanvas();
-    });
-
-    document.getElementById('watermark-url').addEventListener('input', function() {
-        if (watermarkType === 'image-url') {
-            loadWatermarkImage(this.value);
-        }
-    });
-
-    document.getElementById('opacity').addEventListener('input', function() {
-        opacity = parseFloat(this.value);
-        document.getElementById('opacity-value').textContent = opacity;
-        updateCanvas();
-    });
-
-    document.getElementById('size').addEventListener('input', function() {
-        size = parseInt(this.value) / 100;
-        document.getElementById('size-value').textContent = this.value;
-        updateCanvas();
-    });
-
-    document.getElementById('rotation').addEventListener('input', function() {
-        rotation = parseInt(this.value);
-        document.getElementById('rotation-value').textContent = rotation;
-        updateCanvas();
-    });
-
-    document.getElementById('tile').addEventListener('change', function() {
-        tile = this.checked;
-        updateCanvas();
-    });
-
-    document.getElementById('upload').addEventListener('change', function() {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                loadOriginalImage(event.target.result);
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-
-    document.getElementById('watermark-file').addEventListener('change', function() {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                loadWatermarkImage(event.target.result);
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-
-    document.getElementById('bold').addEventListener('change', function() {
-        isBold = this.checked;
-        updateCanvas();
-    });
-
-    document.getElementById('italic').addEventListener('change', function() {
-        isItalic = this.checked;
-        updateCanvas();
-    });
-
-    document.getElementById('watermark-font').addEventListener('change', function() {
-        font = this.value;
-        updateCanvas();
-    });
-
-    document.getElementById('watermark-type').addEventListener('change', function() {
-        watermarkType = this.value;
-        resetWatermarkSettings();
-        updateCanvas();
-    });
-
-    function resetWatermarkSettings() {
-        document.getElementById('watermark-text').value = '';
-        document.getElementById('watermark-color').value = '#ffffff';
-        document.getElementById('watermark-url').value = '';
-        document.getElementById('watermark-file').value = '';
-        document.getElementById('bold').checked = false;
-        document.getElementById('italic').checked = false;
-        document.getElementById('watermark-font').value = 'Arial';
-        watermarkText = '';
-        watermarkImg = null;
-        watermarkX = undefined;
-        watermarkY = undefined;
-        isBold = false;
-        isItalic = false;
-        font = 'Arial';
-
-        document.getElementById('watermark-text-group').style.display = watermarkType === 'text' ? 'flex' : 'none';
-        document.getElementById('watermark-file-group').style.display = watermarkType === 'image-upload' ? 'flex' : 'none';
-        document.getElementById('watermark-url-group').style.display = watermarkType === 'image-url' ? 'flex' : 'none';
-    }
-
-    function loadOriginalImage(src) {
-        originalImage = new Image();
-        originalImage.onload = function() {
-            updateCanvas();
-        };
-        originalImage.src = src;
-    }
-
-    function loadWatermarkImage(src) {
-        watermarkImg = new Image();
-        watermarkImg.onload = function() {
-            updateCanvas();
-        };
-        watermarkImg.src = src;
-    }
-
-    function updateCanvas() {
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
-        if (originalImage) {
-            const aspectRatio = originalImage.width / originalImage.height;
-            canvas.width = canvas.clientWidth;
-            canvas.height = canvas.width / aspectRatio;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
 
-            ctx.globalAlpha = opacity;
-            ctx.save();
-            ctx.translate(canvas.width / 2, canvas.height / 2);
-            ctx.rotate((rotation * Math.PI) / 180);
-            ctx.translate(-canvas.width / 2, -canvas.height / 2);
+        // Event Listeners
+        document.getElementById('watermark-type').addEventListener('change', handleWatermarkTypeChange);
+        document.getElementById('watermark-text').addEventListener('input', handleWatermarkTextChange);
+        document.getElementById('watermark-color').addEventListener('input', handleWatermarkColorChange);
+        document.getElementById('watermark-url').addEventListener('input', handleWatermarkURLChange);
+        document.getElementById('opacity').addEventListener('input', handleOpacityChange);
+        document.getElementById('size').addEventListener('input', handleSizeChange);
+        document.getElementById('rotation').addEventListener('input', handleRotationChange);
+        document.getElementById('tile').addEventListener('change', handleTileChange);
+        document.getElementById('upload').addEventListener('change', handleOriginalImageUpload);
+        document.getElementById('watermark-file').addEventListener('change', handleWatermarkImageUpload);
+        document.getElementById('bold').addEventListener('change', handleBoldChange);
+        document.getElementById('italic').addEventListener('change', handleItalicChange);
+        document.getElementById('watermark-font').addEventListener('change', handleFontChange);
+        document.getElementById('save-image').addEventListener('click', saveImage);
+        document.getElementById('center-watermark').addEventListener('click', centerWatermark);
 
-            if (tile) {
-                ctx.translate(watermarkX || 0, watermarkY || 0); // Allow dragging of the tiled watermark
-                if (watermarkType === 'text' && watermarkText) {
-                    let fontStyle = '';
-                    if (isBold) fontStyle += 'bold ';
-                    if (isItalic) fontStyle += 'italic ';
-                    ctx.font = `${fontStyle}${30 * size}px ${font}`;
-                    ctx.fillStyle = watermarkColor;
-                    const textMetrics = ctx.measureText(watermarkText);
-                    const stepX = textMetrics.width + 20; // Added spacing for better tiling
-                    const stepY = 30 * size + 20; // Added spacing for better tiling
-                    for (let y = -canvas.height; y < canvas.height * 2; y += stepY) {
-                        for (let x = -canvas.width; x < canvas.width * 2; x += stepX) {
-                            ctx.fillText(watermarkText, x, y);
-                        }
-                    }
-                } else if (watermarkType !== 'text' && watermarkImg) {
-                    const watermarkAspectRatio = watermarkImg.width / watermarkImg.height;
-                    const width = watermarkImg.width * size;
-                    const height = width / watermarkAspectRatio;
-                    const stepX = width + 20; // Added spacing for better tiling
-                    const stepY = height + 20; // Added spacing for better tiling
-                    for (let y = -canvas.height; y < canvas.height * 2; y += stepY) {
-                        for (let x = -canvas.width; x < canvas.width * 2; x += stepX) {
-                            ctx.drawImage(watermarkImg, x, y, width, height);
-                        }
-                    }
-                }
-            } else {
-                if (watermarkType === 'text' && watermarkText) {
-                    let fontStyle = '';
-                    if (isBold) fontStyle += 'bold ';
-                    if (isItalic) fontStyle += 'italic ';
-                    ctx.font = `${fontStyle}${30 * size}px ${font}`;
-                    ctx.fillStyle = watermarkColor;
-                    const textMetrics = ctx.measureText(watermarkText);
-                    watermarkX = watermarkX !== undefined ? watermarkX : (canvas.width - textMetrics.width) / 2;
-                    watermarkY = watermarkY !== undefined ? watermarkY : (canvas.height + 30 * size) / 2;
-                    ctx.fillText(watermarkText, watermarkX, watermarkY);
-                } else if (watermarkType !== 'text' && watermarkImg) {
-                    const watermarkAspectRatio = watermarkImg.width / watermarkImg.height;
-                    const width = watermarkImg.width * size;
-                    const height = width / watermarkAspectRatio;
-                    watermarkX = watermarkX !== undefined ? watermarkX : (canvas.width - width) / 2;
-                    watermarkY = watermarkY !== undefined ? watermarkY : (canvas.height - height) / 2;
-                    ctx.drawImage(watermarkImg, watermarkX, watermarkY, width, height);
-                }
+        // Canvas Event Listeners for Dragging
+        canvas.addEventListener('mousedown', startDragging);
+        canvas.addEventListener('mousemove', dragWatermark);
+        canvas.addEventListener('mouseup', stopDragging);
+        canvas.addEventListener('mouseleave', stopDragging);
+
+        // Function Definitions
+        function handleWatermarkTypeChange() {
+            watermarkType = this.value;
+            resetWatermarkSettings();
+            updateCanvas();
+        }
+
+        function handleWatermarkTextChange() {
+            watermarkText = this.value;
+            updateCanvas();
+        }
+
+        function handleWatermarkColorChange() {
+            watermarkColor = this.value;
+            updateCanvas();
+        }
+
+        function handleWatermarkURLChange() {
+            if (watermarkType === 'image-url') {
+                loadWatermarkImage(this.value);
             }
-            ctx.restore();
         }
-    }
 
-    document.getElementById('save-image').addEventListener('click', function() {
-        const canvas = document.getElementById('canvas');
-        const link = document.createElement('a');
-        link.download = 'watermarked-image.png';
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-        displayMessage('Image saved successfully.');
-    });
-
-    document.getElementById('tile').addEventListener('change', function() {
-        tile = this.checked;
-        if (!tile) {
-            // Recenter the watermark when tiling is unchecked
-            watermarkX = undefined;
-            watermarkY = undefined;
+        function handleOpacityChange() {
+            opacity = parseFloat(this.value);
+            document.getElementById('opacity-value').textContent = opacity;
+            updateCanvas();
         }
-        updateCanvas();
-    });
 
-    document.getElementById('center-watermark').addEventListener('click', function() {
-        watermarkX = undefined;
-        watermarkY = undefined;
-        updateCanvas();
-    });
-
-    const canvas = document.getElementById('canvas');
-    canvas.addEventListener('mousedown', function(e) {
-        const rect = canvas.getBoundingClientRect();
-        if (tile) {
-            startX = e.clientX - rect.left - (watermarkX || 0);
-            startY = e.clientY - rect.top - (watermarkY || 0);
-        } else {
-            startX = e.clientX - rect.left - watermarkX;
-            startY = e.clientY - rect.top - watermarkY;
+        function handleSizeChange() {
+            size = parseInt(this.value) / 100;
+            document.getElementById('size-value').textContent = this.value;
+            updateCanvas();
         }
-        isDragging = true;
-    });
 
-    canvas.addEventListener('mousemove', function(e) {
-        if (isDragging) {
-            const rect = canvas.getBoundingClientRect();
-            if (tile) {
-                watermarkX = e.clientX - rect.left - startX;
-                watermarkY = e.clientY - rect.top - startY;
-            } else {
-                watermarkX = e.clientX - rect.left - startX;
-                watermarkY = e.clientY - rect.top - startY;
+        function handleRotationChange() {
+            rotation = parseInt(this.value);
+            document.getElementById('rotation-value').textContent = rotation;
+            updateCanvas();
+        }
+
+        function handleTileChange() {
+            tile = this.checked;
+            if (!tile) {
+                // Recenter the watermark when tiling is unchecked
+                watermarkX = undefined;
+                watermarkY = undefined;
             }
             updateCanvas();
         }
-    });
 
-    canvas.addEventListener('mouseup', function() {
-        isDragging = false;
-    });
+        function handleOriginalImageUpload() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    loadOriginalImage(event.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
 
-    canvas.addEventListener('mouseleave', function() {
-        isDragging = false;
-    });
+        function handleWatermarkImageUpload() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    loadWatermarkImage(event.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
 
-    window.addEventListener('load', function() {
-        document.getElementById('watermark-text-group').style.display = 'flex';
-    });
+        function handleBoldChange() {
+            isBold = this.checked;
+            updateCanvas();
+        }
+
+        function handleItalicChange() {
+            isItalic = this.checked;
+            updateCanvas();
+        }
+
+        function handleFontChange() {
+            font = this.value;
+            updateCanvas();
+        }
+
+        function resetWatermarkSettings() {
+            // Reset values
+            document.getElementById('watermark-text').value = '';
+            document.getElementById('watermark-color').value = '#ffffff';
+            document.getElementById('watermark-url').value = '';
+            document.getElementById('watermark-file').value = '';
+            document.getElementById('bold').checked = false;
+            document.getElementById('italic').checked = false;
+            document.getElementById('watermark-font').value = 'Arial';
+            watermarkText = '';
+            watermarkImg = null;
+            watermarkX = undefined;
+            watermarkY = undefined;
+            isBold = false;
+            isItalic = false;
+            font = 'Arial';
+
+            // Show/Hide relevant input groups
+            document.getElementById('watermark-text-group').style.display = watermarkType === 'text' ? 'flex' : 'none';
+            document.getElementById('watermark-file-group').style.display = watermarkType === 'image-upload' ? 'flex' : 'none';
+            document.getElementById('watermark-url-group').style.display = watermarkType === 'image-url' ? 'flex' : 'none';
+        }
+
+        function loadOriginalImage(src) {
+            originalImage = new Image();
+            originalImage.onload = function() {
+                // Set canvas intrinsic size to match the image
+                canvas.width = originalImage.width;
+                canvas.height = originalImage.height;
+                updateCanvas();
+            };
+            originalImage.src = src;
+        }
+
+        function loadWatermarkImage(src) {
+            watermarkImg = new Image();
+            watermarkImg.onload = function() {
+                updateCanvas();
+            };
+            watermarkImg.src = src;
+        }
+
+        function updateCanvas() {
+            if (originalImage) {
+                // Reset transformations
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
+
+                // Apply rotation and scaling
+                ctx.save();
+                ctx.globalAlpha = opacity;
+                ctx.translate(canvas.width / 2, canvas.height / 2);
+                ctx.rotate((rotation * Math.PI) / 180);
+                ctx.scale(1, 1); // You can adjust scaling here if needed
+                ctx.translate(-canvas.width / 2, -canvas.height / 2);
+
+                if (tile) {
+                    if (watermarkType === 'text' && watermarkText) {
+                        let fontStyle = '';
+                        if (isBold) fontStyle += 'bold ';
+                        if (isItalic) fontStyle += 'italic ';
+                        ctx.font = `${fontStyle}${30 * size}px ${font}`;
+                        ctx.fillStyle = watermarkColor;
+                        const textMetrics = ctx.measureText(watermarkText);
+                        const stepX = textMetrics.width + 20; // Added spacing for better tiling
+                        const stepY = 30 * size + 20; // Added spacing for better tiling
+                        for (let y = -canvas.height; y < canvas.height * 2; y += stepY) {
+                            for (let x = -canvas.width; x < canvas.width * 2; x += stepX) {
+                                ctx.fillText(watermarkText, x, y);
+                            }
+                        }
+                    } else if (watermarkType !== 'text' && watermarkImg) {
+                        const watermarkAspectRatio = watermarkImg.width / watermarkImg.height;
+                        const width = watermarkImg.width * size;
+                        const height = width / watermarkAspectRatio;
+                        const stepX = width + 20; // Added spacing for better tiling
+                        const stepY = height + 20; // Added spacing for better tiling
+                        for (let y = -canvas.height; y < canvas.height * 2; y += stepY) {
+                            for (let x = -canvas.width; x < canvas.width * 2; x += stepX) {
+                                ctx.drawImage(watermarkImg, x, y, width, height);
+                            }
+                        }
+                    }
+                } else {
+                    if (watermarkType === 'text' && watermarkText) {
+                        let fontStyle = '';
+                        if (isBold) fontStyle += 'bold ';
+                        if (isItalic) fontStyle += 'italic ';
+                        ctx.font = `${fontStyle}${30 * size}px ${font}`;
+                        ctx.fillStyle = watermarkColor;
+                        const textMetrics = ctx.measureText(watermarkText);
+                        watermarkX = watermarkX !== undefined ? watermarkX : (canvas.width - textMetrics.width) / 2;
+                        watermarkY = watermarkY !== undefined ? watermarkY : (canvas.height + 30 * size) / 2;
+                        ctx.fillText(watermarkText, watermarkX, watermarkY);
+                    } else if (watermarkType !== 'text' && watermarkImg) {
+                        const watermarkAspectRatio = watermarkImg.width / watermarkImg.height;
+                        const width = watermarkImg.width * size;
+                        const height = width / watermarkAspectRatio;
+                        watermarkX = watermarkX !== undefined ? watermarkX : (canvas.width - width) / 2;
+                        watermarkY = watermarkY !== undefined ? watermarkY : (canvas.height - height) / 2;
+                        ctx.drawImage(watermarkImg, watermarkX, watermarkY, width, height);
+                    }
+                }
+
+                ctx.restore();
+                ctx.globalAlpha = 1;
+            }
+        }
+
+        function saveImage() {
+            if (!originalImage) {
+                displayMessage('Please upload an original image first.');
+                return;
+            }
+            const link = document.createElement('a');
+            link.download = 'watermarked-image.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            displayMessage('Image saved successfully.');
+        }
+
+        function centerWatermark() {
+            watermarkX = undefined;
+            watermarkY = undefined;
+            updateCanvas();
+        }
+
+        function startDragging(e) {
+            if (!originalImage) return;
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            if (tile) {
+                // For tiling, dragging doesn't make much sense, so we can disable it or implement accordingly
+                return;
+            }
+
+            if (watermarkType === 'text' && watermarkText) {
+                // Simple hit detection for text (could be improved)
+                ctx.font = `${isBold ? 'bold ' : ''}${isItalic ? 'italic ' : ''}${30 * size}px ${font}`;
+                const textWidth = ctx.measureText(watermarkText).width;
+                const textHeight = 30 * size; // Approximate height
+                if (mouseX >= watermarkX && mouseX <= watermarkX + textWidth && mouseY >= watermarkY - textHeight && mouseY <= watermarkY) {
+                    isDragging = true;
+                    startX = mouseX - watermarkX;
+                    startY = mouseY - watermarkY;
+                }
+            } else if (watermarkImg) {
+                const watermarkAspectRatio = watermarkImg.width / watermarkImg.height;
+                const width = watermarkImg.width * size;
+                const height = width / watermarkAspectRatio;
+                if (mouseX >= watermarkX && mouseX <= watermarkX + width && mouseY >= watermarkY && mouseY <= watermarkY + height) {
+                    isDragging = true;
+                    startX = mouseX - watermarkX;
+                    startY = mouseY - watermarkY;
+                }
+            }
+        }
+
+        function dragWatermark(e) {
+            if (!isDragging) return;
+            const rect = canvas.getBoundingClientRect();
+            watermarkX = e.clientX - rect.left - startX;
+            watermarkY = e.clientY - rect.top - startY;
+            updateCanvas();
+        }
+
+        function stopDragging() {
+            isDragging = false;
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            document.getElementById('watermark-text-group').style.display = 'flex';
+        });
+    })();
 </script>
-
 </body>
 </html>
