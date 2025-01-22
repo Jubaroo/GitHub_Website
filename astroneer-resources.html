@@ -262,6 +262,7 @@
         .then(response => response.text())
         .then(data => {
             document.getElementById("navbar-placeholder").innerHTML = data;
+            // Apply additional style fixes if necessary
         })
         .catch(error => {
             console.error('Error loading navbar:', error);

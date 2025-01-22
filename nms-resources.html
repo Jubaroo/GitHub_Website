@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Table</title>
+    <style>
+        :root {
+            --primary-bg: #000000;
+            --secondary-bg: #1e1e1e;
+            --text-color: #ffffff;
+            --accent-color: #d32f2f;
+            --hover-accent: #f44336;
+            --border-color: #333333;
+            --transition-speed: 0.3s;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+        }
+
+        h1 {
+            color: var(--accent-color);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .search-box, .filter-dropdown {
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 1px solid var(--accent-color);
+            background-color: var(--secondary-bg);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: border-color var(--transition-speed);
+        }
+
+        .search-box:focus, .filter-dropdown:focus {
+            outline: none;
+            border-color: var(--hover-accent);
+        }
+
+        .filter-dropdown {
+            margin-left: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: var(--secondary-bg);
+            color: var(--text-color);
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--accent-color);
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--primary-bg);
+        }
+
+        tr:hover {
+            background-color: var(--hover-accent);
+        }
+
+        .no-results {
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+        }
+
+        footer {
+            background-color: var(--accent-color);
+            text-align: center;
+            padding: 15px 10px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+<div id="navbar-placeholder"></div>
+
+<script>
+    fetch("header.html")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+        })
+        .catch(error => {
+            console.error("Error loading header:", error);
+            // Fallback: Directly inject header HTML if fetch fails
+            document.getElementById("navbar-placeholder").innerHTML = `
+                <header>
+                    <h1>Jarrod's Tool Hub</h1>
+                    <nav>
+                        <a href="index.html">Home</a>
+                        <div class="dropdown">
+                            <a href="#">Audio Tools</a>
+                            <div class="dropdown-content">
+                                <a href="audio-converter.html">Audio Converter</a>
+                                <a href="audio-music-sheet-viewer.html">Music Sheet Creator</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <a href="#">Coding Tools</a>
+                            <div class="dropdown-content">
+                                <a href="coding-code-beautifier.html">Code Beautifier</a>
+                                <a href="coding-css-minifier.html">CSS Minifier</a>
+                                <a href="coding-html-validator.html">HTML/CSS Validator</a>
+                                <a href="coding-json-formatter.html">JSON Formatter</a>
+                                <a href="coding-json-xml-converter.html">JSON-XML Converter</a>
+                                <a href="coding-markdown-previewer.html">Markdown Previewer</a>
+                                <a href="coding-regex-tester.html">Regex Tester</a>
+                            </div>
+                        </div>
+                    </nav>
+                </header>`;
+        });
+</script>
+
+<div class="container">
+    <h1>Maintenance Table</h1>
+    <div class="search-container">
+        <input type="text" id="search-box" class="search-box" placeholder="Search for an item...">
+        <select id="filter-dropdown" class="filter-dropdown">
+            <option value="">All Outputs</option>
+            <option value="Carbon">Carbon</option>
+            <option value="Ferrite Dust">Ferrite Dust</option>
+            <option value="Chromatic Metal">Chromatic Metal</option>
+            <option value="Platinum">Platinum</option>
+            <option value="Nitrogen">Nitrogen</option>
+            <option value="Chlorine">Chlorine</option>
+        </select>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Input</th>
+            <th>Output</th>
+            <th>Conversion</th>
+        </tr>
+        </thead>
+        <tbody id="table-body">
+        <!-- Rows will be populated dynamically -->
+        </tbody>
+    </table>
+    <div id="no-results" class="no-results" style="display: none;">No results found.</div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
+
+<script>
+    const tableData = [
+        { input: "Condensed Carbon", output: "Carbon", conversion: "1 → 1" },
+        { input: "Gamma Root", output: "Carbon", conversion: "2 → 1" },
+        { input: "Marrow Bulb", output: "Carbon", conversion: "2 → 3" },
+        { input: "Oxygen", output: "Carbon", conversion: "2 → 4" },
+        { input: "Solanium", output: "Carbon", conversion: "1 → 2" },
+        { input: "Kelp Sac", output: "Carbon", conversion: "1 → 1" },
+        { input: "Fungal Mould", output: "Carbon", conversion: "1 → 3" },
+        { input: "Cactus Flesh", output: "Carbon", conversion: "1 → 4" },
+        { input: "Frost Crystal", output: "Ferrite Dust", conversion: "1 → 1" },
+        { input: "Star Bulb", output: "Ferrite Dust", conversion: "1 → 1" },
+        { input: "Salt", output: "Ferrite Dust", conversion: "2 → 1" },
+        { input: "Chlorine Lattice", output: "Chlorine", conversion: "1 → 150" },
+        { input: "Ionized Cobalt", output: "Ferrite Dust", conversion: "1 → 1" },
+        { input: "Tetracobalt", output: "Ferrite Dust", conversion: "1 → 150" },
+        { input: "Di-hydrogen", output: "Ferrite Dust", conversion: "30 → 1" },
+        { input: "Di-hydrogen Jelly", output: "Ferrite Dust", conversion: "1 → 50" },
+        { input: "Coprite", output: "Ferrite Dust", conversion: "3 → 2" },
+        { input: "Superoxide Crystal", output: "Oxygen", conversion: "1 → 150" },
+        { input: "Sodium", output: "Sodium Nitrate", conversion: "1 → 1" },
+        { input: "Sulphurine", output: "Sulphurine", conversion: "3 → 1" },
+        { input: "Radon", output: "Nitrogen", conversion: "3 → 1" }
+    ];
+
+    const tableBody = document.getElementById('table-body');
+    const searchBox = document.getElementById('search-box');
+    const filterDropdown = document.getElementById('filter-dropdown');
+    const noResults = document.getElementById('no-results');
+
+    // Function to render table rows
+    function renderTable(data) {
+        tableBody.innerHTML = '';
+        if (data.length === 0) {
+            noResults.style.display = 'block';
+        } else {
+            noResults.style.display = 'none';
+            data.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${row.input}</td><td>${row.output}</td><td>${row.conversion}</td>`;
+                tableBody.appendChild(tr);
+            });
+        }
+    }
+
+    // Function to filter data
+    function filterData() {
+        const query = searchBox.value.toLowerCase();
+        const filter = filterDropdown.value;
+        const filteredData = tableData.filter(row => {
+            const matchesQuery =
+                row.input.toLowerCase().includes(query) ||
+                row.output.toLowerCase().includes(query) ||
+                row.conversion.toLowerCase().includes(query);
+
+            const matchesFilter = filter === '' || row.output === filter;
+
+            return matchesQuery && matchesFilter;
+        });
+        renderTable(filteredData);
+    }
+
+    // Event listeners for search and filter
+    searchBox.addEventListener('input', filterData);
+    filterDropdown.addEventListener('change', filterData);
+
+    // Initial render
+    renderTable(tableData);
+</script>
+</body>
+</html>
