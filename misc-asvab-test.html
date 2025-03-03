@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MISC ASVAB Test</title>
+  <link href="styles/header.css" rel="stylesheet"/>
+  <style>
+    /* Reset and Basic Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #ff0000;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header, footer {
+      width: 100%;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
+      background-color: #121212;
+    }
+    .container {
+      width: 100%;
+      max-width: 800px;
+      padding: 20px;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    }
+    h2 {
+      margin-top: 0;
+      text-align: center;
+      color: #ff4d4d;
+    }
+    .description {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #ff9999;
+    }
+
+    /* Centering Elements */
+    #status-info,
+    #feedback,
+    #question-container,
+    #answer-container,
+    #review-section {
+      text-align: center;
+    }
+
+    .progress {
+      margin: 0 auto; /* Centers the progress bar */
+      width: 80%;     /* Optional: narrower width for a cleaner look */
+      height: 20px;
+      background-color: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 15px;
+    }
+    .progress-bar {
+      background-color: #ff4d4d;
+      height: 100%;
+      width: 0%;
+      transition: width 0.5s;
+    }
+
+    /* Button Styles */
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center; /* Center the buttons horizontally */
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: darkred;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      font-size: 1em;
+      min-width: 200px; /* Ensures buttons have a consistent width */
+    }
+    button:hover {
+      background-color: red;
+    }
+
+    /* Answer Container */
+    #answer-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    #answer-input {
+      width: 200px;
+      padding: 10px;
+      border: 1px solid darkred;
+      border-radius: 5px;
+      background-color: #333;
+      color: #fff;
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: darkred;
+      padding: 1em;
+      color: #fff;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div id="navbar-placeholder"></div>
+</header>
+<script>
+  fetch("header.html")
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.text();
+          })
+          .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+          })
+          .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+          });
+</script>
+<main>
+  <div class="container">
+    <h2 id="subject-title">ASVAB Practice Test</h2>
+    <p class="description">Your progress, score, and time will be tracked during the test.</p>
+
+    <div class="button-group">
+      <button id="start-btn">Start Test</button>
+      <button id="next-btn" class="hidden">Next Question</button>
+      <button id="end-btn" class="hidden">End Test</button>
+      <button id="review-btn" class="hidden">Review Answers</button>
+      <button id="main-menu-btn" class="hidden">Return to Main Menu</button>
+    </div>
+
+    <div id="status-info">
+      <span id="timer">Time: 0 seconds</span>
+      <br/>
+      <span id="score">Score: 0 / 0</span>
+    </div>
+    <div class="progress">
+      <div id="progress-bar" class="progress-bar" role="progressbar"></div>
+    </div>
+
+    <div id="question-container">
+      <p id="question-text">Press "Start Test" to begin!</p>
+    </div>
+
+    <div id="answer-container" class="hidden">
+      <input type="text" id="answer-input" placeholder="Enter your answer">
+      <button id="submit-btn">Submit Answer</button>
+    </div>
+
+    <div id="feedback"></div>
+
+    <div id="review-section" class="hidden">
+      <h3>Review Answers</h3>
+      <div id="review-content"></div>
+      <button id="close-review-btn">Close Review</button>
+    </div>
+  </div>
+</main>
+<footer>
+  <p>&copy; 2024 Jarrod's Website. All rights reserved.</p>
+</footer>
+<script src="scripts/asvab-test.js"></script>
+</body>
+</html>

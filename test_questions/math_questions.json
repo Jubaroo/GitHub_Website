@@ -1,0 +1,818 @@
+[
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If 3 pencils cost $1.50, how much would 10 pencils cost?",
+    "answer": "5",
+    "explanation": "Each pencil costs $0.50 (1.50 ÷ 3). Multiplying $0.50 by 10 gives $5."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve for x: 5x - 7 = 18",
+    "answer": "5",
+    "explanation": "Add 7 to both sides (5x = 25) and then divide by 5 to get x = 5."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "What is the area of a rectangle with length 8 and width 5?",
+    "answer": "40",
+    "explanation": "Area = length × width = 8 × 5 = 40."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "Simplify: 12/4 + 3",
+    "answer": "6",
+    "explanation": "12 divided by 4 is 3, and 3 + 3 = 6."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If a car travels 60 miles in 1 hour, how many miles will it travel in 3.5 hours?",
+    "answer": "210",
+    "explanation": "Distance = speed × time = 60 × 3.5 = 210 miles."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve for y: 3y + 4 = 19",
+    "answer": "5",
+    "explanation": "Subtract 4 from both sides (3y = 15) and divide by 3 to get y = 5."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "What is the sum of the angles in a triangle (in degrees)?",
+    "answer": "180",
+    "explanation": "The sum of angles in any triangle is always 180 degrees."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Calculate 2^3",
+    "answer": "8",
+    "explanation": "2 raised to the power 3 is 2×2×2 = 8."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "Calculate the perimeter of a square with side length 9.",
+    "answer": "36",
+    "explanation": "Perimeter = 4 × side length = 4 × 9 = 36."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve for x: (4x)/2 = 10",
+    "answer": "5",
+    "explanation": "Multiply both sides by 2 (4x = 20) then divide by 4 to get x = 5."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "What is 15% of 200?",
+    "answer": "30",
+    "explanation": "15% of 200 is 0.15 × 200 = 30."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Find the least common multiple (LCM) of 6 and 8.",
+    "answer": "24",
+    "explanation": "Multiples of 6: 6, 12, 18, 24... and of 8: 8, 16, 24... so the LCM is 24."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If a recipe requires 2 cups of flour to make 12 cookies, how many cups are needed for 30 cookies?",
+    "answer": "5",
+    "explanation": "Each cookie uses 2/12 cups; 30 cookies need (2/12)×30 = 5 cups."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve: 7 + 3 * 2",
+    "answer": "13",
+    "explanation": "Multiplication comes first: 3×2 = 6; then 7+6 = 13."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "What is the square root of 144?",
+    "answer": "12",
+    "explanation": "12×12 = 144, so the square root of 144 is 12."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Express 0.75 as a fraction in simplest form.",
+    "answer": "3/4",
+    "explanation": "0.75 = 75/100 which simplifies to 3/4."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "What is the approximate value of π (pi) to two decimal places?",
+    "answer": "3.14",
+    "explanation": "Pi is approximately 3.14159, rounded to 3.14."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve for x: x/5 = 3",
+    "answer": "15",
+    "explanation": "Multiply both sides by 5 to obtain x = 15."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "Calculate the volume of a cube with side length 4.",
+    "answer": "64",
+    "explanation": "Volume = side³ = 4³ = 64."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "Solve: 9 - 3 + 2",
+    "answer": "8",
+    "explanation": "Evaluating left to right: 9 - 3 = 6, then 6 + 2 = 8."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If 8 divided by a number equals 2, what is the number?",
+    "answer": "4",
+    "explanation": "8 ÷ 4 = 2, so the number is 4."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "What is the result of (6 + 4) / 2?",
+    "answer": "5",
+    "explanation": "6 + 4 = 10, and 10 ÷ 2 = 5."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "Find the difference between 100 and 45.",
+    "answer": "55",
+    "explanation": "100 - 45 = 55."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve: 3^2 + 4^2",
+    "answer": "25",
+    "explanation": "3² = 9 and 4² = 16; 9 + 16 = 25."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "What is 20% of 50?",
+    "answer": "10",
+    "explanation": "20% of 50 = 0.20 × 50 = 10."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve for x: 2x + 8 = 20",
+    "answer": "6",
+    "explanation": "Subtract 8 (2x = 12) and then divide by 2 to get x = 6."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If a train travels 300 miles in 5 hours, what is its speed in mph?",
+    "answer": "60",
+    "explanation": "Speed = distance ÷ time = 300 ÷ 5 = 60 mph."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Simplify: 18/3 - 2",
+    "answer": "4",
+    "explanation": "18 ÷ 3 = 6; 6 - 2 = 4."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "A store sold 150 items in a day. If 30% were red, how many red items were sold?",
+    "answer": "45",
+    "explanation": "30% of 150 = 0.30 × 150 = 45."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "What is 25% of 80?",
+    "answer": "20",
+    "explanation": "25% of 80 = 0.25 × 80 = 20."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If 4 workers can complete a task in 12 days, how many days for 6 workers (same rate)?",
+    "answer": "8",
+    "explanation": "Total work = 4×12 = 48 worker-days. Dividing by 6 workers gives 48÷6 = 8 days."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Calculate the area of a circle with a radius of 7 (use π = 3.14).",
+    "answer": "153.86",
+    "explanation": "Area = πr² = 3.14 × 49 ≈ 153.86."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "What is the value of 0 factorial (0!)?",
+    "answer": "1",
+    "explanation": "By definition, 0! is equal to 1."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If you buy 3 items at $7 each and get a $5 discount, what is the total cost?",
+    "answer": "16",
+    "explanation": "Total cost = (3×7) - 5 = 21 - 5 = 16."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If you have 3 bags with 4 apples each, how many apples do you have?",
+    "answer": "12",
+    "explanation": "3 × 4 = 12."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve for x: 2x + 3 = 11",
+    "answer": "4",
+    "explanation": "Subtract 3 (2x = 8) then divide by 2 to get x = 4."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "What is the product of 7 and 8?",
+    "answer": "56",
+    "explanation": "7 × 8 = 56."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Simplify: 16/4 + 2",
+    "answer": "6",
+    "explanation": "16 ÷ 4 = 4, and 4 + 2 = 6."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If a book costs $12 and you buy 4, what is the total cost?",
+    "answer": "48",
+    "explanation": "4 × 12 = 48."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve for y: 4y - 2 = 14",
+    "answer": "4",
+    "explanation": "Add 2 (4y = 16) then divide by 4 to get y = 4."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "What is the result of 9 × 3?",
+    "answer": "27",
+    "explanation": "9 × 3 = 27."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Calculate the area of a triangle with a base of 10 and a height of 5.",
+    "answer": "25",
+    "explanation": "Area = ½ × base × height = ½ × 10 × 5 = 25."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "How many seconds are in 2 minutes?",
+    "answer": "120",
+    "explanation": "2 minutes × 60 seconds/minute = 120 seconds."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Express 0.2 as a fraction in simplest form.",
+    "answer": "1/5",
+    "explanation": "0.2 = 2/10, which simplifies to 1/5."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If a car uses 3 gallons of gas to travel 60 miles, what is its mileage in mpg?",
+    "answer": "20",
+    "explanation": "60 ÷ 3 = 20 miles per gallon."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve for x: 3x + 2 = 17",
+    "answer": "5",
+    "explanation": "Subtract 2 (3x = 15) then divide by 3 to get x = 5."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "What is 50% of 200?",
+    "answer": "100",
+    "explanation": "50% of 200 = 0.5 × 200 = 100."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "What is the cube of 3?",
+    "answer": "27",
+    "explanation": "3³ = 27."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If 5 oranges cost $4, how much do 20 oranges cost?",
+    "answer": "16",
+    "explanation": "20 is four times 5, so 4 × $4 = $16."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve for z: 5z - 10 = 15",
+    "answer": "5",
+    "explanation": "Add 10 (5z = 25) then divide by 5 to get z = 5."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "What is the difference between 85 and 47?",
+    "answer": "38",
+    "explanation": "85 - 47 = 38."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Calculate the perimeter of a rectangle with length 15 and width 7.",
+    "answer": "44",
+    "explanation": "Perimeter = 2 × (15 + 7) = 44."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If a cyclist covers 15 miles in 1 hour, how far will they go in 4 hours?",
+    "answer": "60",
+    "explanation": "15 × 4 = 60 miles."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve: 8/2 + 3",
+    "answer": "7",
+    "explanation": "8 ÷ 2 = 4, then 4 + 3 = 7."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If 1 dozen eggs cost $3, how much do 5 dozen cost?",
+    "answer": "15",
+    "explanation": "5 × $3 = $15."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve for x: x - 9 = 7",
+    "answer": "16",
+    "explanation": "x = 7 + 9 = 16."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "What is 10% of 350?",
+    "answer": "35",
+    "explanation": "0.10 × 350 = 35."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "What is the square of 11?",
+    "answer": "121",
+    "explanation": "11 × 11 = 121."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If a runner runs 3 laps in 12 minutes, how many laps will they run in 40 minutes?",
+    "answer": "10",
+    "explanation": "The rate is 0.25 laps per minute; 0.25 × 40 = 10 laps."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve for y: 2y/3 = 6",
+    "answer": "9",
+    "explanation": "Multiply both sides by 3/2: y = 9."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "Calculate the sum of 45 and 55.",
+    "answer": "100",
+    "explanation": "45 + 55 = 100."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "What is 15 squared?",
+    "answer": "225",
+    "explanation": "15² = 225."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If you have $50 and spend $17, how much remains?",
+    "answer": "33",
+    "explanation": "50 - 17 = 33."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve: 12 - 3 × 2",
+    "answer": "6",
+    "explanation": "3 × 2 = 6; 12 - 6 = 6."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "A pizza is cut into 8 slices. If you eat 3 slices, what fraction of the pizza remains?",
+    "answer": "5/8",
+    "explanation": "8 - 3 = 5 slices remain, so 5/8 of the pizza."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Simplify the fraction 20/60.",
+    "answer": "1/3",
+    "explanation": "Divide numerator and denominator by 20."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If a computer costs $800 and is discounted by 25%, what is the discount amount?",
+    "answer": "200",
+    "explanation": "25% of 800 = 0.25 × 800 = 200."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Calculate the volume of a rectangular prism with dimensions 3, 4, and 5.",
+    "answer": "60",
+    "explanation": "Volume = 3 × 4 × 5 = 60."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "What is the sum of the first 5 positive integers?",
+    "answer": "15",
+    "explanation": "1 + 2 + 3 + 4 + 5 = 15."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve for x: 6x = 42",
+    "answer": "7",
+    "explanation": "x = 42 ÷ 6 = 7."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If a recipe calls for 1/2 cup of milk and you triple the recipe, how much milk is needed?",
+    "answer": "1.5",
+    "explanation": "1/2 cup × 3 = 1.5 cups."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "What is 9 factorial (9!)?",
+    "answer": "362880",
+    "explanation": "9! = 9×8×7×6×5×4×3×2×1 = 362880."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If a train travels 90 miles in 1.5 hours, what is its speed in mph?",
+    "answer": "60",
+    "explanation": "90 ÷ 1.5 = 60 mph."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Express the ratio 3:9 in simplest form.",
+    "answer": "1:3",
+    "explanation": "Divide both numbers by 3."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "A store sells pencils in packs of 12. If you need 100 pencils, how many packs should you buy?",
+    "answer": "9",
+    "explanation": "9 packs provide 108 pencils, which is the minimum over 100."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve for x: 7x + 1 = 50",
+    "answer": "7",
+    "explanation": "7x = 49, so x = 7."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If 40% of a number is 20, what is the number?",
+    "answer": "50",
+    "explanation": "20 ÷ 0.4 = 50."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Find the greatest common divisor (GCD) of 24 and 36.",
+    "answer": "12",
+    "explanation": "12 is the largest number dividing both 24 and 36."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "How many days are in 3 weeks?",
+    "answer": "21",
+    "explanation": "3 weeks × 7 days/week = 21 days."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Calculate: (5²) - (3²)",
+    "answer": "16",
+    "explanation": "25 - 9 = 16."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If a shirt originally costs $40 and is 30% off, what is the sale price?",
+    "answer": "28",
+    "explanation": "30% of 40 is 12, so 40 - 12 = 28."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve for x: x/4 + 2 = 5",
+    "answer": "12",
+    "explanation": "x/4 = 3, so x = 12."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "What is the product of 14 and 3?",
+    "answer": "42",
+    "explanation": "14 × 3 = 42."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Express the decimal 0.125 as a fraction.",
+    "answer": "1/8",
+    "explanation": "0.125 = 125/1000, which simplifies to 1/8."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If a car's value depreciates by $200 each year from an original $10,000, what is its value after 3 years?",
+    "answer": "9400",
+    "explanation": "Depreciation over 3 years is 3 × 200 = 600, so 10000 - 600 = 9400."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve: 2(3 + 4)",
+    "answer": "14",
+    "explanation": "3 + 4 = 7, and 2 × 7 = 14."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If you save $15 every week, how much do you save in 8 weeks?",
+    "answer": "120",
+    "explanation": "15 × 8 = 120."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Calculate the area of a parallelogram with base 12 and height 9.",
+    "answer": "108",
+    "explanation": "Area = base × height = 12 × 9 = 108."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If 60% of a number is 48, what is the number?",
+    "answer": "80",
+    "explanation": "48 ÷ 0.6 = 80."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve for x: 4x - 5 = 11",
+    "answer": "4",
+    "explanation": "4x = 16, so x = 4."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "What is 7 - 2 + 6?",
+    "answer": "11",
+    "explanation": "7 - 2 = 5, then 5 + 6 = 11."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Find the value of π (pi) approximated to 2 decimal places.",
+    "answer": "3.14",
+    "explanation": "π is approximately 3.14."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If a worker earns $18 per hour, how much do they earn in 8 hours?",
+    "answer": "144",
+    "explanation": "18 × 8 = 144."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Simplify: 24 ÷ 8",
+    "answer": "3",
+    "explanation": "24 ÷ 8 = 3."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "A recipe requires 3 eggs but you only have 2. What fraction of the recipe can you make?",
+    "answer": "2/3",
+    "explanation": "You have 2 out of the 3 eggs needed."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve for x: 10x = 100",
+    "answer": "10",
+    "explanation": "x = 100 ÷ 10 = 10."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "How many edges does a cube have?",
+    "answer": "12",
+    "explanation": "A cube has 12 edges."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Find the square of 13.",
+    "answer": "169",
+    "explanation": "13 × 13 = 169."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If the perimeter of a square is 32, what is the length of one side?",
+    "answer": "8",
+    "explanation": "Side = 32 ÷ 4 = 8."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve: 9 + 6 ÷ 2",
+    "answer": "12",
+    "explanation": "6 ÷ 2 = 3, and 9 + 3 = 12."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "What is the value of 50 ÷ 2?",
+    "answer": "25",
+    "explanation": "50 ÷ 2 = 25."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Express 0.6 as a fraction in simplest form.",
+    "answer": "3/5",
+    "explanation": "0.6 = 6/10, which simplifies to 3/5."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If a bus departs at 3:15 PM and the journey takes 2 hours 45 minutes, what time is the arrival?",
+    "answer": "6:00 PM",
+    "explanation": "3:15 PM + 2:45 = 6:00 PM."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Calculate the product: 11 × 7",
+    "answer": "77",
+    "explanation": "11 × 7 = 77."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If you travel 5 miles every 10 minutes, how far will you travel in 1 hour?",
+    "answer": "30",
+    "explanation": "1 hour has six 10-minute segments: 6 × 5 = 30 miles."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve for x: 2x + 4 = 12",
+    "answer": "4",
+    "explanation": "2x = 8, so x = 4."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "What is 8 × 7 minus 10?",
+    "answer": "46",
+    "explanation": "8 × 7 = 56, and 56 - 10 = 46."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "What is the decimal equivalent of 3/5?",
+    "answer": "0.6",
+    "explanation": "3 ÷ 5 = 0.6."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If a bag contains 60 marbles and 1/3 are blue, how many blue marbles are there?",
+    "answer": "20",
+    "explanation": "1/3 of 60 = 20."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve: (2 + 3)²",
+    "answer": "25",
+    "explanation": "2 + 3 = 5 and 5² = 25."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "A car travels 90 miles in 2 hours. What is its average speed in mph?",
+    "answer": "45",
+    "explanation": "90 ÷ 2 = 45 mph."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Find the value of 5³.",
+    "answer": "125",
+    "explanation": "5³ = 125."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If a shirt costs $25 and is marked down by 20%, what is the discount amount?",
+    "answer": "5",
+    "explanation": "20% of 25 = 5."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Simplify: (18 - 2×3) ÷ 4",
+    "answer": "3",
+    "explanation": "2×3 = 6; 18 - 6 = 12; 12 ÷ 4 = 3."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If 4 pencils cost $2, how much do 10 pencils cost?",
+    "answer": "5",
+    "explanation": "Cost per pencil = $0.5; 10 × 0.5 = 5."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve for x: 3x - 5 = 10",
+    "answer": "5",
+    "explanation": "3x = 15, so x = 5."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "How many minutes are there in 3.5 hours?",
+    "answer": "210",
+    "explanation": "3.5 × 60 = 210 minutes."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Express the fraction 4/8 in simplest form.",
+    "answer": "1/2",
+    "explanation": "4/8 simplifies to 1/2."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If an item is priced at $120 and discounted by 15%, what is the discount amount?",
+    "answer": "18",
+    "explanation": "15% of 120 = 18."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Calculate: 7² - 2²",
+    "answer": "45",
+    "explanation": "49 - 4 = 45."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If a bicycle costs $150 and you pay 10% down, what is the down payment amount?",
+    "answer": "15",
+    "explanation": "10% of 150 = 15."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve for y: 5y + 5 = 30",
+    "answer": "5",
+    "explanation": "5y = 25, so y = 5."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "How many legs do 4 dogs have?",
+    "answer": "16",
+    "explanation": "4 dogs × 4 legs each = 16 legs."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "What is the reciprocal of 4/5?",
+    "answer": "5/4",
+    "explanation": "Inverting 4/5 gives 5/4."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If a recipe uses 2 cups of sugar for 24 cookies, how many cups are needed for 72 cookies?",
+    "answer": "6",
+    "explanation": "72 is three times 24, so 2 × 3 = 6 cups."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve: 14 + 6 ÷ 2",
+    "answer": "17",
+    "explanation": "6 ÷ 2 = 3, and 14 + 3 = 17."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "What is the total of 3 consecutive integers starting from 4?",
+    "answer": "15",
+    "explanation": "4 + 5 + 6 = 15."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Express 0.375 as a fraction in simplest form.",
+    "answer": "3/8",
+    "explanation": "0.375 = 375/1000, which simplifies to 3/8."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If a store sells 24 apples one day and 30 the next, what is the percentage increase?",
+    "answer": "25",
+    "explanation": "Increase of 6; (6/24) × 100 = 25%."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve for x: 2(x + 3) = 14",
+    "answer": "4",
+    "explanation": "x + 3 = 7, so x = 4."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "A container holds 2 liters. If you pour out 750 ml, how many liters remain?",
+    "answer": "1.25",
+    "explanation": "750 ml = 0.75 L; 2 - 0.75 = 1.25 L."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Calculate the circumference of a circle with radius 10 (use π = 3.14).",
+    "answer": "62.8",
+    "explanation": "Circumference = 2 × 3.14 × 10 = 62.8."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "If a pack of 6 batteries costs $9, what is the cost per battery?",
+    "answer": "1.5",
+    "explanation": "$9 ÷ 6 = $1.5 per battery."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Solve: 3³ + 2³",
+    "answer": "35",
+    "explanation": "27 + 8 = 35."
+  },
+  {
+    "category": "Arithmetic Reasoning",
+    "question": "What is 2/3 of 90?",
+    "answer": "60",
+    "explanation": "90 × (2/3) = 60."
+  },
+  {
+    "category": "Mathematics Knowledge",
+    "question": "Express 125% as a decimal.",
+    "answer": "1.25",
+    "explanation": "125% = 1.25."
+  }
+]
