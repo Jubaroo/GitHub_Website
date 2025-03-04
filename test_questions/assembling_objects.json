@@ -1,0 +1,602 @@
+[
+  {
+    "question": "In assembling the given parts, which component acts as the connector between the base and the vertical piece?",
+    "choices": ["Bracket", "Screw", "Bolt", "Washer"],
+    "answer": "Bracket",
+    "explanation": "The bracket connects the base and vertical piece securely."
+  },
+  {
+    "question": "Which piece fits into the recess on the left side of the assembly?",
+    "choices": ["L-shaped piece", "T-shaped piece", "Square block", "Circular disc"],
+    "answer": "L-shaped piece",
+    "explanation": "The L-shaped piece fits perfectly into the left recess."
+  },
+  {
+    "question": "To form a stable structure, which component should be placed at the bottom?",
+    "choices": ["Base plate", "Connector rod", "Side panel", "Top cover"],
+    "answer": "Base plate",
+    "explanation": "The base plate provides stability to the assembly."
+  },
+  {
+    "question": "Which component is used to secure two panels together?",
+    "choices": ["Nail", "Screw", "Adhesive", "Clamp"],
+    "answer": "Screw",
+    "explanation": "Screws are used to fasten panels securely."
+  },
+  {
+    "question": "In the assembly, which part is designed to slide into the notch?",
+    "choices": ["Slider", "Tab", "Pin", "Wedge"],
+    "answer": "Tab",
+    "explanation": "The tab is designed to slide into the corresponding notch."
+  },
+  {
+    "question": "Which element provides structural support in the middle of the assembly?",
+    "choices": ["Central beam", "Side bracket", "Corner brace", "Top rail"],
+    "answer": "Central beam",
+    "explanation": "The central beam offers support at the core of the structure."
+  },
+  {
+    "question": "Which component should be attached to the top to complete the assembly?",
+    "choices": ["Top cover", "Bottom base", "Side panel", "Internal divider"],
+    "answer": "Top cover",
+    "explanation": "The top cover finishes the assembly."
+  },
+  {
+    "question": "Which part fits into the circular opening in the assembly?",
+    "choices": ["Circular disc", "Square block", "L-shaped piece", "Rectangular plate"],
+    "answer": "Circular disc",
+    "explanation": "The circular disc is designed to fit the round opening."
+  },
+  {
+    "question": "Which piece is intended to secure the two vertical supports together?",
+    "choices": ["Connector bar", "Cross brace", "Fastener", "Spacer"],
+    "answer": "Cross brace",
+    "explanation": "The cross brace links the vertical supports for stability."
+  },
+  {
+    "question": "Which component should be installed first when assembling the unit?",
+    "choices": ["Base plate", "Top cover", "Side panel", "Internal shelf"],
+    "answer": "Base plate",
+    "explanation": "Starting with the base plate provides a stable foundation."
+  },
+  {
+    "question": "Which part serves as the hinge in the assembly?",
+    "choices": ["Pivot", "Connector", "Bracket", "Clamp"],
+    "answer": "Pivot",
+    "explanation": "The pivot acts as a hinge allowing movement."
+  },
+  {
+    "question": "Which component is designed to interlock with a matching piece?",
+    "choices": ["Interlocking tab", "Loose panel", "Divider", "Spacer"],
+    "answer": "Interlocking tab",
+    "explanation": "The interlocking tab connects securely with its matching piece."
+  },
+  {
+    "question": "Which piece should be placed on the right side to balance the structure?",
+    "choices": ["Right bracket", "Left panel", "Central beam", "Top cover"],
+    "answer": "Right bracket",
+    "explanation": "The right bracket balances the assembly on the right side."
+  },
+  {
+    "question": "In assembling the object, which component is used to secure the top and bottom sections?",
+    "choices": ["Connector rod", "Screw", "Latch", "Clip"],
+    "answer": "Connector rod",
+    "explanation": "The connector rod links the top and bottom sections."
+  },
+  {
+    "question": "Which component features an indentation that fits a protruding tab?",
+    "choices": ["Slot piece", "Clamp", "Bolt", "Washer"],
+    "answer": "Slot piece",
+    "explanation": "The slot piece is designed to receive a protruding tab."
+  },
+  {
+    "question": "Which part acts as a stabilizer when the assembly is rotated?",
+    "choices": ["Counterweight", "Top cover", "Side panel", "Bracket"],
+    "answer": "Counterweight",
+    "explanation": "The counterweight provides stability during rotation."
+  },
+  {
+    "question": "Which component is typically used to join two pieces at a right angle?",
+    "choices": ["Corner brace", "Screw", "Bolt", "Adhesive"],
+    "answer": "Corner brace",
+    "explanation": "The corner brace joins pieces at a right angle securely."
+  },
+  {
+    "question": "Which piece should be inserted into the central slot for proper assembly?",
+    "choices": ["Central peg", "Side tab", "Connector", "Bracket"],
+    "answer": "Central peg",
+    "explanation": "The central peg fits into the central slot to lock the assembly."
+  },
+  {
+    "question": "Which component is designed to slide horizontally to lock pieces in place?",
+    "choices": ["Slider", "Hinge", "Latch", "Screw"],
+    "answer": "Slider",
+    "explanation": "The slider moves horizontally to secure the components."
+  },
+  {
+    "question": "Which part of the assembly is most likely to require lubrication?",
+    "choices": ["Moving slider", "Fixed base", "Solid panel", "Top cover"],
+    "answer": "Moving slider",
+    "explanation": "The moving slider often requires lubrication for smooth operation."
+  },
+  {
+    "question": "Which piece is designed with a notch to accommodate a locking tab?",
+    "choices": ["Notched bracket", "Smooth rod", "Flat plate", "Rounded disc"],
+    "answer": "Notched bracket",
+    "explanation": "The notched bracket is made to lock with the tab."
+  },
+  {
+    "question": "Which component should be attached to the upper left corner of the assembly?",
+    "choices": ["Left corner brace", "Right bracket", "Central beam", "Bottom panel"],
+    "answer": "Left corner brace",
+    "explanation": "The left corner brace supports the upper left corner."
+  },
+  {
+    "question": "Which part is used to connect two parallel panels?",
+    "choices": ["Connector clip", "Angled bracket", "Interlocking tab", "Central beam"],
+    "answer": "Connector clip",
+    "explanation": "The connector clip fastens parallel panels together."
+  },
+  {
+    "question": "Which piece is intended to cover the exposed screws in the assembly?",
+    "choices": ["Screw cap", "Top cover", "Side panel", "Decorative trim"],
+    "answer": "Screw cap",
+    "explanation": "The screw cap conceals the screws for a finished look."
+  },
+  {
+    "question": "Which component forms the base for the assembly's framework?",
+    "choices": ["Base plate", "Support beam", "Connector rod", "L-shaped piece"],
+    "answer": "Base plate",
+    "explanation": "The base plate is the foundation of the framework."
+  },
+  {
+    "question": "Which part is designed to snap into place with a corresponding slot?",
+    "choices": ["Snap-fit clip", "Loose panel", "Hinge", "Bolt"],
+    "answer": "Snap-fit clip",
+    "explanation": "The snap-fit clip is designed to secure by snapping into a slot."
+  },
+  {
+    "question": "Which component is critical for aligning the assembly parts during construction?",
+    "choices": ["Alignment peg", "Random block", "Side panel", "Decorative trim"],
+    "answer": "Alignment peg",
+    "explanation": "The alignment peg ensures all parts are correctly aligned."
+  },
+  {
+    "question": "Which piece has a concave surface to hold a convex part?",
+    "choices": ["Recessed bracket", "Flat plate", "Slot piece", "Screw"],
+    "answer": "Recessed bracket",
+    "explanation": "The recessed bracket is designed to hold a convex piece securely."
+  },
+  {
+    "question": "Which part should be inserted into the groove along the side of the assembly?",
+    "choices": ["Groove pin", "Side tab", "Connector", "Clamp"],
+    "answer": "Side tab",
+    "explanation": "The side tab fits into the groove for stability."
+  },
+  {
+    "question": "Which component is responsible for connecting the upper and lower sections?",
+    "choices": ["Connector rod", "Interlocking tab", "Side panel", "Base plate"],
+    "answer": "Connector rod",
+    "explanation": "The connector rod links the upper and lower sections."
+  },
+  {
+    "question": "Which part is designed to secure a removable cover?",
+    "choices": ["Latch", "Screw", "Clip", "Hinge"],
+    "answer": "Latch",
+    "explanation": "The latch holds the removable cover in place."
+  },
+  {
+    "question": "Which component is shaped to fit into a T-slot?",
+    "choices": ["T-shaped piece", "L-shaped piece", "Circular disc", "Square block"],
+    "answer": "T-shaped piece",
+    "explanation": "The T-shaped piece fits neatly into a T-slot."
+  },
+  {
+    "question": "Which piece is used to reinforce the corners of the assembly?",
+    "choices": ["Corner brace", "Base plate", "Connector rod", "Screw"],
+    "answer": "Corner brace",
+    "explanation": "Corner braces provide additional support to the assembly corners."
+  },
+  {
+    "question": "Which component is designed to slide into a narrow channel?",
+    "choices": ["Slider", "Hinge", "Peg", "Clamp"],
+    "answer": "Slider",
+    "explanation": "The slider fits into a narrow channel to secure parts."
+  },
+  {
+    "question": "Which part acts as the main support in a vertical assembly?",
+    "choices": ["Vertical beam", "Horizontal plate", "Side panel", "Top cover"],
+    "answer": "Vertical beam",
+    "explanation": "The vertical beam provides primary support in the assembly."
+  },
+  {
+    "question": "Which component is designed with a locking mechanism for secure assembly?",
+    "choices": ["Locking clip", "Loose tab", "Screw", "Nail"],
+    "answer": "Locking clip",
+    "explanation": "The locking clip secures components with a built-in mechanism."
+  },
+  {
+    "question": "Which piece is used to connect two perpendicular parts?",
+    "choices": ["Right angle bracket", "Connector rod", "Interlocking tab", "Snap-fit clip"],
+    "answer": "Right angle bracket",
+    "explanation": "The right angle bracket connects parts at 90 degrees."
+  },
+  {
+    "question": "Which component should be attached to the rear of the assembly?",
+    "choices": ["Rear panel", "Front bracket", "Top cover", "Side panel"],
+    "answer": "Rear panel",
+    "explanation": "The rear panel is attached at the back for stability."
+  },
+  {
+    "question": "Which part is designed to be adjustable for custom fit?",
+    "choices": ["Adjustable bracket", "Fixed plate", "Permanent rod", "Non-adjustable clip"],
+    "answer": "Adjustable bracket",
+    "explanation": "The adjustable bracket allows for customization of the assembly."
+  },
+  {
+    "question": "Which component is intended to serve as a spacer between parts?",
+    "choices": ["Spacer", "Connector", "Clamp", "Bracket"],
+    "answer": "Spacer",
+    "explanation": "The spacer creates the necessary gap between components."
+  },
+  {
+    "question": "Which piece fits into the dovetail groove for secure connection?",
+    "choices": ["Dovetail slider", "Square block", "L-shaped piece", "Circular disc"],
+    "answer": "Dovetail slider",
+    "explanation": "The dovetail slider fits into the groove to lock components together."
+  },
+  {
+    "question": "Which component is primarily used for decorative purposes in the assembly?",
+    "choices": ["Decorative trim", "Base plate", "Connector rod", "Structural beam"],
+    "answer": "Decorative trim",
+    "explanation": "The decorative trim adds aesthetic value to the assembly."
+  },
+  {
+    "question": "Which part should be inserted into the locking slot to secure the panel?",
+    "choices": ["Locking tab", "Loose piece", "Adhesive strip", "Clamp"],
+    "answer": "Locking tab",
+    "explanation": "The locking tab fits into the slot to secure the panel."
+  },
+  {
+    "question": "Which component functions as a hinge to allow rotational movement?",
+    "choices": ["Pivot", "Locking clip", "Bracket", "Screw"],
+    "answer": "Pivot",
+    "explanation": "The pivot allows rotational movement between parts."
+  },
+  {
+    "question": "Which piece is designed to fit snugly into a corresponding cavity?",
+    "choices": ["Plug", "Screw", "L-shaped piece", "Spacer"],
+    "answer": "Plug",
+    "explanation": "The plug is designed to fill a cavity for a secure fit."
+  },
+  {
+    "question": "Which component is used to connect modular sections of the assembly?",
+    "choices": ["Modular connector", "Fixed bracket", "Decorative trim", "Side panel"],
+    "answer": "Modular connector",
+    "explanation": "The modular connector joins different sections seamlessly."
+  },
+  {
+    "question": "Which part is meant to be inserted last to complete the assembly?",
+    "choices": ["Final cap", "Base plate", "Side panel", "Central beam"],
+    "answer": "Final cap",
+    "explanation": "The final cap is the last piece to complete the assembly."
+  },
+  {
+    "question": "Which component is designed to allow limited movement between parts?",
+    "choices": ["Flexible hinge", "Rigid bracket", "Fixed clip", "Adhesive"],
+    "answer": "Flexible hinge",
+    "explanation": "The flexible hinge permits slight movement between connected parts."
+  },
+  {
+    "question": "Which piece is engineered to resist rotational forces in the assembly?",
+    "choices": ["Anti-rotation bracket", "Loose tab", "Standard screw", "Decorative trim"],
+    "answer": "Anti-rotation bracket",
+    "explanation": "The anti-rotation bracket prevents unwanted movement."
+  },
+  {
+    "question": "Which component should be aligned with the pre-drilled holes during assembly?",
+    "choices": ["Alignment pin", "Loose screw", "Decorative trim", "Side panel"],
+    "answer": "Alignment pin",
+    "explanation": "The alignment pin fits into pre-drilled holes to ensure proper alignment."
+  },
+  {
+    "question": "Which part is intended to interlock with the adjacent component for stability?",
+    "choices": ["Interlocking tab", "Loose panel", "Screw", "Adhesive"],
+    "answer": "Interlocking tab",
+    "explanation": "The interlocking tab secures components by fitting into a matching slot."
+  },
+  {
+    "question": "Which component is designed with a curved surface to fit another piece?",
+    "choices": ["Curved bracket", "Straight rod", "Square block", "Flat panel"],
+    "answer": "Curved bracket",
+    "explanation": "The curved bracket fits perfectly with its complementary curved piece."
+  },
+  {
+    "question": "Which piece acts as the main connector for multiple panels?",
+    "choices": ["Connector hub", "Single screw", "Adhesive", "Clamp"],
+    "answer": "Connector hub",
+    "explanation": "The connector hub joins several panels together."
+  },
+  {
+    "question": "Which component is used to secure a removable section of the assembly?",
+    "choices": ["Locking latch", "Permanent rod", "Fixed bracket", "Decorative trim"],
+    "answer": "Locking latch",
+    "explanation": "The locking latch secures the removable section in place."
+  },
+  {
+    "question": "Which part should be attached to the center of the base for symmetry?",
+    "choices": ["Central plate", "Side panel", "Corner brace", "Connector rod"],
+    "answer": "Central plate",
+    "explanation": "The central plate is attached to the center to ensure balanced support."
+  },
+  {
+    "question": "Which component is designed to provide extra rigidity to the structure?",
+    "choices": ["Reinforcement beam", "Decorative trim", "Loose spacer", "Adjustable clip"],
+    "answer": "Reinforcement beam",
+    "explanation": "The reinforcement beam adds rigidity to the assembly."
+  },
+  {
+    "question": "Which piece should be inserted into the slot on the back panel?",
+    "choices": ["Back peg", "Side tab", "Connector", "Locking clip"],
+    "answer": "Back peg",
+    "explanation": "The back peg fits securely into the slot on the back panel."
+  },
+  {
+    "question": "Which component is intended to bridge the gap between two separate parts?",
+    "choices": ["Bridge connector", "Corner brace", "Alignment pin", "Spacer"],
+    "answer": "Bridge connector",
+    "explanation": "The bridge connector links two separate parts."
+  },
+  {
+    "question": "Which part is used to cover the junction between two assembled sections?",
+    "choices": ["Cover plate", "Base plate", "Connector rod", "Side panel"],
+    "answer": "Cover plate",
+    "explanation": "The cover plate hides the junction for a finished look."
+  },
+  {
+    "question": "Which component should be used to secure the assembly during transport?",
+    "choices": ["Transport clamp", "Alignment pin", "Decorative trim", "Loose spacer"],
+    "answer": "Transport clamp",
+    "explanation": "The transport clamp holds the assembly securely during movement."
+  },
+  {
+    "question": "Which piece is designed to be removable for maintenance?",
+    "choices": ["Maintenance panel", "Fixed bracket", "Permanent rod", "Decorative trim"],
+    "answer": "Maintenance panel",
+    "explanation": "The maintenance panel can be removed for easy access."
+  },
+  {
+    "question": "Which component is engineered to fit tightly within a corresponding groove?",
+    "choices": ["Groove peg", "Loose clip", "Adhesive", "Screw"],
+    "answer": "Groove peg",
+    "explanation": "The groove peg ensures a tight fit within the groove."
+  },
+  {
+    "question": "Which part is used to join a vertical piece to a horizontal piece?",
+    "choices": ["L-shaped connector", "Straight rod", "Interlocking tab", "Decorative trim"],
+    "answer": "L-shaped connector",
+    "explanation": "The L-shaped connector joins vertical and horizontal components."
+  },
+  {
+    "question": "Which component provides a pivot point for rotating sections of the assembly?",
+    "choices": ["Pivot", "Locking clip", "Screw", "Fixed rod"],
+    "answer": "Pivot",
+    "explanation": "The pivot serves as the rotation point between sections."
+  },
+  {
+    "question": "Which piece is designed to reinforce the junction of multiple parts?",
+    "choices": ["Reinforcement plate", "Loose spacer", "Decorative trim", "Base plate"],
+    "answer": "Reinforcement plate",
+    "explanation": "The reinforcement plate strengthens the junction between components."
+  },
+  {
+    "question": "Which component is used to create a temporary lock during assembly?",
+    "choices": ["Temporary clip", "Permanent bracket", "Adjustable rod", "Decorative trim"],
+    "answer": "Temporary clip",
+    "explanation": "The temporary clip holds parts in place during initial assembly."
+  },
+  {
+    "question": "Which part is intended to align two overlapping sections?",
+    "choices": ["Alignment tab", "Loose peg", "Connector rod", "Screw"],
+    "answer": "Alignment tab",
+    "explanation": "The alignment tab ensures proper positioning of overlapping sections."
+  },
+  {
+    "question": "Which component is designed to snap into the base for added stability?",
+    "choices": ["Snap-fit base", "Loose clip", "Side panel", "Decorative trim"],
+    "answer": "Snap-fit base",
+    "explanation": "The snap-fit base locks into place with the main assembly."
+  },
+  {
+    "question": "Which piece is used to secure a movable section in a fixed position?",
+    "choices": ["Locking lever", "Adjustable knob", "Screw", "Adhesive"],
+    "answer": "Locking lever",
+    "explanation": "The locking lever holds the movable section firmly in place."
+  },
+  {
+    "question": "Which component should be inserted into the top slot of the assembly?",
+    "choices": ["Top peg", "Side tab", "Connector rod", "Bracket"],
+    "answer": "Top peg",
+    "explanation": "The top peg fits into the top slot to secure the assembly."
+  },
+  {
+    "question": "Which part acts as a divider between two compartments in the assembly?",
+    "choices": ["Divider panel", "Base plate", "Side panel", "Connector rod"],
+    "answer": "Divider panel",
+    "explanation": "The divider panel separates different compartments effectively."
+  },
+  {
+    "question": "Which component is designed with a tapered end for easy insertion?",
+    "choices": ["Tapered peg", "Square block", "Flat plate", "Round disc"],
+    "answer": "Tapered peg",
+    "explanation": "The tapered peg is engineered for smooth insertion into a slot."
+  },
+  {
+    "question": "Which piece is used to fasten two overlapping components?",
+    "choices": ["Fastener clip", "Adhesive", "Loose tab", "Decorative trim"],
+    "answer": "Fastener clip",
+    "explanation": "The fastener clip secures overlapping parts together."
+  },
+  {
+    "question": "Which component is most effective for reinforcing a weak joint?",
+    "choices": ["Reinforcement bracket", "Loose spacer", "Decorative trim", "Connector rod"],
+    "answer": "Reinforcement bracket",
+    "explanation": "The reinforcement bracket strengthens weak joints."
+  },
+  {
+    "question": "Which part should be attached to the front of the assembly for a finished look?",
+    "choices": ["Front panel", "Rear panel", "Side bracket", "Base plate"],
+    "answer": "Front panel",
+    "explanation": "The front panel gives the assembly a complete appearance."
+  },
+  {
+    "question": "Which component is designed to interlock with multiple adjacent parts?",
+    "choices": ["Multi-lock connector", "Simple screw", "Loose clip", "Adhesive"],
+    "answer": "Multi-lock connector",
+    "explanation": "The multi-lock connector interlocks several parts simultaneously."
+  },
+  {
+    "question": "Which piece is intended to provide a secure anchoring point for a hanging component?",
+    "choices": ["Anchor bracket", "Loose peg", "Decorative trim", "Base plate"],
+    "answer": "Anchor bracket",
+    "explanation": "The anchor bracket provides a secure attachment point for hanging parts."
+  },
+  {
+    "question": "Which component should be used to cover a gap between two assembled sections?",
+    "choices": ["Gap cover", "Side panel", "Connector rod", "Decorative trim"],
+    "answer": "Gap cover",
+    "explanation": "The gap cover conceals any gaps for a smooth finish."
+  },
+  {
+    "question": "Which part is engineered to allow for easy disassembly of the unit?",
+    "choices": ["Quick-release clip", "Permanent bracket", "Fixed peg", "Adhesive"],
+    "answer": "Quick-release clip",
+    "explanation": "The quick-release clip allows for rapid disassembly."
+  },
+  {
+    "question": "Which component is designed to align with the edge of a panel during assembly?",
+    "choices": ["Edge guide", "Loose tab", "Connector rod", "Base plate"],
+    "answer": "Edge guide",
+    "explanation": "The edge guide ensures panels are aligned correctly."
+  },
+  {
+    "question": "Which piece is used to bridge a gap between non-adjacent parts?",
+    "choices": ["Bridge piece", "Corner brace", "Alignment peg", "Fastener clip"],
+    "answer": "Bridge piece",
+    "explanation": "The bridge piece spans gaps between distant parts."
+  },
+  {
+    "question": "Which component is used to secure a floating panel to a fixed structure?",
+    "choices": ["Floating clip", "Adhesive", "Loose peg", "Connector rod"],
+    "answer": "Floating clip",
+    "explanation": "The floating clip attaches a free panel to the fixed assembly."
+  },
+  {
+    "question": "Which part should be inserted into the side groove to secure the panel?",
+    "choices": ["Side peg", "Corner brace", "Locking tab", "Screw"],
+    "answer": "Side peg",
+    "explanation": "The side peg fits into the groove to secure the panel."
+  },
+  {
+    "question": "Which component is designed to provide a pivot point for a swinging door panel?",
+    "choices": ["Hinge", "Locking clip", "Pivot", "Bracket"],
+    "answer": "Hinge",
+    "explanation": "The hinge allows the door panel to swing open or closed."
+  },
+  {
+    "question": "Which piece is intended to act as a support for an overhanging section?",
+    "choices": ["Support bracket", "Loose spacer", "Decorative trim", "Connector rod"],
+    "answer": "Support bracket",
+    "explanation": "The support bracket reinforces overhanging sections."
+  },
+  {
+    "question": "Which component is designed to snap into a recessed area for secure attachment?",
+    "choices": ["Snap-in clip", "Loose tab", "Adhesive", "Screw"],
+    "answer": "Snap-in clip",
+    "explanation": "The snap-in clip locks into a recessed area securely."
+  },
+  {
+    "question": "Which part should be placed at the junction of three intersecting components?",
+    "choices": ["Triangular connector", "Square block", "Round peg", "L-shaped piece"],
+    "answer": "Triangular connector",
+    "explanation": "The triangular connector joins three parts at the junction."
+  },
+  {
+    "question": "Which component is used to reinforce the connection between a panel and a frame?",
+    "choices": ["Reinforcement clip", "Loose spacer", "Adhesive", "Decorative trim"],
+    "answer": "Reinforcement clip",
+    "explanation": "The reinforcement clip strengthens the connection."
+  },
+  {
+    "question": "Which piece is designed to fit into an elongated slot for proper alignment?",
+    "choices": ["Elongated peg", "Round disc", "Square block", "L-shaped piece"],
+    "answer": "Elongated peg",
+    "explanation": "The elongated peg is engineered to fit elongated slots."
+  },
+  {
+    "question": "Which component is used to secure a detachable section without permanent fastening?",
+    "choices": ["Detachable clip", "Permanent screw", "Adhesive", "Bracket"],
+    "answer": "Detachable clip",
+    "explanation": "The detachable clip allows for secure, yet temporary fastening."
+  },
+  {
+    "question": "Which part is intended to align with the central axis of the assembly?",
+    "choices": ["Central guide", "Side panel", "Connector rod", "Base plate"],
+    "answer": "Central guide",
+    "explanation": "The central guide ensures alignment along the assembly's axis."
+  },
+  {
+    "question": "Which component is designed to lock into place when the assembly is complete?",
+    "choices": ["Locking mechanism", "Loose tab", "Adhesive", "Decorative trim"],
+    "answer": "Locking mechanism",
+    "explanation": "The locking mechanism secures the assembly upon completion."
+  },
+  {
+    "question": "Which piece is used to connect two offset panels in the assembly?",
+    "choices": ["Offset connector", "Straight rod", "Interlocking tab", "Corner brace"],
+    "answer": "Offset connector",
+    "explanation": "The offset connector links panels that are not directly aligned."
+  },
+  {
+    "question": "Which component is intended to act as a guide for sliding parts into place?",
+    "choices": ["Guide rail", "Loose spacer", "Decorative trim", "Connector rod"],
+    "answer": "Guide rail",
+    "explanation": "The guide rail helps parts slide into their correct positions."
+  },
+  {
+    "question": "Which part is designed to secure a component with minimal visible hardware?",
+    "choices": ["Concealed fastener", "Exposed screw", "Loose clip", "Adhesive"],
+    "answer": "Concealed fastener",
+    "explanation": "The concealed fastener hides the hardware for a clean look."
+  },
+  {
+    "question": "Which component is used to attach a handle to a panel in the assembly?",
+    "choices": ["Handle bracket", "Side clip", "Decorative trim", "Connector rod"],
+    "answer": "Handle bracket",
+    "explanation": "The handle bracket secures the handle to the panel."
+  },
+  {
+    "question": "Which piece is intended to form a pivot joint between two arms of the assembly?",
+    "choices": ["Pivot connector", "Fixed rod", "Screw", "Adhesive"],
+    "answer": "Pivot connector",
+    "explanation": "The pivot connector forms a joint that allows rotational movement."
+  },
+  {
+    "question": "Which component should be inserted into the lower slot to complete the base assembly?",
+    "choices": ["Lower peg", "Upper tab", "Side clip", "Connector rod"],
+    "answer": "Lower peg",
+    "explanation": "The lower peg secures the bottom part of the assembly."
+  },
+  {
+    "question": "Which part is designed to secure the top section to the middle assembly?",
+    "choices": ["Top connector", "Bottom plate", "Side panel", "Locking clip"],
+    "answer": "Top connector",
+    "explanation": "The top connector attaches the top section to the middle assembly."
+  },
+  {
+    "question": "Which component is used to ensure that all parts are aligned before final assembly?",
+    "choices": ["Alignment tool", "Loose spacer", "Decorative trim", "Temporary clip"],
+    "answer": "Alignment tool",
+    "explanation": "The alignment tool is used to verify correct positioning before assembly is finalized."
+  }
+]

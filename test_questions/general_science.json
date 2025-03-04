@@ -1,0 +1,602 @@
+[
+  {
+    "question": "What is the chemical formula for water?",
+    "choices": ["H2O", "CO2", "NaCl", "O2"],
+    "answer": "H2O",
+    "explanation": "Water is composed of two hydrogen atoms and one oxygen atom."
+  },
+  {
+    "question": "Which planet is known as the Red Planet?",
+    "choices": ["Earth", "Mars", "Venus", "Jupiter"],
+    "answer": "Mars",
+    "explanation": "Mars is often called the Red Planet due to its reddish appearance."
+  },
+  {
+    "question": "What gas do plants use for photosynthesis?",
+    "choices": ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
+    "answer": "Carbon Dioxide",
+    "explanation": "Plants absorb carbon dioxide and convert it into oxygen during photosynthesis."
+  },
+  {
+    "question": "What force keeps us on the ground?",
+    "choices": ["Friction", "Magnetism", "Gravity", "Inertia"],
+    "answer": "Gravity",
+    "explanation": "Gravity is the force that attracts objects toward the center of the Earth."
+  },
+  {
+    "question": "What part of the cell contains genetic material?",
+    "choices": ["Cytoplasm", "Nucleus", "Ribosome", "Mitochondria"],
+    "answer": "Nucleus",
+    "explanation": "The nucleus contains the cell's genetic material (DNA)."
+  },
+  {
+    "question": "What is known as the powerhouse of the cell?",
+    "choices": ["Nucleus", "Ribosome", "Mitochondria", "Endoplasmic Reticulum"],
+    "answer": "Mitochondria",
+    "explanation": "Mitochondria generate most of the cell's energy through cellular respiration."
+  },
+  {
+    "question": "Which organ filters blood in the human body?",
+    "choices": ["Liver", "Kidney", "Heart", "Lungs"],
+    "answer": "Kidney",
+    "explanation": "The kidneys filter waste and extra fluid from the blood."
+  },
+  {
+    "question": "What is the boiling point of water at sea level in Celsius?",
+    "choices": ["90°C", "100°C", "110°C", "120°C"],
+    "answer": "100°C",
+    "explanation": "Water boils at 100°C (212°F) at sea level."
+  },
+  {
+    "question": "What type of bond involves the sharing of electrons?",
+    "choices": ["Ionic", "Covalent", "Metallic", "Hydrogen"],
+    "answer": "Covalent",
+    "explanation": "A covalent bond is formed when atoms share electrons."
+  },
+  {
+    "question": "What is the study of earthquakes called?",
+    "choices": ["Meteorology", "Volcanology", "Seismology", "Astronomy"],
+    "answer": "Seismology",
+    "explanation": "Seismology is the scientific study of earthquakes and the propagation of elastic waves through the Earth."
+  },
+  {
+    "question": "What is the chemical symbol for gold?",
+    "choices": ["Au", "Ag", "Gd", "Go"],
+    "answer": "Au",
+    "explanation": "Gold is represented by the symbol Au from its Latin name, Aurum."
+  },
+  {
+    "question": "Which planet is the largest in our solar system?",
+    "choices": ["Saturn", "Jupiter", "Neptune", "Mars"],
+    "answer": "Jupiter",
+    "explanation": "Jupiter is the largest planet in our solar system."
+  },
+  {
+    "question": "What gas makes up most of the Earth's atmosphere?",
+    "choices": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
+    "answer": "Nitrogen",
+    "explanation": "Nitrogen makes up about 78% of Earth's atmosphere."
+  },
+  {
+    "question": "Which process converts sugar into energy in cells?",
+    "choices": ["Photosynthesis", "Respiration", "Transpiration", "Digestion"],
+    "answer": "Respiration",
+    "explanation": "Respiration is the process cells use to convert sugars into energy."
+  },
+  {
+    "question": "What is the center of an atom called?",
+    "choices": ["Electron", "Neutron", "Nucleus", "Proton"],
+    "answer": "Nucleus",
+    "explanation": "The nucleus is the central part of an atom, containing protons and neutrons."
+  },
+  {
+    "question": "What is the most abundant element in the universe?",
+    "choices": ["Oxygen", "Hydrogen", "Carbon", "Helium"],
+    "answer": "Hydrogen",
+    "explanation": "Hydrogen is the most abundant element in the universe."
+  },
+  {
+    "question": "Which organelle is responsible for protein synthesis?",
+    "choices": ["Ribosome", "Mitochondria", "Chloroplast", "Golgi Apparatus"],
+    "answer": "Ribosome",
+    "explanation": "Ribosomes are the cellular structures where proteins are synthesized."
+  },
+  {
+    "question": "What term describes animals that eat only plants?",
+    "choices": ["Carnivores", "Herbivores", "Omnivores", "Insectivores"],
+    "answer": "Herbivores",
+    "explanation": "Herbivores are animals that feed exclusively on plants."
+  },
+  {
+    "question": "What is the study of life called?",
+    "choices": ["Biology", "Chemistry", "Physics", "Geology"],
+    "answer": "Biology",
+    "explanation": "Biology is the science that studies living organisms and life processes."
+  },
+  {
+    "question": "What is the most common blood type in humans?",
+    "choices": ["A", "B", "O", "AB"],
+    "answer": "O",
+    "explanation": "Type O is the most common blood type worldwide."
+  },
+  {
+    "question": "What is the primary gas produced during photosynthesis?",
+    "choices": ["Carbon Dioxide", "Oxygen", "Nitrogen", "Methane"],
+    "answer": "Oxygen",
+    "explanation": "Photosynthesis produces oxygen as a by-product."
+  },
+  {
+    "question": "What instrument is used to measure atmospheric pressure?",
+    "choices": ["Thermometer", "Barometer", "Hygrometer", "Anemometer"],
+    "answer": "Barometer",
+    "explanation": "A barometer measures atmospheric pressure."
+  },
+  {
+    "question": "What is the smallest unit of life?",
+    "choices": ["Atom", "Molecule", "Cell", "Organ"],
+    "answer": "Cell",
+    "explanation": "The cell is the basic unit of life."
+  },
+  {
+    "question": "Which vitamin is produced when the skin is exposed to sunlight?",
+    "choices": ["Vitamin A", "Vitamin B", "Vitamin C", "Vitamin D"],
+    "answer": "Vitamin D",
+    "explanation": "Sunlight helps the body produce Vitamin D."
+  },
+  {
+    "question": "What is the term for a change in a substance from solid to gas without passing through a liquid state?",
+    "choices": ["Condensation", "Sublimation", "Evaporation", "Freezing"],
+    "answer": "Sublimation",
+    "explanation": "Sublimation is the process where a solid changes directly into a gas."
+  },
+  {
+    "question": "Which part of the plant conducts photosynthesis?",
+    "choices": ["Roots", "Stems", "Leaves", "Flowers"],
+    "answer": "Leaves",
+    "explanation": "Leaves contain chlorophyll, which is essential for photosynthesis."
+  },
+  {
+    "question": "Which planet is known for its rings?",
+    "choices": ["Jupiter", "Mars", "Saturn", "Mercury"],
+    "answer": "Saturn",
+    "explanation": "Saturn is famous for its prominent ring system."
+  },
+  {
+    "question": "What force opposes motion between surfaces in contact?",
+    "choices": ["Gravity", "Friction", "Magnetism", "Electricity"],
+    "answer": "Friction",
+    "explanation": "Friction is the force that resists the movement of two surfaces sliding against each other."
+  },
+  {
+    "question": "What is the hardest natural substance on Earth?",
+    "choices": ["Gold", "Diamond", "Iron", "Quartz"],
+    "answer": "Diamond",
+    "explanation": "Diamond is known for its extreme hardness."
+  },
+  {
+    "question": "What gas is necessary for human respiration?",
+    "choices": ["Carbon Dioxide", "Helium", "Oxygen", "Hydrogen"],
+    "answer": "Oxygen",
+    "explanation": "Oxygen is essential for the process of cellular respiration."
+  },
+  {
+    "question": "What organ pumps blood throughout the body?",
+    "choices": ["Brain", "Liver", "Heart", "Kidney"],
+    "answer": "Heart",
+    "explanation": "The heart is responsible for pumping blood to all parts of the body."
+  },
+  {
+    "question": "Which process converts light energy into chemical energy?",
+    "choices": ["Respiration", "Photosynthesis", "Digestion", "Fermentation"],
+    "answer": "Photosynthesis",
+    "explanation": "Photosynthesis is the process by which plants convert light energy into chemical energy."
+  },
+  {
+    "question": "What term describes an organism that can produce its own food?",
+    "choices": ["Consumer", "Producer", "Decomposer", "Herbivore"],
+    "answer": "Producer",
+    "explanation": "Producers are organisms that create their own food using sunlight or chemical energy."
+  },
+  {
+    "question": "Which blood vessels carry blood away from the heart?",
+    "choices": ["Veins", "Arteries", "Capillaries", "Lymphatics"],
+    "answer": "Arteries",
+    "explanation": "Arteries are the blood vessels that carry oxygenated blood away from the heart."
+  },
+  {
+    "question": "What is the basic unit of matter?",
+    "choices": ["Cell", "Atom", "Molecule", "Compound"],
+    "answer": "Atom",
+    "explanation": "Atoms are the smallest units of matter that retain the properties of an element."
+  },
+  {
+    "question": "What is the process by which a cell divides into two identical daughter cells?",
+    "choices": ["Meiosis", "Mitosis", "Fission", "Fusion"],
+    "answer": "Mitosis",
+    "explanation": "Mitosis is the process of cell division resulting in two identical daughter cells."
+  },
+  {
+    "question": "Which chemical element has the atomic number 6?",
+    "choices": ["Oxygen", "Carbon", "Nitrogen", "Helium"],
+    "answer": "Carbon",
+    "explanation": "Carbon has an atomic number of 6."
+  },
+  {
+    "question": "What device is used to view small objects by magnification?",
+    "choices": ["Telescope", "Microscope", "Periscope", "Binoculars"],
+    "answer": "Microscope",
+    "explanation": "A microscope magnifies small objects for detailed viewing."
+  },
+  {
+    "question": "Which organ system is responsible for transporting nutrients and oxygen throughout the body?",
+    "choices": ["Respiratory", "Circulatory", "Digestive", "Nervous"],
+    "answer": "Circulatory",
+    "explanation": "The circulatory system transports blood, nutrients, and oxygen throughout the body."
+  },
+  {
+    "question": "What is the term for a substance made of two or more elements chemically combined?",
+    "choices": ["Mixture", "Compound", "Element", "Solution"],
+    "answer": "Compound",
+    "explanation": "A compound is a substance formed when two or more elements are chemically bonded."
+  },
+  {
+    "question": "What is the process by which rocks are broken down by natural forces?",
+    "choices": ["Erosion", "Weathering", "Sedimentation", "Lithification"],
+    "answer": "Weathering",
+    "explanation": "Weathering is the breakdown of rocks through exposure to the elements."
+  },
+  {
+    "question": "What is the main source of energy for the Earth?",
+    "choices": ["Wind", "Water", "Sun", "Fossil Fuels"],
+    "answer": "Sun",
+    "explanation": "The sun is the primary source of energy for Earth."
+  },
+  {
+    "question": "Which vitamin is essential for blood clotting?",
+    "choices": ["Vitamin A", "Vitamin C", "Vitamin K", "Vitamin D"],
+    "answer": "Vitamin K",
+    "explanation": "Vitamin K is necessary for the blood clotting process."
+  },
+  {
+    "question": "What is the chemical symbol for sodium?",
+    "choices": ["So", "Na", "S", "N"],
+    "answer": "Na",
+    "explanation": "Sodium is represented by the symbol Na."
+  },
+  {
+    "question": "What is the chemical formula for table salt?",
+    "choices": ["NaCl", "KCl", "CaCl2", "MgCl2"],
+    "answer": "NaCl",
+    "explanation": "Table salt is chemically known as sodium chloride (NaCl)."
+  },
+  {
+    "question": "Which type of rock is formed from cooled lava?",
+    "choices": ["Sedimentary", "Metamorphic", "Igneous", "Granite"],
+    "answer": "Igneous",
+    "explanation": "Igneous rocks are formed from the cooling and solidification of lava or magma."
+  },
+  {
+    "question": "What is the study of weather called?",
+    "choices": ["Climatology", "Meteorology", "Geology", "Astronomy"],
+    "answer": "Meteorology",
+    "explanation": "Meteorology is the science that studies weather and atmospheric phenomena."
+  },
+  {
+    "question": "Which part of the brain controls balance and coordination?",
+    "choices": ["Cerebrum", "Cerebellum", "Medulla", "Hypothalamus"],
+    "answer": "Cerebellum",
+    "explanation": "The cerebellum is responsible for coordinating balance and movement."
+  },
+  {
+    "question": "Which natural phenomenon is measured using the Richter scale?",
+    "choices": ["Tornadoes", "Earthquakes", "Hurricanes", "Floods"],
+    "answer": "Earthquakes",
+    "explanation": "The Richter scale is used to measure the magnitude of earthquakes."
+  },
+  {
+    "question": "What is the primary gas responsible for the greenhouse effect?",
+    "choices": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Methane"],
+    "answer": "Carbon Dioxide",
+    "explanation": "Carbon dioxide is a major contributor to the greenhouse effect."
+  },
+  {
+    "question": "Which blood cells are responsible for carrying oxygen?",
+    "choices": ["White blood cells", "Red blood cells", "Platelets", "Plasma cells"],
+    "answer": "Red blood cells",
+    "explanation": "Red blood cells transport oxygen throughout the body."
+  },
+  {
+    "question": "What is the largest organ in the human body?",
+    "choices": ["Liver", "Skin", "Heart", "Lungs"],
+    "answer": "Skin",
+    "explanation": "The skin is the body's largest organ."
+  },
+  {
+    "question": "Which process involves the movement of molecules from an area of high concentration to low concentration?",
+    "choices": ["Diffusion", "Osmosis", "Filtration", "Active transport"],
+    "answer": "Diffusion",
+    "explanation": "Diffusion is the passive movement of particles from high to low concentration."
+  },
+  {
+    "question": "Which part of the human eye controls the amount of light that enters?",
+    "choices": ["Retina", "Iris", "Cornea", "Lens"],
+    "answer": "Iris",
+    "explanation": "The iris adjusts the size of the pupil to control light entry."
+  },
+  {
+    "question": "What is the study of heredity called?",
+    "choices": ["Ecology", "Genetics", "Evolution", "Biology"],
+    "answer": "Genetics",
+    "explanation": "Genetics is the study of genes and heredity."
+  },
+  {
+    "question": "Which element is essential for the formation of proteins?",
+    "choices": ["Carbon", "Nitrogen", "Oxygen", "Hydrogen"],
+    "answer": "Nitrogen",
+    "explanation": "Nitrogen is a vital component of amino acids, the building blocks of proteins."
+  },
+  {
+    "question": "What is the term for the process by which water changes from a liquid to a gas?",
+    "choices": ["Condensation", "Evaporation", "Sublimation", "Precipitation"],
+    "answer": "Evaporation",
+    "explanation": "Evaporation is the process where liquid water turns into vapor."
+  },
+  {
+    "question": "What is the main gas found in the sun?",
+    "choices": ["Helium", "Oxygen", "Hydrogen", "Carbon Dioxide"],
+    "answer": "Hydrogen",
+    "explanation": "The sun is primarily composed of hydrogen gas."
+  },
+  {
+    "question": "Which process produces energy in the absence of oxygen?",
+    "choices": ["Aerobic respiration", "Anaerobic respiration", "Photosynthesis", "Fermentation"],
+    "answer": "Anaerobic respiration",
+    "explanation": "Anaerobic respiration occurs without oxygen."
+  },
+  {
+    "question": "What is the chemical symbol for potassium?",
+    "choices": ["Po", "K", "P", "Pt"],
+    "answer": "K",
+    "explanation": "Potassium is represented by the symbol K."
+  },
+  {
+    "question": "Which part of the plant conducts water and nutrients from the roots to the leaves?",
+    "choices": ["Phloem", "Xylem", "Cortex", "Epidermis"],
+    "answer": "Xylem",
+    "explanation": "Xylem transports water and dissolved minerals upward from the roots."
+  },
+  {
+    "question": "What is the term for a substance that speeds up a chemical reaction without being consumed?",
+    "choices": ["Reactant", "Enzyme", "Catalyst", "Inhibitor"],
+    "answer": "Catalyst",
+    "explanation": "A catalyst accelerates chemical reactions without being permanently altered."
+  },
+  {
+    "question": "What is the primary function of white blood cells?",
+    "choices": ["Transport oxygen", "Fight infections", "Clot blood", "Carry nutrients"],
+    "answer": "Fight infections",
+    "explanation": "White blood cells play a key role in the body's immune response."
+  },
+  {
+    "question": "Which planet is known for its extreme temperatures and thick atmosphere?",
+    "choices": ["Venus", "Mercury", "Mars", "Jupiter"],
+    "answer": "Venus",
+    "explanation": "Venus has a thick atmosphere that creates a runaway greenhouse effect."
+  },
+  {
+    "question": "What is the most abundant metal in the Earth's crust?",
+    "choices": ["Iron", "Aluminum", "Copper", "Magnesium"],
+    "answer": "Aluminum",
+    "explanation": "Aluminum is the most abundant metal in the Earth's crust."
+  },
+  {
+    "question": "Which process converts a solid directly into a gas?",
+    "choices": ["Condensation", "Sublimation", "Deposition", "Melting"],
+    "answer": "Sublimation",
+    "explanation": "Sublimation is the direct transition from a solid to a gas."
+  },
+  {
+    "question": "What is the term for the bending of light as it passes from one medium to another?",
+    "choices": ["Reflection", "Diffraction", "Refraction", "Dispersion"],
+    "answer": "Refraction",
+    "explanation": "Refraction occurs when light changes speed and direction in a new medium."
+  },
+  {
+    "question": "Which part of the cell is primarily responsible for energy production?",
+    "choices": ["Nucleus", "Mitochondria", "Ribosome", "Lysosome"],
+    "answer": "Mitochondria",
+    "explanation": "Mitochondria generate energy through the process of cellular respiration."
+  },
+  {
+    "question": "What is the process by which plants lose water vapor through small pores?",
+    "choices": ["Respiration", "Transpiration", "Photosynthesis", "Absorption"],
+    "answer": "Transpiration",
+    "explanation": "Transpiration is the loss of water vapor from plants through stomata."
+  },
+  {
+    "question": "Which element is represented by the symbol 'Fe'?",
+    "choices": ["Fluorine", "Francium", "Iron", "Fermium"],
+    "answer": "Iron",
+    "explanation": "The symbol 'Fe' stands for iron."
+  },
+  {
+    "question": "What is the process of cell division in sexual reproduction called?",
+    "choices": ["Mitosis", "Meiosis", "Fission", "Fusion"],
+    "answer": "Meiosis",
+    "explanation": "Meiosis is the type of cell division that produces gametes."
+  },
+  {
+    "question": "What type of energy is stored in the nucleus of an atom?",
+    "choices": ["Kinetic", "Potential", "Nuclear", "Thermal"],
+    "answer": "Nuclear",
+    "explanation": "Nuclear energy is released during nuclear reactions."
+  },
+  {
+    "question": "What is the chemical formula for carbon dioxide?",
+    "choices": ["CO", "CO2", "C2O", "C2O2"],
+    "answer": "CO2",
+    "explanation": "Carbon dioxide consists of one carbon atom and two oxygen atoms."
+  },
+  {
+    "question": "Which organ is responsible for detoxification in the human body?",
+    "choices": ["Kidney", "Liver", "Lungs", "Stomach"],
+    "answer": "Liver",
+    "explanation": "The liver detoxifies chemicals and metabolizes drugs in the body."
+  },
+  {
+    "question": "What is the study of the Earth's physical structure and substance called?",
+    "choices": ["Biology", "Geology", "Chemistry", "Ecology"],
+    "answer": "Geology",
+    "explanation": "Geology is the science that studies the Earth's physical structure."
+  },
+  {
+    "question": "Which layer of the Earth is liquid?",
+    "choices": ["Crust", "Mantle", "Outer core", "Inner core"],
+    "answer": "Outer core",
+    "explanation": "The outer core is liquid and composed mainly of iron and nickel."
+  },
+  {
+    "question": "What is the most common element in the Earth's crust?",
+    "choices": ["Silicon", "Oxygen", "Aluminum", "Calcium"],
+    "answer": "Oxygen",
+    "explanation": "Oxygen is the most abundant element in the Earth's crust."
+  },
+  {
+    "question": "What phenomenon causes the apparent bending of an object in water?",
+    "choices": ["Reflection", "Refraction", "Diffraction", "Scattering"],
+    "answer": "Refraction",
+    "explanation": "Refraction causes objects to appear bent when viewed in water."
+  },
+  {
+    "question": "Which planet is closest to the sun?",
+    "choices": ["Venus", "Earth", "Mercury", "Mars"],
+    "answer": "Mercury",
+    "explanation": "Mercury is the closest planet to the sun."
+  },
+  {
+    "question": "What process involves the conversion of a gas into a liquid?",
+    "choices": ["Sublimation", "Condensation", "Evaporation", "Deposition"],
+    "answer": "Condensation",
+    "explanation": "Condensation is the process where a gas turns into a liquid."
+  },
+  {
+    "question": "What is the chemical symbol for silver?",
+    "choices": ["Ag", "Si", "S", "Au"],
+    "answer": "Ag",
+    "explanation": "Silver is represented by the symbol Ag."
+  },
+  {
+    "question": "Which part of the plant cell contains chlorophyll?",
+    "choices": ["Nucleus", "Mitochondria", "Chloroplast", "Vacuole"],
+    "answer": "Chloroplast",
+    "explanation": "Chloroplasts contain chlorophyll and are the site of photosynthesis."
+  },
+  {
+    "question": "What is the study of the interactions between living organisms and their environment called?",
+    "choices": ["Biology", "Ecology", "Genetics", "Zoology"],
+    "answer": "Ecology",
+    "explanation": "Ecology examines the relationships between organisms and their environment."
+  },
+  {
+    "question": "What type of animal is a frog?",
+    "choices": ["Mammal", "Bird", "Amphibian", "Reptile"],
+    "answer": "Amphibian",
+    "explanation": "Frogs are amphibians, which typically live both in water and on land."
+  },
+  {
+    "question": "Which natural resource is formed from ancient plant material and heat?",
+    "choices": ["Coal", "Gold", "Iron", "Water"],
+    "answer": "Coal",
+    "explanation": "Coal is formed from decayed plant matter over millions of years."
+  },
+  {
+    "question": "What is the term for a scientist who studies weather?",
+    "choices": ["Biologist", "Meteorologist", "Geologist", "Astronomer"],
+    "answer": "Meteorologist",
+    "explanation": "Meteorologists study the weather and atmospheric phenomena."
+  },
+  {
+    "question": "Which part of the cell contains ribosomes?",
+    "choices": ["Nucleus", "Cytoplasm", "Cell wall", "Golgi apparatus"],
+    "answer": "Cytoplasm",
+    "explanation": "Ribosomes, found in the cytoplasm, are sites of protein synthesis."
+  },
+  {
+    "question": "What is the term for a change in the genetic material?",
+    "choices": ["Mutation", "Evolution", "Adaptation", "Selection"],
+    "answer": "Mutation",
+    "explanation": "A mutation is a change in the DNA sequence."
+  },
+  {
+    "question": "Which planet has a prominent set of rings?",
+    "choices": ["Mars", "Saturn", "Uranus", "Neptune"],
+    "answer": "Saturn",
+    "explanation": "Saturn is famous for its extensive ring system."
+  },
+  {
+    "question": "What is the chemical formula for methane?",
+    "choices": ["CH4", "C2H6", "CH3", "C3H8"],
+    "answer": "CH4",
+    "explanation": "Methane is composed of one carbon atom and four hydrogen atoms."
+  },
+  {
+    "question": "Which structure in the cell is responsible for breaking down waste materials?",
+    "choices": ["Ribosome", "Lysosome", "Mitochondria", "Nucleus"],
+    "answer": "Lysosome",
+    "explanation": "Lysosomes contain enzymes that digest waste and cellular debris."
+  },
+  {
+    "question": "What is the study of fungi called?",
+    "choices": ["Zoology", "Mycology", "Botany", "Entomology"],
+    "answer": "Mycology",
+    "explanation": "Mycology is the branch of biology that deals with fungi."
+  },
+  {
+    "question": "What is the term for the energy of motion?",
+    "choices": ["Potential Energy", "Kinetic Energy", "Thermal Energy", "Chemical Energy"],
+    "answer": "Kinetic Energy",
+    "explanation": "Kinetic energy is the energy that an object possesses due to its motion."
+  },
+  {
+    "question": "Which vitamin is essential for vision?",
+    "choices": ["Vitamin A", "Vitamin B", "Vitamin C", "Vitamin D"],
+    "answer": "Vitamin A",
+    "explanation": "Vitamin A is crucial for maintaining healthy vision."
+  },
+  {
+    "question": "What is the chemical symbol for iron?",
+    "choices": ["Ir", "Fe", "In", "I"],
+    "answer": "Fe",
+    "explanation": "The symbol Fe represents iron."
+  },
+  {
+    "question": "What process do plants use to convert sunlight into food?",
+    "choices": ["Respiration", "Photosynthesis", "Fermentation", "Transpiration"],
+    "answer": "Photosynthesis",
+    "explanation": "Photosynthesis allows plants to convert sunlight into chemical energy."
+  },
+  {
+    "question": "What is the study of substances, their properties, and reactions called?",
+    "choices": ["Biology", "Chemistry", "Physics", "Geology"],
+    "answer": "Chemistry",
+    "explanation": "Chemistry is the study of the composition, structure, and properties of matter."
+  },
+  {
+    "question": "Which force is responsible for the attraction between oppositely charged particles?",
+    "choices": ["Gravity", "Magnetism", "Electrostatic Force", "Nuclear Force"],
+    "answer": "Electrostatic Force",
+    "explanation": "Electrostatic force causes attraction between particles with opposite charges."
+  },
+  {
+    "question": "What is the process by which plants absorb water through their roots?",
+    "choices": ["Osmosis", "Diffusion", "Transpiration", "Absorption"],
+    "answer": "Osmosis",
+    "explanation": "Osmosis is the movement of water through a semipermeable membrane from an area of low solute concentration to high concentration."
+  },
+  {
+    "question": "Which scientist developed the theory of relativity?",
+    "choices": ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Nikola Tesla"],
+    "answer": "Albert Einstein",
+    "explanation": "Albert Einstein formulated the theory of relativity, which transformed our understanding of space, time, and gravity."
+  }
+]

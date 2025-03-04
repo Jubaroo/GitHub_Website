@@ -1,0 +1,602 @@
+[
+  {
+    "question": "What is voltage?",
+    "choices": ["Force", "Potential difference", "Current", "Resistance"],
+    "answer": "Potential difference",
+    "explanation": "Voltage is the electric potential difference between two points in a circuit."
+  },
+  {
+    "question": "What does Ohm's Law state?",
+    "choices": ["V=IR", "I=VR", "V=I+R", "V=IR^2"],
+    "answer": "V=IR",
+    "explanation": "Ohm's Law states that the voltage across a resistor is equal to the current multiplied by the resistance."
+  },
+  {
+    "question": "What unit is used to measure electric current?",
+    "choices": ["Volts", "Ohms", "Amperes", "Watts"],
+    "answer": "Amperes",
+    "explanation": "Electric current is measured in amperes (amps)."
+  },
+  {
+    "question": "What unit is used to measure resistance?",
+    "choices": ["Ohms", "Farads", "Henries", "Volts"],
+    "answer": "Ohms",
+    "explanation": "Resistance is measured in ohms."
+  },
+  {
+    "question": "What does LED stand for?",
+    "choices": ["Light Emitting Diode", "Low Energy Display", "Laser Emitting Diode", "Light Emission Device"],
+    "answer": "Light Emitting Diode",
+    "explanation": "LED stands for Light Emitting Diode, a semiconductor device that emits light when current flows through it."
+  },
+  {
+    "question": "What is the primary function of a resistor in a circuit?",
+    "choices": ["Store energy", "Amplify signals", "Limit current", "Convert AC to DC"],
+    "answer": "Limit current",
+    "explanation": "Resistors limit the flow of current to protect components and control signal levels."
+  },
+  {
+    "question": "What unit is used to measure capacitance?",
+    "choices": ["Farads", "Henries", "Ohms", "Watts"],
+    "answer": "Farads",
+    "explanation": "Capacitance is measured in farads."
+  },
+  {
+    "question": "What is the main purpose of a capacitor?",
+    "choices": ["Resist current", "Store electrical energy", "Amplify signals", "Generate voltage"],
+    "answer": "Store electrical energy",
+    "explanation": "Capacitors store electrical energy in an electric field and can release it when needed."
+  },
+  {
+    "question": "Which component allows current to flow in only one direction?",
+    "choices": ["Resistor", "Capacitor", "Diode", "Inductor"],
+    "answer": "Diode",
+    "explanation": "Diodes allow current to flow in only one direction, preventing reverse current flow."
+  },
+  {
+    "question": "What is the primary function of a transistor?",
+    "choices": ["Store charge", "Amplify signals", "Measure voltage", "Convert AC to DC"],
+    "answer": "Amplify signals",
+    "explanation": "Transistors are used to amplify or switch electronic signals."
+  },
+  {
+    "question": "What unit is used to measure inductance?",
+    "choices": ["Ohm", "Farad", "Henry", "Watt"],
+    "answer": "Henry",
+    "explanation": "Inductance is measured in henries."
+  },
+  {
+    "question": "What is the function of an inductor in a circuit?",
+    "choices": ["Resist current changes", "Store energy in a magnetic field", "Amplify voltage", "Rectify AC"],
+    "answer": "Store energy in a magnetic field",
+    "explanation": "Inductors store electrical energy in a magnetic field when current flows through them."
+  },
+  {
+    "question": "What does AC stand for?",
+    "choices": ["Alternating Current", "Active Current", "Available Charge", "Amplified Current"],
+    "answer": "Alternating Current",
+    "explanation": "AC stands for Alternating Current, where the current periodically reverses direction."
+  },
+  {
+    "question": "What does DC stand for?",
+    "choices": ["Direct Current", "Dynamic Charge", "Digital Control", "Dual Current"],
+    "answer": "Direct Current",
+    "explanation": "DC stands for Direct Current, where the electric charge flows in one direction."
+  },
+  {
+    "question": "Which device converts AC to DC?",
+    "choices": ["Transformer", "Rectifier", "Inverter", "Oscillator"],
+    "answer": "Rectifier",
+    "explanation": "A rectifier converts alternating current (AC) into direct current (DC)."
+  },
+  {
+    "question": "What is the main function of a transformer?",
+    "choices": ["Convert voltage levels", "Store electrical energy", "Amplify signals", "Regulate current"],
+    "answer": "Convert voltage levels",
+    "explanation": "Transformers are used to step up or step down AC voltage levels."
+  },
+  {
+    "question": "What does PCB stand for?",
+    "choices": ["Printed Circuit Board", "Programmable Control Base", "Parallel Circuit Branch", "Printed Connection Bus"],
+    "answer": "Printed Circuit Board",
+    "explanation": "PCB stands for Printed Circuit Board, which mechanically supports and electrically connects electronic components."
+  },
+  {
+    "question": "What is a microcontroller?",
+    "choices": ["A small amplifier", "A microprocessor with integrated peripherals", "A sensor", "A type of resistor"],
+    "answer": "A microprocessor with integrated peripherals",
+    "explanation": "A microcontroller is a compact integrated circuit designed to govern a specific operation in an embedded system."
+  },
+  {
+    "question": "What does PWM stand for?",
+    "choices": ["Pulse Width Modulation", "Positive Wave Modulation", "Pulse Wave Mixing", "Phase Width Modulation"],
+    "answer": "Pulse Width Modulation",
+    "explanation": "PWM stands for Pulse Width Modulation, a technique used to control the power delivered to electrical devices."
+  },
+  {
+    "question": "Which component is used to temporarily store data in digital circuits?",
+    "choices": ["Resistor", "Capacitor", "Flip-Flop", "Transistor"],
+    "answer": "Flip-Flop",
+    "explanation": "Flip-flops are basic memory elements used to store binary data in digital electronics."
+  },
+  {
+    "question": "What is the role of an oscillator in electronics?",
+    "choices": ["Store charge", "Generate repetitive signals", "Amplify signals", "Regulate voltage"],
+    "answer": "Generate repetitive signals",
+    "explanation": "Oscillators produce periodic waveforms used in clocks and signal generators."
+  },
+  {
+    "question": "Which semiconductor device is commonly used for both switching and amplification?",
+    "choices": ["Diode", "Transistor", "Resistor", "Capacitor"],
+    "answer": "Transistor",
+    "explanation": "Transistors can be used as switches or amplifiers in electronic circuits."
+  },
+  {
+    "question": "What is the main purpose of an operational amplifier (op-amp)?",
+    "choices": ["To store charge", "To amplify voltage", "To convert AC to DC", "To resist current"],
+    "answer": "To amplify voltage",
+    "explanation": "Operational amplifiers are used to amplify weak electrical signals."
+  },
+  {
+    "question": "Which instrument is used to measure electrical resistance?",
+    "choices": ["Voltmeter", "Ammeter", "Ohmmeter", "Multimeter"],
+    "answer": "Ohmmeter",
+    "explanation": "An ohmmeter measures the resistance of an electrical component."
+  },
+  {
+    "question": "What is the function of a multimeter?",
+    "choices": ["Measure temperature", "Measure electrical properties", "Store electrical energy", "Generate waveforms"],
+    "answer": "Measure electrical properties",
+    "explanation": "A multimeter can measure voltage, current, and resistance."
+  },
+  {
+    "question": "What does an LED indicator do in a circuit?",
+    "choices": ["Amplify signals", "Display voltage levels", "Indicate power status", "Store charge"],
+    "answer": "Indicate power status",
+    "explanation": "LED indicators are used to show whether a circuit or device is powered on."
+  },
+  {
+    "question": "Which property of a resistor determines its opposition to current flow?",
+    "choices": ["Capacitance", "Resistance", "Inductance", "Conductance"],
+    "answer": "Resistance",
+    "explanation": "The resistance value of a resistor determines how much it opposes the flow of current."
+  },
+  {
+    "question": "What do the color bands on a resistor represent?",
+    "choices": ["Resistance value", "Voltage rating", "Power consumption", "Manufacturing date"],
+    "answer": "Resistance value",
+    "explanation": "The color bands on a resistor indicate its resistance value and tolerance."
+  },
+  {
+    "question": "What is the typical voltage of a standard AA battery?",
+    "choices": ["1.2V", "3.7V", "9V", "12V"],
+    "answer": "1.2V",
+    "explanation": "AA batteries typically provide around 1.2V to 1.5V, with rechargeable ones usually at 1.2V."
+  },
+  {
+    "question": "What is a relay used for in electronics?",
+    "choices": ["Amplify signals", "Switch circuits", "Store energy", "Measure current"],
+    "answer": "Switch circuits",
+    "explanation": "Relays are electrically operated switches used to control circuits."
+  },
+  {
+    "question": "What does the term 'impedance' refer to in AC circuits?",
+    "choices": ["Resistance only", "Capacitance only", "Combined resistance and reactance", "Voltage drop"],
+    "answer": "Combined resistance and reactance",
+    "explanation": "Impedance is the combination of resistance and reactance in an AC circuit."
+  },
+  {
+    "question": "What is the common use of a voltage regulator?",
+    "choices": ["Store charge", "Maintain a constant voltage", "Amplify signals", "Measure current"],
+    "answer": "Maintain a constant voltage",
+    "explanation": "Voltage regulators keep the output voltage stable despite variations in the input voltage or load."
+  },
+  {
+    "question": "Which component is used to produce delays in timing circuits?",
+    "choices": ["Capacitor", "Inductor", "Transistor", "Diode"],
+    "answer": "Capacitor",
+    "explanation": "Capacitors are used in timing circuits to produce delays as they charge and discharge."
+  },
+  {
+    "question": "What does the term 'bandwidth' refer to in electronics?",
+    "choices": ["Frequency range", "Signal amplitude", "Power consumption", "Resistance"],
+    "answer": "Frequency range",
+    "explanation": "Bandwidth refers to the range of frequencies that a device or circuit can handle."
+  },
+  {
+    "question": "What is the role of a fuse in an electronic circuit?",
+    "choices": ["Amplify current", "Protect against overcurrent", "Store charge", "Regulate voltage"],
+    "answer": "Protect against overcurrent",
+    "explanation": "Fuses protect circuits by breaking the connection if the current exceeds safe limits."
+  },
+  {
+    "question": "What does an oscillator circuit generate?",
+    "choices": ["Direct current", "Periodic waveforms", "Random noise", "Static charge"],
+    "answer": "Periodic waveforms",
+    "explanation": "Oscillator circuits generate periodic signals used in clocks, radios, and other applications."
+  },
+  {
+    "question": "What type of circuit does a voltage divider create?",
+    "choices": ["Amplifier", "Splitter", "Reduced voltage output", "Oscillator"],
+    "answer": "Reduced voltage output",
+    "explanation": "A voltage divider divides the input voltage to produce a lower output voltage."
+  },
+  {
+    "question": "What is the purpose of a heat sink in electronics?",
+    "choices": ["Increase voltage", "Cool electronic components", "Store charge", "Amplify signals"],
+    "answer": "Cool electronic components",
+    "explanation": "Heat sinks dissipate heat to prevent electronic components from overheating."
+  },
+  {
+    "question": "What is the function of solder in electronics assembly?",
+    "choices": ["Insulate components", "Join components electrically", "Amplify signals", "Store energy"],
+    "answer": "Join components electrically",
+    "explanation": "Solder is used to join electronic components together by creating an electrical connection."
+  },
+  {
+    "question": "What is a common application of an analog-to-digital converter (ADC)?",
+    "choices": ["Convert digital signals to analog", "Measure analog signals", "Store electrical energy", "Switch circuits"],
+    "answer": "Measure analog signals",
+    "explanation": "An ADC converts analog signals into digital data for processing."
+  },
+  {
+    "question": "Which device converts digital signals to analog?",
+    "choices": ["DAC", "ADC", "Op-Amp", "Transistor"],
+    "answer": "DAC",
+    "explanation": "A Digital-to-Analog Converter (DAC) converts digital data into an analog signal."
+  },
+  {
+    "question": "What is the main advantage of using surface-mount devices (SMDs)?",
+    "choices": ["Easier to replace", "Smaller size", "Higher power handling", "Simpler wiring"],
+    "answer": "Smaller size",
+    "explanation": "Surface-mount devices are compact and allow for denser circuit board designs."
+  },
+  {
+    "question": "What is the function of a crystal oscillator in electronics?",
+    "choices": ["Amplify signals", "Generate a stable frequency", "Rectify AC", "Filter noise"],
+    "answer": "Generate a stable frequency",
+    "explanation": "Crystal oscillators provide a highly stable clock signal for timing applications."
+  },
+  {
+    "question": "What does a potentiometer do?",
+    "choices": ["Measure current", "Adjust resistance", "Amplify voltage", "Store charge"],
+    "answer": "Adjust resistance",
+    "explanation": "A potentiometer is a variable resistor used to adjust voltage or current levels."
+  },
+  {
+    "question": "Which type of memory retains data only while power is supplied?",
+    "choices": ["ROM", "Flash memory", "RAM", "EPROM"],
+    "answer": "RAM",
+    "explanation": "RAM (Random Access Memory) is volatile and loses its data when power is removed."
+  },
+  {
+    "question": "What is the function of an electromechanical relay?",
+    "choices": ["Store energy", "Switch circuits", "Amplify signals", "Convert voltage"],
+    "answer": "Switch circuits",
+    "explanation": "Electromechanical relays use an electromagnet to open or close a circuit, thus switching it."
+  },
+  {
+    "question": "What is the purpose of a bypass capacitor?",
+    "choices": ["Increase voltage", "Filter noise", "Store energy", "Measure current"],
+    "answer": "Filter noise",
+    "explanation": "Bypass capacitors are used to filter out unwanted noise from power supplies."
+  },
+  {
+    "question": "Which device converts light into electrical current?",
+    "choices": ["LED", "Photodiode", "Transistor", "Diode"],
+    "answer": "Photodiode",
+    "explanation": "Photodiodes convert light energy into electrical current."
+  },
+  {
+    "question": "What is the typical voltage output of a standard USB port?",
+    "choices": ["3.3V", "5V", "9V", "12V"],
+    "answer": "5V",
+    "explanation": "Standard USB ports typically output 5 volts."
+  },
+  {
+    "question": "What does EMI stand for in electronics?",
+    "choices": ["Electro Magnetic Interference", "Electronic Mechanical Interaction", "Enhanced Magnetic Induction", "Electrostatic Magnetic Interference"],
+    "answer": "Electro Magnetic Interference",
+    "explanation": "EMI refers to electromagnetic interference that can disrupt electronic circuits."
+  },
+  {
+    "question": "What is the purpose of a decoupling capacitor?",
+    "choices": ["Store large amounts of energy", "Prevent voltage fluctuations", "Amplify signals", "Filter noise"],
+    "answer": "Prevent voltage fluctuations",
+    "explanation": "Decoupling capacitors help stabilize the voltage supply by reducing fluctuations."
+  },
+  {
+    "question": "Which component is primarily used to control timing in circuits?",
+    "choices": ["Resistor", "Capacitor", "Inductor", "Crystal oscillator"],
+    "answer": "Crystal oscillator",
+    "explanation": "Crystal oscillators provide precise timing signals in electronic circuits."
+  },
+  {
+    "question": "What does SPI stand for in electronics communication?",
+    "choices": ["Serial Peripheral Interface", "Single Processing Interface", "Standard Peripheral Integration", "Serial Processing Input"],
+    "answer": "Serial Peripheral Interface",
+    "explanation": "SPI is a communication protocol used for short-distance communication between devices."
+  },
+  {
+    "question": "What does I2C stand for in electronics communication?",
+    "choices": ["Inter-Integrated Circuit", "Interconnected Integrated Communication", "Input to Control", "Interface Integrated Circuit"],
+    "answer": "Inter-Integrated Circuit",
+    "explanation": "I2C is a serial communication protocol used for connecting low-speed peripherals."
+  },
+  {
+    "question": "What is the purpose of a buffer amplifier?",
+    "choices": ["Increase current drive", "Store charge", "Measure voltage", "Switch circuits"],
+    "answer": "Increase current drive",
+    "explanation": "Buffer amplifiers isolate circuit stages and provide additional current drive."
+  },
+  {
+    "question": "What does a Zener diode do?",
+    "choices": ["Block all current", "Conduct in reverse at a specific voltage", "Amplify signals", "Store energy"],
+    "answer": "Conduct in reverse at a specific voltage",
+    "explanation": "Zener diodes are used for voltage regulation by allowing current to flow in reverse once a specific voltage is reached."
+  },
+  {
+    "question": "What is the purpose of a current limiting resistor in an LED circuit?",
+    "choices": ["Increase brightness", "Prevent excessive current", "Store energy", "Amplify signals"],
+    "answer": "Prevent excessive current",
+    "explanation": "Current limiting resistors protect LEDs by preventing too much current from passing through them."
+  },
+  {
+    "question": "What unit is used to measure electrical power?",
+    "choices": ["Joule", "Watt", "Volt", "Ampere"],
+    "answer": "Watt",
+    "explanation": "Electrical power is measured in watts."
+  },
+  {
+    "question": "What is the primary purpose of an isolation transformer?",
+    "choices": ["Increase voltage", "Provide electrical isolation", "Amplify signals", "Convert DC to AC"],
+    "answer": "Provide electrical isolation",
+    "explanation": "Isolation transformers separate circuits to prevent electrical interference or shocks."
+  },
+  {
+    "question": "Which component is used to detect changes in light intensity?",
+    "choices": ["Phototransistor", "Diode", "LED", "Transistor"],
+    "answer": "Phototransistor",
+    "explanation": "Phototransistors detect light and convert it into an electrical signal."
+  },
+  {
+    "question": "What is the function of a voltage comparator?",
+    "choices": ["Compare two voltage levels", "Store energy", "Amplify current", "Regulate temperature"],
+    "answer": "Compare two voltage levels",
+    "explanation": "Voltage comparators compare two voltage inputs and output a digital signal based on which is higher."
+  },
+  {
+    "question": "What type of signals can an oscilloscope display?",
+    "choices": ["Digital only", "Analog only", "Both analog and digital", "Power supply"],
+    "answer": "Both analog and digital",
+    "explanation": "Oscilloscopes can display both analog and digital signals."
+  },
+  {
+    "question": "What does the term 'slew rate' refer to in op-amps?",
+    "choices": ["Speed of voltage change", "Maximum current output", "Input impedance", "Gain bandwidth product"],
+    "answer": "Speed of voltage change",
+    "explanation": "The slew rate is the maximum rate at which an op-amp's output can change, measured in volts per microsecond."
+  },
+  {
+    "question": "Which device is used to store a large amount of digital data permanently?",
+    "choices": ["RAM", "Hard Drive", "Cache", "EPROM"],
+    "answer": "Hard Drive",
+    "explanation": "Hard drives are used for non-volatile, permanent data storage."
+  },
+  {
+    "question": "What is the primary function of a microprocessor?",
+    "choices": ["Store data", "Process instructions", "Amplify signals", "Regulate voltage"],
+    "answer": "Process instructions",
+    "explanation": "A microprocessor executes instructions and processes data in a computer system."
+  },
+  {
+    "question": "What does a voltage booster circuit do?",
+    "choices": ["Decrease voltage", "Increase voltage", "Stabilize voltage", "Invert voltage"],
+    "answer": "Increase voltage",
+    "explanation": "Voltage booster circuits step up the input voltage to a higher level."
+  },
+  {
+    "question": "What is the purpose of a buck converter?",
+    "choices": ["Increase voltage", "Decrease voltage", "Store charge", "Switch circuits"],
+    "answer": "Decrease voltage",
+    "explanation": "Buck converters are DC-DC converters that efficiently reduce voltage."
+  },
+  {
+    "question": "What is the main function of a flyback diode in a relay circuit?",
+    "choices": ["Amplify signals", "Absorb voltage spikes", "Store energy", "Regulate current"],
+    "answer": "Absorb voltage spikes",
+    "explanation": "Flyback diodes protect circuits by absorbing voltage spikes generated when a relay coil is de-energized."
+  },
+  {
+    "question": "Which technology is used for short-range wireless communication?",
+    "choices": ["Bluetooth", "Wi-Fi", "Infrared", "All of the above"],
+    "answer": "All of the above",
+    "explanation": "Bluetooth, Wi-Fi, and infrared are all technologies used for short-range wireless communication."
+  },
+  {
+    "question": "What does the term 'impedance matching' refer to?",
+    "choices": ["Equalizing voltage", "Maximizing power transfer", "Reducing noise", "Increasing gain"],
+    "answer": "Maximizing power transfer",
+    "explanation": "Impedance matching is used to ensure maximum power transfer between components."
+  },
+  {
+    "question": "Which components are commonly used to create filter circuits?",
+    "choices": ["Capacitors and inductors", "Resistors and diodes", "Transistors and op-amps", "None of the above"],
+    "answer": "Capacitors and inductors",
+    "explanation": "Capacitors and inductors are used together to create filters that allow or block specific frequencies."
+  },
+  {
+    "question": "What is the role of a signal generator?",
+    "choices": ["Measure current", "Generate electronic signals", "Store charge", "Regulate voltage"],
+    "answer": "Generate electronic signals",
+    "explanation": "Signal generators produce electronic signals for testing and troubleshooting circuits."
+  },
+  {
+    "question": "What does the term 'digital logic' refer to?",
+    "choices": ["Analog signal processing", "Binary state circuits", "Power amplification", "Frequency modulation"],
+    "answer": "Binary state circuits",
+    "explanation": "Digital logic involves circuits that use binary signals (0 and 1) to process information."
+  },
+  {
+    "question": "Which component is essential for clock generation in digital circuits?",
+    "choices": ["Crystal oscillator", "Resistor", "Capacitor", "Inductor"],
+    "answer": "Crystal oscillator",
+    "explanation": "Crystal oscillators provide precise timing signals necessary for clock generation."
+  },
+  {
+    "question": "What is the function of a logic gate?",
+    "choices": ["Store data", "Perform basic logical operations", "Amplify signals", "Convert AC to DC"],
+    "answer": "Perform basic logical operations",
+    "explanation": "Logic gates perform operations like AND, OR, and NOT on binary inputs."
+  },
+  {
+    "question": "Which of the following is a type of non-volatile memory?",
+    "choices": ["RAM", "ROM", "Cache", "Registers"],
+    "answer": "ROM",
+    "explanation": "ROM is non-volatile memory, retaining its data even when power is removed."
+  },
+  {
+    "question": "What is the main purpose of using an isolation amplifier?",
+    "choices": ["Increase voltage", "Provide electrical isolation", "Amplify weak signals", "Store data"],
+    "answer": "Provide electrical isolation",
+    "explanation": "Isolation amplifiers separate sections of a circuit electrically to prevent interference."
+  },
+  {
+    "question": "What does ESD stand for?",
+    "choices": ["Electrostatic Discharge", "Electronic Signal Distortion", "Electromagnetic Sensitivity Device", "Energy Storage Device"],
+    "answer": "Electrostatic Discharge",
+    "explanation": "ESD (Electrostatic Discharge) can damage electronic components if not properly managed."
+  },
+  {
+    "question": "Which component is used to temporarily store data in digital circuits?",
+    "choices": ["Capacitor", "Flip-Flop", "Transistor", "Diode"],
+    "answer": "Flip-Flop",
+    "explanation": "Flip-flops are used as basic memory elements to store binary data."
+  },
+  {
+    "question": "What is the purpose of a pull-up resistor?",
+    "choices": ["Increase current", "Ensure a default high voltage level", "Decrease resistance", "Filter noise"],
+    "answer": "Ensure a default high voltage level",
+    "explanation": "Pull-up resistors ensure that a digital input is at a high voltage level when not actively driven."
+  },
+  {
+    "question": "What does the term 'logic level' refer to?",
+    "choices": ["Voltage levels representing binary values", "Current levels in a circuit", "Resistance values", "Frequency ranges"],
+    "answer": "Voltage levels representing binary values",
+    "explanation": "Logic levels define the voltage thresholds that represent binary 0 and 1 in digital circuits."
+  },
+  {
+    "question": "What is the function of an analog multiplexer?",
+    "choices": ["Select one of several analog inputs", "Amplify digital signals", "Store energy", "Convert DC to AC"],
+    "answer": "Select one of several analog inputs",
+    "explanation": "An analog multiplexer selects one of multiple analog inputs and forwards it to a single output."
+  },
+  {
+    "question": "What does the term 'noise margin' refer to in digital circuits?",
+    "choices": ["Maximum allowable noise voltage", "Difference between logic levels and noise", "Amplification of noise", "Minimum voltage for operation"],
+    "answer": "Difference between logic levels and noise",
+    "explanation": "Noise margin is the tolerance of a digital circuit to noise without misinterpreting the signal."
+  },
+  {
+    "question": "What is the role of a current mirror in analog circuits?",
+    "choices": ["Match current in different branches", "Amplify voltage", "Store charge", "Filter noise"],
+    "answer": "Match current in different branches",
+    "explanation": "Current mirrors replicate a current from one branch to another, ensuring consistent current flow."
+  },
+  {
+    "question": "Which component is used to detect temperature changes?",
+    "choices": ["Thermistor", "Photodiode", "Capacitor", "Inductor"],
+    "answer": "Thermistor",
+    "explanation": "Thermistors change their resistance with temperature and are used as temperature sensors."
+  },
+  {
+    "question": "What is the function of a Schmitt trigger?",
+    "choices": ["Provide hysteresis in digital signals", "Amplify weak signals", "Filter noise", "Convert AC to DC"],
+    "answer": "Provide hysteresis in digital signals",
+    "explanation": "Schmitt triggers introduce hysteresis to clean up noisy signals and provide stable transitions."
+  },
+  {
+    "question": "Which device protects circuits from overvoltage spikes?",
+    "choices": ["Fuses", "Varistors", "Relays", "Capacitors"],
+    "answer": "Varistors",
+    "explanation": "Varistors protect circuits by clamping and absorbing high-voltage spikes."
+  },
+  {
+    "question": "What is the purpose of a logic analyzer?",
+    "choices": ["Generate digital signals", "Analyze digital signals", "Store data", "Amplify voltage"],
+    "answer": "Analyze digital signals",
+    "explanation": "Logic analyzers capture and display multiple digital signals for troubleshooting and analysis."
+  },
+  {
+    "question": "What is the function of an RF amplifier?",
+    "choices": ["Amplify radio frequency signals", "Convert AC to DC", "Store energy", "Filter noise"],
+    "answer": "Amplify radio frequency signals",
+    "explanation": "RF amplifiers boost the strength of radio frequency signals for transmission or reception."
+  },
+  {
+    "question": "Which device converts analog signals into digital form?",
+    "choices": ["DAC", "ADC", "Op-Amp", "Transistor"],
+    "answer": "ADC",
+    "explanation": "An Analog-to-Digital Converter (ADC) converts continuous analog signals into digital data."
+  },
+  {
+    "question": "What is the primary function of a power supply in electronics?",
+    "choices": ["Amplify signals", "Provide electrical power", "Store data", "Measure resistance"],
+    "answer": "Provide electrical power",
+    "explanation": "Power supplies convert and regulate voltage to power electronic devices."
+  },
+  {
+    "question": "What is the purpose of a charge pump circuit?",
+    "choices": ["Increase voltage", "Decrease voltage", "Store energy", "Amplify current"],
+    "answer": "Increase voltage",
+    "explanation": "Charge pump circuits use capacitors to boost voltage in DC circuits."
+  },
+  {
+    "question": "What is a common characteristic of digital circuits?",
+    "choices": ["Analog signals", "Binary operation", "Continuous voltage levels", "High power consumption"],
+    "answer": "Binary operation",
+    "explanation": "Digital circuits operate using binary values (0 and 1) to represent data."
+  },
+  {
+    "question": "Which component is used to smooth out voltage fluctuations in power supplies?",
+    "choices": ["Transformer", "Capacitor", "Resistor", "Inductor"],
+    "answer": "Capacitor",
+    "explanation": "Capacitors are used to filter and smooth out voltage ripples in power supplies."
+  },
+  {
+    "question": "What does the term 'RC circuit' refer to?",
+    "choices": ["Resistor-Capacitor circuit", "Resistor-Condenser circuit", "Rectifier-Capacitor circuit", "Resistor-Charger circuit"],
+    "answer": "Resistor-Capacitor circuit",
+    "explanation": "An RC circuit consists of a resistor and a capacitor, used in filtering and timing applications."
+  },
+  {
+    "question": "What is the function of an H-bridge circuit?",
+    "choices": ["Control the direction of a motor", "Amplify signals", "Store energy", "Convert AC to DC"],
+    "answer": "Control the direction of a motor",
+    "explanation": "H-bridge circuits allow current to flow in either direction through a motor, controlling its rotation."
+  },
+  {
+    "question": "What is a common application of a microcontroller in electronics?",
+    "choices": ["Perform complex computations", "Control devices and sensors", "Store large amounts of data", "Generate high voltage"],
+    "answer": "Control devices and sensors",
+    "explanation": "Microcontrollers are widely used to manage and control devices and sensor inputs in embedded systems."
+  },
+  {
+    "question": "What does the term 'frequency' refer to in electronics?",
+    "choices": ["The number of cycles per second", "The voltage level", "The current flow", "The resistance"],
+    "answer": "The number of cycles per second",
+    "explanation": "Frequency is the number of cycles per second in a periodic signal, measured in hertz (Hz)."
+  },
+  {
+    "question": "What is the function of a voltage follower?",
+    "choices": ["Amplify voltage", "Provide a buffer with unity gain", "Convert AC to DC", "Store charge"],
+    "answer": "Provide a buffer with unity gain",
+    "explanation": "A voltage follower outputs the same voltage as its input, acting as a buffer between circuits."
+  },
+  {
+    "question": "Which type of power conversion is used to convert AC to DC?",
+    "choices": ["Rectification", "Inversion", "Modulation", "Oscillation"],
+    "answer": "Rectification",
+    "explanation": "Rectification is the process of converting alternating current (AC) into direct current (DC)."
+  }
+]

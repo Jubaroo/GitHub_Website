@@ -1,0 +1,1102 @@
+[
+  {
+    "question": "What is the primary function of the engine oil filter?",
+    "choices": [
+      "Lubricate engine parts",
+      "Remove contaminants",
+      "Cool the engine",
+      "Increase fuel efficiency"
+    ],
+    "answer": "Remove contaminants",
+    "explanation": "The engine oil filter removes contaminants from the engine oil to ensure proper lubrication."
+  },
+  {
+    "question": "Which tool is used to measure tire tread depth?",
+    "choices": [
+      "Torque wrench",
+      "Micrometer",
+      "Tread gauge",
+      "Multimeter"
+    ],
+    "answer": "Tread gauge",
+    "explanation": "A tread gauge is used to measure the depth of the tire tread."
+  },
+  {
+    "question": "What does OBD stand for in automotive diagnostics?",
+    "choices": [
+      "On-Board Diagnostics",
+      "Operational Brake Device",
+      "Oil Balance Detector",
+      "Optical Brake Detector"
+    ],
+    "answer": "On-Board Diagnostics",
+    "explanation": "OBD stands for On-Board Diagnostics, a system used to monitor vehicle performance."
+  },
+  {
+    "question": "What component is responsible for converting the engine's mechanical energy into electrical energy?",
+    "choices": [
+      "Battery",
+      "Alternator",
+      "Starter",
+      "Ignition coil"
+    ],
+    "answer": "Alternator",
+    "explanation": "The alternator converts mechanical energy from the engine into electrical energy to power the vehicle's systems and charge the battery."
+  },
+  {
+    "question": "Which part is primarily responsible for reducing exhaust emissions?",
+    "choices": [
+      "Fuel injection system",
+      "Catalytic converter",
+      "Exhaust manifold",
+      "Air filter"
+    ],
+    "answer": "Catalytic converter",
+    "explanation": "The catalytic converter reduces harmful emissions by converting exhaust gases into less harmful substances."
+  },
+  {
+    "question": "What is the purpose of a spark plug in an internal combustion engine?",
+    "choices": [
+      "Lubricate engine parts",
+      "Ignite the air-fuel mixture",
+      "Cool the engine",
+      "Filter the fuel"
+    ],
+    "answer": "Ignite the air-fuel mixture",
+    "explanation": "The spark plug ignites the air-fuel mixture in the combustion chamber, initiating the combustion process."
+  },
+  {
+    "question": "Which tool is used to tighten or loosen nuts and bolts?",
+    "choices": [
+      "Hammer",
+      "Screwdriver",
+      "Wrench",
+      "Pliers"
+    ],
+    "answer": "Wrench",
+    "explanation": "A wrench is used to tighten or loosen nuts and bolts."
+  },
+  {
+    "question": "What is the function of a vehicle's battery?",
+    "choices": [
+      "Store fuel",
+      "Provide electrical power",
+      "Cool the engine",
+      "Regulate air flow"
+    ],
+    "answer": "Provide electrical power",
+    "explanation": "The battery stores and provides electrical power to start the engine and run the vehicle's electrical systems."
+  },
+  {
+    "question": "Which part of the braking system converts kinetic energy into heat energy?",
+    "choices": [
+      "Brake pads",
+      "Brake lines",
+      "Brake rotors",
+      "Calipers"
+    ],
+    "answer": "Brake rotors",
+    "explanation": "Brake rotors dissipate kinetic energy as heat when the brakes are applied."
+  },
+  {
+    "question": "What type of tool is used to diagnose electronic systems in vehicles?",
+    "choices": [
+      "Diagnostic scanner",
+      "Torque wrench",
+      "Hydraulic jack",
+      "Pry bar"
+    ],
+    "answer": "Diagnostic scanner",
+    "explanation": "A diagnostic scanner is used to read error codes and diagnose electronic systems in vehicles."
+  },
+  {
+    "question": "What does ABS stand for in automotive safety systems?",
+    "choices": [
+      "Automatic Braking System",
+      "Anti-lock Braking System",
+      "Automated Balance System",
+      "Anti-skid Brake System"
+    ],
+    "answer": "Anti-lock Braking System",
+    "explanation": "ABS stands for Anti-lock Braking System, which prevents wheel lockup during braking."
+  },
+  {
+    "question": "Which component in the cooling system helps dissipate heat from the engine?",
+    "choices": [
+      "Radiator",
+      "Fuel pump",
+      "Oil filter",
+      "Alternator"
+    ],
+    "answer": "Radiator",
+    "explanation": "The radiator dissipates heat from the engine coolant."
+  },
+  {
+    "question": "What is the primary function of a fuel injector?",
+    "choices": [
+      "Filter impurities",
+      "Deliver fuel into the combustion chamber",
+      "Ignite the fuel",
+      "Regulate engine temperature"
+    ],
+    "answer": "Deliver fuel into the combustion chamber",
+    "explanation": "Fuel injectors deliver fuel directly into the combustion chamber for efficient combustion."
+  },
+  {
+    "question": "Which tool is typically used to remove nuts from wheels?",
+    "choices": [
+      "Screwdriver",
+      "Impact wrench",
+      "Pliers",
+      "Torque wrench"
+    ],
+    "answer": "Impact wrench",
+    "explanation": "An impact wrench is commonly used to remove lug nuts quickly from wheels."
+  },
+  {
+    "question": "What does the term 'tire rotation' refer to?",
+    "choices": [
+      "Replacing tires",
+      "Balancing tires",
+      "Changing the position of tires on a vehicle",
+      "Inflating tires"
+    ],
+    "answer": "Changing the position of tires on a vehicle",
+    "explanation": "Tire rotation involves moving tires to different positions on a vehicle to ensure even tire wear."
+  },
+  {
+    "question": "Which system uses a belt or chain to drive components like the alternator and water pump?",
+    "choices": [
+      "Exhaust system",
+      "Accessory drive system",
+      "Brake system",
+      "Suspension system"
+    ],
+    "answer": "Accessory drive system",
+    "explanation": "The accessory drive system uses a belt or chain to operate components such as the alternator and water pump."
+  },
+  {
+    "question": "What is the purpose of the vehicle's oil pan?",
+    "choices": [
+      "Store engine oil",
+      "Cool engine parts",
+      "Filter contaminants",
+      "Contain the exhaust gases"
+    ],
+    "answer": "Store engine oil",
+    "explanation": "The oil pan stores the engine oil at the bottom of the engine."
+  },
+  {
+    "question": "Which tool is used to measure the torque applied to a bolt?",
+    "choices": [
+      "Torque wrench",
+      "Screwdriver",
+      "Hammer",
+      "Pliers"
+    ],
+    "answer": "Torque wrench",
+    "explanation": "A torque wrench is used to measure and apply a specific amount of torque to a fastener."
+  },
+  {
+    "question": "What does the term 'suspension' refer to in automotive terms?",
+    "choices": [
+      "Engine system",
+      "Fuel system",
+      "Chassis system",
+      "System of springs and shock absorbers"
+    ],
+    "answer": "System of springs and shock absorbers",
+    "explanation": "Suspension is the system of springs and shock absorbers that supports the vehicle and improves ride quality."
+  },
+  {
+    "question": "Which component in the exhaust system reduces noise?",
+    "choices": [
+      "Catalytic converter",
+      "Muffler",
+      "Exhaust pipe",
+      "Oxygen sensor"
+    ],
+    "answer": "Muffler",
+    "explanation": "The muffler reduces the noise produced by the exhaust gases."
+  },
+  {
+    "question": "Which tool is used for measuring the voltage of a battery?",
+    "choices": [
+      "Multimeter",
+      "Hydrometer",
+      "Stethoscope",
+      "Torque wrench"
+    ],
+    "answer": "Multimeter",
+    "explanation": "A multimeter is used to measure voltage, current, and resistance in electrical circuits."
+  },
+  {
+    "question": "What is the primary function of a car's air filter?",
+    "choices": [
+      "Cool the engine",
+      "Prevent dust and debris from entering the engine",
+      "Increase fuel efficiency",
+      "Reduce exhaust emissions"
+    ],
+    "answer": "Prevent dust and debris from entering the engine",
+    "explanation": "The air filter cleans the air entering the engine, preventing dust and debris from causing damage."
+  },
+  {
+    "question": "What does the term 'alignment' refer to in auto maintenance?",
+    "choices": [
+      "Engine tuning",
+      "Adjusting the position of the wheels",
+      "Changing the oil",
+      "Replacing brake pads"
+    ],
+    "answer": "Adjusting the position of the wheels",
+    "explanation": "Alignment involves adjusting the angles of the wheels to ensure proper tire wear and handling."
+  },
+  {
+    "question": "Which component regulates the voltage output in a vehicle's charging system?",
+    "choices": [
+      "Battery",
+      "Alternator",
+      "Voltage regulator",
+      "Starter"
+    ],
+    "answer": "Voltage regulator",
+    "explanation": "The voltage regulator controls the output from the alternator to protect the battery and electrical system."
+  },
+  {
+    "question": "What is the purpose of a catalytic converter's oxygen sensor?",
+    "choices": [
+      "Measure engine oil levels",
+      "Monitor exhaust gas composition",
+      "Control fuel injection timing",
+      "Regulate engine temperature"
+    ],
+    "answer": "Monitor exhaust gas composition",
+    "explanation": "The oxygen sensor monitors the exhaust gas composition to help optimize the air-fuel mixture."
+  },
+  {
+    "question": "Which tool is used to lift a vehicle off the ground for maintenance?",
+    "choices": [
+      "Creeper",
+      "Jack",
+      "Pry bar",
+      "Impact wrench"
+    ],
+    "answer": "Jack",
+    "explanation": "A jack is used to lift a vehicle off the ground for maintenance or tire changes."
+  },
+  {
+    "question": "What is the function of brake fluid in a vehicle?",
+    "choices": [
+      "Lubricate brake components",
+      "Transfer force to the brake pads",
+      "Cool the brake system",
+      "Increase tire grip"
+    ],
+    "answer": "Transfer force to the brake pads",
+    "explanation": "Brake fluid transmits the force applied to the brake pedal to the brake pads, enabling braking."
+  },
+  {
+    "question": "Which component of the engine is responsible for compressing the air-fuel mixture?",
+    "choices": [
+      "Crankshaft",
+      "Piston",
+      "Camshaft",
+      "Valve"
+    ],
+    "answer": "Piston",
+    "explanation": "Pistons compress the air-fuel mixture in the combustion chamber before ignition."
+  },
+  {
+    "question": "What does the acronym ECU stand for in automotive systems?",
+    "choices": [
+      "Engine Control Unit",
+      "Electronic Control Unit",
+      "Electrical Control Unit",
+      "Engine Cooling Unit"
+    ],
+    "answer": "Engine Control Unit",
+    "explanation": "ECU stands for Engine Control Unit, which manages engine functions and performance."
+  },
+  {
+    "question": "What is the purpose of the transmission in a vehicle?",
+    "choices": [
+      "Regulate fuel injection",
+      "Control engine temperature",
+      "Change gear ratios",
+      "Filter engine oil"
+    ],
+    "answer": "Change gear ratios",
+    "explanation": "The transmission adjusts gear ratios to provide the appropriate torque and speed for the vehicle."
+  },
+  {
+    "question": "Which type of transmission uses a fluid coupling instead of a mechanical clutch?",
+    "choices": [
+      "Manual transmission",
+      "Automatic transmission",
+      "Continuously variable transmission (CVT)",
+      "Dual-clutch transmission"
+    ],
+    "answer": "Automatic transmission",
+    "explanation": "Automatic transmissions typically use a fluid coupling (torque converter) to transfer power from the engine to the drivetrain."
+  },
+  {
+    "question": "What is the role of the radiator cap in a vehicle's cooling system?",
+    "choices": [
+      "Control coolant pressure",
+      "Filter coolant",
+      "Pump coolant",
+      "Measure engine temperature"
+    ],
+    "answer": "Control coolant pressure",
+    "explanation": "The radiator cap maintains proper coolant pressure and prevents overheating."
+  },
+  {
+    "question": "What does the term 'check engine light' indicate?",
+    "choices": [
+      "Low tire pressure",
+      "Engine malfunction",
+      "Low fuel level",
+      "Flat battery"
+    ],
+    "answer": "Engine malfunction",
+    "explanation": "The check engine light signals that there is an issue with the engine or its components."
+  },
+  {
+    "question": "Which component reduces friction between moving parts in an engine?",
+    "choices": [
+      "Coolant",
+      "Engine oil",
+      "Transmission fluid",
+      "Brake fluid"
+    ],
+    "answer": "Engine oil",
+    "explanation": "Engine oil lubricates moving parts to reduce friction and wear."
+  },
+  {
+    "question": "What is the function of the serpentine belt in a vehicle?",
+    "choices": [
+      "Drive the engine's water pump, alternator, and other accessories",
+      "Control exhaust flow",
+      "Operate the brakes",
+      "Regulate fuel pressure"
+    ],
+    "answer": "Drive the engine's water pump, alternator, and other accessories",
+    "explanation": "The serpentine belt drives multiple peripheral devices in the engine."
+  },
+  {
+    "question": "Which tool is used to remove a car battery from its tray?",
+    "choices": [
+      "Battery terminal puller",
+      "Socket wrench",
+      "Pliers",
+      "Battery charger"
+    ],
+    "answer": "Socket wrench",
+    "explanation": "A socket wrench is commonly used to remove the bolts holding a car battery in place."
+  },
+  {
+    "question": "What does a hydrometer measure in an automotive battery?",
+    "choices": [
+      "Voltage",
+      "Acid concentration",
+      "Temperature",
+      "Resistance"
+    ],
+    "answer": "Acid concentration",
+    "explanation": "A hydrometer measures the specific gravity of battery acid, indicating its charge level."
+  },
+  {
+    "question": "Which component prevents engine overheating by circulating coolant?",
+    "choices": [
+      "Fuel pump",
+      "Water pump",
+      "Oil pump",
+      "Air pump"
+    ],
+    "answer": "Water pump",
+    "explanation": "The water pump circulates coolant through the engine and radiator to prevent overheating."
+  },
+  {
+    "question": "What is the primary function of the timing belt in an engine?",
+    "choices": [
+      "Drive the alternator",
+      "Maintain proper engine timing",
+      "Pump fuel",
+      "Control exhaust emissions"
+    ],
+    "answer": "Maintain proper engine timing",
+    "explanation": "The timing belt synchronizes the rotation of the crankshaft and camshaft for proper engine operation."
+  },
+  {
+    "question": "Which component in the braking system applies pressure to the brake pads?",
+    "choices": [
+      "Brake caliper",
+      "Brake rotor",
+      "Brake hose",
+      "Brake light"
+    ],
+    "answer": "Brake caliper",
+    "explanation": "Brake calipers apply pressure to the brake pads, pressing them against the rotors."
+  },
+  {
+    "question": "What does the acronym RPM stand for?",
+    "choices": [
+      "Revolutions Per Minute",
+      "Rotations Per Meter",
+      "Revolutions Per Meter",
+      "Rotations Per Minute"
+    ],
+    "answer": "Revolutions Per Minute",
+    "explanation": "RPM stands for Revolutions Per Minute, indicating the speed at which an engine or wheel rotates."
+  },
+  {
+    "question": "What is the primary purpose of a vehicle's exhaust manifold?",
+    "choices": [
+      "Distribute fuel",
+      "Collect exhaust gases",
+      "Cool the engine",
+      "Filter air"
+    ],
+    "answer": "Collect exhaust gases",
+    "explanation": "The exhaust manifold collects exhaust gases from the engine's cylinders and directs them to the exhaust system."
+  },
+  {
+    "question": "Which fluid is responsible for lubricating the moving parts of a transmission?",
+    "choices": [
+      "Brake fluid",
+      "Transmission fluid",
+      "Engine oil",
+      "Coolant"
+    ],
+    "answer": "Transmission fluid",
+    "explanation": "Transmission fluid lubricates the gears and other moving parts within the transmission."
+  },
+  {
+    "question": "What tool is commonly used to remove old gasket material from an engine block?",
+    "choices": [
+      "Wire brush",
+      "Screwdriver",
+      "Gasket scraper",
+      "Pliers"
+    ],
+    "answer": "Gasket scraper",
+    "explanation": "A gasket scraper is used to remove old gasket material from engine surfaces before applying a new gasket."
+  },
+  {
+    "question": "Which system in a vehicle is primarily responsible for controlling engine emissions?",
+    "choices": [
+      "Cooling system",
+      "Exhaust system",
+      "Fuel system",
+      "Ignition system"
+    ],
+    "answer": "Exhaust system",
+    "explanation": "The exhaust system, including components like the catalytic converter, helps control engine emissions."
+  },
+  {
+    "question": "What is the purpose of the vehicle's suspension bushings?",
+    "choices": [
+      "Increase fuel efficiency",
+      "Reduce vibrations and noise",
+      "Enhance engine performance",
+      "Improve tire traction"
+    ],
+    "answer": "Reduce vibrations and noise",
+    "explanation": "Suspension bushings absorb shocks and reduce vibrations for a smoother ride."
+  },
+  {
+    "question": "What does the term 'wheel balancing' refer to?",
+    "choices": [
+      "Equalizing tire pressure",
+      "Ensuring even weight distribution around a wheel",
+      "Rotating tires",
+      "Replacing worn tires"
+    ],
+    "answer": "Ensuring even weight distribution around a wheel",
+    "explanation": "Wheel balancing ensures that the weight is evenly distributed around the wheel to prevent vibrations."
+  },
+  {
+    "question": "Which component monitors the oxygen level in the exhaust gases?",
+    "choices": [
+      "Mass airflow sensor",
+      "Oxygen sensor",
+      "Throttle position sensor",
+      "Engine coolant sensor"
+    ],
+    "answer": "Oxygen sensor",
+    "explanation": "The oxygen sensor monitors the oxygen level in the exhaust, helping to optimize fuel mixture."
+  },
+  {
+    "question": "What is the function of a vehicle's strut?",
+    "choices": [
+      "Support the vehicle's weight",
+      "Control engine temperature",
+      "Filter air",
+      "Increase tire pressure"
+    ],
+    "answer": "Support the vehicle's weight",
+    "explanation": "Struts are part of the suspension system and help support the weight of the vehicle while absorbing shocks."
+  },
+  {
+    "question": "Which tool is used to measure the thickness of brake pads?",
+    "choices": [
+      "Caliper",
+      "Micrometer",
+      "Brake gauge",
+      "Tire pressure gauge"
+    ],
+    "answer": "Micrometer",
+    "explanation": "A micrometer or a specialized brake pad gauge is used to measure the thickness of brake pads."
+  },
+  {
+    "question": "What is the role of a vehicle's drive shaft?",
+    "choices": [
+      "Transfer power from the transmission to the wheels",
+      "Cool the engine",
+      "Filter exhaust gases",
+      "Store electrical energy"
+    ],
+    "answer": "Transfer power from the transmission to the wheels",
+    "explanation": "The drive shaft transmits power from the transmission to the vehicle's wheels."
+  },
+  {
+    "question": "Which part of the vehicle connects the engine to the transmission?",
+    "choices": [
+      "Clutch",
+      "Alternator",
+      "Radiator",
+      "Battery"
+    ],
+    "answer": "Clutch",
+    "explanation": "In manual transmissions, the clutch connects the engine to the transmission, allowing for smooth gear changes."
+  },
+  {
+    "question": "What is the purpose of a vehicle's power steering system?",
+    "choices": [
+      "Increase fuel efficiency",
+      "Assist in steering by reducing effort",
+      "Improve brake performance",
+      "Control engine temperature"
+    ],
+    "answer": "Assist in steering by reducing effort",
+    "explanation": "Power steering uses hydraulic or electric assistance to reduce the effort needed to steer the vehicle."
+  },
+  {
+    "question": "Which component regulates the amount of air entering the engine?",
+    "choices": [
+      "Throttle body",
+      "Fuel injector",
+      "Air filter",
+      "Exhaust manifold"
+    ],
+    "answer": "Throttle body",
+    "explanation": "The throttle body controls the air flow into the engine, affecting engine speed and power."
+  },
+  {
+    "question": "What is the primary function of a vehicle's muffler?",
+    "choices": [
+      "Increase engine power",
+      "Reduce exhaust noise",
+      "Filter exhaust gases",
+      "Enhance fuel efficiency"
+    ],
+    "answer": "Reduce exhaust noise",
+    "explanation": "The muffler reduces the noise produced by the exhaust system."
+  },
+  {
+    "question": "Which tool is used to check the compression in an engine's cylinders?",
+    "choices": [
+      "Compression tester",
+      "Torque wrench",
+      "Multimeter",
+      "Hydrometer"
+    ],
+    "answer": "Compression tester",
+    "explanation": "A compression tester measures the compression in each cylinder, indicating engine health."
+  },
+  {
+    "question": "What does the term 'scavenge pump' refer to in a diesel engine?",
+    "choices": [
+      "A pump that recirculates oil",
+      "A pump that removes air from the fuel system",
+      "A pump that supplies air to the engine",
+      "A pump that helps remove exhaust gases"
+    ],
+    "answer": "A pump that removes air from the fuel system",
+    "explanation": "In some diesel engines, a scavenge pump is used to remove air from the fuel system to improve efficiency."
+  },
+  {
+    "question": "What is the function of the thermostat in an automotive cooling system?",
+    "choices": [
+      "Control engine speed",
+      "Maintain engine temperature",
+      "Filter coolant",
+      "Drive the water pump"
+    ],
+    "answer": "Maintain engine temperature",
+    "explanation": "The thermostat regulates coolant flow to maintain the engine at its optimal operating temperature."
+  },
+  {
+    "question": "Which component helps to cushion impacts and vibrations in a vehicle?",
+    "choices": [
+      "Shock absorber",
+      "Fuel injector",
+      "Timing belt",
+      "Radiator"
+    ],
+    "answer": "Shock absorber",
+    "explanation": "Shock absorbers dampen the impact of road irregularities, improving ride quality."
+  },
+  {
+    "question": "What is the primary purpose of engine coolant?",
+    "choices": [
+      "Lubricate engine parts",
+      "Prevent overheating",
+      "Reduce exhaust emissions",
+      "Increase engine power"
+    ],
+    "answer": "Prevent overheating",
+    "explanation": "Engine coolant helps absorb and dissipate heat to prevent the engine from overheating."
+  },
+  {
+    "question": "Which part of a vehicle converts chemical energy in fuel to mechanical energy?",
+    "choices": [
+      "Engine",
+      "Transmission",
+      "Differential",
+      "Exhaust system"
+    ],
+    "answer": "Engine",
+    "explanation": "The engine burns fuel to convert chemical energy into mechanical energy."
+  },
+  {
+    "question": "What is the function of a vehicle's drive belt?",
+    "choices": [
+      "Drive the engine's accessories",
+      "Control engine temperature",
+      "Regulate fuel pressure",
+      "Balance the tires"
+    ],
+    "answer": "Drive the engine's accessories",
+    "explanation": "The drive belt powers accessories such as the alternator, water pump, and power steering pump."
+  },
+  {
+    "question": "Which tool is used to remove stubborn bolts that are rusted in place?",
+    "choices": [
+      "Breaker bar",
+      "Screwdriver",
+      "Pry bar",
+      "Hammer"
+    ],
+    "answer": "Breaker bar",
+    "explanation": "A breaker bar provides extra leverage to loosen rusted or stuck bolts."
+  },
+  {
+    "question": "What does the term 'wheel alignment' ensure?",
+    "choices": [
+      "Even tire wear and proper handling",
+      "Increased engine power",
+      "Reduced fuel consumption",
+      "Enhanced braking performance"
+    ],
+    "answer": "Even tire wear and proper handling",
+    "explanation": "Wheel alignment ensures that the wheels are correctly positioned to promote even tire wear and optimal handling."
+  },
+  {
+    "question": "Which component prevents the brake pads from overheating during use?",
+    "choices": [
+      "Brake rotor",
+      "Brake caliper",
+      "Brake pad shim",
+      "Brake fluid"
+    ],
+    "answer": "Brake pad shim",
+    "explanation": "Brake pad shims help reduce heat transfer and prevent overheating of the brake pads."
+  },
+  {
+    "question": "What is the primary function of the transmission fluid cooler?",
+    "choices": [
+      "Lubricate the engine",
+      "Cool the transmission fluid",
+      "Filter contaminants",
+      "Increase gear ratios"
+    ],
+    "answer": "Cool the transmission fluid",
+    "explanation": "The transmission fluid cooler helps dissipate heat from the transmission fluid to maintain optimal operating temperature."
+  },
+  {
+    "question": "Which device is used to test the battery's cold cranking amps?",
+    "choices": [
+      "Multimeter",
+      "Battery tester",
+      "Hydrometer",
+      "Oscilloscope"
+    ],
+    "answer": "Battery tester",
+    "explanation": "A battery tester is used to measure the cold cranking amps, indicating the battery's ability to start an engine in cold conditions."
+  },
+  {
+    "question": "What does a tire pressure monitoring system (TPMS) do?",
+    "choices": [
+      "Measures tire tread depth",
+      "Monitors tire inflation levels",
+      "Balances the wheels",
+      "Aligns the wheels"
+    ],
+    "answer": "Monitors tire inflation levels",
+    "explanation": "A TPMS alerts the driver when tire pressure is low, ensuring safe driving conditions."
+  },
+  {
+    "question": "What is the role of the vehicle's wheel hub?",
+    "choices": [
+      "Connect the wheel to the axle",
+      "Drive the engine",
+      "Control brake pressure",
+      "House the wheel bearings"
+    ],
+    "answer": "House the wheel bearings",
+    "explanation": "The wheel hub houses the bearings that allow the wheel to rotate smoothly."
+  },
+  {
+    "question": "Which tool is used to remove a worn-out timing belt?",
+    "choices": [
+      "Timing belt tool",
+      "Socket wrench",
+      "Screwdriver",
+      "Pry bar"
+    ],
+    "answer": "Timing belt tool",
+    "explanation": "A timing belt tool assists in removing and installing timing belts without damaging engine components."
+  },
+  {
+    "question": "What is the primary function of a vehicle's oil pan gasket?",
+    "choices": [
+      "Seal the oil pan to prevent leaks",
+      "Increase oil capacity",
+      "Filter contaminants",
+      "Regulate engine temperature"
+    ],
+    "answer": "Seal the oil pan to prevent leaks",
+    "explanation": "The oil pan gasket ensures a proper seal between the oil pan and the engine block to prevent oil leaks."
+  },
+  {
+    "question": "Which component in an engine converts reciprocating motion to rotational motion?",
+    "choices": [
+      "Piston",
+      "Crankshaft",
+      "Camshaft",
+      "Valve"
+    ],
+    "answer": "Crankshaft",
+    "explanation": "The crankshaft converts the reciprocating motion of the pistons into rotational motion to drive the vehicle."
+  },
+  {
+    "question": "What is the function of the ignition coil in a vehicle?",
+    "choices": [
+      "Generate high voltage for spark plugs",
+      "Regulate engine temperature",
+      "Cool the engine",
+      "Control fuel injection"
+    ],
+    "answer": "Generate high voltage for spark plugs",
+    "explanation": "The ignition coil transforms low voltage from the battery into high voltage required to create a spark at the spark plug."
+  },
+  {
+    "question": "Which tool is commonly used to measure engine timing?",
+    "choices": [
+      "Timing light",
+      "Multimeter",
+      "Hydrometer",
+      "Torque wrench"
+    ],
+    "answer": "Timing light",
+    "explanation": "A timing light is used to check and adjust engine timing by flashing a light on the timing marks."
+  },
+  {
+    "question": "What is the purpose of the vehicle's fuel filter?",
+    "choices": [
+      "Improve engine cooling",
+      "Prevent contaminants from reaching the engine",
+      "Increase fuel pressure",
+      "Regulate air flow"
+    ],
+    "answer": "Prevent contaminants from reaching the engine",
+    "explanation": "The fuel filter removes impurities from the fuel before it enters the engine."
+  },
+  {
+    "question": "What does the term 'scavenging' refer to in a two-stroke engine?",
+    "choices": [
+      "Exhausting combustion gases and drawing in fresh air-fuel mixture",
+      "Lubricating engine parts",
+      "Cooling the engine",
+      "Increasing fuel efficiency"
+    ],
+    "answer": "Exhausting combustion gases and drawing in fresh air-fuel mixture",
+    "explanation": "Scavenging in a two-stroke engine refers to the process of expelling exhaust gases and bringing in a fresh air-fuel mixture."
+  },
+  {
+    "question": "Which component ensures the proper function of a vehicle's emission control system?",
+    "choices": [
+      "Catalytic converter",
+      "Fuel pump",
+      "Radiator",
+      "Air filter"
+    ],
+    "answer": "Catalytic converter",
+    "explanation": "The catalytic converter is a key component in reducing harmful emissions from a vehicle."
+  },
+  {
+    "question": "What is the primary purpose of a vehicle's drive axle?",
+    "choices": [
+      "Store fuel",
+      "Transfer power to the wheels",
+      "Cool the engine",
+      "Measure tire pressure"
+    ],
+    "answer": "Transfer power to the wheels",
+    "explanation": "The drive axle transmits power from the differential to the wheels."
+  },
+  {
+    "question": "Which tool is used to measure the gap between spark plug electrodes?",
+    "choices": [
+      "Feeler gauge",
+      "Torque wrench",
+      "Multimeter",
+      "Caliper"
+    ],
+    "answer": "Feeler gauge",
+    "explanation": "A feeler gauge is used to measure the gap between spark plug electrodes to ensure proper ignition."
+  },
+  {
+    "question": "What is the function of the exhaust pipe in a vehicle?",
+    "choices": [
+      "Filter fuel",
+      "Direct exhaust gases away from the engine",
+      "Cool the engine",
+      "Regulate air intake"
+    ],
+    "answer": "Direct exhaust gases away from the engine",
+    "explanation": "The exhaust pipe channels exhaust gases from the engine to the rear of the vehicle."
+  },
+  {
+    "question": "Which system in a vehicle helps to maintain a consistent engine temperature?",
+    "choices": [
+      "Cooling system",
+      "Fuel system",
+      "Ignition system",
+      "Exhaust system"
+    ],
+    "answer": "Cooling system",
+    "explanation": "The cooling system, including components such as the radiator and water pump, helps maintain a consistent engine temperature."
+  },
+  {
+    "question": "What is the role of the vehicle's oil pump?",
+    "choices": [
+      "Lubricate engine components",
+      "Generate electrical power",
+      "Control engine timing",
+      "Filter engine oil"
+    ],
+    "answer": "Lubricate engine components",
+    "explanation": "The oil pump circulates oil to lubricate the engine's moving parts."
+  },
+  {
+    "question": "Which component measures the temperature of the engine coolant?",
+    "choices": [
+      "Oxygen sensor",
+      "Coolant temperature sensor",
+      "Throttle position sensor",
+      "Mass airflow sensor"
+    ],
+    "answer": "Coolant temperature sensor",
+    "explanation": "The coolant temperature sensor monitors the temperature of the engine coolant and provides data to the engine control unit."
+  },
+  {
+    "question": "What is the purpose of a vehicle's balance shaft?",
+    "choices": [
+      "Increase engine power",
+      "Reduce engine vibration",
+      "Improve fuel economy",
+      "Enhance braking performance"
+    ],
+    "answer": "Reduce engine vibration",
+    "explanation": "Balance shafts help counteract engine vibrations for smoother operation."
+  },
+  {
+    "question": "Which tool is used to apply a sealant to automotive components?",
+    "choices": [
+      "Caulking gun",
+      "Screwdriver",
+      "Pliers",
+      "Hammer"
+    ],
+    "answer": "Caulking gun",
+    "explanation": "A caulking gun is used to apply sealants to various automotive components for proper sealing."
+  },
+  {
+    "question": "What is the function of the vehicle's catalytic converter heat shield?",
+    "choices": [
+      "Protect surrounding components from heat",
+      "Increase engine performance",
+      "Reduce fuel consumption",
+      "Control engine timing"
+    ],
+    "answer": "Protect surrounding components from heat",
+    "explanation": "The heat shield protects nearby components from the high temperatures of the catalytic converter."
+  },
+  {
+    "question": "Which component is responsible for creating hydraulic pressure in a vehicle's brake system?",
+    "choices": [
+      "Brake fluid",
+      "Brake caliper",
+      "Master cylinder",
+      "Brake booster"
+    ],
+    "answer": "Master cylinder",
+    "explanation": "The master cylinder converts pedal force into hydraulic pressure to apply the brakes."
+  },
+  {
+    "question": "What does the term 'fuel trim' refer to in engine management?",
+    "choices": [
+      "The adjustment of fuel injection timing",
+      "The variation in fuel mixture for optimal combustion",
+      "The process of fuel filtration",
+      "The method of fuel storage"
+    ],
+    "answer": "The variation in fuel mixture for optimal combustion",
+    "explanation": "Fuel trim adjusts the air-fuel mixture to maintain optimal combustion efficiency."
+  },
+  {
+    "question": "Which tool is commonly used to remove a tire from a wheel?",
+    "choices": [
+      "Tire iron",
+      "Pry bar",
+      "Torque wrench",
+      "Jack"
+    ],
+    "answer": "Tire iron",
+    "explanation": "A tire iron is used to remove lug nuts and take a tire off a wheel."
+  },
+  {
+    "question": "What is the function of a vehicle's differential?",
+    "choices": [
+      "Distribute power to the wheels",
+      "Control engine temperature",
+      "Store electrical energy",
+      "Filter exhaust gases"
+    ],
+    "answer": "Distribute power to the wheels",
+    "explanation": "The differential splits the engine's torque between the wheels, allowing them to rotate at different speeds during turns."
+  },
+  {
+    "question": "Which component in a vehicle converts mechanical energy into hydraulic energy?",
+    "choices": [
+      "Brake booster",
+      "Alternator",
+      "Fuel pump",
+      "Oil pump"
+    ],
+    "answer": "Brake booster",
+    "explanation": "The brake booster uses engine vacuum to convert mechanical force into increased hydraulic pressure in the brake system."
+  },
+  {
+    "question": "What is the purpose of the vehicle's serpentine belt tensioner?",
+    "choices": [
+      "Increase engine power",
+      "Maintain proper belt tension",
+      "Control fuel injection",
+      "Cool the engine"
+    ],
+    "answer": "Maintain proper belt tension",
+    "explanation": "The belt tensioner ensures that the serpentine belt maintains the correct tension for efficient operation of accessories."
+  },
+  {
+    "question": "Which device is used to measure the diameter of a vehicle's wheels?",
+    "choices": [
+      "Caliper",
+      "Micrometer",
+      "Wheel gauge",
+      "Feeler gauge"
+    ],
+    "answer": "Wheel gauge",
+    "explanation": "A wheel gauge is used to measure the diameter of a vehicle's wheels for proper fitment."
+  },
+  {
+    "question": "What does the term 'upholstery' refer to in automotive terms?",
+    "choices": [
+      "Engine components",
+      "Interior seating and trim",
+      "Brake systems",
+      "Suspension parts"
+    ],
+    "answer": "Interior seating and trim",
+    "explanation": "Upholstery refers to the materials used for the interior seating and trim of a vehicle."
+  },
+  {
+    "question": "Which tool is used to remove a stuck or corroded bolt?",
+    "choices": [
+      "Breaker bar",
+      "Pry bar",
+      "Screwdriver",
+      "Caulking gun"
+    ],
+    "answer": "Breaker bar",
+    "explanation": "A breaker bar provides additional leverage to remove stuck or corroded bolts."
+  },
+  {
+    "question": "What is the role of a vehicle's diagnostic trouble codes (DTCs)?",
+    "choices": [
+      "Store vehicle maintenance history",
+      "Indicate malfunctions in vehicle systems",
+      "Control engine performance",
+      "Regulate fuel pressure"
+    ],
+    "answer": "Indicate malfunctions in vehicle systems",
+    "explanation": "Diagnostic trouble codes help technicians identify and troubleshoot issues in various vehicle systems."
+  },
+  {
+    "question": "Which component is responsible for filtering air before it reaches the engine?",
+    "choices": [
+      "Oil filter",
+      "Air filter",
+      "Fuel filter",
+      "Cabin filter"
+    ],
+    "answer": "Air filter",
+    "explanation": "The air filter prevents dust and debris from entering the engine's air intake system."
+  },
+  {
+    "question": "What is the primary function of a vehicle's starter motor?",
+    "choices": [
+      "Charge the battery",
+      "Start the engine",
+      "Generate power",
+      "Control engine temperature"
+    ],
+    "answer": "Start the engine",
+    "explanation": "The starter motor initiates engine operation by turning the engine over to begin the combustion process."
+  },
+  {
+    "question": "Which component is used to secure a car's wheel in place?",
+    "choices": [
+      "Brake rotor",
+      "Lug nut",
+      "Caliper",
+      "Shock absorber"
+    ],
+    "answer": "Lug nut",
+    "explanation": "Lug nuts secure the wheel to the vehicle's hub."
+  },
+  {
+    "question": "What is the purpose of performing regular vehicle maintenance?",
+    "choices": [
+      "Increase vehicle resale value",
+      "Ensure optimal performance and longevity",
+      "Improve exterior appearance",
+      "Reduce insurance premiums"
+    ],
+    "answer": "Ensure optimal performance and longevity",
+    "explanation": "Regular maintenance helps keep the vehicle operating efficiently and extends its lifespan."
+  }
+]

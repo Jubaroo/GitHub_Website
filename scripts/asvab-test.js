@@ -33,18 +33,17 @@ document.addEventListener("DOMContentLoaded", function() {
     const reviewSection = document.getElementById("review-section");
     const reviewContent = document.getElementById("review-content");
     const closeReviewBtn = document.getElementById("close-review-btn");
-    const toggleDarkModeBtn = document.getElementById("toggle-dark-mode");
 
     // Helper: Convert subject name into JSON file name.
     // For Mathematics Knowledge, we use "math_questions.json".
     function getFileNameForSubject(subject) {
-        if(subject.toLowerCase() === "mathematics knowledge") {
+        if (subject.toLowerCase() === "mathematics knowledge") {
             return "math_questions.json";
         }
         return subject.toLowerCase().replace(/[^a-z0-9]+/g, "_") + ".json";
     }
 
-    // Shuffle an array using Fisher–Yates shuffle.
+    // Shuffle an array (Fisher–Yates)
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -53,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function() {
         return array;
     }
 
-    // Function to load questions for a single subject.
     async function loadQuestionsForSingleSubject(subject) {
         const fileName = "test_questions/" + getFileNameForSubject(subject);
         try {
@@ -71,9 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Function to load mixed questions (all subjects).
     async function loadMixedQuestions() {
-        // List all subject files. Note: for Mathematics Knowledge, the file is "math_questions.json".
         const files = [
             "math_questions.json",
             "arithmetic_reasoning.json",
@@ -109,27 +105,64 @@ document.addEventListener("DOMContentLoaded", function() {
         return allQuestions;
     }
 
-    // Start the timer.
     function startTimer() {
         startTime = Date.now();
-        timerInterval = setInterval(function() {
+        timerInterval = setInterval(() => {
             const elapsed = Math.floor((Date.now() - startTime) / 1000);
             timerSpan.textContent = "Time: " + elapsed + " seconds";
         }, 1000);
     }
 
-    // Stop the timer.
     function stopTimer() {
         clearInterval(timerInterval);
     }
 
-    // Display the current question.
     function displayQuestion() {
         if (currentQuestionIndex < questions.length) {
             const q = questions[currentQuestionIndex];
             questionText.textContent = q.question;
             feedbackDiv.textContent = "";
-            answerInput.value = "";
+            // If the question has a multiple choice array, create radio buttons.
+            if (q.choices && Array.isArray(q.choices) && q.choices.length === 4) {
+                // Clear previous answer container content.
+                answerContainer.innerHTML = "";
+                for (let i = 0; i < q.choices.length; i++) {
+                    const choice = q.choices[i];
+                    const radio = document.createElement("input");
+                    radio.type = "radio";
+                    radio.name = "choice";
+                    radio.value = choice;
+                    radio.id = "choice_" + i;
+                    const label = document.createElement("label");
+                    label.htmlFor = "choice_" + i;
+                    label.textContent = choice;
+                    label.style.marginRight = "10px";
+                    const div = document.createElement("div");
+                    div.style.marginBottom = "5px";
+                    div.appendChild(radio);
+                    div.appendChild(label);
+                    answerContainer.appendChild(div);
+                }
+                // Create or re-enable the submit button if not present.
+                let existingSubmit = document.getElementById("submit-btn");
+                if (!existingSubmit) {
+                    const submitButton = document.createElement("button");
+                    submitButton.id = "submit-btn";
+                    submitButton.textContent = "Submit Answer";
+                    submitButton.addEventListener("click", submitAnswer);
+                    answerContainer.appendChild(submitButton);
+                } else {
+                    existingSubmit.disabled = false;
+                }
+                answerContainer.classList.remove("hidden");
+            } else {
+                // Otherwise, use a text input.
+                answerContainer.innerHTML = `
+                    <input type="text" id="answer-input" placeholder="Enter your answer">
+                    <button id="submit-btn">Submit Answer</button>
+                `;
+                answerContainer.classList.remove("hidden");
+            }
             const progress = (currentQuestionIndex / questions.length) * 100;
             progressBar.style.width = progress + "%";
             scoreSpan.textContent = "Score: " + score + " / " + questions.length;
@@ -138,51 +171,76 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Handle answer submission.
     function submitAnswer() {
-        const userAnswer = answerInput.value.trim();
-        if (!userAnswer) {
-            feedbackDiv.textContent = "Please enter an answer.";
-            return;
+        let userAnswer;
+        const q = questions[currentQuestionIndex];
+        if (q.choices && Array.isArray(q.choices) && q.choices.length === 4) {
+            // Get selected radio button value.
+            const radios = document.getElementsByName("choice");
+            for (let radio of radios) {
+                if (radio.checked) {
+                    userAnswer = radio.value;
+                    break;
+                }
+            }
+            if (!userAnswer) {
+                feedbackDiv.textContent = "Please select an answer.";
+                return;
+            }
+        } else {
+            // Get value from text input.
+            userAnswer = document.getElementById("answer-input").value.trim();
+            if (!userAnswer) {
+                feedbackDiv.textContent = "Please enter an answer.";
+                return;
+            }
         }
-        const currentQ = questions[currentQuestionIndex];
-        const correct = (userAnswer.toLowerCase() === currentQ.answer.toLowerCase());
+        const correct = (userAnswer.toLowerCase() === q.answer.toLowerCase());
         if (correct) {
-            feedbackDiv.innerHTML = "Correct!<br>Explanation: " + currentQ.explanation;
+            feedbackDiv.innerHTML = "Correct!<br>Explanation: " + q.explanation;
             score++;
         } else {
-            feedbackDiv.innerHTML = "Wrong! The correct answer was: " + currentQ.answer +
-                "<br>Explanation: " + currentQ.explanation;
+            feedbackDiv.innerHTML = "Wrong! The correct answer was: " + q.answer +
+                "<br>Explanation: " + q.explanation;
         }
         attemptedQuestions.push({
-            question: currentQ.question,
+            question: q.question,
             userAnswer: userAnswer,
-            correctAnswer: currentQ.answer,
-            explanation: currentQ.explanation,
+            correctAnswer: q.answer,
+            explanation: q.explanation,
             correct: correct
         });
-        submitBtn.disabled = true;
+        // Disable the submit button.
+        const currentSubmit = document.getElementById("submit-btn");
+        if (currentSubmit) {
+            currentSubmit.disabled = true;
+        }
         nextBtn.classList.remove("hidden");
     }
 
-    // Move to the next question.
     function nextQuestion() {
         currentQuestionIndex++;
         if (currentQuestionIndex < questions.length) {
             displayQuestion();
-            submitBtn.disabled = false;
+            // Re-enable the submit button if necessary.
+            const currentSubmit = document.getElementById("submit-btn");
+            if (currentSubmit) {
+                currentSubmit.disabled = false;
+            }
             nextBtn.classList.add("hidden");
         } else {
             finishTest();
         }
     }
 
-    // Finish the test.
     function finishTest() {
         stopTimer();
         questionText.textContent = "Test Complete!";
         answerContainer.classList.add("hidden");
-        submitBtn.disabled = true;
+        const currentSubmit = document.getElementById("submit-btn");
+        if (currentSubmit) {
+            currentSubmit.disabled = true;
+        }
         nextBtn.classList.add("hidden");
         endBtn.classList.add("hidden");
         reviewBtn.classList.remove("hidden");
@@ -192,7 +250,6 @@ document.addEventListener("DOMContentLoaded", function() {
         scoreSpan.textContent = "Score: " + score + " / " + questions.length;
     }
 
-    // Review answers.
     function reviewAnswers() {
         let reviewHTML = "";
         attemptedQuestions.forEach((attempt, index) => {
@@ -205,17 +262,19 @@ document.addEventListener("DOMContentLoaded", function() {
         reviewSection.classList.remove("hidden");
     }
 
-    // Event listeners.
+    // Close review button.
+    closeReviewBtn.addEventListener("click", function() {
+        reviewSection.classList.add("hidden");
+    });
+
     startBtn.addEventListener("click", async function() {
         try {
             if (subject.toLowerCase() === "mixed test") {
-                // Load questions from all subject files and select 135 random questions.
-                const mixedQuestions = await loadMixedQuestions();
-                questions = shuffleArray(mixedQuestions).slice(0, 135);
+                const mixed = await loadMixedQuestions();
+                questions = shuffleArray(mixed).slice(0, 135);
             } else {
-                // Load questions for a single subject and select 35 random questions.
-                const singleQuestions = await loadQuestionsForSingleSubject(subject);
-                questions = shuffleArray(singleQuestions).slice(0, 35);
+                const single = await loadQuestionsForSingleSubject(subject);
+                questions = shuffleArray(single).slice(0, 35);
             }
         } catch (e) {
             return;
@@ -236,8 +295,5 @@ document.addEventListener("DOMContentLoaded", function() {
     reviewBtn.addEventListener("click", reviewAnswers);
     mainMenuBtn.addEventListener("click", function() {
         window.location.href = "misc-asvab-menu.html";
-    });
-    closeReviewBtn.addEventListener("click", function() {
-        reviewSection.classList.add("hidden");
     });
 });

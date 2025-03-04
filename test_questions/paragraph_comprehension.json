@@ -1,560 +1,602 @@
 [
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'The rainforest is one of the most biodiverse ecosystems on Earth. It hosts countless species of flora and fauna, many of which have yet to be discovered by science. However, rapid deforestation threatens this delicate balance.'\n\nBased on the passage, what is the primary threat to the rainforest?",
+    "question": "Read the following passage:\n\"The rainforest is one of the most biodiverse ecosystems on Earth. It teems with a multitude of plants and animals, many of which scientists have not yet studied in depth. However, rapid deforestation and human encroachment are rapidly disrupting this delicate balance.\"\n\nBased on the passage, what is the primary threat to the rainforest?",
+    "choices": ["climate change", "deforestation", "pollution", "urbanization"],
     "answer": "deforestation",
     "explanation": "The passage emphasizes that rapid deforestation endangers the rainforest's biodiversity."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'In recent years, advances in technology have transformed communication. Social media platforms connect people worldwide, but they also spread misinformation quickly. This dual nature of technology poses both opportunities and challenges.'\n\nWhat is one major challenge mentioned in the passage regarding technology?",
+    "question": "Read the following passage:\n\"Advances in digital technology over the past decade have transformed the way people communicate. Social media now connects individuals around the globe, facilitating instant communication and information sharing. However, the same platforms are often responsible for the rapid spread of misinformation.\"\n\nWhat is one major challenge mentioned in the passage regarding technology?",
+    "choices": ["privacy concerns", "spread of misinformation", "high cost", "obsolete hardware"],
     "answer": "spread of misinformation",
-    "explanation": "The passage notes that the rapid sharing of false information is a challenge."
+    "explanation": "The passage notes that the rapid spread of false information is a significant challenge."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Historical monuments serve as reminders of our past. They offer insights into cultural heritage and significant events, preserving the memory of previous generations. Maintaining these sites helps communities stay connected to their history.'\n\nWhat is the main reason for preserving historical monuments according to the passage?",
+    "question": "Read the following passage:\n\"Historical monuments are not just relics of the past but also serve as touchstones for cultural identity. They provide insights into historical events, architectural styles, and societal values over time. Preservation of these monuments ensures that future generations remain connected to their heritage.\"\n\nWhat is the main reason for preserving historical monuments according to the passage?",
+    "choices": ["to generate tourism revenue", "to support urban development", "to maintain a connection to cultural heritage", "to showcase architectural skills"],
     "answer": "to maintain a connection to cultural heritage",
-    "explanation": "The passage indicates that preserving monuments helps keep the memory of cultural heritage alive."
+    "explanation": "The passage emphasizes that preserving monuments helps keep cultural heritage alive."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Urban expansion has brought both growth and challenges. While cities provide economic opportunities and diversity, they also experience problems such as pollution and traffic congestion. Effective urban planning is necessary to manage these issues.'\n\nAccording to the passage, why is urban planning important?",
-    "answer": "to manage issues like pollution and traffic congestion",
-    "explanation": "The passage explains that urban planning is key to addressing the negative impacts of rapid urban expansion."
+    "question": "Read the following passage:\n\"Urban expansion has led to rapid growth in cities, bringing both economic benefits and significant challenges. With increasing population density, issues such as pollution, traffic congestion, and inadequate infrastructure have emerged. Effective urban planning is critical to balance growth with quality of life.\"\n\nAccording to the passage, why is urban planning important?",
+    "choices": ["to improve aesthetics", "to manage pollution and traffic congestion", "to increase population", "to promote economic growth"],
+    "answer": "to manage pollution and traffic congestion",
+    "explanation": "The passage mentions that urban planning helps address pollution and traffic issues."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Renewable energy sources such as wind and solar power are gaining importance as alternatives to fossil fuels. With environmental degradation on the rise, these energy sources provide a sustainable path forward for power generation.'\n\nWhat is the primary benefit of renewable energy as described in the passage?",
-    "answer": "a sustainable alternative for power generation",
+    "question": "Read the following passage:\n\"Renewable energy has become a beacon of hope in the fight against climate change. Sources like wind and solar power offer a cleaner, sustainable alternative to fossil fuels. As environmental degradation intensifies, these technologies promise a way forward for global energy needs.\"\n\nWhat is the primary benefit of renewable energy as described in the passage?",
+    "choices": ["low cost", "efficiency", "sustainability", "abundance"],
+    "answer": "sustainability",
     "explanation": "The passage highlights that renewable energy offers a sustainable solution compared to fossil fuels."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Effective negotiation involves understanding not only your own needs but also those of the other party. By listening actively and seeking common ground, negotiators can achieve mutually beneficial outcomes in both personal and professional contexts.'\n\nWhich skill is emphasized as essential for successful negotiation?",
+    "question": "Read the following passage:\n\"Successful negotiation is more than just a battle of wills; it is an art of understanding both parties' needs. By actively listening and seeking common ground, negotiators are able to craft solutions that benefit everyone involved. This approach fosters mutual respect and long-term cooperation.\"\n\nWhich skill is emphasized as essential for successful negotiation?",
+    "choices": ["active listening", "aggressiveness", "dominance", "persuasion"],
     "answer": "active listening",
-    "explanation": "The passage stresses that listening actively is critical for identifying common ground during negotiations."
+    "explanation": "The passage stresses that active listening is critical in negotiations."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Maintaining a balanced diet is crucial for overall health. A diet rich in fruits, vegetables, proteins, and grains supports bodily functions, while overreliance on processed foods can lead to health issues.'\n\nWhat does the passage imply about processed foods?",
+    "question": "Read the following passage:\n\"A balanced diet is key to maintaining good health and proper body function. Consuming a variety of fruits, vegetables, whole grains, and lean proteins supplies the nutrients needed for energy and recovery. In contrast, overreliance on processed foods can lead to numerous health problems.\"\n\nWhat does the passage imply about processed foods?",
+    "choices": ["they are nutritious", "they are expensive", "they can lead to health issues", "they improve energy"],
     "answer": "they can lead to health issues",
     "explanation": "The passage warns that excessive consumption of processed foods may cause health problems."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Space exploration has spurred numerous technological innovations. The challenges associated with launching and sustaining space missions have led to advances that benefit many other industries.'\n\nWhat benefit of space exploration is highlighted in the passage?",
+    "question": "Read the following passage:\n\"Space exploration continues to captivate our imaginations and drive technological progress. The challenges of launching missions into space have led to innovations that benefit industries on Earth. These advances, from satellite technology to robotics, have widespread applications.\"\n\nWhat benefit of space exploration is highlighted in the passage?",
+    "choices": ["increased tourism", "technological innovations", "better communication", "faster internet"],
     "answer": "technological innovations",
     "explanation": "The passage notes that space exploration drives innovations that have broader applications."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Time management is essential in a fast-paced world. Prioritizing tasks and setting clear goals enable individuals to increase productivity and reduce stress, leading to greater success in various aspects of life.'\n\nWhat is one benefit of effective time management mentioned in the passage?",
+    "question": "Read the following passage:\n\"In today's fast-paced world, time management is more important than ever. Setting priorities and clear goals helps individuals complete tasks efficiently while reducing stress. This structured approach to time not only improves productivity but also enhances overall well-being.\"\n\nWhat is one benefit of effective time management mentioned in the passage?",
+    "choices": ["more free time", "increased productivity and reduced stress", "higher income", "better health"],
     "answer": "increased productivity and reduced stress",
     "explanation": "The passage directly links effective time management with higher productivity and lower stress."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Environmental conservation is critical for sustaining the planet. Efforts such as reducing waste, protecting natural habitats, and promoting sustainable practices require active participation from communities to be successful.'\n\nWhat does the passage identify as essential for successful environmental conservation?",
+    "question": "Read the following passage:\n\"The conservation of natural resources is a collective responsibility. By reducing waste, protecting habitats, and adopting sustainable practices, communities can significantly reduce their environmental impact. Such efforts require active participation from everyone.\"\n\nWhat does the passage identify as essential for successful environmental conservation?",
+    "choices": ["advanced technology", "government regulation", "active community participation", "private funding"],
     "answer": "active community participation",
     "explanation": "The passage emphasizes that community involvement is crucial to conservation efforts."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'The poem describes a desolate winter landscape where silence pervades and nature seems frozen in time. The cold imagery emphasizes a feeling of isolation among the characters.'\n\nWhat theme is most emphasized in the poem?",
+    "question": "Read the following passage:\n\"The poem paints a picture of a harsh winter landscape, where the biting cold and silence amplify the sense of loneliness. The imagery evokes a mood of isolation and introspection. Through detailed descriptions, the poet creates an atmosphere that mirrors the inner state of the characters.\"\n\nWhat theme is most emphasized in the poem?",
+    "choices": ["celebration", "isolation", "joy", "nature"],
     "answer": "isolation",
     "explanation": "The passage’s focus on cold, silent imagery highlights the theme of isolation."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Scientists recently discovered a new species of frog in the Amazon. The frog's bright colors and unusual mating calls have intrigued researchers, prompting further study into its behavior.'\n\nWhat aspect of the new species is highlighted in the passage?",
+    "question": "Read the following passage:\n\"Deep in the Amazon, scientists have uncovered a previously unknown species of frog. This amphibian is distinguished by its brilliant colors and unique mating call, characteristics that set it apart from other species. Researchers believe that further study could reveal even more unusual traits about this creature.\"\n\nWhat aspect of the new species is highlighted in the passage?",
+    "choices": ["its small size", "bright colors and unusual mating calls", "its camouflage", "its venomous nature"],
     "answer": "bright colors and unusual mating calls",
     "explanation": "The passage specifically mentions the frog’s vivid appearance and unique calls."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'The law of supply and demand dictates that when supply decreases and demand remains constant, prices tend to rise. This principle is fundamental to market economics and influences many aspects of pricing.'\n\nAccording to the passage, what happens when supply decreases while demand remains constant?",
+    "question": "Read the following passage:\n\"Economic principles dictate that when the supply of a product decreases while demand remains constant, prices inevitably rise. This basic law of supply and demand affects everything from everyday goods to luxury items. It serves as a fundamental concept in market economics.\"\n\nAccording to the passage, what happens when supply decreases while demand remains constant?",
+    "choices": ["prices tend to fall", "demand increases", "supply increases", "prices tend to rise"],
     "answer": "prices tend to rise",
     "explanation": "The passage explains that reduced supply with constant demand results in higher prices."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'A democratic government is characterized by free elections, a separation of powers, and the protection of individual rights. These features ensure that citizens have a voice in how they are governed.'\n\nWhat is one characteristic of a democratic government mentioned in the passage?",
+    "question": "Read the following passage:\n\"A democratic government thrives on the participation of its citizens, ensuring that leaders are chosen through free and fair elections. The system is built on the separation of powers and the protection of individual rights. Such features guarantee that the voice of the people remains central in governance.\"\n\nWhat is one characteristic of a democratic government mentioned in the passage?",
+    "choices": ["centralized authority", "free elections", "single-party rule", "absolute monarchy"],
     "answer": "free elections",
     "explanation": "The passage lists free elections as one of the features of a democratic system."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Modern education emphasizes critical thinking and problem-solving over rote memorization. Innovative teaching methods engage students actively, leading to a deeper understanding of the material.'\n\nWhat teaching approach does the passage suggest is beneficial?",
+    "question": "Read the following passage:\n\"Modern education is shifting away from rote memorization toward fostering critical thinking and problem-solving skills. Teachers now incorporate interactive and student-centered methods to deepen understanding. This progressive approach helps students apply knowledge in real-world situations.\"\n\nWhat teaching approach does the passage suggest is beneficial?",
+    "choices": ["rote memorization", "lecture-based learning", "standardized testing", "critical thinking and problem-solving"],
     "answer": "critical thinking and problem-solving",
-    "explanation": "The passage advocates for education that promotes analytical skills rather than simple memorization."
+    "explanation": "The passage advocates for an education that promotes analytical skills."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Regular exercise has been shown to improve cardiovascular health, reduce stress, and enhance overall well-being. Even moderate physical activity can have significant benefits for the body.'\n\nWhat is one benefit of regular exercise mentioned in the passage?",
+    "question": "Read the following passage:\n\"Regular physical exercise is more than just a means to maintain a healthy weight. Studies have shown that consistent activity improves cardiovascular health, reduces stress, and boosts overall mental well-being. Even moderate exercise can yield significant benefits over time.\"\n\nWhat is one benefit of regular exercise mentioned in the passage?",
+    "choices": ["increased weight", "improved cardiovascular health", "higher cholesterol", "reduced energy"],
     "answer": "improved cardiovascular health",
-    "explanation": "The passage indicates that exercise positively impacts heart health."
+    "explanation": "The passage emphasizes that exercise positively impacts heart health."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Perseverance in the face of challenges is essential for personal growth. Overcoming obstacles builds resilience and self-confidence, enabling individuals to achieve their long-term goals.'\n\nAccording to the passage, what does overcoming obstacles build?",
+    "question": "Read the following passage:\n\"Facing and overcoming challenges is an essential part of personal growth. Each obstacle surmounted builds resilience and fosters self-confidence, preparing individuals for future hurdles. This process is fundamental to achieving long-term success.\"\n\nAccording to the passage, what does overcoming obstacles build?",
+    "choices": ["wealth", "popularity", "physical strength", "resilience and self-confidence"],
     "answer": "resilience and self-confidence",
     "explanation": "The passage connects overcoming challenges with increased resilience and self-esteem."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Ancient civilizations, such as the Egyptians and Mesopotamians, developed complex societies with advanced architecture, writing systems, and cultural traditions that still influence us today.'\n\nWhat is one achievement of ancient civilizations mentioned in the passage?",
+    "question": "Read the following passage:\n\"Ancient civilizations laid the groundwork for modern society through their remarkable achievements in art, science, and engineering. Their innovations, such as monumental architecture and early forms of writing, continue to influence our world today. Understanding these contributions helps us appreciate our cultural heritage.\"\n\nWhat is one achievement of ancient civilizations mentioned in the passage?",
+    "choices": ["industrialization", "globalization", "advanced architecture", "modern technology"],
     "answer": "advanced architecture",
-    "explanation": "The passage highlights several achievements including architectural advancements."
+    "explanation": "The passage highlights architectural advancements as one of their achievements."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Cybersecurity has become increasingly important as more personal and financial data is stored online. Companies invest heavily in protecting sensitive information from breaches and cyberattacks.'\n\nWhy is cybersecurity important according to the passage?",
+    "question": "Read the following passage:\n\"With the exponential growth of online data, cybersecurity has become a major concern for individuals and organizations alike. The risk of data breaches and cyberattacks requires robust security measures to protect sensitive information. In this digital age, safeguarding personal and financial data is paramount.\"\n\nWhy is cybersecurity important according to the passage?",
+    "choices": ["to enhance social media", "to protect personal and financial data", "to increase profits", "to boost government surveillance"],
     "answer": "to protect personal and financial data",
-    "explanation": "The passage emphasizes the need for cybersecurity to safeguard online information."
+    "explanation": "The passage emphasizes the need for cybersecurity to safeguard data."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Recycling helps reduce waste and conserve natural resources. By reusing materials and reducing landfill dependency, communities can lessen their environmental impact.'\n\nWhat is one benefit of recycling mentioned in the passage?",
+    "question": "Read the following passage:\n\"Recycling is one of the simplest yet most effective ways to reduce our environmental impact. By reusing materials and minimizing waste, communities can conserve resources and lower pollution levels. These practices are essential for ensuring a sustainable future.\"\n\nWhat is one benefit of recycling mentioned in the passage?",
+    "choices": ["reducing waste", "increasing landfill space", "boosting production", "lowering taxes"],
     "answer": "reducing waste",
     "explanation": "The passage states that recycling reduces waste and conserves resources."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Entrepreneurship involves identifying market needs and developing innovative solutions. Successful entrepreneurs often take calculated risks to bring new products and services to market.'\n\nWhat quality is important for entrepreneurs according to the passage?",
+    "question": "Read the following passage:\n\"Entrepreneurship is driven by the ability to identify unmet needs and to create innovative solutions that address them. Entrepreneurs often take calculated risks to bring new products and services to market. Their risk-taking is a crucial element in driving economic progress.\"\n\nWhat quality is important for entrepreneurs according to the passage?",
+    "choices": ["avoiding risks", "taking calculated risks", "focusing on safety", "following tradition"],
     "answer": "taking calculated risks",
-    "explanation": "The passage suggests that measured risk-taking is a key entrepreneurial trait."
+    "explanation": "The passage highlights that successful entrepreneurs take measured risks."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'In the short story, the protagonist embarks on a journey of self-discovery. The narrative explores themes of identity, transformation, and the search for meaning in life.'\n\nWhat is one theme explored in the short story?",
+    "question": "Read the following passage:\n\"In a compelling short story, the protagonist embarks on a journey of self-discovery that challenges personal beliefs and preconceptions. The narrative delves into themes of identity, transformation, and the search for meaning, inviting readers to reflect on their own lives.\"\n\nWhat is one theme explored in the short story?",
+    "choices": ["violence", "identity", "technology", "wealth"],
     "answer": "identity",
     "explanation": "The passage mentions that the narrative delves into the theme of identity."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Climate change is driven by increased greenhouse gas emissions, leading to global temperature rises and extreme weather events. Scientists advocate for reducing carbon footprints to mitigate these effects.'\n\nWhat is one effect of increased greenhouse gas emissions mentioned in the passage?",
+    "question": "Read the following passage:\n\"Climate change is one of the most pressing issues of our time. Increased greenhouse gas emissions have been linked to rising global temperatures and more frequent extreme weather events. Experts urge reducing our carbon footprint to mitigate these dangerous effects.\"\n\nWhat is one effect of increased greenhouse gas emissions mentioned in the passage?",
+    "choices": ["ocean cooling", "global temperature rises", "increased rainfall", "declining populations"],
     "answer": "global temperature rises",
     "explanation": "The passage links greenhouse gas emissions with rising global temperatures."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Cultural diversity enriches societies by bringing different perspectives and traditions together, fostering creativity and innovation in communities.'\n\nAccording to the passage, what is one benefit of cultural diversity?",
+    "question": "Read the following passage:\n\"Cultural diversity brings a wealth of perspectives and ideas that can drive innovation and creativity. When people from different backgrounds come together, they challenge conventional thinking and inspire new solutions. This dynamic interaction is essential for societal progress.\"\n\nAccording to the passage, what is one benefit of cultural diversity?",
+    "choices": ["causing conflict", "hindering growth", "fostering creativity and innovation", "reducing communication"],
     "answer": "fostering creativity and innovation",
-    "explanation": "The passage highlights that diversity contributes to creative and innovative ideas."
+    "explanation": "The passage highlights that diversity contributes to creative ideas."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Mental well-being is as important as physical health. Practices such as mindfulness and meditation can help manage stress and anxiety, contributing to a balanced lifestyle.'\n\nWhat practice is mentioned as beneficial for mental well-being?",
+    "question": "Read the following passage:\n\"Mental well-being is as crucial as physical health. Practices such as mindfulness and meditation encourage individuals to live in the present moment, reducing stress and anxiety. These techniques contribute to a balanced and resilient state of mind.\"\n\nWhat practice is mentioned as beneficial for mental well-being?",
+    "choices": ["overworking", "isolation", "mindfulness", "sedentary behavior"],
     "answer": "mindfulness",
-    "explanation": "The passage indicates that mindfulness helps manage stress."
+    "explanation": "The passage indicates that mindfulness helps manage stress and anxiety."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'The Industrial Revolution transformed societies by introducing new manufacturing processes, which led to urbanization and significant economic changes.'\n\nWhat major shift did the Industrial Revolution cause?",
+    "question": "Read the following passage:\n\"The Industrial Revolution was a turning point in human history, marking a shift from agrarian economies to industrialized societies. This era saw massive technological advancements, urbanization, and changes in social structure. The resulting transformation set the stage for modern economic systems.\"\n\nWhat major shift did the Industrial Revolution cause?",
+    "choices": ["rural isolation", "industrial decline", "urbanization", "technological regression"],
     "answer": "urbanization",
     "explanation": "The passage notes that the Industrial Revolution spurred urban growth."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Artificial intelligence is revolutionizing industries by automating routine tasks and providing valuable data insights, though ethical concerns continue to be debated.'\n\nWhat is one benefit of artificial intelligence mentioned in the passage?",
+    "question": "Read the following passage:\n\"Artificial intelligence is becoming integral to many industries. By automating repetitive tasks and analyzing large data sets, AI is improving efficiency and decision-making. Despite ongoing ethical debates, its benefits in streamlining operations are clear.\"\n\nWhat is one benefit of artificial intelligence mentioned in the passage?",
+    "choices": ["increasing manual labor", "complicating processes", "automating routine tasks", "reducing innovation"],
     "answer": "automating routine tasks",
-    "explanation": "The passage states that AI automates tasks, even as it notes ethical concerns."
+    "explanation": "The passage states that AI helps by automating tasks."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Deforestation not only affects wildlife habitats but also contributes to climate change by reducing the planet's capacity to absorb carbon dioxide. Sustainable forestry practices are essential.'\n\nWhat is one consequence of deforestation mentioned in the passage?",
+    "question": "Read the following passage:\n\"Deforestation has severe environmental consequences. When trees are removed, not only is wildlife habitat lost but the planet’s ability to absorb carbon dioxide is reduced. Sustainable forestry practices are essential to prevent these negative impacts.\"\n\nWhat is one consequence of deforestation mentioned in the passage?",
+    "choices": ["improved soil quality", "increased oxygen production", "reduced carbon absorption", "enhanced biodiversity"],
     "answer": "reduced carbon absorption",
-    "explanation": "The passage explains that deforestation diminishes the Earth's ability to absorb carbon."
+    "explanation": "The passage explains that deforestation diminishes the Earth's ability to absorb carbon dioxide."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Effective leadership is marked by clear communication, vision, and the ability to motivate teams. Leaders set the tone for organizational success by inspiring trust and commitment.'\n\nWhat is one quality of effective leadership mentioned in the passage?",
+    "question": "Read the following passage:\n\"Effective leadership in any organization is built on clear communication, vision, and the capacity to inspire others. Leaders who engage with their teams and convey their ideas clearly foster an environment of trust and success. Such qualities are critical for long-term organizational achievement.\"\n\nWhat is one quality of effective leadership mentioned in the passage?",
+    "choices": ["indifference", "laziness", "clear communication", "autocracy"],
     "answer": "clear communication",
-    "explanation": "The passage emphasizes communication as a key leadership trait."
+    "explanation": "The passage emphasizes that clear communication is key to effective leadership."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Online learning has become more prevalent due to its flexibility and accessibility, allowing students to study at their own pace from anywhere in the world.'\n\nWhat is one advantage of online learning mentioned in the passage?",
+    "question": "Read the following passage:\n\"Online learning has expanded educational opportunities by breaking geographical barriers and offering flexible study schedules. This mode of education enables students to access a wide array of courses and materials from anywhere in the world. Its convenience is reshaping the way knowledge is acquired.\"\n\nWhat is one advantage of online learning mentioned in the passage?",
+    "choices": ["rigidity", "lack of interaction", "flexibility", "high cost"],
     "answer": "flexibility",
-    "explanation": "The passage highlights the flexibility and accessibility of online education."
+    "explanation": "The passage highlights that online learning offers flexibility and accessibility."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'A balanced sleep schedule is essential for cognitive function and overall health, with adequate sleep improving memory and mood.'\n\nWhat benefit of adequate sleep is mentioned in the passage?",
+    "question": "Read the following passage:\n\"A regular sleep schedule is crucial for maintaining optimal cognitive function. Studies have shown that adequate sleep not only improves memory but also enhances mood and concentration. Consistent rest is a foundation for overall mental and physical health.\"\n\nWhat is one benefit of proper sleep mentioned in the passage?",
+    "choices": ["increased stress", "improved memory", "poor concentration", "weight gain"],
     "answer": "improved memory",
-    "explanation": "The passage states that sufficient sleep enhances cognitive functions such as memory."
+    "explanation": "The passage states that proper sleep enhances memory and mood."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Setting realistic goals and breaking them into smaller steps can lead to significant achievements over time. Persistence in pursuing these goals is essential.'\n\nAccording to the passage, what is essential for achieving goals?",
+    "question": "Read the following passage:\n\"Setting clear, achievable goals can have a transformative effect on personal success. Breaking down larger ambitions into smaller, manageable steps provides direction and motivation. Over time, this process builds confidence and reinforces a proactive mindset.\"\n\nAccording to the passage, what is essential for achieving goals?",
+    "choices": ["procrastination", "hesitation", "persistence", "indifference"],
     "answer": "persistence",
-    "explanation": "The passage stresses that consistent effort and persistence lead to achievement."
+    "explanation": "The passage stresses that persistence and consistent effort are key to success."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'The Renaissance was a period of cultural rebirth marked by advancements in art, science, and literature, reshaping European society in profound ways.'\n\nWhat was one of the areas of advancement during the Renaissance mentioned in the passage?",
+    "question": "Read the following passage:\n\"The Renaissance was a period of extraordinary cultural rebirth in Europe. It witnessed groundbreaking advancements in art, literature, science, and philosophy that reshaped society. These developments continue to influence modern thought and aesthetics.\"\n\nWhat was one area of advancement during the Renaissance mentioned in the passage?",
+    "choices": ["military", "economics", "art", "agriculture"],
     "answer": "art",
-    "explanation": "The passage mentions art as one of the key fields that advanced during the Renaissance."
+    "explanation": "The passage mentions art as a key field that advanced during the Renaissance."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Smartphones have revolutionized the way we access information and communicate, combining computing power, internet access, and telephony in one compact device.'\n\nWhat is one feature of smartphones highlighted in the passage?",
+    "question": "Read the following passage:\n\"Smartphones have dramatically changed the way people access information. These compact devices combine the functions of a computer, camera, and telephone, offering unprecedented connectivity. Their ability to provide instant internet access has transformed communication worldwide.\"\n\nWhat is one feature of smartphones highlighted in the passage?",
+    "choices": ["limited connectivity", "obsolete technology", "large size", "internet access"],
     "answer": "internet access",
     "explanation": "The passage points out that smartphones provide internet connectivity."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Ocean pollution, largely due to plastic waste, poses a serious threat to marine life. Efforts to reduce plastic use are increasing worldwide.'\n\nWhat is one major threat to marine life mentioned in the passage?",
+    "question": "Read the following passage:\n\"Marine ecosystems face numerous threats from human activities, and one of the most visible is plastic pollution. Billions of tons of plastic waste end up in the oceans, disrupting habitats and endangering species. Efforts to reduce plastic use are gaining momentum globally.\"\n\nWhat is one major threat to marine life mentioned in the passage?",
+    "choices": ["overfishing", "plastic waste", "noise pollution", "oil spills"],
     "answer": "plastic waste",
-    "explanation": "The passage identifies plastic pollution as a significant threat to marine ecosystems."
+    "explanation": "The passage identifies plastic waste as a significant threat to marine ecosystems."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Globalization has interconnected markets around the world, allowing companies to access new markets while also exposing them to increased international competition.'\n\nWhat is one impact of globalization mentioned in the passage?",
+    "question": "Read the following passage:\n\"Globalization has redefined the economic landscape, connecting markets and cultures across the world. This integration allows companies to reach new customers but also exposes them to fierce international competition. The phenomenon has transformed the way businesses operate globally.\"\n\nWhat is one impact of globalization mentioned in the passage?",
+    "choices": ["local monopolies", "isolation", "access to new markets", "reduced competition"],
     "answer": "access to new markets",
     "explanation": "The passage explains that globalization opens opportunities to enter new markets."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Critical reading skills enable students to analyze and interpret complex texts. These skills are vital for academic success and lifelong learning.'\n\nWhat skill is highlighted as vital for academic success?",
+    "question": "Read the following passage:\n\"In today’s information age, critical reading is more important than ever. The ability to analyze and interpret complex texts not only supports academic success but also informs lifelong learning. Mastery of this skill is essential for navigating the vast amount of data available.\"\n\nWhat skill is highlighted as vital for academic success?",
+    "choices": ["skimming", "critical reading", "rote memorization", "guessing"],
     "answer": "critical reading",
     "explanation": "The passage emphasizes the importance of critical reading for understanding complex material."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'A diet rich in fruits and vegetables provides essential vitamins and minerals, supporting the immune system and overall well-being.'\n\nAccording to the passage, what does a diet rich in fruits and vegetables support?",
+    "question": "Read the following passage:\n\"A nutritious diet is foundational for maintaining a robust immune system. Diets rich in fruits and vegetables deliver essential vitamins and minerals that protect against disease. Emphasizing whole, natural foods is key to long-term health.\"\n\nAccording to the passage, what does a diet rich in fruits and vegetables support?",
+    "choices": ["the immune system", "bone strength", "muscle growth", "only digestion"],
     "answer": "the immune system",
-    "explanation": "The passage states that such a diet boosts the immune system."
+    "explanation": "The passage states that such a diet supports the immune system."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Emotional intelligence involves recognizing and managing one’s own emotions as well as understanding those of others. It contributes to improved interpersonal relationships.'\n\nWhat is one component of emotional intelligence mentioned in the passage?",
+    "question": "Read the following passage:\n\"Emotional intelligence is the ability to recognize, understand, and manage our own emotions while also empathizing with others. This capacity is crucial for effective communication and healthy relationships. By improving our self-awareness, we can better navigate social complexities.\"\n\nWhat is one component of emotional intelligence mentioned in the passage?",
+    "choices": ["suppressing emotions", "recognizing and managing emotions", "ignoring feelings", "overreacting"],
     "answer": "recognizing and managing emotions",
-    "explanation": "The passage links emotional intelligence to self-awareness and emotional regulation."
+    "explanation": "The passage highlights that emotional intelligence includes awareness and management of emotions."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'The Cold War was marked by political tension and a technological arms race between two superpowers, influencing global politics for decades.'\n\nWhat was one aspect of the Cold War mentioned in the passage?",
+    "question": "Read the following passage:\n\"The Cold War was characterized by intense political tension and an arms race that spanned decades. Rival superpowers competed for global influence, often at the expense of diplomacy. The era is remembered for its climate of suspicion and conflict.\"\n\nWhat was one aspect of the Cold War mentioned in the passage?",
+    "choices": ["cultural harmony", "political tension", "economic prosperity", "friendly relations"],
     "answer": "political tension",
     "explanation": "The passage highlights political tension as a defining feature of the Cold War."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Recent developments in renewable energy technologies, such as solar and wind, are reducing our reliance on fossil fuels and decreasing environmental pollution.'\n\nWhat is one renewable energy technology mentioned in the passage?",
+    "question": "Read the following passage:\n\"Recent innovations in renewable energy have significantly shifted the global energy landscape. Technologies like solar and wind power are not only reducing our reliance on fossil fuels but are also decreasing environmental pollution. These advancements are paving the way for a cleaner future.\"\n\nWhat is one renewable energy technology mentioned in the passage?",
+    "choices": ["coal power", "nuclear energy", "solar energy", "natural gas"],
     "answer": "solar energy",
-    "explanation": "The passage identifies solar energy as one of the key renewable sources."
+    "explanation": "The passage identifies solar energy as one of the renewable sources."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Urban green spaces, including parks and community gardens, not only improve air quality but also provide recreational areas for city residents.'\n\nAccording to the passage, what is one benefit of urban green spaces?",
+    "question": "Read the following passage:\n\"Urban green spaces provide more than just aesthetic benefits; they improve air quality, offer recreational opportunities, and promote community well-being. Parks and community gardens serve as vital lungs for cities, helping to counteract urban pollution. Their presence is essential for a healthier urban environment.\"\n\nAccording to the passage, what is one benefit of urban green spaces?",
+    "choices": ["increased noise", "reduced green areas", "improved air quality", "higher traffic"],
     "answer": "improved air quality",
     "explanation": "The passage notes that green spaces help enhance air quality in urban environments."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Market research is essential for understanding consumer behavior. Companies employ tools such as surveys and focus groups to gather valuable data.'\n\nWhat is one method of market research mentioned in the passage?",
+    "question": "Read the following passage:\n\"Market research is a cornerstone of successful business strategy. Companies employ surveys, focus groups, and data analytics to understand consumer behavior and preferences. These insights allow businesses to tailor their products and services effectively.\"\n\nWhat is one method of market research mentioned in the passage?",
+    "choices": ["random guessing", "surveys", "social media monitoring", "in-person interviews only"],
     "answer": "surveys",
-    "explanation": "The passage mentions surveys as a tool for understanding consumer behavior."
+    "explanation": "The passage specifically mentions surveys as a tool for understanding consumer behavior."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Interactive learning environments foster student engagement and collaboration, encouraging active participation in the educational process.'\n\nWhat is one benefit of interactive learning mentioned in the passage?",
+    "question": "Read the following passage:\n\"Interactive learning environments transform the traditional classroom by encouraging student participation and collaboration. Through group projects, discussions, and hands-on activities, students actively engage with the material. This dynamic approach fosters deeper understanding and retention.\"\n\nWhat is one benefit of interactive learning mentioned in the passage?",
+    "choices": ["student engagement", "passive listening", "isolation", "confusion"],
     "answer": "student engagement",
-    "explanation": "The passage emphasizes that interactive environments boost student participation."
+    "explanation": "The passage emphasizes that interactive learning boosts student participation."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Regular physical activity is linked to a lower risk of chronic diseases such as diabetes and heart disease, while also improving mental health.'\n\nWhat is one health benefit of regular physical activity mentioned in the passage?",
+    "question": "Read the following passage:\n\"Regular physical activity is proven to reduce the risk of chronic diseases such as heart disease and diabetes. Exercise also improves mental health by reducing stress and boosting mood. Even moderate activity, when done consistently, can make a significant difference.\"\n\nWhat is one health benefit of regular physical activity mentioned in the passage?",
+    "choices": ["increased blood pressure", "weight gain", "lower risk of chronic diseases", "reduced stamina"],
     "answer": "lower risk of chronic diseases",
     "explanation": "The passage connects regular exercise with a reduced risk of chronic illnesses."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Self-reflection helps individuals understand their strengths and weaknesses, making it a critical step in personal growth and self-improvement.'\n\nWhat does self-reflection help individuals understand, according to the passage?",
+    "question": "Read the following passage:\n\"Self-reflection is a powerful tool for personal growth. By regularly examining one’s actions and decisions, individuals can gain insight into their strengths and weaknesses. This introspection paves the way for continuous self-improvement.\"\n\nWhat does self-reflection help individuals understand, according to the passage?",
+    "choices": ["future predictions", "trivial details", "others' opinions", "their strengths and weaknesses"],
     "answer": "their strengths and weaknesses",
-    "explanation": "The passage states that self-reflection is key to personal development."
+    "explanation": "The passage states that self-reflection is key to understanding one’s own abilities."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Medieval Europe was characterized by feudalism, a system in which society was structured around land ownership and loyalty, influencing social hierarchies for centuries.'\n\nWhat social system is mentioned in the passage as characteristic of Medieval Europe?",
+    "question": "Read the following passage:\n\"Medieval Europe was largely defined by the feudal system, where loyalty and land ownership dictated social hierarchy. This system structured society for centuries and influenced everything from legal systems to cultural norms. The legacy of feudalism still affects modern institutions in subtle ways.\"\n\nWhat social system is mentioned in the passage as characteristic of Medieval Europe?",
+    "choices": ["capitalism", "democracy", "feudalism", "communism"],
     "answer": "feudalism",
-    "explanation": "The passage describes feudalism as the organizing principle in medieval society."
+    "explanation": "The passage describes feudalism as the organizing principle of medieval society."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Virtual reality offers immersive experiences that simulate real-life environments and is used in gaming, training, and education.'\n\nWhat is one application of virtual reality mentioned in the passage?",
+    "question": "Read the following passage:\n\"Virtual reality technology creates immersive experiences that transport users to simulated environments. Originally developed for gaming, VR is now finding applications in training, education, and even therapy. Its ability to mimic real-life situations makes it a powerful tool for experiential learning.\"\n\nWhat is one application of virtual reality mentioned in the passage?",
+    "choices": ["cooking", "driving", "sleeping", "gaming"],
     "answer": "gaming",
     "explanation": "The passage indicates that virtual reality is applied in gaming among other areas."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Air pollution from industrial emissions not only harms human health but also contributes to climate change. Regulatory measures are needed to control these emissions.'\n\nWhat is one consequence of industrial air pollution mentioned in the passage?",
+    "question": "Read the following passage:\n\"Industrial emissions have long been recognized as a major contributor to air pollution and adverse health effects. Factories and power plants release harmful substances that compromise air quality and impact human health. Regulatory measures are essential to control and reduce these emissions.\"\n\nWhat is one consequence of industrial air pollution mentioned in the passage?",
+    "choices": ["reduces smog", "affects human health", "lowers temperatures", "improves air quality"],
     "answer": "affects human health",
-    "explanation": "The passage notes that industrial emissions negatively impact human health."
+    "explanation": "The passage states that industrial emissions negatively impact human health."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Excellent customer service is crucial for maintaining brand loyalty, as positive interactions with customers often lead to repeat business.'\n\nWhat is one benefit of excellent customer service mentioned in the passage?",
+    "question": "Read the following passage:\n\"Customer service is a critical component of brand loyalty and long-term business success. Positive interactions with service representatives often result in repeat business and strong customer relationships. Companies that invest in excellent service enjoy a competitive advantage.\"\n\nWhat is one benefit of excellent customer service mentioned in the passage?",
+    "choices": ["reduced feedback", "increased prices", "repeat business", "lower profits"],
     "answer": "repeat business",
     "explanation": "The passage links good customer service with increased customer retention."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Distance education provides opportunities for learners who cannot attend traditional classes, offering flexibility and access to a wide range of resources.'\n\nWhat is one advantage of distance education mentioned in the passage?",
+    "question": "Read the following passage:\n\"Distance education has revolutionized the way people access learning opportunities. By eliminating geographical constraints, online platforms provide students with a diverse range of courses and flexible study schedules. This mode of education opens doors for those who cannot attend traditional classes.\"\n\nWhat is one advantage of distance education mentioned in the passage?",
+    "choices": ["limited access", "rigid schedules", "lack of structure", "flexibility"],
     "answer": "flexibility",
-    "explanation": "The passage emphasizes that distance education offers flexible learning options."
+    "explanation": "The passage emphasizes that distance education offers flexibility in learning."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'A sedentary lifestyle is linked to various health risks, including obesity and cardiovascular diseases, making regular movement essential for maintaining health.'\n\nWhat health risk is associated with a sedentary lifestyle according to the passage?",
+    "question": "Read the following passage:\n\"A sedentary lifestyle is increasingly linked to a variety of health issues, including obesity and heart disease. In contrast, regular movement and exercise contribute to improved fitness and overall well-being. Maintaining an active lifestyle is essential for long-term health.\"\n\nWhat health risk is associated with a sedentary lifestyle according to the passage?",
+    "choices": ["better sleep", "improved circulation", "obesity", "increased strength"],
     "answer": "obesity",
     "explanation": "The passage states that a lack of activity increases the risk of obesity."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Goal-setting is a powerful tool for personal achievement, as clearly defined goals provide direction and motivation for success.'\n\nAccording to the passage, what is one benefit of goal-setting?",
+    "question": "Read the following passage:\n\"Setting goals is a fundamental strategy for achieving success. When individuals establish clear, measurable objectives and break them down into smaller steps, they create a roadmap for progress. This process not only provides direction but also builds motivation over time.\"\n\nAccording to the passage, what is one benefit of goal-setting?",
+    "choices": ["reducing ambition", "wasting time", "providing direction", "causing confusion"],
     "answer": "providing direction",
-    "explanation": "The passage asserts that setting goals helps focus efforts toward achievement."
+    "explanation": "The passage asserts that clear goals help focus efforts and guide success."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'The ancient Greeks made significant contributions to philosophy, mathematics, and the arts, and their ideas continue to influence modern thought.'\n\nWhat is one field in which the ancient Greeks made contributions, as mentioned in the passage?",
+    "question": "Read the following passage:\n\"The ancient Greeks are renowned for their contributions to philosophy, art, and science. Their groundbreaking ideas laid the foundation for Western thought and continue to influence modern society. Studying their legacy offers valuable insights into the origins of many contemporary concepts.\"\n\nWhat is one field in which the ancient Greeks made contributions, as mentioned in the passage?",
+    "choices": ["medicine", "economics", "philosophy", "technology"],
     "answer": "philosophy",
-    "explanation": "The passage highlights philosophy as one of the key areas of Greek achievement."
+    "explanation": "The passage highlights philosophy as a major contribution of the ancient Greeks."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'The Internet of Things (IoT) connects everyday devices to the internet, enabling data exchange and automation that is transforming industries.'\n\nWhat does IoT stand for, as mentioned in the passage?",
+    "question": "Read the following passage:\n\"The term 'IoT' stands for a network where everyday devices are connected to the internet, allowing them to communicate and share data. This interconnectivity is transforming industries by enabling smarter, more efficient processes. Its impact is visible in sectors ranging from home automation to industrial systems.\"\n\nWhat does IoT stand for, as mentioned in the passage?",
+    "choices": ["Integrated Optical Transmitter", "Internet of Things", "Internal Operation Technique", "Interconnected Online Technology"],
     "answer": "Internet of Things",
     "explanation": "The passage explicitly defines IoT as the Internet of Things."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'The depletion of the ozone layer increases the risk of harmful ultraviolet radiation reaching Earth’s surface. International agreements aim to reverse this trend.'\n\nWhat is one effect of ozone layer depletion mentioned in the passage?",
+    "question": "Read the following passage:\n\"The depletion of the ozone layer has raised serious concerns worldwide. As the protective shield weakens, more harmful ultraviolet radiation reaches the Earth's surface, posing risks to human health and the environment. International efforts are underway to reverse this trend through stricter regulations and innovative technologies.\"\n\nWhat is one effect of ozone layer depletion mentioned in the passage?",
+    "choices": ["reduced sunlight", "increased oxygen levels", "cooler temperatures", "increased ultraviolet radiation"],
     "answer": "increased ultraviolet radiation",
     "explanation": "The passage states that a thinner ozone layer allows more UV radiation to reach the Earth."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Innovation is the driving force behind successful companies. Investing in research and development often leads to groundbreaking products that redefine markets.'\n\nAccording to the passage, what can investing in research and development lead to?",
+    "question": "Read the following passage:\n\"Investing in research and development (R&D) has long been recognized as a driver of innovation. Companies that allocate resources to R&D often pioneer groundbreaking products and transform entire industries. This continuous cycle of innovation is critical for maintaining a competitive edge in today’s market.\"\n\nAccording to the passage, what can investing in R&D lead to?",
+    "choices": ["increased costs", "market stagnation", "groundbreaking products", "obsolete methods"],
     "answer": "groundbreaking products",
     "explanation": "The passage associates R&D with the development of innovative breakthroughs."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Collaborative projects encourage teamwork and communication among students, providing practical experience in solving real-world problems.'\n\nWhat is one benefit of collaborative projects mentioned in the passage?",
+    "question": "Read the following passage:\n\"Collaborative projects in academic and professional settings encourage teamwork and the sharing of diverse ideas. By working together, individuals are better able to solve complex problems and innovate. This cooperative spirit is essential for tackling real-world challenges.\"\n\nWhat is one benefit of collaborative projects mentioned in the passage?",
+    "choices": ["individual isolation", "competition", "reduced creativity", "teamwork"],
     "answer": "teamwork",
-    "explanation": "The passage points out that working together enhances team skills."
+    "explanation": "The passage emphasizes that collaboration enhances team skills."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Proper hydration is essential for bodily functions, supporting digestion, circulation, and temperature regulation by ensuring that cells function optimally.'\n\nWhat bodily function is supported by proper hydration according to the passage?",
+    "question": "Read the following passage:\n\"Hydration plays a crucial role in maintaining proper bodily functions, including digestion, circulation, and temperature regulation. Drinking sufficient water ensures that cells perform at their best, supporting overall health and energy levels. It is one of the simplest ways to boost well-being.\"\n\nWhat bodily function is supported by proper hydration according to the passage?",
+    "choices": ["hearing", "sleep", "digestion", "vision"],
     "answer": "digestion",
-    "explanation": "The passage mentions that hydration aids digestion among other vital processes."
+    "explanation": "The passage mentions that hydration aids digestion among other processes."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Mindfulness meditation encourages individuals to focus on the present moment, reducing stress and improving concentration in both personal and professional contexts.'\n\nWhat benefit of mindfulness meditation is mentioned in the passage?",
+    "question": "Read the following passage:\n\"Meditation and mindfulness practices have become popular as effective methods for reducing stress. By focusing on the present moment and letting go of negative thoughts, practitioners often experience improved concentration and mental clarity. These benefits contribute to a calmer, more focused state of mind.\"\n\nWhat benefit of mindfulness meditation is mentioned in the passage?",
+    "choices": ["increase stress", "reduce stress", "cause distraction", "induce sleepiness"],
     "answer": "reduce stress",
     "explanation": "The passage indicates that mindfulness helps lower stress levels."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'The French Revolution was a period of radical social and political change that led to the end of the monarchy and the rise of modern democratic ideals.'\n\nWhat major change resulted from the French Revolution according to the passage?",
+    "question": "Read the following passage:\n\"The French Revolution marked a dramatic shift in the political landscape, overthrowing long-standing institutions and sparking widespread social change. The end of the monarchy paved the way for modern democratic principles and greater equality among citizens. This upheaval redefined the course of history in Europe.\"\n\nWhat major change resulted from the French Revolution according to the passage?",
+    "choices": ["the rise of monarchy", "economic stability", "the end of monarchy", "increased aristocracy"],
     "answer": "the end of monarchy",
     "explanation": "The passage states that the revolution abolished the monarchy."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Blockchain technology offers a decentralized approach to data management and is widely used in cryptocurrencies to secure transactions.'\n\nIn what field is blockchain technology commonly used as mentioned in the passage?",
+    "question": "Read the following passage:\n\"Blockchain technology offers a decentralized framework for managing data securely. Initially developed for cryptocurrencies, this technology now finds applications in various sectors due to its robust security features. Its ability to ensure transparent and tamper-proof records is revolutionizing data management.\"\n\nIn what field is blockchain technology commonly used as mentioned in the passage?",
+    "choices": ["real estate", "traditional banking", "cryptocurrencies", "healthcare"],
     "answer": "cryptocurrencies",
     "explanation": "The passage notes that blockchain is integral to securing cryptocurrency transactions."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Renewable resources such as wind, solar, and hydropower provide cleaner alternatives to fossil fuels, and their adoption can help reduce environmental pollution.'\n\nWhat is one renewable resource mentioned in the passage?",
+    "question": "Read the following passage:\n\"As concerns about climate change grow, renewable resources such as wind, solar, and hydropower have come to the forefront as sustainable alternatives to fossil fuels. These resources not only reduce environmental pollution but also offer long-term energy security. Their adoption is a key step toward a cleaner future.\"\n\nWhat is one renewable resource mentioned in the passage?",
+    "choices": ["coal", "oil", "wind", "natural gas"],
     "answer": "wind",
     "explanation": "The passage lists wind as one of the renewable energy sources."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'A strong brand identity helps companies differentiate themselves from competitors. Consistent messaging and visual elements are essential components of a memorable brand.'\n\nWhat is one element that contributes to a strong brand identity mentioned in the passage?",
+    "question": "Read the following passage:\n\"A strong brand identity is essential for companies to differentiate themselves in a crowded marketplace. By maintaining consistent messaging and visual elements, businesses build recognition and trust among consumers. This cohesive image helps to foster loyalty and set a brand apart from its competitors.\"\n\nWhat is one element that contributes to a strong brand identity mentioned in the passage?",
+    "choices": ["ambiguous logos", "inconsistent messaging", "consistent messaging", "erratic design"],
     "answer": "consistent messaging",
     "explanation": "The passage emphasizes that consistency in messaging is important for branding."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Experiential learning involves acquiring knowledge through hands-on experiences such as internships, field trips, and project-based activities, enhancing student engagement.'\n\nWhat is one example of experiential learning mentioned in the passage?",
+    "question": "Read the following passage:\n\"Experiential learning transforms the educational process by involving students in hands-on projects and real-world problem-solving. Internships, field trips, and project-based activities allow learners to apply theoretical knowledge in practical contexts. This immersive approach enhances engagement and deepens understanding.\"\n\nWhat is one example of experiential learning mentioned in the passage?",
+    "choices": ["online quizzes", "textbook study", "lectures", "internships"],
     "answer": "internships",
-    "explanation": "The passage cites internships as an example of learning by experience."
+    "explanation": "The passage cites internships as an example of learning through experience."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'A high-fiber diet aids digestion and helps maintain healthy cholesterol levels. Foods such as whole grains, fruits, and vegetables are excellent sources of fiber.'\n\nWhat food group is mentioned as a source of fiber in the passage?",
+    "question": "Read the following passage:\n\"A high-fiber diet is important for maintaining digestive health and reducing the risk of chronic diseases. Foods like whole grains, fruits, and vegetables supply the fiber needed for proper digestion and cholesterol regulation. Incorporating these foods into daily meals is a simple way to promote wellness.\"\n\nWhat food group is mentioned as a source of fiber in the passage?",
+    "choices": ["red meat", "sweets", "dairy", "whole grains"],
     "answer": "whole grains",
-    "explanation": "The passage mentions whole grains among the sources of dietary fiber."
+    "explanation": "The passage mentions whole grains as an excellent source of fiber."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Building self-confidence involves setting small, achievable goals and celebrating progress along the way, which cumulatively lead to greater self-assurance.'\n\nAccording to the passage, what helps build self-confidence?",
+    "question": "Read the following passage:\n\"Building self-confidence often starts with setting small, realistic goals and celebrating each achievement. These incremental successes build momentum and help individuals overcome self-doubt. Over time, the process of achieving these manageable targets reinforces a positive self-image.\"\n\nAccording to the passage, what helps build self-confidence?",
+    "choices": ["waiting for success", "avoiding challenges", "ignoring progress", "setting small, achievable goals"],
     "answer": "setting small, achievable goals",
-    "explanation": "The passage links incremental successes to improved self-confidence."
+    "explanation": "The passage links incremental achievements to improved self-confidence."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'The invention of the printing press in the 15th century revolutionized the spread of information and played a crucial role in the dissemination of knowledge during the Renaissance.'\n\nWhat major invention is discussed in the passage?",
+    "question": "Read the following passage:\n\"The invention of the printing press in the 15th century revolutionized the spread of information. By making books and written works widely available, it democratized knowledge and sparked the intellectual growth of the Renaissance. This innovation paved the way for the modern era of mass communication.\"\n\nWhat major invention is discussed in the passage?",
+    "choices": ["the telephone", "the internet", "the printing press", "the steam engine"],
     "answer": "the printing press",
-    "explanation": "The passage credits the printing press with transforming the way information was shared."
+    "explanation": "The passage credits the printing press with transforming information dissemination."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Advancements in robotics are changing manufacturing processes, as automated robots can perform repetitive tasks with high precision, increasing efficiency on the factory floor.'\n\nWhat is one benefit of robotics mentioned in the passage?",
+    "question": "Read the following passage:\n\"Advancements in robotics have dramatically altered manufacturing processes. Automated robots now perform repetitive tasks with remarkable precision, reducing human error and increasing efficiency. As these technologies evolve, they continue to reshape the industrial landscape.\"\n\nWhat is one benefit of robotics mentioned in the passage?",
+    "choices": ["higher costs", "increased human error", "high precision in repetitive tasks", "slower production"],
     "answer": "high precision in repetitive tasks",
     "explanation": "The passage indicates that robotics improves precision in manufacturing."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Wetlands serve as natural water filters by trapping pollutants and improving water quality, while also providing a habitat for a diverse range of species.'\n\nWhat is one function of wetlands mentioned in the passage?",
+    "question": "Read the following passage:\n\"Wetlands are vital natural resources that serve as water filters and habitats for diverse species. By trapping pollutants and sediment, they play a crucial role in maintaining water quality. Their ecological importance extends to supporting biodiversity in surrounding regions.\"\n\nWhat is one function of wetlands mentioned in the passage?",
+    "choices": ["increasing toxins", "depleting water", "trapping pollutants", "accelerating erosion"],
     "answer": "trapping pollutants",
     "explanation": "The passage states that wetlands help filter water by trapping pollutants."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Effective marketing strategies require a deep understanding of customer needs and the creation of targeted campaigns. Data analytics plays a significant role in shaping these strategies.'\n\nWhat role does data analytics play in marketing according to the passage?",
+    "question": "Read the following passage:\n\"In today’s competitive marketplace, data analytics is indispensable for shaping effective marketing strategies. Businesses analyze customer data to develop targeted campaigns that meet consumer needs. This analytical approach helps companies refine their offerings and increase sales.\"\n\nWhat role does data analytics play in marketing according to the passage?",
+    "choices": ["random decision-making", "ignoring customer feedback", "shaping targeted campaigns", "reducing sales"],
     "answer": "shaping targeted campaigns",
     "explanation": "The passage links data analytics with the development of effective marketing strategies."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'E-learning platforms offer a wide range of courses and resources for self-paced learning, enabling access to education regardless of geographical limitations.'\n\nWhat is one benefit of e-learning platforms mentioned in the passage?",
+    "question": "Read the following passage:\n\"E-learning platforms have transformed traditional education by providing access to courses from anywhere in the world. With self-paced study and a wealth of online resources, these platforms break down geographical barriers. They empower learners to pursue knowledge without the constraints of a physical classroom.\"\n\nWhat is one benefit of e-learning platforms mentioned in the passage?",
+    "choices": ["limited options", "high fees", "access to education regardless of location", "rigid schedules"],
     "answer": "access to education regardless of location",
-    "explanation": "The passage highlights that e-learning makes education accessible to remote learners."
+    "explanation": "The passage highlights that e-learning expands access to education."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Regular medical check-ups allow for the early detection of health issues, making preventative care a vital part of maintaining long-term wellness.'\n\nWhat is one advantage of regular medical check-ups mentioned in the passage?",
+    "question": "Read the following passage:\n\"Regular medical check-ups are vital for early detection of potential health issues. By identifying problems before they become severe, preventative care can be administered more effectively. This proactive approach contributes significantly to long-term wellness.\"\n\nWhat is one advantage of regular medical check-ups mentioned in the passage?",
+    "choices": ["unnecessary procedures", "increased costs", "early detection of health issues", "waste of time"],
     "answer": "early detection of health issues",
-    "explanation": "The passage emphasizes that routine check-ups can identify problems before they worsen."
+    "explanation": "The passage emphasizes that routine check-ups can identify problems early."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Adopting a growth mindset involves embracing challenges and learning from criticism, which fosters continuous self-improvement and adaptation.'\n\nWhat is one characteristic of a growth mindset according to the passage?",
+    "question": "Read the following passage:\n\"Adopting a growth mindset means embracing challenges and learning from every experience. Those with a growth mindset see setbacks as opportunities to improve and develop new skills. This positive approach to learning fosters continuous self-improvement.\"\n\nWhat is one characteristic of a growth mindset according to the passage?",
+    "choices": ["rejecting criticism", "sticking to the comfort zone", "embracing challenges", "avoiding feedback"],
     "answer": "embracing challenges",
     "explanation": "The passage describes a growth mindset as one that welcomes challenges and learning opportunities."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'The Civil Rights Movement in the 1960s was a pivotal period in American history, leading to significant social and legislative changes that promoted equality.'\n\nWhat was one outcome of the Civil Rights Movement mentioned in the passage?",
-    "answer": "legislative changes",
-    "explanation": "The passage indicates that the movement resulted in new laws promoting equality."
+    "question": "Read the following passage:\n\"Morning exercise routines have been shown to boost energy levels and enhance focus throughout the day. Starting the day with physical activity sets a positive tone and primes the mind for the challenges ahead. Many studies support the benefits of exercising early in the day.\"\n\nWhat is one benefit of a morning exercise routine mentioned in the passage?",
+    "choices": ["increased fatigue", "reduced energy", "improved focus", "drowsiness"],
+    "answer": "improved focus",
+    "explanation": "The passage suggests that morning exercise helps boost focus and energy."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Cloud computing allows businesses to store and access data over the internet, reducing the need for physical servers while offering scalability and flexibility.'\n\nWhat is one benefit of cloud computing mentioned in the passage?",
-    "answer": "scalability",
-    "explanation": "The passage notes that cloud computing provides scalable storage solutions."
+    "question": "Read the following passage:\n\"Flexible work schedules have become increasingly popular as they allow employees to better balance their personal and professional lives. This flexibility leads to reduced stress and improved job satisfaction. Companies that adopt such policies often see a boost in overall productivity.\"\n\nWhat is one benefit of flexible work schedules mentioned in the passage?",
+    "choices": ["longer commutes", "increased stress", "better work-life balance", "reduced productivity"],
+    "answer": "better work-life balance",
+    "explanation": "The passage highlights that flexibility in work schedules improves balance between work and personal life."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'The overuse of chemical fertilizers in agriculture can lead to soil degradation and water pollution, prompting a shift towards more sustainable organic farming practices.'\n\nWhat negative effect of chemical fertilizers is mentioned in the passage?",
-    "answer": "soil degradation",
-    "explanation": "The passage explains that chemical fertilizers can harm soil quality."
+    "question": "Read the following passage:\n\"With more personal data being shared online than ever before, digital privacy has become a paramount concern. Data breaches and unauthorized access to sensitive information are on the rise, prompting calls for stricter security measures. Individuals and organizations alike must be vigilant in protecting their digital footprints.\"\n\nWhat is one concern mentioned in the passage regarding digital privacy?",
+    "choices": ["improved encryption", "data breaches", "better security", "privacy regulations"],
+    "answer": "data breaches",
+    "explanation": "The passage expresses concern over data breaches compromising privacy."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Mergers and acquisitions can reshape entire industries by consolidating resources and reducing competition, often driven by strategic objectives for growth.'\n\nWhat is one reason companies pursue mergers and acquisitions according to the passage?",
-    "answer": "strategic growth",
-    "explanation": "The passage mentions that mergers and acquisitions are motivated by growth strategies."
+    "question": "Read the following passage:\n\"Renewable water resources are essential for sustainable agriculture and human consumption. Efficient management of these resources ensures a stable water supply for communities and helps mitigate the effects of drought. Their preservation is key to supporting both economic and environmental stability.\"\n\nWhat is one benefit of renewable water resources mentioned in the passage?",
+    "choices": ["wastefulness", "increased pollution", "sustainable water supply", "shortages"],
+    "answer": "sustainable water supply",
+    "explanation": "The passage emphasizes that renewable water resources offer a stable supply."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Learning a second language not only enhances cognitive abilities but also broadens cultural understanding, especially when immersive language programs are involved.'\n\nAccording to the passage, what is one benefit of learning a second language?",
-    "answer": "enhanced cognitive abilities",
-    "explanation": "The passage connects bilingualism with improvements in cognitive function."
+    "question": "Read the following passage:\n\"Community volunteerism not only improves local services but also strengthens the bonds among residents. By working together on projects and initiatives, individuals develop a sense of unity and shared purpose. Such collaborative efforts are vital for creating resilient communities.\"\n\nAccording to the passage, what is one benefit of community volunteerism?",
+    "choices": ["financial loss", "individual isolation", "strengthening community bonds", "increased conflict"],
+    "answer": "strengthening community bonds",
+    "explanation": "The passage notes that volunteerism fosters stronger community ties."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Yoga combines physical postures, breathing exercises, and meditation to promote overall well-being. This ancient practice can improve flexibility and reduce stress.'\n\nWhat is one component of yoga mentioned in the passage?",
-    "answer": "breathing exercises",
-    "explanation": "The passage notes that yoga includes breathing techniques as part of its practice."
+    "question": "Read the following passage:\n\"Research and development (R&D) is the lifeblood of technological progress. Companies that invest in R&D can develop innovative products and refine existing processes, leading to a competitive advantage. Continuous investment in R&D drives long-term growth and market leadership.\"\n\nWhat does the passage suggest is a key driver of technological innovation?",
+    "choices": ["traditional methods", "lack of creativity", "inertia", "research and development"],
+    "answer": "research and development",
+    "explanation": "The passage emphasizes that R&D is fundamental to innovation."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Effective time management involves prioritizing tasks and allocating time wisely, leading to increased productivity and reduced burnout among professionals.'\n\nWhat is one benefit of effective time management mentioned in the passage?",
-    "answer": "increased productivity",
-    "explanation": "The passage states that managing time well boosts productivity."
+    "question": "Read the following passage:\n\"Public transportation systems are critical for reducing urban congestion and lowering carbon emissions. By providing efficient alternatives to personal car use, they ease traffic and contribute to a cleaner environment. Cities that invest in public transit see both economic and environmental benefits.\"\n\nAccording to the passage, what is one benefit of public transportation?",
+    "choices": ["increased pollution", "reduced traffic congestion", "higher costs", "longer commutes"],
+    "answer": "reduced traffic congestion",
+    "explanation": "The passage states that public transportation eases traffic congestion."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'The fall of the Roman Empire was a complex process influenced by economic, military, and political factors, which reshaped the structure of Europe.'\n\nWhat was one factor contributing to the fall of the Roman Empire mentioned in the passage?",
-    "answer": "economic factors",
-    "explanation": "The passage lists economic issues as one of the contributing factors to Rome's decline."
+    "question": "Read the following passage:\n\"Energy conservation practices not only protect the environment but also reduce costs for consumers. By lowering overall energy consumption, households can benefit from lower utility bills. Such practices are a win-win, improving sustainability while easing financial burdens.\"\n\nWhat is one benefit of energy conservation mentioned in the passage?",
+    "choices": ["increased usage", "higher emissions", "wastefulness", "lower utility bills"],
+    "answer": "lower utility bills",
+    "explanation": "The passage highlights that conserving energy saves money on utilities."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Mobile payment systems allow consumers to make transactions using their smartphones, offering both convenience and speed in everyday purchases.'\n\nWhat is one benefit of mobile payment systems mentioned in the passage?",
-    "answer": "convenience",
-    "explanation": "The passage highlights the ease and speed of mobile payments."
+    "question": "Read the following passage:\n\"Historical artifacts and documents are treasures that preserve the cultural heritage of a community. Conserving these items allows future generations to learn about and appreciate their history. This preservation is crucial for maintaining a sense of identity and continuity over time.\"\n\nWhat is one reason for conserving historical artifacts mentioned in the passage?",
+    "choices": ["modernizing", "discarding history", "preserving cultural heritage", "ignoring the past"],
+    "answer": "preserving cultural heritage",
+    "explanation": "The passage emphasizes the importance of keeping historical artifacts for cultural preservation."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Sustainable agriculture practices, such as crop rotation and organic fertilization, help maintain soil health and promote long-term environmental balance.'\n\nWhat is one sustainable agriculture practice mentioned in the passage?",
-    "answer": "crop rotation",
-    "explanation": "The passage lists crop rotation as a method to sustain soil quality."
+    "question": "Read the following passage:\n\"Libraries are not just repositories of books; they are community centers that provide free access to information and educational resources. By offering a quiet space for study and a wealth of learning materials, libraries support lifelong learning and literacy. Their role in society is more crucial than ever in the digital age.\"\n\nAccording to the passage, what is one benefit of libraries?",
+    "choices": ["charging fees", "restricting information", "providing access to knowledge", "limited resources"],
+    "answer": "providing access to knowledge",
+    "explanation": "The passage highlights that libraries offer free access to information."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'E-commerce has revolutionized retail by enabling online shopping. It offers customers a wide range of products and the convenience of home delivery.'\n\nAccording to the passage, what is one advantage of e-commerce?",
-    "answer": "home delivery",
-    "explanation": "The passage states that e-commerce provides the convenience of having products delivered."
+    "question": "Read the following passage:\n\"Sustainable urban development focuses on designing cities that meet the needs of the present without compromising the future. This approach incorporates green spaces, energy-efficient buildings, and smart infrastructure to minimize environmental impact. It represents a balanced way to achieve growth and quality of life.\"\n\nWhat is one aspect of sustainable urban development mentioned in the passage?",
+    "choices": ["excessive zoning", "unplanned growth", "pollution", "green building practices"],
+    "answer": "green building practices",
+    "explanation": "The passage notes that sustainable urban development includes eco-friendly construction methods."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Standardized testing is used to measure student achievement across various subjects, providing data that can help inform educational policies.'\n\nWhat is one purpose of standardized testing mentioned in the passage?",
-    "answer": "to measure student achievement",
-    "explanation": "The passage explains that standardized tests assess academic performance."
+    "question": "Read the following passage:\n\"Integrating technology into education has dramatically changed how students learn. Interactive digital tools and online resources have made lessons more engaging and accessible. This integration not only supports better learning outcomes but also prepares students for a tech-driven world.\"\n\nWhat is one benefit of integrating technology in education mentioned in the passage?",
+    "choices": ["ineffective teaching", "increased distractions", "enhanced learning experiences", "higher costs"],
+    "answer": "enhanced learning experiences",
+    "explanation": "The passage highlights that technology enriches the educational experience."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Immunization programs have significantly reduced the prevalence of infectious diseases by protecting communities through herd immunity.'\n\nWhat is one benefit of immunization programs mentioned in the passage?",
-    "answer": "reduced prevalence of infectious diseases",
-    "explanation": "The passage links vaccinations to lower rates of disease."
+    "question": "Read the following passage:\n\"Social media platforms have revolutionized the dissemination of information by enabling instant global communication. Despite its many advantages, the rapid spread of unverified information poses serious challenges. Users must navigate this digital landscape with a critical eye.\"\n\nWhat is one impact of social media mentioned in the passage?",
+    "choices": ["slow communication", "rapid information spread", "limited interaction", "low engagement"],
+    "answer": "rapid information spread",
+    "explanation": "The passage emphasizes that social media facilitates quick dissemination of information."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Developing effective communication skills is crucial in both personal and professional settings, as clear communication fosters understanding and collaboration.'\n\nWhat is one outcome of effective communication mentioned in the passage?",
-    "answer": "fosters understanding",
-    "explanation": "The passage highlights that clear communication leads to better mutual understanding."
+    "question": "Read the following passage:\n\"Deforestation has far-reaching effects on the environment. Beyond the obvious loss of trees, it leads to habitat destruction and a decline in biodiversity. The removal of forests also reduces the Earth's capacity to absorb carbon dioxide, exacerbating climate change.\"\n\nWhat is one effect of deforestation on biodiversity mentioned in the passage?",
+    "choices": ["enhanced diversity", "loss of species", "no impact", "increase in species"],
+    "answer": "loss of species",
+    "explanation": "The passage explains that deforestation results in a loss of biodiversity."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'The discovery of penicillin in the 20th century revolutionized medicine by ushering in the age of antibiotics, saving countless lives in the process.'\n\nWhat medical breakthrough is mentioned in the passage?",
-    "answer": "the discovery of penicillin",
-    "explanation": "The passage identifies penicillin as a revolutionary antibiotic."
+    "question": "Read the following passage:\n\"Responsible consumerism involves making purchasing decisions that take into account ethical and environmental considerations. By choosing sustainable products and supporting fair trade, consumers can drive positive change. This approach benefits both the environment and society as a whole.\"\n\nWhat does the passage suggest is one benefit of responsible consumerism?",
+    "choices": ["overconsumption", "wasteful spending", "sustainable practices", "impulse buying"],
+    "answer": "sustainable practices",
+    "explanation": "The passage advocates that responsible consumerism leads to more sustainable outcomes."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'3D printing technology allows for rapid prototyping and the manufacturing of complex structures, and it is now used in fields ranging from healthcare to automotive production.'\n\nWhat is one application of 3D printing mentioned in the passage?",
-    "answer": "rapid prototyping",
-    "explanation": "The passage points out that 3D printing speeds up the process of prototyping."
+    "question": "Read the following passage:\n\"Global warming is contributing to more frequent and severe weather events around the world. From devastating hurricanes to prolonged droughts, the impacts of climate change are becoming increasingly apparent. Experts warn that urgent action is needed to mitigate these effects.\"\n\nAccording to the passage, what is one impact of global warming?",
+    "choices": ["stable climate", "consistent temperatures", "mild winters", "extreme weather events"],
+    "answer": "extreme weather events",
+    "explanation": "The passage links global warming to the increased severity of weather events."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Urban farming initiatives are gaining popularity as a means to produce fresh, local produce and reduce the carbon footprint associated with long-distance food transportation.'\n\nAccording to the passage, what is one environmental benefit of urban farming?",
-    "answer": "reduced carbon footprint",
-    "explanation": "The passage explains that local food production lowers transportation emissions."
+    "question": "Read the following passage:\n\"Meditation has long been practiced as a method for reducing stress and improving mental clarity. Regular practice can lead to better focus, lower anxiety, and an overall sense of calm. These benefits contribute to improved daily functioning and well-being.\"\n\nWhat is one benefit of meditation mentioned in the passage?",
+    "choices": ["increased anxiety", "stress reduction", "distraction", "confusion"],
+    "answer": "stress reduction",
+    "explanation": "The passage indicates that meditation helps lower stress levels."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Customer feedback is invaluable for improving products and services. Companies frequently use surveys to gather opinions from consumers and refine their offerings.'\n\nWhat tool is mentioned for collecting customer feedback in the passage?",
-    "answer": "surveys",
-    "explanation": "The passage indicates that surveys are a common method for gathering feedback."
+    "question": "Read the following passage:\n\"Artificial intelligence is rapidly transforming the healthcare industry. By analyzing large volumes of data, AI helps improve diagnostic accuracy and tailor treatment plans to individual patients. This technological advancement is paving the way for more personalized and effective medical care.\"\n\nAccording to the passage, what is one application of artificial intelligence in healthcare?",
+    "choices": ["slowing treatment", "replacing doctors", "increasing errors", "improving diagnostics"],
+    "answer": "improving diagnostics",
+    "explanation": "The passage highlights that AI can help in making more accurate diagnoses."
   },
   {
-    "category": "Paragraph Comprehension",
-    "question": "Read the following passage:\n'Blended learning combines traditional classroom methods with online instruction, catering to diverse learning styles and needs.'\n\nWhat is one advantage of blended learning mentioned in the passage?",
-    "answer": "catering to diverse learning styles",
-    "explanation": "The passage states that blended learning addresses various learning preferences."
+    "question": "Read the following passage:\n\"E-commerce has revolutionized the retail landscape by offering consumers the convenience of shopping from home. The ability to browse a vast array of products online and have them delivered directly has transformed consumer behavior. This shift has also allowed businesses to reduce overhead costs and expand their markets.\"\n\nWhat is one advantage of e-commerce mentioned in the passage?",
+    "choices": ["limited options", "wider product range", "longer delivery times", "higher prices"],
+    "answer": "wider product range",
+    "explanation": "The passage notes that e-commerce provides consumers with more product choices."
+  },
+  {
+    "question": "Read the following passage:\n\"The rising cost of living has become a pressing issue for households around the globe. As prices increase, families are forced to budget more carefully and prioritize essential expenses. This financial pressure is reshaping spending habits and economic priorities.\"\n\nAccording to the passage, what is one effect of the rising cost of living?",
+    "choices": ["financial strain", "increased savings", "lower expenses", "stability"],
+    "answer": "financial strain",
+    "explanation": "The passage mentions that higher living costs lead to financial challenges."
+  },
+  {
+    "question": "Read the following passage:\n\"Adequate sleep is critical for optimal cognitive performance. Research indicates that proper rest improves concentration, memory, and overall mental function. Prioritizing sleep can therefore have a significant positive impact on daily productivity.\"\n\nWhat is one benefit of proper sleep mentioned in the passage?",
+    "choices": ["improved cognitive function", "increased fatigue", "poor concentration", "irritability"],
+    "answer": "improved cognitive function",
+    "explanation": "The passage links sufficient sleep with enhanced mental performance."
+  },
+  {
+    "question": "Read the following passage:\n\"Art has long served as a medium for personal expression and social commentary. Through paintings, sculptures, and other creative forms, artists convey emotions and ideas that can inspire change. This cultural influence underscores art’s ability to spark innovation and dialogue.\"\n\nAccording to the passage, what is one impact of art on society?",
+    "choices": ["reducing innovation", "promoting ignorance", "inspiring creativity", "causing conflict"],
+    "answer": "inspiring creativity",
+    "explanation": "The passage states that art fosters creativity and personal expression."
+  },
+  {
+    "question": "Read the following passage:\n\"Innovations in transportation, such as high-speed trains and electric vehicles, are reshaping the way people travel. These advancements reduce travel times and improve fuel efficiency, benefiting both commuters and the environment. The evolution of transportation technology is paving the way for a more connected world.\"\n\nWhat is one benefit of innovations in transportation mentioned in the passage?",
+    "choices": ["increased congestion", "higher costs", "reduced safety", "faster travel times"],
+    "answer": "faster travel times",
+    "explanation": "The passage highlights that improved transportation reduces travel time."
+  },
+  {
+    "question": "Read the following passage:\n\"Effective environmental policies can bring about significant improvements in air quality and public health. By enforcing stricter emission standards and promoting renewable energy, governments can reduce pollution levels. These measures not only protect the environment but also lead to healthier communities.\"\n\nAccording to the passage, what is one effect of effective environmental policies?",
+    "choices": ["worsened health", "higher emissions", "improved air quality", "increased pollution"],
+    "answer": "improved air quality",
+    "explanation": "The passage explains that such policies result in cleaner air."
+  },
+  {
+    "question": "Read the following passage:\n\"As digital threats become more sophisticated, organizations are facing an ever-evolving cybersecurity landscape. Hackers employ new tactics regularly, forcing companies to update their security protocols. This dynamic environment requires constant vigilance and innovation to protect sensitive data.\"\n\nWhat is one challenge mentioned in the passage regarding cybersecurity?",
+    "choices": ["minimal risks", "stable threats", "predictable attacks", "rapidly evolving threats"],
+    "answer": "rapidly evolving threats",
+    "explanation": "The passage states that cybersecurity threats change quickly."
+  },
+  {
+    "question": "Read the following passage:\n\"The transition to renewable energy sources is not only environmentally beneficial but also has the potential to stimulate economic growth. Investment in clean energy creates jobs and spurs innovation across various industries. This dual advantage makes renewable energy an attractive option for many nations.\"\n\nAccording to the passage, what is one economic benefit of renewable energy?",
+    "choices": ["inefficient production", "job losses", "high operational costs", "job creation"],
+    "answer": "job creation",
+    "explanation": "The passage mentions that renewable energy initiatives generate new employment opportunities."
   }
 ]

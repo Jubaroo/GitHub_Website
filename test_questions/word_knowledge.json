@@ -1,152 +1,602 @@
 [
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'benevolent'.",
+    "choices": ["kind", "malevolent", "indifferent", "selfish"],
     "answer": "kind",
-    "explanation": "Benevolent means showing kindness and charity."
+    "explanation": "'Benevolent' means kind and charitable."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'ephemeral'.",
+    "choices": ["temporary", "eternal", "permanent", "timeless"],
     "answer": "temporary",
-    "explanation": "Ephemeral refers to something lasting for a very short time."
+    "explanation": "'Ephemeral' means lasting for a very short time."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'mitigate'.",
+    "choices": ["alleviate", "exacerbate", "intensify", "complicate"],
     "answer": "alleviate",
-    "explanation": "Mitigate means to make something less severe or painful."
+    "explanation": "'Mitigate' means to lessen the severity of something."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'obstinate'.",
+    "choices": ["stubborn", "flexible", "yielding", "compliant"],
     "answer": "stubborn",
-    "explanation": "Obstinate means refusing to change one's opinion or behavior."
+    "explanation": "'Obstinate' means refusing to change one's opinion or behavior."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'exacerbate'.",
+    "choices": ["worsen", "ameliorate", "soothe", "mitigate"],
     "answer": "worsen",
-    "explanation": "Exacerbate means to make a situation worse."
+    "explanation": "'Exacerbate' means to make a situation worse."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'prudent'.",
+    "choices": ["wise", "reckless", "imprudent", "careless"],
     "answer": "wise",
-    "explanation": "Prudent means showing good judgment and wisdom."
+    "explanation": "'Prudent' means showing good judgment or wisdom."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'adversity'.",
+    "choices": ["misfortune", "prosperity", "fortune", "success"],
     "answer": "misfortune",
-    "explanation": "Adversity refers to difficulties or misfortune."
+    "explanation": "'Adversity' means difficulties or misfortune."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'candid'.",
+    "choices": ["honest", "deceitful", "evasive", "reserved"],
     "answer": "honest",
-    "explanation": "Candid means being truthful and straightforward."
+    "explanation": "'Candid' means truthful and straightforward."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'dormant'.",
+    "choices": ["inactive", "active", "vibrant", "lively"],
     "answer": "inactive",
-    "explanation": "Dormant means temporarily inactive or at rest."
+    "explanation": "'Dormant' means temporarily inactive."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'resilient'.",
+    "choices": ["tough", "fragile", "weak", "sensitive"],
     "answer": "tough",
-    "explanation": "Resilient means able to recover quickly from difficulties."
+    "explanation": "'Resilient' means able to recover quickly from difficulties."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'lucid'.",
+    "choices": ["clear", "confusing", "ambiguous", "vague"],
     "answer": "clear",
-    "explanation": "Lucid means expressed in a clear manner."
+    "explanation": "'Lucid' means expressed clearly."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'vivid'.",
+    "choices": ["bright", "dull", "pale", "faded"],
     "answer": "bright",
-    "explanation": "Vivid means producing strong, clear images or impressions."
+    "explanation": "'Vivid' means producing powerful images or strong impressions."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'arduous'.",
+    "choices": ["difficult", "easy", "simple", "effortless"],
     "answer": "difficult",
-    "explanation": "Arduous means involving or requiring strenuous effort."
+    "explanation": "'Arduous' means requiring strenuous effort."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'innate'.",
+    "choices": ["inborn", "acquired", "learned", "external"],
     "answer": "inborn",
-    "explanation": "Innate means existing from birth; natural."
+    "explanation": "'Innate' means existing from birth; natural."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'disparage'.",
+    "choices": ["belittle", "praise", "admire", "exalt"],
     "answer": "belittle",
-    "explanation": "Disparage means to speak of or treat as unimportant."
+    "explanation": "'Disparage' means to speak of as unimportant."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'ambiguous'.",
+    "choices": ["unclear", "definite", "certain", "explicit"],
     "answer": "unclear",
-    "explanation": "Ambiguous means open to more than one interpretation."
+    "explanation": "'Ambiguous' means open to more than one interpretation."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'elevate'.",
+    "choices": ["raise", "lower", "depress", "diminish"],
     "answer": "raise",
-    "explanation": "Elevate means to lift up or increase in rank or status."
+    "explanation": "'Elevate' means to lift up or increase in rank."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'erratic'.",
+    "choices": ["unpredictable", "consistent", "steady", "regular"],
     "answer": "unpredictable",
-    "explanation": "Erratic means not even or regular in pattern; unpredictable."
+    "explanation": "'Erratic' means irregular or unpredictable."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'tenacious'.",
+    "choices": ["persistent", "yielding", "weak", "fleeting"],
     "answer": "persistent",
-    "explanation": "Tenacious means holding fast; persistent."
+    "explanation": "'Tenacious' means holding fast; persistent."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'plausible'.",
+    "choices": ["believable", "incredible", "absurd", "improbable"],
     "answer": "believable",
-    "explanation": "Plausible means seeming reasonable or probable."
+    "explanation": "'Plausible' means seeming reasonable or probable."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'frugal'.",
+    "choices": ["economical", "wasteful", "extravagant", "lavish"],
     "answer": "economical",
-    "explanation": "Frugal means sparing or economical with resources."
+    "explanation": "'Frugal' means sparing or economical with resources."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'obscure'.",
-    "answer": "unclear",
-    "explanation": "Obscure means not clearly expressed or easily understood."
+    "choices": ["vague", "clear", "familiar", "obvious"],
+    "answer": "vague",
+    "explanation": "'Obscure' means not clearly expressed; vague."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'magnanimous'.",
+    "choices": ["generous", "selfish", "petty", "stingy"],
     "answer": "generous",
-    "explanation": "Magnanimous means very generous or forgiving."
+    "explanation": "'Magnanimous' means very generous or forgiving."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'sagacious'.",
+    "choices": ["wise", "foolish", "naive", "unwise"],
     "answer": "wise",
-    "explanation": "Sagacious means having or showing keen mental discernment; wise."
+    "explanation": "'Sagacious' means having or showing keen mental discernment."
   },
   {
-    "category": "Word Knowledge",
     "question": "Choose the word that is most similar in meaning to 'tedious'.",
+    "choices": ["boring", "exciting", "interesting", "lively"],
     "answer": "boring",
-    "explanation": "Tedious means too long, slow, or dull; monotonous."
+    "explanation": "'Tedious' means too long, slow, or dull; monotonous."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'boisterous'.",
+    "choices": ["loud", "quiet", "calm", "subdued"],
+    "answer": "loud",
+    "explanation": "'Boisterous' means noisy and energetic."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'cursory'.",
+    "choices": ["perfunctory", "thorough", "detailed", "comprehensive"],
+    "answer": "perfunctory",
+    "explanation": "'Cursory' means hasty and not thorough."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'gregarious'.",
+    "choices": ["sociable", "shy", "introverted", "solitary"],
+    "answer": "sociable",
+    "explanation": "'Gregarious' means fond of company; sociable."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'meticulous'.",
+    "choices": ["thorough", "careless", "haphazard", "sloppy"],
+    "answer": "thorough",
+    "explanation": "'Meticulous' means showing great attention to detail."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'mundane'.",
+    "choices": ["ordinary", "extraordinary", "unique", "unusual"],
+    "answer": "ordinary",
+    "explanation": "'Mundane' means lacking interest or excitement; ordinary."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'ostentatious'.",
+    "choices": ["showy", "modest", "humble", "unpretentious"],
+    "answer": "showy",
+    "explanation": "'Ostentatious' means characterized by vulgar or pretentious display."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'placid'.",
+    "choices": ["calm", "agitated", "stormy", "turbulent"],
+    "answer": "calm",
+    "explanation": "'Placid' means pleasantly calm or peaceful."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'proficient'.",
+    "choices": ["skilled", "inept", "untrained", "novice"],
+    "answer": "skilled",
+    "explanation": "'Proficient' means competent or skilled in doing something."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'scrupulous'.",
+    "choices": ["ethical", "corrupt", "dishonest", "unscrupulous"],
+    "answer": "ethical",
+    "explanation": "'Scrupulous' means very concerned to avoid doing wrong."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'sporadic'.",
+    "choices": ["occasional", "constant", "regular", "continuous"],
+    "answer": "occasional",
+    "explanation": "'Sporadic' means occurring at irregular intervals; occasional."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'tenuous'.",
+    "choices": ["weak", "strong", "robust", "sturdy"],
+    "answer": "weak",
+    "explanation": "'Tenuous' means very weak or slight."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'tactful'.",
+    "choices": ["diplomatic", "blunt", "rude", "harsh"],
+    "answer": "diplomatic",
+    "explanation": "'Tactful' means showing sensitivity in dealing with others."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'transient'.",
+    "choices": ["temporary", "permanent", "enduring", "lasting"],
+    "answer": "temporary",
+    "explanation": "'Transient' means lasting only for a short time."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'ubiquitous'.",
+    "choices": ["omnipresent", "rare", "scarce", "isolated"],
+    "answer": "omnipresent",
+    "explanation": "'Ubiquitous' means present, appearing, or found everywhere."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'verbose'.",
+    "choices": ["wordy", "concise", "brief", "laconic"],
+    "answer": "wordy",
+    "explanation": "'Verbose' means using more words than needed."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'zealous'.",
+    "choices": ["enthusiastic", "apathetic", "indifferent", "dispassionate"],
+    "answer": "enthusiastic",
+    "explanation": "'Zealous' means having or showing zeal; passionate."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'austere'.",
+    "choices": ["severe", "luxurious", "ornate", "extravagant"],
+    "answer": "severe",
+    "explanation": "'Austere' means severe or strict in manner."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'belligerent'.",
+    "choices": ["aggressive", "peaceful", "friendly", "amiable"],
+    "answer": "aggressive",
+    "explanation": "'Belligerent' means hostile and aggressive."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'capricious'.",
+    "choices": ["unpredictable", "consistent", "steady", "reliable"],
+    "answer": "unpredictable",
+    "explanation": "'Capricious' means given to sudden changes of mood or behavior."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'debilitate'.",
+    "choices": ["weaken", "strengthen", "invigorate", "energize"],
+    "answer": "weaken",
+    "explanation": "'Debilitate' means to make someone weak or feeble."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'diligent'.",
+    "choices": ["hardworking", "lazy", "careless", "slothful"],
+    "answer": "hardworking",
+    "explanation": "'Diligent' means showing care in one's work or duties."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'efficacious'.",
+    "choices": ["effective", "ineffective", "useless", "incompetent"],
+    "answer": "effective",
+    "explanation": "'Efficacious' means successful in producing a desired result."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'enervated'.",
+    "choices": ["weakened", "energized", "invigorated", "strengthened"],
+    "answer": "weakened",
+    "explanation": "'Enervated' means lacking physical, mental, or moral strength."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'epitome'.",
+    "choices": ["exemplary", "antithesis", "opposite", "contradiction"],
+    "answer": "exemplary",
+    "explanation": "'Epitome' means a person or thing that is a perfect example of a particular quality."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'esoteric'.",
+    "choices": ["obscure", "common", "popular", "trivial"],
+    "answer": "obscure",
+    "explanation": "'Esoteric' means intended for or likely to be understood by only a small number of people."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'fortuitous'.",
+    "choices": ["accidental", "intentional", "planned", "premeditated"],
+    "answer": "accidental",
+    "explanation": "'Fortuitous' means happening by chance, often in a lucky way."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'incredulous'.",
+    "choices": ["skeptical", "trusting", "gullible", "credulous"],
+    "answer": "skeptical",
+    "explanation": "'Incredulous' means unwilling or unable to believe something."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'inept'.",
+    "choices": ["clumsy", "adept", "skilled", "proficient"],
+    "answer": "clumsy",
+    "explanation": "'Inept' means having or showing no skill; clumsy."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'insolent'.",
+    "choices": ["impudent", "polite", "respectful", "courteous"],
+    "answer": "impudent",
+    "explanation": "'Insolent' means showing a rude and arrogant lack of respect."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'intrepid'.",
+    "choices": ["brave", "timid", "fearful", "cowardly"],
+    "answer": "brave",
+    "explanation": "'Intrepid' means fearless and adventurous."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'laconic'.",
+    "choices": ["brief", "talkative", "wordy", "verbose"],
+    "answer": "brief",
+    "explanation": "'Laconic' means using very few words."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'loquacious'.",
+    "choices": ["talkative", "silent", "reserved", "taciturn"],
+    "answer": "talkative",
+    "explanation": "'Loquacious' means tending to talk a great deal."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'malevolent'.",
+    "choices": ["evil", "kind", "benevolent", "friendly"],
+    "answer": "evil",
+    "explanation": "'Malevolent' means having or showing a wish to do evil to others."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'nefarious'.",
+    "choices": ["wicked", "virtuous", "honorable", "righteous"],
+    "answer": "wicked",
+    "explanation": "'Nefarious' means extremely wicked or villainous."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'oblivious'.",
+    "choices": ["unaware", "attentive", "observant", "conscious"],
+    "answer": "unaware",
+    "explanation": "'Oblivious' means not aware of or not concerned about what is happening."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'obtuse'.",
+    "choices": ["dull", "sharp", "bright", "keen"],
+    "answer": "dull",
+    "explanation": "'Obtuse' means annoyingly insensitive or slow to understand."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'perfunctory'.",
+    "choices": ["superficial", "thorough", "detailed", "meticulous"],
+    "answer": "superficial",
+    "explanation": "'Perfunctory' means carried out with minimal effort or reflection."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'placate'.",
+    "choices": ["appease", "provoke", "anger", "infuriate"],
+    "answer": "appease",
+    "explanation": "'Placate' means to make someone less angry or hostile."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'pragmatic'.",
+    "choices": ["practical", "idealistic", "theoretical", "visionary"],
+    "answer": "practical",
+    "explanation": "'Pragmatic' means dealing with things sensibly and realistically."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'quandary'.",
+    "choices": ["dilemma", "certainty", "clarity", "solution"],
+    "answer": "dilemma",
+    "explanation": "'Quandary' means a state of perplexity or uncertainty over what to do."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'recalcitrant'.",
+    "choices": ["uncooperative", "obedient", "compliant", "submissive"],
+    "answer": "uncooperative",
+    "explanation": "'Recalcitrant' means having an obstinately uncooperative attitude."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'reclusive'.",
+    "choices": ["solitary", "gregarious", "sociable", "outgoing"],
+    "answer": "solitary",
+    "explanation": "'Reclusive' means avoiding the company of other people."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'reticent'.",
+    "choices": ["reserved", "talkative", "loquacious", "expansive"],
+    "answer": "reserved",
+    "explanation": "'Reticent' means not revealing one's thoughts or feelings readily."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'salient'.",
+    "choices": ["prominent", "insignificant", "obscure", "minor"],
+    "answer": "prominent",
+    "explanation": "'Salient' means most noticeable or important."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'sanctimonious'.",
+    "choices": ["self-righteous", "humble", "modest", "unpretentious"],
+    "answer": "self-righteous",
+    "explanation": "'Sanctimonious' means making a show of being morally superior."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'spurious'.",
+    "choices": ["false", "genuine", "authentic", "real"],
+    "answer": "false",
+    "explanation": "'Spurious' means not being what it purports to be; false or fake."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'superficial'.",
+    "choices": ["shallow", "deep", "profound", "thorough"],
+    "answer": "shallow",
+    "explanation": "'Superficial' means existing or occurring at or on the surface; not deep."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'tangible'.",
+    "choices": ["concrete", "abstract", "intangible", "imaginary"],
+    "answer": "concrete",
+    "explanation": "'Tangible' means perceptible by touch; real or actual."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'taciturn'.",
+    "choices": ["quiet", "talkative", "loquacious", "chatty"],
+    "answer": "quiet",
+    "explanation": "'Taciturn' means reserved or uncommunicative in speech."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'unanimous'.",
+    "choices": ["in agreement", "divided", "conflicting", "disputed"],
+    "answer": "in agreement",
+    "explanation": "'Unanimous' means fully in accord; without any disagreement."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'venerable'.",
+    "choices": ["respected", "disreputable", "ignoble", "dishonorable"],
+    "answer": "respected",
+    "explanation": "'Venerable' means accorded a great deal of respect, especially because of age or dignity."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'wary'.",
+    "choices": ["cautious", "reckless", "careless", "heedless"],
+    "answer": "cautious",
+    "explanation": "'Wary' means feeling or showing caution about possible dangers."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'zenith'.",
+    "choices": ["peak", "nadir", "bottom", "base"],
+    "answer": "peak",
+    "explanation": "'Zenith' means the highest point reached; the peak."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'alacrity'.",
+    "choices": ["eagerness", "reluctance", "sluggishness", "hesitance"],
+    "answer": "eagerness",
+    "explanation": "'Alacrity' means brisk and cheerful readiness."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'ameliorate'.",
+    "choices": ["improve", "worsen", "deteriorate", "exacerbate"],
+    "answer": "improve",
+    "explanation": "'Ameliorate' means to make something better."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'anomaly'.",
+    "choices": ["abnormality", "normality", "regularity", "conformity"],
+    "answer": "abnormality",
+    "explanation": "'Anomaly' means something that deviates from what is standard or expected."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'arbitrary'.",
+    "choices": ["random", "systematic", "methodical", "organized"],
+    "answer": "random",
+    "explanation": "'Arbitrary' means based on random choice or personal whim."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'ascetic'.",
+    "choices": ["austere", "indulgent", "extravagant", "luxurious"],
+    "answer": "austere",
+    "explanation": "'Ascetic' means characterized by severe self-discipline; austere."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'pugnacious'.",
+    "choices": ["belligerent", "peaceful", "friendly", "amiable"],
+    "answer": "belligerent",
+    "explanation": "'Pugnacious' means eager or quick to argue or fight."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'boorish'.",
+    "choices": ["rude", "polite", "courteous", "refined"],
+    "answer": "rude",
+    "explanation": "'Boorish' means rough and bad-mannered."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'cajole'.",
+    "choices": ["persuade", "coerce", "force", "compel"],
+    "answer": "persuade",
+    "explanation": "'Cajole' means to persuade someone to do something by sustained coaxing."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'candor'.",
+    "choices": ["honesty", "deceit", "dishonesty", "mendacity"],
+    "answer": "honesty",
+    "explanation": "'Candor' means the quality of being open and honest."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'capitulate'.",
+    "choices": ["surrender", "resist", "oppose", "defy"],
+    "answer": "surrender",
+    "explanation": "'Capitulate' means to cease to resist; surrender."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'censure'.",
+    "choices": ["criticize", "praise", "commend", "applaud"],
+    "answer": "criticize",
+    "explanation": "'Censure' means to express severe disapproval of someone or something."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'clandestine'.",
+    "choices": ["secret", "open", "public", "transparent"],
+    "answer": "secret",
+    "explanation": "'Clandestine' means kept secret or done secretively."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'cogent'.",
+    "choices": ["convincing", "unconvincing", "weak", "ineffective"],
+    "answer": "convincing",
+    "explanation": "'Cogent' means clear, logical, and convincing."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'hasty'.",
+    "choices": ["cursory", "thorough", "meticulous", "detailed"],
+    "answer": "cursory",
+    "explanation": "'Hasty' here means done quickly and without attention to detail (similar to 'cursory')."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'dearth'.",
+    "choices": ["scarcity", "abundance", "plenty", "profusion"],
+    "answer": "scarcity",
+    "explanation": "'Dearth' means a scarcity or lack of something."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'deleterious'.",
+    "choices": ["harmful", "beneficial", "helpful", "advantageous"],
+    "answer": "harmful",
+    "explanation": "'Deleterious' means causing harm or damage."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'demure'.",
+    "choices": ["modest", "immodest", "bold", "brazen"],
+    "answer": "modest",
+    "explanation": "'Demure' means reserved, modest, and shy."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'deride'.",
+    "choices": ["mock", "praise", "admire", "commend"],
+    "answer": "mock",
+    "explanation": "'Deride' means to express contempt for; ridicule."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'diaphanous'.",
+    "choices": ["sheer", "opaque", "thick", "dense"],
+    "answer": "sheer",
+    "explanation": "'Diaphanous' means light, delicate, and translucent."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'ebullient'.",
+    "choices": ["cheerful", "gloomy", "morose", "sullen"],
+    "answer": "cheerful",
+    "explanation": "'Ebullient' means cheerful and full of energy."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'effrontery'.",
+    "choices": ["impudence", "timidity", "meekness", "diffidence"],
+    "answer": "impudence",
+    "explanation": "'Effrontery' means shameless boldness; impudence."
+  },
+  {
+    "question": "Choose the word that is most similar in meaning to 'egregious'.",
+    "choices": ["outstandingly bad", "excellent", "commendable", "meritorious"],
+    "answer": "outstandingly bad",
+    "explanation": "'Egregious' means remarkably bad; shocking."
   }
 ]

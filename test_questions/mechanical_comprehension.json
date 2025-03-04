@@ -1,0 +1,1102 @@
+[
+  {
+    "question": "What is a lever?",
+    "choices": [
+      "A rigid bar that rotates about a fixed point",
+      "A curved surface",
+      "A device that converts rotational motion",
+      "A machine that uses fluid pressure"
+    ],
+    "answer": "A rigid bar that rotates about a fixed point",
+    "explanation": "A lever is a simple machine consisting of a rigid bar that pivots around a fulcrum to amplify force."
+  },
+  {
+    "question": "Which of the following is a class 1 lever?",
+    "choices": [
+      "Seesaw",
+      "Wheelbarrow",
+      "Nutcracker",
+      "Fishing rod"
+    ],
+    "answer": "Seesaw",
+    "explanation": "A seesaw is an example of a class 1 lever where the fulcrum is located between the effort and the load."
+  },
+  {
+    "question": "What is mechanical advantage?",
+    "choices": [
+      "The increase in speed",
+      "The ratio of output force to input force",
+      "The ratio of energy lost to energy input",
+      "The decrease in distance"
+    ],
+    "answer": "The ratio of output force to input force",
+    "explanation": "Mechanical advantage quantifies how much a machine multiplies the force applied to it."
+  },
+  {
+    "question": "In a lever, if the distance from the fulcrum to the effort is twice the distance from the fulcrum to the load, what is the mechanical advantage?",
+    "choices": [
+      "0.5",
+      "1",
+      "2",
+      "4"
+    ],
+    "answer": "2",
+    "explanation": "Mechanical advantage equals the ratio of the lengths of the effort arm to the load arm, so 2:1 gives a mechanical advantage of 2."
+  },
+  {
+    "question": "What simple machine is used to change the direction of a force?",
+    "choices": [
+      "Inclined plane",
+      "Pulley",
+      "Lever",
+      "Screw"
+    ],
+    "answer": "Pulley",
+    "explanation": "A pulley is used to change the direction of a force, making it easier to lift heavy objects."
+  },
+  {
+    "question": "What is the purpose of an inclined plane?",
+    "choices": [
+      "To lift objects vertically",
+      "To reduce friction",
+      "To allow objects to be raised with less force",
+      "To store mechanical energy"
+    ],
+    "answer": "To allow objects to be raised with less force",
+    "explanation": "An inclined plane enables a smaller force to raise an object over a greater distance by reducing the required effort."
+  },
+  {
+    "question": "Which of the following simple machines consists of a wheel with a rope around its circumference?",
+    "choices": [
+      "Lever",
+      "Pulley",
+      "Wedge",
+      "Screw"
+    ],
+    "answer": "Pulley",
+    "explanation": "A pulley uses a wheel with a groove to change the direction of the applied force."
+  },
+  {
+    "question": "What is the mechanical advantage of a gear system?",
+    "choices": [
+      "The ratio of the number of teeth on the output gear to the input gear",
+      "The product of the diameters of the gears",
+      "The difference between the gear diameters",
+      "The sum of the gear radii"
+    ],
+    "answer": "The ratio of the number of teeth on the output gear to the input gear",
+    "explanation": "In gear systems, mechanical advantage is determined by the ratio of the number of teeth on the driven gear to that on the driving gear."
+  },
+  {
+    "question": "Which simple machine is best described as a sloped surface?",
+    "choices": [
+      "Lever",
+      "Pulley",
+      "Inclined plane",
+      "Wedge"
+    ],
+    "answer": "Inclined plane",
+    "explanation": "An inclined plane is a flat surface set at an angle, used to assist in raising or lowering objects."
+  },
+  {
+    "question": "What is a wedge used for?",
+    "choices": [
+      "To join two objects together",
+      "To split or separate objects",
+      "To lift heavy objects",
+      "To change the direction of a force"
+    ],
+    "answer": "To split or separate objects",
+    "explanation": "A wedge converts a force applied to its blunt end into forces perpendicular to its inclined surfaces, often used to split objects."
+  },
+  {
+    "question": "What type of simple machine is a screw considered to be?",
+    "choices": [
+      "Lever",
+      "Inclined plane wrapped around a cylinder",
+      "Pulley",
+      "Wedge"
+    ],
+    "answer": "Inclined plane wrapped around a cylinder",
+    "explanation": "A screw is essentially an inclined plane wrapped around a cylinder, converting rotational force into linear motion."
+  },
+  {
+    "question": "What does the term 'fulcrum' refer to in a lever system?",
+    "choices": [
+      "The load being lifted",
+      "The point where the force is applied",
+      "The pivot point around which the lever rotates",
+      "The amplified force"
+    ],
+    "answer": "The pivot point around which the lever rotates",
+    "explanation": "The fulcrum is the fixed point on which a lever pivots."
+  },
+  {
+    "question": "Which law explains the relationship between force, mass, and acceleration?",
+    "choices": [
+      "Newton's First Law",
+      "Newton's Second Law",
+      "Newton's Third Law",
+      "Hooke's Law"
+    ],
+    "answer": "Newton's Second Law",
+    "explanation": "Newton's Second Law states that force equals mass times acceleration (F = ma)."
+  },
+  {
+    "question": "What is inertia?",
+    "choices": [
+      "The tendency of an object to resist changes in its state of motion",
+      "The force required to change the speed of an object",
+      "The energy stored in a moving object",
+      "The measure of friction between surfaces"
+    ],
+    "answer": "The tendency of an object to resist changes in its state of motion",
+    "explanation": "Inertia is the property of matter that causes it to resist changes in motion."
+  },
+  {
+    "question": "What is friction?",
+    "choices": [
+      "A force that speeds up motion",
+      "A force that opposes the relative motion of two surfaces",
+      "A type of mechanical advantage",
+      "A principle of conservation of energy"
+    ],
+    "answer": "A force that opposes the relative motion of two surfaces",
+    "explanation": "Friction is the resistance encountered when one surface moves over another."
+  },
+  {
+    "question": "How does increasing the surface area of contact affect friction?",
+    "choices": [
+      "Increases friction",
+      "Decreases friction",
+      "Has no effect on friction",
+      "Eliminates friction"
+    ],
+    "answer": "Has no effect on friction",
+    "explanation": "For dry friction, the frictional force is largely independent of the contact surface area."
+  },
+  {
+    "question": "What is the principle of conservation of energy?",
+    "choices": [
+      "Energy can be created and destroyed",
+      "Energy can change forms but cannot be created or destroyed",
+      "Energy increases with time",
+      "Energy is only conserved in closed systems"
+    ],
+    "answer": "Energy can change forms but cannot be created or destroyed",
+    "explanation": "The conservation of energy principle states that energy cannot be created or destroyed, only transformed from one form to another."
+  },
+  {
+    "question": "What is the function of a spring in a mechanical system?",
+    "choices": [
+      "To provide constant force",
+      "To store and release mechanical energy",
+      "To reduce friction",
+      "To change the direction of motion"
+    ],
+    "answer": "To store and release mechanical energy",
+    "explanation": "Springs store energy when compressed or stretched and release it when returning to their original shape."
+  },
+  {
+    "question": "What is Hooke's Law?",
+    "choices": [
+      "Force is equal to mass times acceleration",
+      "The extension of a spring is directly proportional to the load applied",
+      "Energy is conserved in a system",
+      "Friction is proportional to the normal force"
+    ],
+    "answer": "The extension of a spring is directly proportional to the load applied",
+    "explanation": "Hooke's Law states that the force needed to extend or compress a spring is directly proportional to the distance it is stretched."
+  },
+  {
+    "question": "What is the difference between static and kinetic friction?",
+    "choices": [
+      "Static friction is lower than kinetic friction",
+      "Static friction occurs when objects are moving, kinetic when they are stationary",
+      "Static friction prevents motion while kinetic friction opposes ongoing motion",
+      "There is no difference"
+    ],
+    "answer": "Static friction prevents motion while kinetic friction opposes ongoing motion",
+    "explanation": "Static friction acts when there is no movement, whereas kinetic friction acts when objects are sliding against each other."
+  },
+  {
+    "question": "What is rotational inertia?",
+    "choices": [
+      "Resistance to changes in rotational motion",
+      "A measure of an object's mass",
+      "The force causing rotation",
+      "The friction in rotating systems"
+    ],
+    "answer": "Resistance to changes in rotational motion",
+    "explanation": "Rotational inertia is the resistance of an object to change its rotational speed or direction."
+  },
+  {
+    "question": "What is a gear train?",
+    "choices": [
+      "A series of gears working together to change speed or torque",
+      "A single large gear",
+      "A device that stores energy",
+      "A mechanism to convert linear motion into rotation"
+    ],
+    "answer": "A series of gears working together to change speed or torque",
+    "explanation": "A gear train uses multiple gears to modify the speed, torque, or direction of a mechanical system."
+  },
+  {
+    "question": "Which factor does NOT affect the efficiency of a mechanical system?",
+    "choices": [
+      "Friction",
+      "Material deformation",
+      "Air resistance",
+      "Color of the components"
+    ],
+    "answer": "Color of the components",
+    "explanation": "The color of components does not affect mechanical efficiency, unlike friction, deformation, and air resistance."
+  },
+  {
+    "question": "What is the function of a pulley system with multiple wheels?",
+    "choices": [
+      "To increase the force required to lift a load",
+      "To reduce the force needed to lift a load",
+      "To change the load's weight",
+      "To eliminate friction completely"
+    ],
+    "answer": "To reduce the force needed to lift a load",
+    "explanation": "A multi-sheave pulley system multiplies force, reducing the effort required to lift heavy objects."
+  },
+  {
+    "question": "What is the main purpose of a brake system in machinery?",
+    "choices": [
+      "To increase speed",
+      "To stop or slow down motion",
+      "To reduce friction",
+      "To generate power"
+    ],
+    "answer": "To stop or slow down motion",
+    "explanation": "Brake systems are designed to control or halt the movement of mechanical systems."
+  },
+  {
+    "question": "What does the term 'torque' refer to?",
+    "choices": [
+      "Linear force",
+      "The rotational equivalent of linear force",
+      "Energy consumption",
+      "Frictional force"
+    ],
+    "answer": "The rotational equivalent of linear force",
+    "explanation": "Torque is a measure of the tendency of a force to rotate an object about an axis."
+  },
+  {
+    "question": "How can mechanical efficiency be calculated?",
+    "choices": [
+      "Output work divided by input work",
+      "Input work divided by output work",
+      "Output power multiplied by input power",
+      "Difference between input and output work"
+    ],
+    "answer": "Output work divided by input work",
+    "explanation": "Mechanical efficiency is the ratio of useful work output to total work input, expressed as a percentage."
+  },
+  {
+    "question": "Which type of motion is described by an object moving in a circular path?",
+    "choices": [
+      "Linear motion",
+      "Rotational motion",
+      "Vibrational motion",
+      "Oscillatory motion"
+    ],
+    "answer": "Rotational motion",
+    "explanation": "Rotational motion refers to movement around a central point or axis."
+  },
+  {
+    "question": "What is the role of bearings in mechanical systems?",
+    "choices": [
+      "To reduce friction between moving parts",
+      "To store energy",
+      "To generate heat",
+      "To increase friction"
+    ],
+    "answer": "To reduce friction between moving parts",
+    "explanation": "Bearings allow smooth movement by minimizing friction between the components in motion."
+  },
+  {
+    "question": "Which factor directly affects the stress on a beam?",
+    "choices": [
+      "Beam length",
+      "Load applied",
+      "Material of the beam",
+      "All of the above"
+    ],
+    "answer": "All of the above",
+    "explanation": "The stress on a beam is influenced by its length, the load it carries, and the material properties."
+  },
+  {
+    "question": "What does the term 'center of gravity' refer to?",
+    "choices": [
+      "The point where the total weight of a body is considered to act",
+      "The geometric center of a body",
+      "The point where friction is maximum",
+      "The area with the highest density"
+    ],
+    "answer": "The point where the total weight of a body is considered to act",
+    "explanation": "The center of gravity is the point at which the entire weight of an object may be assumed to be concentrated."
+  },
+  {
+    "question": "What is meant by the term 'equilibrium' in mechanics?",
+    "choices": [
+      "When an object is in motion",
+      "When forces acting on an object are balanced",
+      "When an object is accelerating",
+      "When friction is absent"
+    ],
+    "answer": "When forces acting on an object are balanced",
+    "explanation": "Equilibrium occurs when the net force acting on an object is zero, resulting in no acceleration."
+  },
+  {
+    "question": "What is the effect of increasing the lever arm length on the force needed to lift a load?",
+    "choices": [
+      "It increases the required force",
+      "It decreases the required force",
+      "It has no effect",
+      "It doubles the required force"
+    ],
+    "answer": "It decreases the required force",
+    "explanation": "A longer lever arm reduces the force needed to lift a load, as mechanical advantage increases."
+  },
+  {
+    "question": "Which phenomenon describes the tendency of a moving object to continue in its state of motion?",
+    "choices": [
+      "Momentum",
+      "Inertia",
+      "Acceleration",
+      "Friction"
+    ],
+    "answer": "Inertia",
+    "explanation": "Inertia is the tendency of an object to resist changes to its motion."
+  },
+  {
+    "question": "What is a common application of a cam mechanism?",
+    "choices": [
+      "To convert rotational motion into reciprocating motion",
+      "To reduce friction",
+      "To amplify force",
+      "To maintain constant speed"
+    ],
+    "answer": "To convert rotational motion into reciprocating motion",
+    "explanation": "Cam mechanisms are used to convert rotational motion into oscillating or reciprocating motion."
+  },
+  {
+    "question": "How does a compound machine work?",
+    "choices": [
+      "By using a single simple machine",
+      "By combining two or more simple machines",
+      "By eliminating friction",
+      "By storing energy"
+    ],
+    "answer": "By combining two or more simple machines",
+    "explanation": "A compound machine combines multiple simple machines to perform work more efficiently."
+  },
+  {
+    "question": "What is the primary role of a flywheel in a mechanical system?",
+    "choices": [
+      "To store rotational energy",
+      "To reduce friction",
+      "To amplify torque",
+      "To convert linear motion to rotational motion"
+    ],
+    "answer": "To store rotational energy",
+    "explanation": "Flywheels store energy in the form of rotational kinetic energy and help smooth out fluctuations in power output."
+  },
+  {
+    "question": "What is a simple machine?",
+    "choices": [
+      "A machine with one moving part",
+      "A basic mechanical device that changes the direction or magnitude of a force",
+      "A computer-controlled mechanical system",
+      "A device that stores energy"
+    ],
+    "answer": "A basic mechanical device that changes the direction or magnitude of a force",
+    "explanation": "Simple machines are basic devices like levers, pulleys, and inclined planes that make work easier by altering force or distance."
+  },
+  {
+    "question": "What does the term 'load' refer to in mechanical systems?",
+    "choices": [
+      "The input force applied by the operator",
+      "The weight or resistance that is moved by a machine",
+      "The friction within a machine",
+      "The speed of operation"
+    ],
+    "answer": "The weight or resistance that is moved by a machine",
+    "explanation": "The load is the force or weight that a machine is designed to move or support."
+  },
+  {
+    "question": "What is a block and tackle system?",
+    "choices": [
+      "A system that uses gears to increase speed",
+      "A system that uses fixed pulleys only",
+      "A system that uses both fixed and movable pulleys to increase mechanical advantage",
+      "A system that stores energy in springs"
+    ],
+    "answer": "A system that uses both fixed and movable pulleys to increase mechanical advantage",
+    "explanation": "A block and tackle system combines multiple pulleys to reduce the force needed to lift a load."
+  },
+  {
+    "question": "What is the difference between a fixed pulley and a movable pulley?",
+    "choices": [
+      "A fixed pulley changes the direction of the force, while a movable pulley reduces the required input force",
+      "A fixed pulley reduces the input force, while a movable pulley changes the force direction",
+      "There is no difference",
+      "A fixed pulley stores energy and a movable pulley amplifies it"
+    ],
+    "answer": "A fixed pulley changes the direction of the force, while a movable pulley reduces the required input force",
+    "explanation": "Fixed pulleys only change the direction of the force, whereas movable pulleys provide a mechanical advantage by reducing the force needed."
+  },
+  {
+    "question": "What is meant by 'work' in physics?",
+    "choices": [
+      "The energy required to start a machine",
+      "The product of force and displacement in the direction of the force",
+      "The speed at which a machine operates",
+      "The friction encountered in a system"
+    ],
+    "answer": "The product of force and displacement in the direction of the force",
+    "explanation": "Work is defined as force multiplied by the distance over which the force is applied."
+  },
+  {
+    "question": "How is power defined in mechanical systems?",
+    "choices": [
+      "The force applied per unit area",
+      "The rate at which work is done",
+      "The total work performed",
+      "The efficiency of a machine"
+    ],
+    "answer": "The rate at which work is done",
+    "explanation": "Power measures how quickly work is performed, usually expressed in watts."
+  },
+  {
+    "question": "What is the unit of power?",
+    "choices": [
+      "Joule",
+      "Watt",
+      "Newton",
+      "Pascal"
+    ],
+    "answer": "Watt",
+    "explanation": "Power is measured in watts, where one watt equals one joule per second."
+  },
+  {
+    "question": "How is efficiency expressed in a mechanical system?",
+    "choices": [
+      "As the ratio of input work to output work, expressed as a percentage",
+      "As the difference between input and output work",
+      "As the ratio of output work to input work, expressed as a percentage",
+      "As the sum of input and output work"
+    ],
+    "answer": "As the ratio of output work to input work, expressed as a percentage",
+    "explanation": "Efficiency is calculated by dividing the useful work output by the total work input, then multiplying by 100 to get a percentage."
+  },
+  {
+    "question": "What is the difference between potential energy and kinetic energy?",
+    "choices": [
+      "Potential energy is the energy of motion, while kinetic energy is stored energy",
+      "Potential energy is stored energy, while kinetic energy is the energy of motion",
+      "Both are the same",
+      "Potential energy is only found in machines"
+    ],
+    "answer": "Potential energy is stored energy, while kinetic energy is the energy of motion",
+    "explanation": "Potential energy is energy held by an object due to its position, whereas kinetic energy is the energy of an object in motion."
+  },
+  {
+    "question": "What is the work-energy principle?",
+    "choices": [
+      "Work done on an object is equal to its change in kinetic energy",
+      "Work is always lost due to friction",
+      "Energy cannot be measured in work",
+      "Work is independent of force"
+    ],
+    "answer": "Work done on an object is equal to its change in kinetic energy",
+    "explanation": "The work-energy principle states that the net work done on an object results in a change in its kinetic energy."
+  },
+  {
+    "question": "What is the principle of moments?",
+    "choices": [
+      "The sum of forces on a system must be zero",
+      "The sum of clockwise moments equals the sum of anticlockwise moments for a system in equilibrium",
+      "The product of force and distance is always constant",
+      "Moments do not affect equilibrium"
+    ],
+    "answer": "The sum of clockwise moments equals the sum of anticlockwise moments for a system in equilibrium",
+    "explanation": "The principle of moments ensures that for a body in rotational equilibrium, the total clockwise moment is equal to the total anticlockwise moment."
+  },
+  {
+    "question": "What is a compound lever?",
+    "choices": [
+      "A lever with multiple fulcrums",
+      "A lever that combines with another simple machine",
+      "A lever that has a curved shape",
+      "A lever used only in compound machines"
+    ],
+    "answer": "A lever with multiple fulcrums",
+    "explanation": "A compound lever incorporates more than one pivot point to increase its mechanical advantage."
+  },
+  {
+    "question": "What is a jack?",
+    "choices": [
+      "A simple tool used to measure force",
+      "A mechanical device used to lift heavy loads",
+      "A component in an engine",
+      "A type of pulley system"
+    ],
+    "answer": "A mechanical device used to lift heavy loads",
+    "explanation": "A jack is a device used to raise heavy objects, such as vehicles, by applying force."
+  },
+  {
+    "question": "What is a gear ratio?",
+    "choices": [
+      "The ratio of the diameters of two gears",
+      "The ratio of the number of teeth on two meshing gears",
+      "The product of two gear speeds",
+      "The difference in size between two gears"
+    ],
+    "answer": "The ratio of the number of teeth on two meshing gears",
+    "explanation": "Gear ratio is determined by comparing the number of teeth on the driving gear to the number of teeth on the driven gear."
+  },
+  {
+    "question": "What does a rack and pinion mechanism do?",
+    "choices": [
+      "Converts linear motion into rotational motion",
+      "Converts rotational motion into linear motion",
+      "Amplifies force without changing motion",
+      "Stores mechanical energy"
+    ],
+    "answer": "Converts rotational motion into linear motion",
+    "explanation": "A rack and pinion mechanism converts the rotational motion of a pinion gear into the linear motion of a rack."
+  },
+  {
+    "question": "What is a differential gear used for?",
+    "choices": [
+      "To synchronize engine timing",
+      "To allow wheels to rotate at different speeds while transmitting power",
+      "To convert rotational motion to linear motion",
+      "To increase the overall gear ratio"
+    ],
+    "answer": "To allow wheels to rotate at different speeds while transmitting power",
+    "explanation": "A differential gear permits wheels to rotate at different speeds, which is essential during turns."
+  },
+  {
+    "question": "What is the function of an idler gear?",
+    "choices": [
+      "To transmit motion without changing speed or direction",
+      "To increase torque",
+      "To convert energy into heat",
+      "To decrease rotational speed"
+    ],
+    "answer": "To transmit motion without changing speed or direction",
+    "explanation": "Idler gears are used to maintain the proper direction of rotation and spacing between gears without affecting the speed."
+  },
+  {
+    "question": "What is a worm gear?",
+    "choices": [
+      "A gear that resembles a screw and meshes with a worm wheel",
+      "A gear used only in watches",
+      "A gear that transmits power with no friction",
+      "A gear that increases rotational speed dramatically"
+    ],
+    "answer": "A gear that resembles a screw and meshes with a worm wheel",
+    "explanation": "A worm gear is a type of gear that uses a screw-like component to transfer motion at a right angle to a worm wheel."
+  },
+  {
+    "question": "What is meant by backlash in gear systems?",
+    "choices": [
+      "The increase in speed due to gear ratios",
+      "The clearance or lost motion between mating gear teeth",
+      "The friction generated between gears",
+      "The noise produced by gears in motion"
+    ],
+    "answer": "The clearance or lost motion between mating gear teeth",
+    "explanation": "Backlash is the small gap between gear teeth that can affect the precision of motion transfer."
+  },
+  {
+    "question": "What is a torque converter?",
+    "choices": [
+      "A device that converts torque into linear force",
+      "A fluid coupling device used in automatic transmissions",
+      "A type of gear that multiplies torque",
+      "A mechanism that eliminates friction in engines"
+    ],
+    "answer": "A fluid coupling device used in automatic transmissions",
+    "explanation": "A torque converter uses fluid dynamics to transfer rotating power from the engine to the transmission."
+  },
+  {
+    "question": "What does the term 'load distribution' refer to?",
+    "choices": [
+      "The manner in which weight or forces are spread across a structure",
+      "The speed at which a load moves",
+      "The method of increasing load capacity",
+      "The ratio of force to mass"
+    ],
+    "answer": "The manner in which weight or forces are spread across a structure",
+    "explanation": "Load distribution describes how forces or weights are allocated over a structure, affecting stress and stability."
+  },
+  {
+    "question": "What is a stress-strain curve?",
+    "choices": [
+      "A graph that shows the relationship between stress and strain for a material",
+      "A diagram of the internal structure of a material",
+      "A chart that measures friction in materials",
+      "A graph representing temperature changes under stress"
+    ],
+    "answer": "A graph that shows the relationship between stress and strain for a material",
+    "explanation": "A stress-strain curve illustrates how a material deforms under varying levels of stress, indicating its mechanical properties."
+  },
+  {
+    "question": "What is elasticity in materials?",
+    "choices": [
+      "The ability of a material to conduct electricity",
+      "The ability of a material to return to its original shape after deformation",
+      "The measure of a material's hardness",
+      "The resistance of a material to deformation"
+    ],
+    "answer": "The ability of a material to return to its original shape after deformation",
+    "explanation": "Elasticity refers to a material's capability to recover its original form after the force causing deformation is removed."
+  },
+  {
+    "question": "What is plastic deformation?",
+    "choices": [
+      "Temporary deformation that disappears after removing the load",
+      "Permanent deformation that remains after the load is removed",
+      "Deformation caused by friction only",
+      "A reversible change in shape"
+    ],
+    "answer": "Permanent deformation that remains after the load is removed",
+    "explanation": "Plastic deformation is the permanent distortion that occurs when a material is stressed beyond its elastic limit."
+  },
+  {
+    "question": "What is fatigue in materials?",
+    "choices": [
+      "The loss of strength due to high temperature",
+      "The weakening of a material caused by repeated loading cycles",
+      "A sudden fracture due to impact",
+      "A temporary loss of elasticity"
+    ],
+    "answer": "The weakening of a material caused by repeated loading cycles",
+    "explanation": "Fatigue is the progressive and localized structural damage that occurs when a material is subjected to cyclic loading."
+  },
+  {
+    "question": "What is the difference between tensile strength and compressive strength?",
+    "choices": [
+      "Tensile strength is resistance to being pulled apart, compressive strength is resistance to being squished",
+      "Tensile strength is higher than compressive strength in all materials",
+      "They are the same property measured differently",
+      "Tensile strength only applies to metals"
+    ],
+    "answer": "Tensile strength is resistance to being pulled apart, compressive strength is resistance to being squished",
+    "explanation": "Tensile strength measures how much pulling force a material can withstand, whereas compressive strength measures its ability to withstand pushing or squeezing forces."
+  },
+  {
+    "question": "What is shear stress?",
+    "choices": [
+      "A stress that acts perpendicular to the surface",
+      "A stress that acts parallel to the surface",
+      "The same as tensile stress",
+      "A type of compressive stress"
+    ],
+    "answer": "A stress that acts parallel to the surface",
+    "explanation": "Shear stress occurs when forces are applied parallel or tangential to a surface."
+  },
+  {
+    "question": "What is the modulus of elasticity?",
+    "choices": [
+      "A measure of a material's density",
+      "A measure of a material's stiffness",
+      "A measure of the energy it can store",
+      "A measure of its thermal conductivity"
+    ],
+    "answer": "A measure of a material's stiffness",
+    "explanation": "The modulus of elasticity quantifies how much a material will deform under a given load."
+  },
+  {
+    "question": "What are the two main types of bearings?",
+    "choices": [
+      "Ball bearings and roller bearings",
+      "Rolling element bearings and plain bearings",
+      "Magnetic bearings and fluid bearings",
+      "Hydraulic bearings and pneumatic bearings"
+    ],
+    "answer": "Rolling element bearings and plain bearings",
+    "explanation": "Bearings are generally classified as rolling element (using balls or rollers) or plain (sleeve) bearings."
+  },
+  {
+    "question": "What is the function of lubrication in mechanical systems?",
+    "choices": [
+      "To increase friction between parts",
+      "To reduce friction and wear between moving parts",
+      "To cool the system exclusively",
+      "To store energy in moving parts"
+    ],
+    "answer": "To reduce friction and wear between moving parts",
+    "explanation": "Lubrication minimizes friction and wear, thereby extending the lifespan of mechanical components."
+  },
+  {
+    "question": "What is a hydraulic press?",
+    "choices": [
+      "A device that uses mechanical gears to amplify force",
+      "A device that uses a hydraulic cylinder to generate a compressive force",
+      "A tool for measuring pressure",
+      "A type of lever system"
+    ],
+    "answer": "A device that uses a hydraulic cylinder to generate a compressive force",
+    "explanation": "A hydraulic press uses fluid pressure to exert a large force, typically for shaping or compressing materials."
+  },
+  {
+    "question": "What is Pascal's Principle?",
+    "choices": [
+      "Pressure applied to a confined fluid is transmitted equally in all directions",
+      "Pressure increases with depth in a fluid",
+      "Pressure is independent of fluid density",
+      "Pressure is always constant in a closed system"
+    ],
+    "answer": "Pressure applied to a confined fluid is transmitted equally in all directions",
+    "explanation": "Pascal's Principle states that any change in pressure applied to an enclosed fluid is transmitted undiminished to every portion of the fluid."
+  },
+  {
+    "question": "What is the function of a pump in a hydraulic system?",
+    "choices": [
+      "To reduce fluid temperature",
+      "To move fluid and generate pressure",
+      "To convert fluid into gas",
+      "To measure fluid viscosity"
+    ],
+    "answer": "To move fluid and generate pressure",
+    "explanation": "Pumps in hydraulic systems move fluid, thereby creating pressure required to perform work."
+  },
+  {
+    "question": "What is the difference between a hydraulic and a pneumatic system?",
+    "choices": [
+      "Hydraulic systems use liquids, while pneumatic systems use compressed air",
+      "Hydraulic systems use gases, while pneumatic systems use liquids",
+      "Both use liquids but at different pressures",
+      "There is no difference"
+    ],
+    "answer": "Hydraulic systems use liquids, while pneumatic systems use compressed air",
+    "explanation": "Hydraulics use incompressible liquids for power transfer, whereas pneumatics use compressible air."
+  },
+  {
+    "question": "What is a pressure vessel?",
+    "choices": [
+      "A container designed to hold gases or liquids at a pressure different from ambient pressure",
+      "A tool for measuring pressure",
+      "A type of pump",
+      "A system that generates electricity"
+    ],
+    "answer": "A container designed to hold gases or liquids at a pressure different from ambient pressure",
+    "explanation": "Pressure vessels are engineered to safely contain fluids under high pressure."
+  },
+  {
+    "question": "What is the purpose of a safety valve in a pressure vessel?",
+    "choices": [
+      "To increase the pressure inside the vessel",
+      "To release excess pressure and prevent explosions",
+      "To regulate the temperature of the vessel",
+      "To measure the internal pressure"
+    ],
+    "answer": "To release excess pressure and prevent explosions",
+    "explanation": "Safety valves protect pressure vessels by venting excess pressure to avoid catastrophic failure."
+  },
+  {
+    "question": "What is stress concentration?",
+    "choices": [
+      "A uniform distribution of stress in a material",
+      "An area in a material where stress is significantly higher due to abrupt changes in shape",
+      "The total stress on an entire structure",
+      "A measure of how much stress a material can endure before breaking"
+    ],
+    "answer": "An area in a material where stress is significantly higher due to abrupt changes in shape",
+    "explanation": "Stress concentration refers to localized areas in a material where stress is amplified, often around notches or sharp corners."
+  },
+  {
+    "question": "What is the purpose of finite element analysis (FEA) in mechanical engineering?",
+    "choices": [
+      "To design electrical circuits",
+      "To simulate and analyze stresses and deformations in structures",
+      "To create 3D animations",
+      "To measure friction directly"
+    ],
+    "answer": "To simulate and analyze stresses and deformations in structures",
+    "explanation": "FEA is a computational tool used to predict how a structure behaves under various loads and conditions."
+  },
+  {
+    "question": "What is a cantilever beam?",
+    "choices": [
+      "A beam supported at both ends",
+      "A beam fixed at one end and free at the other",
+      "A beam with a variable cross-section",
+      "A beam that is curved"
+    ],
+    "answer": "A beam fixed at one end and free at the other",
+    "explanation": "Cantilever beams are fixed at one end, allowing the other end to extend freely, common in structures like balconies."
+  },
+  {
+    "question": "What is the bending moment?",
+    "choices": [
+      "The force that causes a beam to twist",
+      "The moment that causes a beam to bend",
+      "The product of the beam's weight and its length",
+      "A measure of the beam's material strength"
+    ],
+    "answer": "The moment that causes a beam to bend",
+    "explanation": "Bending moment is the rotational force acting on a beam that leads to bending."
+  },
+  {
+    "question": "What is torsion in a mechanical context?",
+    "choices": [
+      "Compression of a material",
+      "Bending of a beam",
+      "Twisting of an object due to an applied torque",
+      "Vibration of a structure"
+    ],
+    "answer": "Twisting of an object due to an applied torque",
+    "explanation": "Torsion refers to the twisting of an object when a torque is applied, resulting in shear stresses."
+  },
+  {
+    "question": "What is a spring constant?",
+    "choices": [
+      "A measure of a spring's mass",
+      "A measure of a spring's stiffness",
+      "A measure of the energy stored in a spring",
+      "A unit for measuring force"
+    ],
+    "answer": "A measure of a spring's stiffness",
+    "explanation": "The spring constant quantifies the stiffness of a spring; a higher constant means the spring is stiffer."
+  },
+  {
+    "question": "What is damping?",
+    "choices": [
+      "The increase in amplitude of oscillation over time",
+      "The reduction of oscillation amplitude due to energy dissipation",
+      "The process of converting kinetic energy into potential energy",
+      "The loss of mass in a vibrating system"
+    ],
+    "answer": "The reduction of oscillation amplitude due to energy dissipation",
+    "explanation": "Damping refers to the decrease in the amplitude of oscillations due to factors such as friction or resistance."
+  },
+  {
+    "question": "What is resonance in mechanical systems?",
+    "choices": [
+      "The phenomenon of a system oscillating with minimal amplitude",
+      "The condition where a system oscillates with greater amplitude at specific frequencies",
+      "The complete stop of oscillations in a system",
+      "The synchronization of two different oscillating systems"
+    ],
+    "answer": "The condition where a system oscillates with greater amplitude at specific frequencies",
+    "explanation": "Resonance occurs when the frequency of external vibrations matches a system's natural frequency, causing large amplitude oscillations."
+  },
+  {
+    "question": "What is meant by the natural frequency of a system?",
+    "choices": [
+      "The frequency at which a system tends to oscillate in the absence of damping",
+      "The frequency imposed by an external force",
+      "The highest frequency a system can achieve",
+      "The frequency at which energy is lost most rapidly"
+    ],
+    "answer": "The frequency at which a system tends to oscillate in the absence of damping",
+    "explanation": "Natural frequency is an inherent property of a system, indicating its preferred rate of oscillation when undisturbed by external forces."
+  },
+  {
+    "question": "What is a pendulum?",
+    "choices": [
+      "A weight suspended from a pivot that swings freely under gravity",
+      "A rotating disc in a machine",
+      "A type of lever used for lifting",
+      "A device that converts linear motion to rotational motion"
+    ],
+    "answer": "A weight suspended from a pivot that swings freely under gravity",
+    "explanation": "A pendulum consists of a mass suspended from a fixed point, oscillating back and forth under the influence of gravity."
+  },
+  {
+    "question": "How does the length of a pendulum affect its period?",
+    "choices": [
+      "A longer pendulum has a shorter period",
+      "A longer pendulum has a longer period",
+      "Length has no effect on the period",
+      "The period is inversely proportional to the length"
+    ],
+    "answer": "A longer pendulum has a longer period",
+    "explanation": "The period of a pendulum increases as its length increases, following a predictable mathematical relationship."
+  },
+  {
+    "question": "What is centripetal force?",
+    "choices": [
+      "The force that pulls an object away from the center",
+      "The force that keeps an object moving in a circular path",
+      "A force that acts only in linear motion",
+      "A type of frictional force"
+    ],
+    "answer": "The force that keeps an object moving in a circular path",
+    "explanation": "Centripetal force is the inward force required to keep an object moving in a circular trajectory."
+  },
+  {
+    "question": "What is the difference between mass and weight?",
+    "choices": [
+      "Mass is a measure of matter, while weight is the force due to gravity acting on that mass",
+      "Mass and weight are identical",
+      "Mass is measured in newtons, weight in kilograms",
+      "Weight is constant, while mass can change"
+    ],
+    "answer": "Mass is a measure of matter, while weight is the force due to gravity acting on that mass",
+    "explanation": "Mass is an intrinsic property of an object, whereas weight is the gravitational force exerted on that mass."
+  },
+  {
+    "question": "What is a dynamometer?",
+    "choices": [
+      "An instrument used to measure speed",
+      "An instrument used to measure force, torque, or power",
+      "A device to measure temperature",
+      "A sensor for detecting vibrations"
+    ],
+    "answer": "An instrument used to measure force, torque, or power",
+    "explanation": "Dynamometers are used to quantify mechanical performance, such as torque and power output."
+  },
+  {
+    "question": "What is an engine's displacement?",
+    "choices": [
+      "The total volume of all the cylinders in an engine",
+      "The power output of an engine",
+      "The efficiency of fuel combustion",
+      "The speed at which an engine operates"
+    ],
+    "answer": "The total volume of all the cylinders in an engine",
+    "explanation": "Engine displacement measures the combined volume of the engine's cylinders and is an indicator of its size."
+  },
+  {
+    "question": "What is a camshaft?",
+    "choices": [
+      "A shaft with cams that actuate the intake and exhaust valves in an engine",
+      "A component that connects the engine to the wheels",
+      "A device for measuring engine speed",
+      "A type of flywheel"
+    ],
+    "answer": "A shaft with cams that actuate the intake and exhaust valves in an engine",
+    "explanation": "The camshaft controls the timing of valve opening and closing in an internal combustion engine."
+  },
+  {
+    "question": "What is the function of a connecting rod in an engine?",
+    "choices": [
+      "To transfer the motion of the piston to the crankshaft",
+      "To control the fuel injection timing",
+      "To regulate engine temperature",
+      "To provide lubrication to engine parts"
+    ],
+    "answer": "To transfer the motion of the piston to the crankshaft",
+    "explanation": "Connecting rods convert the linear motion of pistons into the rotational motion of the crankshaft."
+  },
+  {
+    "question": "What is the purpose of a crankshaft?",
+    "choices": [
+      "To convert the linear motion of pistons into rotational motion",
+      "To inject fuel into the cylinders",
+      "To control engine cooling",
+      "To increase engine displacement"
+    ],
+    "answer": "To convert the linear motion of pistons into rotational motion",
+    "explanation": "The crankshaft transforms the reciprocating motion of the pistons into the rotational motion that ultimately drives the vehicle."
+  },
+  {
+    "question": "What is a turbocharger?",
+    "choices": [
+      "A device that forces extra air into an engine for increased power",
+      "A cooling device for the engine",
+      "A system to reduce engine noise",
+      "A type of fuel injector"
+    ],
+    "answer": "A device that forces extra air into an engine for increased power",
+    "explanation": "Turbochargers compress the intake air, allowing more air—and consequently more fuel—to be burned in the engine for higher performance."
+  },
+  {
+    "question": "What does a differential in a car do?",
+    "choices": [
+      "It converts rotational motion to linear motion",
+      "It allows wheels to rotate at different speeds while transmitting power",
+      "It increases the overall engine power",
+      "It reduces friction between the tires and the road"
+    ],
+    "answer": "It allows wheels to rotate at different speeds while transmitting power",
+    "explanation": "The differential distributes engine torque to the wheels while allowing them to turn at different speeds, especially during cornering."
+  },
+  {
+    "question": "What is the function of a suspension system in vehicles?",
+    "choices": [
+      "To improve fuel efficiency",
+      "To absorb shocks and maintain tire contact with the road",
+      "To increase engine power",
+      "To reduce aerodynamic drag"
+    ],
+    "answer": "To absorb shocks and maintain tire contact with the road",
+    "explanation": "Suspension systems cushion the vehicle from road irregularities and ensure that tires maintain contact with the road surface."
+  },
+  {
+    "question": "What is the role of an anti-lock braking system (ABS) in vehicles?",
+    "choices": [
+      "To prevent wheel lock-up during braking, maintaining steering control",
+      "To increase braking distance",
+      "To enhance engine performance",
+      "To reduce tire wear during acceleration"
+    ],
+    "answer": "To prevent wheel lock-up during braking, maintaining steering control",
+    "explanation": "ABS prevents the wheels from locking up during hard braking, allowing the driver to maintain steering control and reduce stopping distances."
+  },
+  {
+    "question": "What is a heat exchanger?",
+    "choices": [
+      "A device that transfers heat between two fluids",
+      "A device that cools down an engine",
+      "A device that stores heat",
+      "A device that measures temperature"
+    ],
+    "answer": "A device that transfers heat between two fluids",
+    "explanation": "A heat exchanger facilitates heat transfer from one fluid to another without mixing them."
+  },
+  {
+    "question": "What is a pneumatic actuator?",
+    "choices": [
+      "A device that converts electrical energy into mechanical motion",
+      "A device that uses compressed air to produce movement",
+      "A sensor for detecting air pressure",
+      "A device for controlling temperature"
+    ],
+    "answer": "A device that uses compressed air to produce movement",
+    "explanation": "Pneumatic actuators use compressed air to generate mechanical motion in various applications."
+  },
+  {
+    "question": "What is the difference between static equilibrium and dynamic equilibrium in mechanical systems?",
+    "choices": [
+      "Static equilibrium involves constant motion, dynamic equilibrium is at rest",
+      "Static equilibrium occurs when forces balance and there is no motion, dynamic equilibrium occurs with constant motion but balanced forces",
+      "They are identical",
+      "Static equilibrium only applies to fluids"
+    ],
+    "answer": "Static equilibrium occurs when forces balance and there is no motion, dynamic equilibrium occurs with constant motion but balanced forces",
+    "explanation": "Static equilibrium means no net force and no motion, whereas dynamic equilibrium involves balanced forces while maintaining constant velocity."
+  },
+  {
+    "question": "What is a centrifugal governor?",
+    "choices": [
+      "A device that controls engine speed by regulating fuel supply",
+      "A type of brake system",
+      "A sensor that measures centrifugal force",
+      "A device used to balance rotating machinery"
+    ],
+    "answer": "A device that controls engine speed by regulating fuel supply",
+    "explanation": "A centrifugal governor senses engine speed and adjusts the fuel input to maintain a consistent speed."
+  },
+  {
+    "question": "What is the damping ratio in a mechanical system?",
+    "choices": [
+      "The ratio of oscillation frequency to applied force",
+      "A measure of how quickly oscillations decay",
+      "The ratio of kinetic energy to potential energy",
+      "A measure of system inertia"
+    ],
+    "answer": "A measure of how quickly oscillations decay",
+    "explanation": "The damping ratio quantifies the rate at which oscillatory motion diminishes due to energy loss from damping forces."
+  }
+]
