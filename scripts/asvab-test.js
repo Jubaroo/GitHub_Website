@@ -197,10 +197,14 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         const correct = (userAnswer.toLowerCase() === q.answer.toLowerCase());
         if (correct) {
+            // Make the feedback text green
+            feedbackDiv.style.color = "#00ff00";
             feedbackDiv.innerHTML = "Correct!<br>Explanation: " + q.explanation;
             score++;
         } else {
-            feedbackDiv.innerHTML = "Wrong! The correct answer was: " + q.answer +
+            // Keep the same color for wrong (e.g., #ff9999)
+            feedbackDiv.style.color = "#f41515";
+            feedbackDiv.innerHTML = "Incorrect - The correct answer was: " + q.answer +
                 "<br>Explanation: " + q.explanation;
         }
         attemptedQuestions.push({
@@ -245,19 +249,22 @@ document.addEventListener("DOMContentLoaded", function() {
         endBtn.classList.add("hidden");
         reviewBtn.classList.remove("hidden");
         mainMenuBtn.classList.remove("hidden");
+        feedbackDiv.style.color = "#ffffff";
         feedbackDiv.innerHTML = "Final Score: " + score + " / " + questions.length;
         progressBar.style.width = "100%";
         scoreSpan.textContent = "Score: " + score + " / " + questions.length;
     }
 
     function reviewAnswers() {
-        let reviewHTML = "";
+        let reviewHTML = "<div style='color: white;'>";
         attemptedQuestions.forEach((attempt, index) => {
             reviewHTML += "<div class='mb-3'><h5>Question " + (index + 1) + ": " + attempt.question + "</h5>";
-            reviewHTML += "<p>Your Answer: " + attempt.userAnswer + " (" + (attempt.correct ? "Correct" : "Wrong") + ")</p>";
+            reviewHTML += "<p>Your Answer: <span style='color:" + (attempt.correct ? "green" : "red") + "'>"
+                + attempt.userAnswer + " (" + (attempt.correct ? "Correct" : "Wrong") + ")</span></p>";
             reviewHTML += "<p>Correct Answer: " + attempt.correctAnswer + "</p>";
             reviewHTML += "<p>Explanation: " + attempt.explanation + "</p></div><hr>";
         });
+        reviewHTML += "</div>";
         reviewContent.innerHTML = reviewHTML;
         reviewSection.classList.remove("hidden");
     }
